@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>המדריך · AI Tracker</title>
+<style>
+  :root { color-scheme: light; --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+          --border: rgba(11,11,11,0.10); --grid: #e1e0d9; --link: #2a78d6;
+          --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b; --heating: #2a78d6; --cold: #898781; }
+  @media (prefers-color-scheme: dark) {
+    :root { color-scheme: dark; --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+            --border: rgba(255,255,255,0.10); --grid: #2c2c2a; --link: #3987e5; --heating: #3987e5; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 18px 16px 56px; }
+  a { color: var(--link); }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .lead { color: var(--ink-2); margin: 0 0 6px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-top: 14px; }
+  h2 { font-size: 18px; margin: 0 0 8px; }
+  p { margin: 6px 0; }
+  ul, ol { margin: 6px 0; padding: 0 22px 0 0; }
+  li { margin: 5px 0; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-weight: 600; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  td, th { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  th { color: var(--ink-2); font-weight: 500; font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  .ex { background: var(--page); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-top: 8px; }
+  .num { direction: ltr; unicode-bidi: isolate; }
+  .no li::marker { content: "✕  "; color: var(--critical); }
+  footer { color: var(--muted); font-size: 13px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<main>
+  <p><a href="./">← חזרה לדשבורד</a></p>
+  <h1>המדריך: איך משתמשים ב-AI Tracker</h1>
+  <p class="lead">המערכת עוקבת אחרי 13 שכבות בשרשרת ה-AI (ועוד 2 במעקב בלבד), מזהה לאן הכסף זורם ומה החדשות אומרות, ואומרת לך מה להחזיק, כמה, ומתי לשחרר.</p>
+
+  <section class="card">
+    <h2>1. השגרה שלך</h2>
+    <table>
+      <tr><th>מתי</th><th>מה עושים</th><th>זמן</th></tr>
+      <tr><td><b>כל יום</b></td><td>כלום. המערכת מתעדכנת לבד ב-00:30. אם יש משהו לבצע (מכירה בגלל סטופ, שינוי במצב השוק, מועמד חדש לצוואר בקבוק), מגיעה התראה מ-GitHub.</td><td>0</td></tr>
+      <tr><td><b>מוצאי שבת</b></td><td>קוראים את הדוח השבועי: איפה צוואר הבקבוק, באיזה שלב, מה המכ"ם תפס, ומה צפוי בהחלטה הבאה.</td><td>5 דקות</td></tr>
+      <tr><td><b>פעם בחודש</b></td><td>ההחלטה נקבעת בסגירה של יום המסחר האחרון בחודש. למחרת מבצעים את הפקודות שבדשבורד (קונים, מוכרים, משנים משקלים).</td><td>15 דקות</td></tr>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>2. איך קוראים את הדשבורד, מלמעלה למטה</h2>
+    <ol>
+      <li><b>שלוש הקוביות למעלה</b>
+        <ul>
+          <li><b>מצב השוק:</b> <span class="chip"><span class="dot" style="background:var(--good)"></span>ירוק</span> המחזור מאיץ · <span class="chip"><span class="dot" style="background:var(--warning)"></span>צהוב</span> מעורב · <span class="chip"><span class="dot" style="background:var(--critical)"></span>אדום</span> המחזור מאט.</li>
+          <li><b>כמה מהכסף להשקיע:</b> 100% בירוק, 60% בצהוב, 25% באדום. האחוז הוא מתוך הסכום שהחלטת להקצות למערכת, לא מכל הכסף שלך.</li>
+          <li><b>יש צוואר בקבוק אחד ברור?</b> אם כן, הרוטציה נוטה לנצח. אם השוק רחב, הרוטציה נוטה לפגר אחרי פשוט להחזיק את כל השרשרת.</li>
+        </ul>
+      </li>
+      <li><b>צוואר הבקבוק עכשיו:</b> כל שכבה מקבלת שלב במחזור החיים שלה:
+        <ul>
+          <li><span class="chip"><span class="dot" style="background:var(--heating)"></span>מתחמם</span>: הכסף מתחיל לזרום. המועמד הבא.</li>
+          <li><span class="chip"><span class="dot" style="background:var(--good)"></span>מוביל</span>: זה צוואר הבקבוק של עכשיו. מחזיקים.</li>
+          <li><span class="chip"><span class="dot" style="background:var(--serious)"></span>מאבד תאוצה</span>: עוד חזקה, אבל מאטה. כאן מתחילים לשחרר.</li>
+          <li><span class="chip"><span class="dot" style="background:var(--cold)"></span>קר</span>: הכסף עזב. בחוץ.</li>
+        </ul>
+      </li>
+      <li><b>המכ"ם (חדשות):</b> כל לילה נספרות כותרות על מחסור מול כותרות על הקלה, לכל שכבה.
+        <ul>
+          <li><b>מועמד מוקדם:</b> החדשות מתחממות והמחיר עוד לא זז. זה הסימן הכי מוקדם, וגם הכי מסוכן: לעקוב, לא לרוץ לקנות.</li>
+          <li><b>מועמד מאושר:</b> גם החדשות וגם המחיר מצביעים על מחסור.</li>
+          <li><b>סימני הקלה:</b> יותר כותרות על הקלה מאשר על מחסור, בשכבה שעוד מובילה. סימן לשקול לשחרר.</li>
+          <li><b>מפת החום:</b> אדום = מחסור, כחול = הקלה, לפי שבוע. מחפשים שורה שמאדימה לאורך כמה שבועות.</li>
+        </ul>
+      </li>
+      <li><b>גרף מניה:</b> בוחרים מניה ורואים מחיר מול ממוצע 50 ו-200 ימים. מעל ממוצע 200 = מגמה עולה. מתחת = המערכת לא קונה, ואם מחזיקים, יוצאים.</li>
+      <li><b>התיק:</b> מה המערכת מחזיקה, באיזה משקל, הרווח, והמרחק מהסטופ. <b>פקודות לסגירה הבאה</b> = מה לבצע.</li>
+      <li><b>התראות, כל השכבות, חוזק יחסי, המניות:</b> הפירוט. שכבה שמסומנת "(מעקב)" היא רק לעין: המערכת לא קונה ממנה.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>3. איך מתרגמים את זה לכסף אמיתי</h2>
+    <ol>
+      <li><b>מחליטים על סכום אחד למערכת.</b> רק כסף שתוכל לראות יורד ב-30% עד 40% בלי שתצטרך אותו ובלי שתמכור בפאניקה.</li>
+      <li><b>משקל × סכום = כמה לקנות.</b> כל משקל בדשבורד הוא אחוז מהסכום הזה.</li>
+      <li><b>מה שלא מושקע נשאר במזומן</b>, או בקרן כספית, ומחכה להחלטה הבאה.</li>
+      <li><b>מבצעים ביום שאחרי ההחלטה</b>, קרוב לסגירה של וול סטריט (23:00 שעון ישראל). ככה המערכת חישבה את התוצאות.</li>
+    </ol>
+    <div class="ex"><b>דוגמה:</b> הקצית <span class="num">₪50,000</span>. מצב השוק אדום, והתוכנית היא DELL, AMD ו-EQIX, <span class="num">7.5%</span> כל אחת.
+      קונים בערך <span class="num">₪3,750</span> מכל אחת, סך הכול <span class="num">₪11,250</span>. את <span class="num">₪38,750</span> הנותרים משאירים במזומן.
+      כשמצב השוק יהפוך לירוק, ההחלטה החודשית תגדיל את ההשקעה.</div>
+  </section>
+
+  <section class="card">
+    <h2>4. מתי מוכרים</h2>
+    <p>רק כשהמערכת אומרת, ותמיד ביום שאחרי הסימן:</p>
+    <ul>
+      <li><b>הסטופ הנגרר נשבר:</b> המניה ירדה מהשיא שלה מאז הקנייה יותר מהמרחק שנקבע לה (בין 10% ל-25%, לפי כמה היא תנודתית).</li>
+      <li><b>סגירה 2% מתחת לממוצע 200:</b> המגמה נשברה.</li>
+      <li><b>בהחלטה החודשית:</b> השכבה נפלה מחמשת הראשונות, או שמניה אחרת באותה שכבה עקפה אותה.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>5. מה לא עושים</h2>
+    <ul class="no">
+      <li>לא מוכרים כי עשית הרבה אחוזים בשבוע. בבדיקה, זה עלה עד 10% תשואה בשנה.</li>
+      <li>לא קונים באמצע החודש, גם כשמשהו מתחמם. מחכים להחלטה.</li>
+      <li>לא קונים משכבה שמסומנת "מעקב בלבד". בבדיקה, הכנסתן הורידה את התשואה.</li>
+      <li>לא משנים חוק בגלל כותרת. כל שינוי עובר קודם בדיקה היסטורית.</li>
+      <li>לא שמים כסף שתצטרך בשנה הקרובה.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>6. איך יודעים אם זה עובד</h2>
+    <p>אחרי 6 עד 12 חודשים משווים את תיק הנייר לשני דברים: <b>SMH</b> (תעודת סל של שבבים), ו<b>החזקה שווה של כל הרשימה</b>. כל החלטה של המערכת נרשמת ביומן שאי אפשר לשנות בדיעבד, כך שהבדיקה תהיה הוגנת.</p>
+    <p>אם המערכת מפגרת אחרי שניהם בפער ברור, עדיף פשוט להחזיק את השרשרת: פחות עבודה ופחות מס.</p>
+  </section>
+
+  <section class="card">
+    <h2>7. מה כדאי לדעת</h2>
+    <ul>
+      <li><b>הצפי הריאלי:</b> בסביבות 15% בשנה לטווח ארוך, לא ה-47% של הבדיקה ההיסטורית. יהיו שנים של מינוס 25% ושנים של פלוס 100%.</li>
+      <li><b>מס:</b> בחשבון רגיל, כל מכירה ברווח חייבת ב-25%. בחשבון IRA בקרן השתלמות אפשר לדחות או לחסוך את המס, ולכן שם הרוטציה כדאית יותר.</li>
+      <li><b>המכ"ם סופר מילים, הוא לא מבין.</b> את השיפוט עושה הדוח השבועי, שגם בודק כל כותרת דרמטית לפני שהוא משתמש בה.</li>
+      <li>זה לא ייעוץ השקעות. המערכת נותנת מסגרת וציון, וההחלטה שלך.</li>
+    </ul>
+  </section>
+
+  <footer><a href="./">← חזרה לדשבורד</a> · <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/playbook.md">מחזור החיים של צוואר בקבוק</a></footer>
+</main>
+</body>
+</html>
