@@ -34,6 +34,11 @@ jobs:
       - name: Download prices
         run: python scripts/fetch_prices.py
 
+      - name: News radar (headlines -> bottleneck signals)
+        continue-on-error: true
+        timeout-minutes: 8
+        run: python scripts/news_radar.py
+
       - name: Score layers, run paper portfolio
         env:
           NOTIFY_PATH: /tmp/notify.md

@@ -36,10 +36,17 @@ def layer_names(uni) -> dict[str, str]:
     return {k: v.get("name", k) for k, v in uni["layers"].items()}
 
 
-def stock_tickers(uni) -> list[str]:
+def active_layers(uni) -> list[str]:
+    """Layers the rotation may buy. monitor_only layers are tracked and scored, not traded."""
+    return [k for k, v in uni["layers"].items() if not v.get("monitor_only")]
+
+
+def stock_tickers(uni, active_only: bool = False) -> list[str]:
     out: list[str] = []
-    for ts in layer_members(uni).values():
-        out += ts
+    keep = set(active_layers(uni)) if active_only else None
+    for layer, ts in layer_members(uni).items():
+        if keep is None or layer in keep:
+            out += ts
     return list(dict.fromkeys(out))
 
 
@@ -142,7 +149,7 @@ def composite_history(ind, names) -> pd.DataFrame:
 
 def regime_at(px, ind, d, uni, rules) -> dict:
     rg = rules["regime"]
-    members = [t for t in stock_tickers(uni) if t in px.columns]
+    members = [t for t in stock_tickers(uni, active_only=True) if t in px.columns]
     p, m = px.loc[d, members], ind["ma200"].loc[d, members]
     ok = p.notna() & m.notna()
     breadth = float((p[ok] > m[ok]).mean()) if ok.any() else float("nan")
@@ -197,7 +204,7 @@ def pick_targets(d, px, ind, lidx, lind, uni, rules, held=None, exclude=None) ->
     members = layer_members(uni)
     reg = regime_at(px, ind, d, uni, rules)
 
-    layers = list(lidx.columns)
+    layers = [L for L in active_layers(uni) if L in lidx.columns]
     score = composite_score(lind, d, layers)
     lp, lm = lidx.loc[d, layers], lind["ma200"].loc[d, layers]
     eligible = score.notna() & lp.notna() & lm.notna() & (lp > lm)
@@ -456,7 +463,7 @@ def simulate(px, uni, rules, start, end=None, prepared=None) -> dict:
 def simulate_equal_weight(px, uni, rules, start, end=None) -> pd.Series:
     """Benchmark: own every tradable stock in the chain equally, rebalanced monthly."""
     cost = float(rules["costs_per_side"])
-    names = [t for t in stock_tickers(uni) if is_tradable(uni, t) and t in px.columns]
+    names = [t for t in stock_tickers(uni, active_only=True) if is_tradable(uni, t) and t in px.columns]
     all_dates = px.index
     end_ts = pd.Timestamp(end) if end else all_dates[-1]
     dates = all_dates[(all_dates >= pd.Timestamp(start)) & (all_dates <= end_ts)]

@@ -24,6 +24,9 @@ REASON_HE = {
     "rebalance_trim": "מוקטנת באיזון החודשי",
 }
 REGIME_HE = {"green": "ירוק: המחזור מאיץ", "yellow": "צהוב: תמונה מעורבת", "red": "אדום: המחזור מאט"}
+NEWS_LABEL_HE = {"confirmed": "מועמד מאושר לצוואר בקבוק: גם החדשות וגם המחיר",
+                 "early": "מועמד מוקדם: החדשות מקדימות את המחיר",
+                 "easing": "סימני הקלה: זמן לשקול לשחרר"}
 LOG_FIELDS = ["logged_utc", "signal_date", "type", "ticker", "layer", "target_weight", "reason", "price_at_signal"]
 
 
@@ -83,6 +86,18 @@ def main() -> None:
     ind, lidx, lind = prepare(px, uni)
     d = px.index[-1]
     names, members = layer_names(uni), layer_members(uni)
+    radar_path = DOCS_DATA / "radar.json"
+    radar = json.loads(radar_path.read_text(encoding="utf-8")) if radar_path.exists() else None
+    news_by_layer = {x["key"]: x for x in (radar or {}).get("layers", [])}
+    news_by_stock = (radar or {}).get("stocks", {})
+    prev_path = DOCS_DATA / "latest.json"
+    prev_labels = {}
+    if prev_path.exists():
+        try:
+            prev_labels = {x["key"]: x.get("news_label") for x in json.loads(prev_path.read_text(encoding="utf-8"))["layers"]}
+        except (ValueError, KeyError):
+            prev_labels = {}
+    smh_w = {str(k): float(v) for k, v in (uni.get("smh_weights") or {}).items()}
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     def ago(n: int):
@@ -105,8 +120,25 @@ def main() -> None:
             "above_ma200": bool(p > m) if pd.notna(p) and pd.notna(m) else None,
             "dist_ma200": num(p / m - 1) if pd.notna(p) and pd.notna(m) else None,
             "members": members[L],
+            "monitor_only": bool(uni["layers"][L].get("monitor_only")),
+            "news": {k: news_by_layer.get(L, {}).get(k) for k in ("items7", "tight7", "ease7", "friction7", "net7", "net_prev7", "trend")},
         })
     layers_out.sort(key=lambda x: (x["rank"] is None, x["rank"] or 99))
+    ranked = sorted([x for x in layers_out if (x["news"]["items7"] or 0) >= 3], key=lambda x: -(x["news"]["net7"] or 0))
+    news_rank = {x["key"]: i + 1 for i, x in enumerate(ranked)}
+    for x in layers_out:
+        n, st = x["news"], x["stage"]
+        net, trend, t7, e7 = (n["net7"] or 0), (n["trend"] or 0), (n["tight7"] or 0), (n["ease7"] or 0)
+        label = None
+        if net >= 3 and trend >= 0 and news_rank.get(x["key"], 99) <= 4 and st in ("heating", "leading"):
+            label = "confirmed"
+        elif net >= 3 and trend >= 2 and news_rank.get(x["key"], 99) <= 3 and st in ("cold", "neutral"):
+            label = "early"
+        elif e7 >= 3 and e7 > t7 and st in ("leading", "fading", "heating"):
+            label = "easing"
+        x["news_label"] = label
+        x["news_label_he"] = NEWS_LABEL_HE.get(label)
+        x["news_rank"] = news_rank.get(x["key"])
 
     # ---- stocks
     stocks_out = []
@@ -127,6 +159,8 @@ def main() -> None:
                 "above_ma200": bool(p > ma200) if pd.notna(ma200) else None,
                 "vol": num(ind["vol"].at[d, t]), "from_52w_high": num(p / hi - 1) if pd.notna(hi) else None,
                 "score_in_layer": num(sc.get(t), 3),
+                "smh_weight": smh_w.get(t),
+                "news7": news_by_stock.get(t),
                 "stretched": bool(pd.notna(ind["r1w"].at[d, t]) and pd.notna(ma50)
                                   and ind["r1w"].at[d, t] >= rules["profit_take"]["week_gain"]
                                   and p >= ma50 * (1 + rules["profit_take"]["above_ma50"])),
@@ -232,6 +266,16 @@ def main() -> None:
     if reg_prev["status"] != reg["status"]:
         notify.append(f"### מצב השוק השתנה: {REGIME_HE[reg_prev['status']]} ← {REGIME_HE[reg['status']]}")
         notify.append(f"חשיפה לפי החוקים: {round(reg['exposure'] * 100)}% (ייושם בהחלטה החודשית הבאה)")
+    radar_lines = []
+    for x in layers_out:
+        if x["news_label"] and x["news_label"] != prev_labels.get(x["key"]):
+            n = x["news"]
+            line = (f"{x['name']}: {x['news_label_he']} (חדשות 7 ימים: {n['tight7']} סימני מחסור, {n['ease7']} סימני הקלה; "
+                    f"שלב מחיר: {STAGES_HE[x['stage']].split(':')[0]})")
+            alerts.append(line)
+            radar_lines.append(f"- {line}")
+    if radar_lines:
+        notify += ["### מכ\"ם צוואר בקבוק: שינוי בחדשות"] + radar_lines
     if notify and os.environ.get("NOTIFY_PATH"):
         notify.append("\nדשבורד: https://roeyokanin.github.io/ai-tracker/")
         with open(os.environ["NOTIFY_PATH"], "w", encoding="utf-8") as f:
@@ -254,6 +298,9 @@ def main() -> None:
         },
         "portfolio": portfolio,
         "alerts": alerts,
+        "news_radar": {"as_of": (radar or {}).get("as_of"), "generated_utc": (radar or {}).get("generated_utc"),
+                       "sources_ok": (radar or {}).get("sources_ok")},
+        "smh_weights_as_of": uni.get("smh_weights_as_of"),
     }
     DOCS_DATA.mkdir(parents=True, exist_ok=True)
     (DOCS_DATA / "latest.json").write_text(json.dumps(latest, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -267,6 +314,7 @@ def main() -> None:
     hist.round(2).to_csv(DOCS_DATA / "layers_history.csv", index_label="date")
     lrank.loc[ago(252):].to_csv(DOCS_DATA / "layer_ranks.csv", index_label="date", float_format="%.0f")
 
+    px.iloc[-460:].round(2).to_csv(DOCS_DATA / "prices_1y.csv", index_label="date")
     print(f"{iso(d)} | {REGIME_HE[reg['status']]} | top: {[x['name'] for x in layers_out[:3]]} | alerts: {len(alerts)}")
 
 

@@ -9,7 +9,7 @@ signal_only: ["000660.KS", "005930.KS"]   # SK Hynix, Samsung (בורסת קור
 layers:
   equipment:
     name: "ציוד לייצור שבבים"
-    tickers: [ASML, AMAT, LRCX, KLAC, NVMI, CAMT]
+    tickers: [ASML, AMAT, LRCX, KLAC, NVMI, CAMT, TER]
   design:
     name: "תכנון שבבים ו-IP"
     tickers: [SNPS, CDNS, ARM]
@@ -46,3 +46,132 @@ layers:
   software:
     name: "תוכנה ואפליקציות AI"
     tickers: [PLTR, NOW]
+  analog_power:
+    name: "שבבים אנלוגיים וחשמל"
+    tickers: [TXN, ADI, NXPI, MCHP, "ON", STM, MPWR]
+    monitor_only: true      # מעקב בלבד עד שהבקטסט יאשר שהשכבה משפרת את הרוטציה
+  edge_devices:
+    name: "מעבדים ומכשירי קצה"
+    tickers: [INTC, QCOM, SWKS, QRVO, OLED]
+    monitor_only: true
+
+# המשקלים ב-SMH לפי VanEck, נכון ל-15.1.2026 (הדוח השבועי בודק שינויים)
+smh_weights_as_of: "2026-01-15"
+smh_weights:
+  NVDA: 19.17
+  TSM: 10.69
+  AVGO: 7.59
+  ASML: 5.60
+  LRCX: 5.48
+  MU: 5.41
+  KLAC: 5.28
+  INTC: 5.02
+  AMAT: 4.91
+  AMD: 4.85
+  TXN: 4.41
+  ADI: 4.32
+  QCOM: 3.75
+  SNPS: 2.89
+  CDNS: 2.49
+  MRVL: 1.77
+  NXPI: 1.47
+  MPWR: 1.10
+  MCHP: 1.03
+  TER: 0.99
+  STM: 0.66
+  "ON": 0.55
+  SWKS: 0.21
+  QRVO: 0.17
+  OLED: 0.14
+
+# השמות שבהם מחפשים חדשות על כל חברה
+news_names:
+  ASML: ASML
+  AMAT: Applied Materials
+  LRCX: Lam Research
+  KLAC: KLA Corp
+  NVMI: Nova Ltd
+  CAMT: Camtek
+  TER: Teradyne
+  SNPS: Synopsys
+  CDNS: Cadence Design
+  ARM: Arm Holdings
+  TSM: TSMC
+  ASX: ASE Technology
+  AMKR: Amkor
+  TSEM: Tower Semiconductor
+  MU: Micron
+  SNDK: SanDisk
+  "000660.KS": SK Hynix
+  "005930.KS": Samsung memory
+  NVDA: Nvidia
+  AMD: AMD
+  AVGO: Broadcom
+  MRVL: Marvell
+  ANET: Arista Networks
+  COHR: Coherent Corp
+  LITE: Lumentum
+  CRDO: Credo Technology
+  SMCI: Super Micro Computer
+  DELL: Dell AI servers
+  VRT: Vertiv
+  ETN: Eaton
+  GEV: GE Vernova
+  PWR: Quanta Services
+  CEG: Constellation Energy
+  VST: Vistra
+  TLN: Talen Energy
+  EQIX: Equinix
+  DLR: Digital Realty
+  MSFT: Microsoft data center
+  AMZN: AWS data center
+  GOOGL: Google data center
+  META: Meta data center
+  ORCL: Oracle data center
+  CRWV: CoreWeave
+  NBIS: Nebius
+  PLTR: Palantir
+  NOW: ServiceNow
+  TXN: Texas Instruments
+  ADI: Analog Devices
+  NXPI: NXP Semiconductors
+  MCHP: Microchip Technology
+  "ON": onsemi
+  STM: STMicroelectronics
+  MPWR: Monolithic Power
+  INTC: Intel
+  QCOM: Qualcomm
+  SWKS: Skyworks
+  QRVO: Qorvo
+  OLED: Universal Display
+
+# נושאי צוואר בקבוק שמחפשים בחדשות, וכל נושא שייך לשכבה
+news_themes:
+  - {q: "HBM shortage", layer: memory}
+  - {q: "DRAM contract prices", layer: memory}
+  - {q: "NAND flash prices", layer: memory}
+  - {q: "CoWoS capacity", layer: foundry}
+  - {q: "advanced packaging capacity", layer: foundry}
+  - {q: "ABF substrate shortage", layer: foundry}
+  - {q: "GPU shortage", layer: compute}
+  - {q: "AI chip supply", layer: compute}
+  - {q: "optical transceiver shortage", layer: networking}
+  - {q: "laser chip shortage", layer: networking}
+  - {q: "AI server shipments", layer: servers}
+  - {q: "transformer shortage", layer: power_equipment}
+  - {q: "gas turbine backlog", layer: power_equipment}
+  - {q: "switchgear lead times", layer: power_equipment}
+  - {q: "data center liquid cooling", layer: power_equipment}
+  - {q: "data center power demand grid", layer: power_generation}
+  - {q: "nuclear power data center deal", layer: power_generation}
+  - {q: "PJM capacity auction", layer: power_generation}
+  - {q: "data center vacancy", layer: datacenter_reits}
+  - {q: "data center moratorium", layer: datacenter_reits}
+  - {q: "GPU rental prices", layer: neoclouds}
+  - {q: "AI data center financing", layer: neoclouds}
+  - {q: "hyperscaler capex", layer: hyperscalers}
+  - {q: "wafer fab equipment spending", layer: equipment}
+  - {q: "semiconductor equipment orders", layer: equipment}
+  - {q: "analog chip prices", layer: analog_power}
+  - {q: "power management chip shortage", layer: analog_power}
+  - {q: "AI PC demand", layer: edge_devices}
