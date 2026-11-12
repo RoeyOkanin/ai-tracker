@@ -1,9 +1,9 @@
 {
  "as_of": "2026-11-11",
- "generated_utc": "2026-11-12T18:50:40+00:00",
+ "generated_utc": "2026-11-12T19:54:01+00:00",
  "regime": {
   "status": "red",
-  "breadth": 0.2889,
+  "breadth": 0.2826,
   "benchmark": "SMH",
   "bench_above_ma200": false,
   "bench_dist_ma200": -0.0309,
@@ -11,8 +11,8 @@
   "label": "אדום: המחזור מאט"
  },
  "bottleneck_concentration": {
-  "spread_6m": 0.2485,
-  "percentile": 0.3973
+  "spread_6m": 0.2652,
+  "percentile": 0.4169
  },
  "next_decision_close": "2026-11-30",
  "next_execution": "2026-12-01",
@@ -26,7 +26,7 @@
    "rank_1w_ago": 1,
    "rank_1m_ago": 1,
    "rank_3m_ago": 1,
-   "score": 0.718,
+   "score": 0.711,
    "r1w": 0.0169,
    "r1m": -0.284,
    "r3m": -0.2253,
@@ -37,14 +37,67 @@
    "members": [
     "SMCI",
     "DELL"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 45,
+    "tight7": 2,
+    "ease7": 0,
+    "friction7": 1,
+    "net7": 2,
+    "net_prev7": 0,
+    "trend": 2
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 9
+  },
+  {
+   "key": "analog_power",
+   "name": "שבבים אנלוגיים וחשמל",
+   "stage": "heating",
+   "stage_label": "מתחמם: הכסף מתחיל לזרום",
+   "rank": 2,
+   "rank_1w_ago": 4,
+   "rank_1m_ago": 10,
+   "rank_3m_ago": 13,
+   "score": 0.689,
+   "r1w": 0.0069,
+   "r1m": 0.014,
+   "r3m": 0.0034,
+   "r6m": -0.1668,
+   "r12m": 0.6392,
+   "above_ma200": true,
+   "dist_ma200": 0.0222,
+   "members": [
+    "TXN",
+    "ADI",
+    "NXPI",
+    "MCHP",
+    "ON",
+    "STM",
+    "MPWR"
+   ],
+   "monitor_only": true,
+   "news": {
+    "items7": 79,
+    "tight7": 6,
+    "ease7": 1,
+    "friction7": 0,
+    "net7": 5,
+    "net_prev7": 1,
+    "trend": 4
+   },
+   "news_label": "confirmed",
+   "news_label_he": "מועמד מאושר לצוואר בקבוק: גם החדשות וגם המחיר",
+   "news_rank": 4
   },
   {
    "key": "compute",
    "name": "שבבי AI",
    "stage": "fading",
    "stage_label": "מאבד תאוצה: זמן לשחרר",
-   "rank": 2,
+   "rank": 3,
    "rank_1w_ago": 4,
    "rank_1m_ago": 2,
    "rank_3m_ago": 4,
@@ -61,52 +114,58 @@
     "AMD",
     "AVGO",
     "MRVL"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 93,
+    "tight7": 13,
+    "ease7": 0,
+    "friction7": 2,
+    "net7": 13,
+    "net_prev7": 9,
+    "trend": 4
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 1
   },
   {
-   "key": "power_generation",
-   "name": "ייצור חשמל",
-   "stage": "cold",
-   "stage_label": "קר: הכסף עזב",
-   "rank": 3,
-   "rank_1w_ago": 11,
-   "rank_1m_ago": 11,
-   "rank_3m_ago": 12,
-   "score": 0.641,
-   "r1w": 0.1293,
-   "r1m": -0.0868,
-   "r3m": -0.0117,
-   "r6m": 0.0139,
-   "r12m": -0.1778,
-   "above_ma200": false,
-   "dist_ma200": -0.0106,
-   "members": [
-    "CEG",
-    "VST",
-    "TLN"
-   ]
-  },
-  {
-   "key": "datacenter_reits",
-   "name": "נדל\"ן דאטה-סנטרים",
+   "key": "edge_devices",
+   "name": "מעבדים ומכשירי קצה",
    "stage": "heating",
    "stage_label": "מתחמם: הכסף מתחיל לזרום",
-   "rank": 3,
-   "rank_1w_ago": 5,
-   "rank_1m_ago": 10,
+   "rank": 4,
+   "rank_1w_ago": 6,
+   "rank_1m_ago": 6,
    "rank_3m_ago": 11,
-   "score": 0.641,
-   "r1w": -0.0036,
-   "r1m": 0.0324,
-   "r3m": -0.0391,
-   "r6m": -0.0234,
-   "r12m": 0.2092,
+   "score": 0.622,
+   "r1w": 0.0415,
+   "r1m": -0.0304,
+   "r3m": -0.0071,
+   "r6m": -0.074,
+   "r12m": 0.2749,
    "above_ma200": true,
-   "dist_ma200": 0.0243,
+   "dist_ma200": 0.0612,
    "members": [
-    "EQIX",
-    "DLR"
-   ]
+    "INTC",
+    "QCOM",
+    "SWKS",
+    "QRVO",
+    "OLED"
+   ],
+   "monitor_only": true,
+   "news": {
+    "items7": 34,
+    "tight7": 0,
+    "ease7": 2,
+    "friction7": 1,
+    "net7": -2,
+    "net_prev7": 0,
+    "trend": -2
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 15
   },
   {
    "key": "design",
@@ -114,10 +173,10 @@
    "stage": "fading",
    "stage_label": "מאבד תאוצה: זמן לשחרר",
    "rank": 5,
-   "rank_1w_ago": 8,
+   "rank_1w_ago": 10,
    "rank_1m_ago": 8,
    "rank_3m_ago": 9,
-   "score": 0.615,
+   "score": 0.6,
    "r1w": 0.0213,
    "r1m": -0.0933,
    "r3m": -0.0422,
@@ -129,18 +188,102 @@
     "SNPS",
     "CDNS",
     "ARM"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 31,
+    "tight7": 1,
+    "ease7": 1,
+    "friction7": 2,
+    "net7": 0,
+    "net_prev7": 0,
+    "trend": 0
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 12
+  },
+  {
+   "key": "power_generation",
+   "name": "ייצור חשמל",
+   "stage": "cold",
+   "stage_label": "קר: הכסף עזב",
+   "rank": 5,
+   "rank_1w_ago": 14,
+   "rank_1m_ago": 13,
+   "rank_3m_ago": 14,
+   "score": 0.6,
+   "r1w": 0.1293,
+   "r1m": -0.0868,
+   "r3m": -0.0117,
+   "r6m": 0.0139,
+   "r12m": -0.1778,
+   "above_ma200": false,
+   "dist_ma200": -0.0106,
+   "members": [
+    "CEG",
+    "VST",
+    "TLN"
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 84,
+    "tight7": 4,
+    "ease7": 0,
+    "friction7": 1,
+    "net7": 4,
+    "net_prev7": 0,
+    "trend": 4
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 6
+  },
+  {
+   "key": "datacenter_reits",
+   "name": "נדל\"ן דאטה-סנטרים",
+   "stage": "heating",
+   "stage_label": "מתחמם: הכסף מתחיל לזרום",
+   "rank": 5,
+   "rank_1w_ago": 6,
+   "rank_1m_ago": 13,
+   "rank_3m_ago": 11,
+   "score": 0.6,
+   "r1w": -0.0036,
+   "r1m": 0.0324,
+   "r3m": -0.0391,
+   "r6m": -0.0234,
+   "r12m": 0.2092,
+   "above_ma200": true,
+   "dist_ma200": 0.0243,
+   "members": [
+    "EQIX",
+    "DLR"
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 86,
+    "tight7": 0,
+    "ease7": 1,
+    "friction7": 56,
+    "net7": -1,
+    "net_prev7": 0,
+    "trend": -1
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 13
   },
   {
    "key": "software",
    "name": "תוכנה ואפליקציות AI",
-   "stage": "fading",
-   "stage_label": "מאבד תאוצה: זמן לשחרר",
-   "rank": 5,
+   "stage": "neutral",
+   "stage_label": "באמצע",
+   "rank": 8,
    "rank_1w_ago": 3,
    "rank_1m_ago": 5,
    "rank_3m_ago": 8,
-   "score": 0.615,
+   "score": 0.578,
    "r1w": -0.0255,
    "r1m": -0.2055,
    "r3m": -0.102,
@@ -151,18 +294,31 @@
    "members": [
     "PLTR",
     "NOW"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 21,
+    "tight7": 0,
+    "ease7": 1,
+    "friction7": 0,
+    "net7": -1,
+    "net_prev7": 0,
+    "trend": -1
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 14
   },
   {
    "key": "memory",
    "name": "זיכרון",
    "stage": "cold",
    "stage_label": "קר: הכסף עזב",
-   "rank": 7,
+   "rank": 9,
    "rank_1w_ago": 2,
-   "rank_1m_ago": 4,
-   "rank_3m_ago": 2,
-   "score": 0.59,
+   "rank_1m_ago": 3,
+   "rank_3m_ago": 1,
+   "score": 0.556,
    "r1w": -0.0389,
    "r1m": -0.1729,
    "r3m": -0.2152,
@@ -175,18 +331,31 @@
     "SNDK",
     "000660.KS",
     "005930.KS"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 49,
+    "tight7": 13,
+    "ease7": 1,
+    "friction7": 1,
+    "net7": 12,
+    "net_prev7": 15,
+    "trend": -3
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 2
   },
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "stage": "neutral",
-   "stage_label": "באמצע",
-   "rank": 8,
-   "rank_1w_ago": 6,
-   "rank_1m_ago": 7,
-   "rank_3m_ago": 13,
-   "score": 0.564,
+   "stage": "cold",
+   "stage_label": "קר: הכסף עזב",
+   "rank": 10,
+   "rank_1w_ago": 8,
+   "rank_1m_ago": 8,
+   "rank_3m_ago": 15,
+   "score": 0.533,
    "r1w": -0.0015,
    "r1m": -0.0899,
    "r3m": -0.0368,
@@ -200,18 +369,31 @@
     "GOOGL",
     "META",
     "ORCL"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 43,
+    "tight7": 1,
+    "ease7": 0,
+    "friction7": 1,
+    "net7": 1,
+    "net_prev7": 1,
+    "trend": 0
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 11
   },
   {
    "key": "foundry",
    "name": "ייצור ואריזה מתקדמת",
    "stage": "cold",
    "stage_label": "קר: הכסף עזב",
-   "rank": 9,
-   "rank_1w_ago": 6,
-   "rank_1m_ago": 6,
+   "rank": 11,
+   "rank_1w_ago": 8,
+   "rank_1m_ago": 7,
    "rank_3m_ago": 6,
-   "score": 0.513,
+   "score": 0.489,
    "r1w": 0.049,
    "r1m": -0.1883,
    "r3m": -0.2025,
@@ -224,18 +406,31 @@
     "ASX",
     "AMKR",
     "TSEM"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 44,
+    "tight7": 5,
+    "ease7": 0,
+    "friction7": 0,
+    "net7": 5,
+    "net_prev7": 4,
+    "trend": 1
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 5
   },
   {
    "key": "networking",
    "name": "רשתות ואופטיקה",
    "stage": "cold",
    "stage_label": "קר: הכסף עזב",
-   "rank": 10,
-   "rank_1w_ago": 9,
+   "rank": 12,
+   "rank_1w_ago": 11,
    "rank_1m_ago": 3,
    "rank_3m_ago": 3,
-   "score": 0.462,
+   "score": 0.467,
    "r1w": 0.0933,
    "r1m": -0.2163,
    "r3m": -0.2608,
@@ -248,18 +443,31 @@
     "COHR",
     "LITE",
     "CRDO"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 41,
+    "tight7": 4,
+    "ease7": 0,
+    "friction7": 0,
+    "net7": 4,
+    "net_prev7": 2,
+    "trend": 2
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 7
   },
   {
    "key": "power_equipment",
    "name": "ציוד חשמל וקירור",
    "stage": "cold",
    "stage_label": "קר: הכסף עזב",
-   "rank": 11,
+   "rank": 13,
    "rank_1w_ago": 12,
-   "rank_1m_ago": 9,
+   "rank_1m_ago": 10,
    "rank_3m_ago": 10,
-   "score": 0.41,
+   "score": 0.378,
    "r1w": 0.0125,
    "r1m": -0.1462,
    "r3m": -0.1987,
@@ -272,44 +480,71 @@
     "ETN",
     "GEV",
     "PWR"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 124,
+    "tight7": 9,
+    "ease7": 1,
+    "friction7": 2,
+    "net7": 8,
+    "net_prev7": 4,
+    "trend": 4
+   },
+   "news_label": "early",
+   "news_label_he": "מועמד מוקדם: החדשות מקדימות את המחיר",
+   "news_rank": 3
   },
   {
    "key": "equipment",
    "name": "ציוד לייצור שבבים",
    "stage": "cold",
    "stage_label": "קר: הכסף עזב",
-   "rank": 12,
-   "rank_1w_ago": 10,
-   "rank_1m_ago": 12,
+   "rank": 14,
+   "rank_1w_ago": 12,
+   "rank_1m_ago": 10,
    "rank_3m_ago": 6,
-   "score": 0.385,
-   "r1w": 0.0748,
-   "r1m": -0.1426,
-   "r3m": -0.2502,
-   "r6m": -0.184,
-   "r12m": 0.3462,
+   "score": 0.356,
+   "r1w": 0.073,
+   "r1m": -0.1663,
+   "r3m": -0.264,
+   "r6m": -0.1923,
+   "r12m": 0.378,
    "above_ma200": false,
-   "dist_ma200": -0.1497,
+   "dist_ma200": -0.1589,
    "members": [
     "ASML",
     "AMAT",
     "LRCX",
     "KLAC",
     "NVMI",
-    "CAMT"
-   ]
+    "CAMT",
+    "TER"
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 71,
+    "tight7": 4,
+    "ease7": 2,
+    "friction7": 0,
+    "net7": 2,
+    "net_prev7": 0,
+    "trend": 2
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 10
   },
   {
    "key": "neoclouds",
    "name": "ענן AI עצמאי",
    "stage": "cold",
    "stage_label": "קר: הכסף עזב",
-   "rank": 13,
-   "rank_1w_ago": 13,
-   "rank_1m_ago": 12,
+   "rank": 15,
+   "rank_1w_ago": 15,
+   "rank_1m_ago": 15,
    "rank_3m_ago": 5,
-   "score": 0.179,
+   "score": 0.156,
    "r1w": 0.1732,
    "r1m": -0.2332,
    "r3m": -0.4059,
@@ -320,7 +555,20 @@
    "members": [
     "CRWV",
     "NBIS"
-   ]
+   ],
+   "monitor_only": false,
+   "news": {
+    "items7": 73,
+    "tight7": 5,
+    "ease7": 1,
+    "friction7": 4,
+    "net7": 4,
+    "net_prev7": 1,
+    "trend": 3
+   },
+   "news_label": null,
+   "news_label_he": null,
+   "news_rank": 8
   }
  ],
  "stocks": [
@@ -340,7 +588,14 @@
    "above_ma200": false,
    "vol": 0.4539,
    "from_52w_high": -0.2267,
-   "score_in_layer": 0.889,
+   "score_in_layer": 0.857,
+   "smh_weight": 5.6,
+   "news7": {
+    "items": 12,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -359,7 +614,14 @@
    "above_ma200": false,
    "vol": 0.6388,
    "from_52w_high": -0.453,
-   "score_in_layer": 0.778,
+   "score_in_layer": 0.762,
+   "smh_weight": 4.91,
+   "news7": {
+    "items": 11,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -378,7 +640,14 @@
    "above_ma200": false,
    "vol": 0.7082,
    "from_52w_high": -0.4551,
-   "score_in_layer": 0.556,
+   "score_in_layer": 0.571,
+   "smh_weight": 5.48,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 1,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -397,7 +666,14 @@
    "above_ma200": false,
    "vol": 0.61,
    "from_52w_high": -0.4657,
-   "score_in_layer": 0.611,
+   "score_in_layer": 0.619,
+   "smh_weight": 5.28,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -416,7 +692,14 @@
    "above_ma200": false,
    "vol": 0.5572,
    "from_52w_high": -0.4376,
-   "score_in_layer": 0.444,
+   "score_in_layer": 0.429,
+   "smh_weight": null,
+   "news7": {
+    "items": 7,
+    "tight": 1,
+    "ease": 1,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -435,7 +718,40 @@
    "above_ma200": false,
    "vol": 0.7019,
    "from_52w_high": -0.484,
-   "score_in_layer": 0.222,
+   "score_in_layer": 0.19,
+   "smh_weight": null,
+   "news7": {
+    "items": 11,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "TER",
+   "layer": "equipment",
+   "layer_name": "ציוד לייצור שבבים",
+   "tradable": true,
+   "price": 265.78,
+   "r1w": 0.0589,
+   "r1m": -0.3011,
+   "r3m": -0.3523,
+   "r6m": -0.268,
+   "r12m": 0.4466,
+   "dist_ma50": -0.2317,
+   "dist_ma200": -0.2406,
+   "above_ma200": false,
+   "vol": 0.7954,
+   "from_52w_high": -0.4505,
+   "score_in_layer": 0.571,
+   "smh_weight": 0.99,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -455,6 +771,13 @@
    "vol": 0.559,
    "from_52w_high": -0.1355,
    "score_in_layer": 0.667,
+   "smh_weight": 2.89,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -474,6 +797,13 @@
    "vol": 0.4372,
    "from_52w_high": -0.2093,
    "score_in_layer": 0.667,
+   "smh_weight": 2.49,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 1,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -493,6 +823,13 @@
    "vol": 0.8407,
    "from_52w_high": -0.5373,
    "score_in_layer": 0.667,
+   "smh_weight": null,
+   "news7": {
+    "items": 11,
+    "tight": 1,
+    "ease": 0,
+    "friction": 2
+   },
    "stretched": false
   },
   {
@@ -512,6 +849,13 @@
    "vol": 0.4186,
    "from_52w_high": -0.1491,
    "score_in_layer": 0.75,
+   "smh_weight": 10.69,
+   "news7": {
+    "items": 12,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -531,6 +875,13 @@
    "vol": 0.7736,
    "from_52w_high": -0.2055,
    "score_in_layer": 0.917,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -550,6 +901,13 @@
    "vol": 0.7849,
    "from_52w_high": -0.592,
    "score_in_layer": 0.333,
+   "smh_weight": null,
+   "news7": {
+    "items": 6,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -569,6 +927,13 @@
    "vol": 0.8559,
    "from_52w_high": -0.4986,
    "score_in_layer": 0.5,
+   "smh_weight": null,
+   "news7": {
+    "items": 2,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -588,6 +953,13 @@
    "vol": 0.7101,
    "from_52w_high": -0.3313,
    "score_in_layer": 0.917,
+   "smh_weight": 5.41,
+   "news7": {
+    "items": 16,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -607,6 +979,13 @@
    "vol": 0.9412,
    "from_52w_high": -0.5813,
    "score_in_layer": 0.583,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 1,
+    "ease": 0,
+    "friction": 1
+   },
    "stretched": false
   },
   {
@@ -626,6 +1005,13 @@
    "vol": 0.7734,
    "from_52w_high": -0.5624,
    "score_in_layer": 0.5,
+   "smh_weight": null,
+   "news7": {
+    "items": 3,
+    "tight": 3,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -645,6 +1031,8 @@
    "vol": 0.6258,
    "from_52w_high": -0.4212,
    "score_in_layer": 0.5,
+   "smh_weight": null,
+   "news7": null,
    "stretched": false
   },
   {
@@ -664,6 +1052,13 @@
    "vol": 0.4175,
    "from_52w_high": -0.2738,
    "score_in_layer": 0.417,
+   "smh_weight": 19.17,
+   "news7": {
+    "items": 27,
+    "tight": 4,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -683,6 +1078,13 @@
    "vol": 0.779,
    "from_52w_high": -0.1486,
    "score_in_layer": 0.917,
+   "smh_weight": 4.85,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 2
+   },
    "stretched": false
   },
   {
@@ -702,6 +1104,13 @@
    "vol": 0.4826,
    "from_52w_high": -0.2807,
    "score_in_layer": 0.5,
+   "smh_weight": 7.59,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -721,6 +1130,13 @@
    "vol": 0.8888,
    "from_52w_high": -0.4663,
    "score_in_layer": 0.667,
+   "smh_weight": 1.77,
+   "news7": {
+    "items": 13,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -740,6 +1156,13 @@
    "vol": 0.5859,
    "from_52w_high": -0.0926,
    "score_in_layer": 0.833,
+   "smh_weight": null,
+   "news7": {
+    "items": 11,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -759,6 +1182,13 @@
    "vol": 1.0031,
    "from_52w_high": -0.4507,
    "score_in_layer": 0.5,
+   "smh_weight": null,
+   "news7": {
+    "items": 11,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -778,6 +1208,13 @@
    "vol": 1.0212,
    "from_52w_high": -0.4282,
    "score_in_layer": 0.75,
+   "smh_weight": null,
+   "news7": {
+    "items": 11,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -797,6 +1234,13 @@
    "vol": 1.0485,
    "from_52w_high": -0.5326,
    "score_in_layer": 0.417,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -816,6 +1260,13 @@
    "vol": 0.735,
    "from_52w_high": -0.3935,
    "score_in_layer": 0.667,
+   "smh_weight": null,
+   "news7": {
+    "items": 13,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -835,6 +1286,13 @@
    "vol": 0.8588,
    "from_52w_high": -0.364,
    "score_in_layer": 0.833,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 1
+   },
    "stretched": false
   },
   {
@@ -854,6 +1312,13 @@
    "vol": 0.7729,
    "from_52w_high": -0.4509,
    "score_in_layer": 0.333,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -873,6 +1338,13 @@
    "vol": 0.503,
    "from_52w_high": -0.2136,
    "score_in_layer": 0.667,
+   "smh_weight": null,
+   "news7": {
+    "items": 13,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -892,6 +1364,13 @@
    "vol": 0.5616,
    "from_52w_high": -0.3117,
    "score_in_layer": 0.667,
+   "smh_weight": null,
+   "news7": {
+    "items": 17,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -911,6 +1390,13 @@
    "vol": 0.6041,
    "from_52w_high": -0.2255,
    "score_in_layer": 0.833,
+   "smh_weight": null,
+   "news7": {
+    "items": 12,
+    "tight": 1,
+    "ease": 1,
+    "friction": 1
+   },
    "stretched": false
   },
   {
@@ -930,6 +1416,13 @@
    "vol": 0.5407,
    "from_52w_high": -0.2711,
    "score_in_layer": 0.556,
+   "smh_weight": null,
+   "news7": {
+    "items": 12,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -949,6 +1442,13 @@
    "vol": 0.6193,
    "from_52w_high": -0.2561,
    "score_in_layer": 0.444,
+   "smh_weight": null,
+   "news7": {
+    "items": 13,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -968,6 +1468,13 @@
    "vol": 0.6165,
    "from_52w_high": -0.1356,
    "score_in_layer": 1.0,
+   "smh_weight": null,
+   "news7": {
+    "items": 13,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -987,6 +1494,13 @@
    "vol": 0.3031,
    "from_52w_high": -0.0383,
    "score_in_layer": 1.0,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 1,
+    "friction": 1
+   },
    "stretched": false
   },
   {
@@ -1006,6 +1520,13 @@
    "vol": 0.2958,
    "from_52w_high": -0.0997,
    "score_in_layer": 0.5,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 1
+   },
    "stretched": false
   },
   {
@@ -1025,6 +1546,13 @@
    "vol": 0.2771,
    "from_52w_high": -0.0624,
    "score_in_layer": 0.8,
+   "smh_weight": null,
+   "news7": {
+    "items": 11,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -1044,6 +1572,13 @@
    "vol": 0.3152,
    "from_52w_high": -0.0628,
    "score_in_layer": 0.533,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -1063,6 +1598,13 @@
    "vol": 0.3388,
    "from_52w_high": -0.2702,
    "score_in_layer": 0.6,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -1082,6 +1624,13 @@
    "vol": 0.4497,
    "from_52w_high": -0.1914,
    "score_in_layer": 0.867,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 1
+   },
    "stretched": false
   },
   {
@@ -1101,6 +1650,13 @@
    "vol": 0.615,
    "from_52w_high": -0.4789,
    "score_in_layer": 0.2,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -1120,6 +1676,13 @@
    "vol": 0.9967,
    "from_52w_high": -0.5596,
    "score_in_layer": 0.5,
+   "smh_weight": null,
+   "news7": {
+    "items": 15,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -1139,6 +1702,13 @@
    "vol": 0.9635,
    "from_52w_high": -0.4604,
    "score_in_layer": 1.0,
+   "smh_weight": null,
+   "news7": {
+    "items": 14,
+    "tight": 2,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -1158,6 +1728,13 @@
    "vol": 0.4934,
    "from_52w_high": -0.1753,
    "score_in_layer": 1.0,
+   "smh_weight": null,
+   "news7": {
+    "items": 12,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
    "stretched": false
   },
   {
@@ -1177,6 +1754,300 @@
    "vol": 0.7407,
    "from_52w_high": -0.4077,
    "score_in_layer": 0.5,
+   "smh_weight": null,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 1,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "TXN",
+   "layer": "analog_power",
+   "layer_name": "שבבים אנלוגיים וחשמל",
+   "tradable": true,
+   "price": 309.81,
+   "r1w": -0.0054,
+   "r1m": 0.0815,
+   "r3m": 0.1386,
+   "r6m": 0.0215,
+   "r12m": 0.9713,
+   "dist_ma50": 0.104,
+   "dist_ma200": 0.185,
+   "above_ma200": true,
+   "vol": 0.3954,
+   "from_52w_high": -0.0583,
+   "score_in_layer": 0.905,
+   "smh_weight": 4.41,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "ADI",
+   "layer": "analog_power",
+   "layer_name": "שבבים אנלוגיים וחשמל",
+   "tradable": true,
+   "price": 409.08,
+   "r1w": 0.007,
+   "r1m": -0.0136,
+   "r3m": 0.0765,
+   "r6m": -0.0484,
+   "r12m": 0.7853,
+   "dist_ma50": 0.0412,
+   "dist_ma200": 0.0925,
+   "above_ma200": true,
+   "vol": 0.435,
+   "from_52w_high": -0.0789,
+   "score_in_layer": 0.714,
+   "smh_weight": 4.32,
+   "news7": {
+    "items": 10,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "NXPI",
+   "layer": "analog_power",
+   "layer_name": "שבבים אנלוגיים וחשמל",
+   "tradable": true,
+   "price": 269.51,
+   "r1w": 0.017,
+   "r1m": 0.1908,
+   "r3m": 0.1674,
+   "r6m": -0.0897,
+   "r12m": 0.3371,
+   "dist_ma50": 0.1312,
+   "dist_ma200": 0.0953,
+   "above_ma200": true,
+   "vol": 0.3856,
+   "from_52w_high": -0.1835,
+   "score_in_layer": 0.619,
+   "smh_weight": 1.47,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "MCHP",
+   "layer": "analog_power",
+   "layer_name": "שבבים אנלוגיים וחשמל",
+   "tradable": true,
+   "price": 62.13,
+   "r1w": -0.1753,
+   "r1m": -0.1622,
+   "r3m": -0.1955,
+   "r6m": -0.3505,
+   "r12m": 0.1506,
+   "dist_ma50": -0.1623,
+   "dist_ma200": -0.2121,
+   "above_ma200": false,
+   "vol": 0.5167,
+   "from_52w_high": -0.3915,
+   "score_in_layer": 0.286,
+   "smh_weight": 1.03,
+   "news7": {
+    "items": 13,
+    "tight": 4,
+    "ease": 1,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "ON",
+   "layer": "analog_power",
+   "layer_name": "שבבים אנלוגיים וחשמל",
+   "tradable": true,
+   "price": 73.62,
+   "r1w": 0.0334,
+   "r1m": -0.04,
+   "r3m": -0.0974,
+   "r6m": -0.3638,
+   "r12m": 0.5167,
+   "dist_ma50": -0.0063,
+   "dist_ma200": -0.1097,
+   "above_ma200": false,
+   "vol": 0.5977,
+   "from_52w_high": -0.4503,
+   "score_in_layer": 0.381,
+   "smh_weight": 0.55,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "STM",
+   "layer": "analog_power",
+   "layer_name": "שבבים אנלוגיים וחשמל",
+   "tradable": true,
+   "price": 46.26,
+   "r1w": 0.0145,
+   "r1m": -0.0668,
+   "r3m": -0.1406,
+   "r6m": -0.2681,
+   "r12m": 0.9673,
+   "dist_ma50": -0.0648,
+   "dist_ma200": -0.0867,
+   "above_ma200": false,
+   "vol": 0.5807,
+   "from_52w_high": -0.4194,
+   "score_in_layer": 0.571,
+   "smh_weight": 0.66,
+   "news7": {
+    "items": 6,
+    "tight": 1,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "MPWR",
+   "layer": "analog_power",
+   "layer_name": "שבבים אנלוגיים וחשמל",
+   "tradable": true,
+   "price": 1478.69,
+   "r1w": 0.1726,
+   "r1m": 0.1206,
+   "r3m": 0.0868,
+   "r6m": -0.1013,
+   "r12m": 0.5247,
+   "dist_ma50": 0.1587,
+   "dist_ma200": 0.118,
+   "above_ma200": true,
+   "vol": 0.6751,
+   "from_52w_high": -0.1223,
+   "score_in_layer": 0.524,
+   "smh_weight": 1.1,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "INTC",
+   "layer": "edge_devices",
+   "layer_name": "מעבדים ומכשירי קצה",
+   "tradable": true,
+   "price": 62.5,
+   "r1w": 0.0726,
+   "r1m": -0.3921,
+   "r3m": -0.4023,
+   "r6m": -0.4804,
+   "r12m": 0.6255,
+   "dist_ma50": -0.3502,
+   "dist_ma200": -0.2839,
+   "above_ma200": false,
+   "vol": 0.8956,
+   "from_52w_high": -0.5565,
+   "score_in_layer": 0.5,
+   "smh_weight": 5.02,
+   "news7": {
+    "items": 12,
+    "tight": 0,
+    "ease": 1,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "QCOM",
+   "layer": "edge_devices",
+   "layer_name": "מעבדים ומכשירי קצה",
+   "tradable": true,
+   "price": 176.57,
+   "r1w": 0.0195,
+   "r1m": -0.0016,
+   "r3m": 0.0773,
+   "r6m": -0.1641,
+   "r12m": 0.0506,
+   "dist_ma50": -0.0108,
+   "dist_ma200": 0.0453,
+   "above_ma200": true,
+   "vol": 0.5144,
+   "from_52w_high": -0.2901,
+   "score_in_layer": 0.583,
+   "smh_weight": 3.75,
+   "news7": {
+    "items": 10,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "SWKS",
+   "layer": "edge_devices",
+   "layer_name": "מעבדים ומכשירי קצה",
+   "tradable": true,
+   "price": 87.64,
+   "r1w": 0.0569,
+   "r1m": 0.1447,
+   "r3m": 0.2563,
+   "r6m": 0.2974,
+   "r12m": 0.3094,
+   "dist_ma50": 0.0534,
+   "dist_ma200": 0.2818,
+   "above_ma200": true,
+   "vol": 0.5558,
+   "from_52w_high": -0.0417,
+   "score_in_layer": 0.917,
+   "smh_weight": 0.21,
+   "news7": {
+    "items": 8,
+    "tight": 0,
+    "ease": 0,
+    "friction": 0
+   },
+   "stretched": false
+  },
+  {
+   "ticker": "QRVO",
+   "layer": "edge_devices",
+   "layer_name": "מעבדים ומכשירי קצה",
+   "missing": true
+  },
+  {
+   "ticker": "OLED",
+   "layer": "edge_devices",
+   "layer_name": "מעבדים ומכשירי קצה",
+   "tradable": true,
+   "price": 90.54,
+   "r1w": 0.0108,
+   "r1m": 0.1967,
+   "r3m": 0.0018,
+   "r6m": 0.0091,
+   "r12m": -0.227,
+   "dist_ma50": 0.1129,
+   "dist_ma200": 0.0063,
+   "above_ma200": true,
+   "vol": 0.4363,
+   "from_52w_high": -0.3032,
+   "score_in_layer": 0.5,
+   "smh_weight": 0.14,
+   "news7": null,
    "stretched": false
   }
  ],
@@ -1207,9 +2078,24 @@
   }
  },
  "alerts": [
+  "ציוד לייצור שבבים: צנחה מהמקום 10 למקום 14 בחודש האחרון",
   "תכנון שבבים ו-IP: עלתה מעל ממוצע 200 השבוע",
-  "רשתות ואופטיקה: צנחה מהמקום 3 למקום 10 בחודש האחרון",
-  "ייצור חשמל: קפצה מהמקום 11 למקום 3 בחודש האחרון",
-  "נדל\"ן דאטה-סנטרים: קפצה מהמקום 10 למקום 3 בחודש האחרון"
- ]
+  "ייצור ואריזה מתקדמת: צנחה מהמקום 7 למקום 11 בחודש האחרון",
+  "זיכרון: צנחה מהמקום 3 למקום 9 בחודש האחרון",
+  "רשתות ואופטיקה: צנחה מהמקום 3 למקום 12 בחודש האחרון",
+  "ייצור חשמל: קפצה מהמקום 13 למקום 5 בחודש האחרון",
+  "נדל\"ן דאטה-סנטרים: קפצה מהמקום 13 למקום 5 בחודש האחרון",
+  "שבבים אנלוגיים וחשמל: קפצה מהמקום 10 למקום 2 בחודש האחרון",
+  "שבבים אנלוגיים וחשמל: מועמד מאושר לצוואר בקבוק: גם החדשות וגם המחיר (חדשות 7 ימים: 6 סימני מחסור, 1 סימני הקלה; שלב מחיר: מתחמם)",
+  "ציוד חשמל וקירור: מועמד מוקדם: החדשות מקדימות את המחיר (חדשות 7 ימים: 9 סימני מחסור, 1 סימני הקלה; שלב מחיר: קר)"
+ ],
+ "news_radar": {
+  "as_of": "2026-11-12",
+  "generated_utc": "2026-11-12T19:51:56+00:00",
+  "sources_ok": {
+   "google": 86,
+   "yahoo": 56
+  }
+ },
+ "smh_weights_as_of": "2026-01-15"
 }
