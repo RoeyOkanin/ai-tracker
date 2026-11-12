@@ -52,7 +52,7 @@ layers:
     monitor_only: true      # מעקב בלבד עד שהבקטסט יאשר שהשכבה משפרת את הרוטציה
   edge_devices:
     name: "מעבדים ומכשירי קצה"
-    tickers: [INTC, QCOM, SWKS, QRVO, OLED]
+    tickers: [INTC, QCOM, SWKS, OLED]   # QRVO נמחקה: התמזגה לתוך Skyworks ב-5.10.2026
     monitor_only: true
 
 # המשקלים ב-SMH לפי VanEck, נכון ל-15.1.2026 (הדוח השבועי בודק שינויים)
@@ -81,7 +81,6 @@ smh_weights:
   STM: 0.66
   "ON": 0.55
   SWKS: 0.21
-  QRVO: 0.17
   OLED: 0.14
 
 # השמות שבהם מחפשים חדשות על כל חברה
@@ -142,7 +141,6 @@ news_names:
   INTC: Intel
   QCOM: Qualcomm
   SWKS: Skyworks
-  QRVO: Qorvo
   OLED: Universal Display
 
 # נושאי צוואר בקבוק שמחפשים בחדשות, וכל נושא שייך לשכבה
