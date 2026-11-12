@@ -43,7 +43,7 @@ TIGHT = [
     r"\bbottlenecks?\b", r"lead[- ]times? (?:extend|lengthen|stretch|rise|grow|balloon)", r"longer lead[- ]times?",
     r"\brecord backlog\b", r"backlog (?:hits|reaches|swells|grows|jumps|surges|climbs)", r"\ballocation\b",
     r"\bprice (?:hikes?|increases?)\b", r"\brais(?:e|es|ed|ing) (?:\w+ ){0,2}prices\b", r"\bhik(?:e|es|ed|ing) (?:\w+ ){0,2}prices\b",
-    r"\bprices? (?:\w+ ){0,2}(?:surg|soar|jump|climb|ris|spik|skyrocket)\w*", r"demand (?:outstrips|outpaces|exceeds) supply",
+    r"\bprices? (?:\w+ ){0,4}(?:surg|soar|jump|climb|ris|spik|skyrocket)\w*", r"demand (?:outstrips|outpaces|exceeds) supply",
     r"\bprepay", r"\bbooked (?:through|until|out)\b", r"can'?t keep up", r"\brationing\b", r"\bscarcit", r"\bscarce\b",
 ]
 # Language that says "the shortage is ending" (time to let go)
@@ -63,16 +63,21 @@ FRICTION = [r"\bmoratori", r"\bpermit", r"\bzoning\b", r"\bballot\b", r"\bbackla
 TIGHT_RX = [re.compile(p, re.I) for p in TIGHT]
 EASE_RX = [re.compile(p, re.I) for p in EASE]
 FRICTION_RX = [re.compile(p, re.I) for p in FRICTION]
+STOCKY = re.compile(r"\b(?:stocks?|shares|price target|fair value|valuation|market cap|rall(?:y|ies)|sell-?off|buy the dip|bargain)\b", re.I)
+PRICE_DIRECTION = re.compile(r"prices?\b(?!.*\b(?:hike|increase)).{0,40}\b(?:surg|soar|jump|climb|ris|spik|skyrocket|fall|drop|slump|plung|declin|soften|eas|slid)", re.I)
 NEGATED = re.compile(r"\b(?:no|not|without|avoid(?:s|ed)?|ease[sd]?|easing|end(?:s|ed)?)\b[\w\s,'-]{0,18}$", re.I)
 
 
 def score(text: str) -> dict:
     """Counts tight / ease / friction phrases in a headline (each capped at 2)."""
     t = " " + (text or "") + " "
+    stocky = bool(STOCKY.search(t))
     tags: list[str] = []
     ease = 0
     for rx in EASE_RX:
         m = rx.search(t)
+        if m and stocky and PRICE_DIRECTION.search(m.group(0)):
+            continue   # "stock price falls" is not "product prices fall"
         if m:
             ease += 1
             tags.append(m.group(0).lower())
@@ -80,6 +85,8 @@ def score(text: str) -> dict:
     tight = 0
     for rx in TIGHT_RX:
         m = rx.search(t)
+        if m and stocky and PRICE_DIRECTION.search(m.group(0)):
+            continue
         if m and not NEGATED.search(t[: m.start()]):
             tight += 1
             tags.append(m.group(0).lower())
