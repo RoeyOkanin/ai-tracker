@@ -117,6 +117,13 @@
   </section>
 
   <section class="card">
+    <h2>חברות חדשות שהמכ"ם רואה</h2>
+    <p class="sub">חברות שעוד לא במערכת, וחוזרות בכותרות של צוואר בקבוק. הדוח השבועי בודק אותן מול <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/universe_rules.md">כללי הכניסה</a> ומציע להוסיף. ההוספה רק באישור שלך.</p>
+    <div id="proposals"></div>
+    <div class="scroll"><table id="discovery"></table></div>
+  </section>
+
+  <section class="card">
     <h2>גרף מניה</h2>
     <p class="sub">מחיר בשנה האחרונה, עם ממוצע 50 ו-200 ימים. מעל ממוצע 200 = מגמה עולה.</p>
     <select id="pick" aria-label="בחירת מניה"></select>
@@ -209,8 +216,11 @@ async function load() {
   try { const r = await fetch("data/weekly.json" + bust); if (r.ok) weekly = await r.json(); } catch (e) {}
   try { const r = await fetch("data/radar.json" + bust); if (r.ok) radar = await r.json(); } catch (e) {}
   try { const r = await fetch("data/prices_1y.csv" + bust); if (r.ok) prices = parseCSV(await r.text()); } catch (e) {}
+  let proposals = null;
+  try { const r = await fetch("data/candidates.json" + bust); if (r.ok) proposals = await r.json(); } catch (e) {}
   render(latest, hist, weekly);
   renderRadar(latest, radar);
+  renderDiscovery(radar, proposals);
   if (prices) renderStockPicker(latest, prices);
 }
 
@@ -325,9 +335,11 @@ function render(j, hist, weekly) {
     const tb = el("table");
     tb.append(el("tr", {}, ...["מניה", "מחיר", "שבוע", "חודש", "3 ח׳", "מממוצע 200", "מהשיא", "משקל ב-SMH", "חדשות 7 ימים"].map(h => el("th", {}, h))));
     for (const s of j.stocks.filter(s => s.layer === l.key)) {
-      if (s.missing) { tb.append(el("tr", {}, el("td", {}, s.ticker), el("td", { class: "empty" }, "אין נתונים"))); continue; }
+      if (s.missing) { tb.append(el("tr", {}, el("td", { style: "white-space:normal;min-width:180px" }, el("b", {}, s.ticker), " ", statusChip(s.status),
+          s.why ? el("div", { class: "empty", style: "font-size:12px" }, s.why) : ""), el("td", { class: "empty" }, "עוד אין נתוני מחיר"))); continue; }
       tb.append(el("tr", {},
-        el("td", {}, el("b", {}, s.ticker), s.tradable ? "" : " (איתות בלבד)", s.stretched ? " · מתוחה" : ""),
+        el("td", { style: "white-space:normal;min-width:180px" }, el("b", {}, s.ticker), " ", statusChip(s.status), s.stretched ? " · מתוחה" : "",
+          s.why ? el("div", { class: "empty", style: "font-size:12px" }, s.why) : ""),
         el("td", { class: "num" }, s.price?.toLocaleString("en-US") ?? "–"),
         el("td", {}, pct(s.r1w)), el("td", {}, pct(s.r1m)), el("td", {}, pct(s.r3m)),
         el("td", {}, pct(s.dist_ma200)), el("td", {}, pct(s.from_52w_high)),
@@ -393,6 +405,29 @@ function miniChart(layer, pts) {
   return box;
 }
 
+const STATUS = { active: ["פעילה", "var(--good)"], watch: ["מעקב", "var(--warning)"], signal: ["איתות", "var(--muted)"] };
+const statusChip = st => { const v = STATUS[st] || STATUS.active; return chip(v[1], v[0]); };
+function renderDiscovery(radar, proposals) {
+  const t = document.getElementById("discovery"), pbox = document.getElementById("proposals");
+  if (proposals && proposals.items && proposals.items.length) {
+    pbox.append(el("p", { class: "sub" }, `הצעות מהדוח השבועי (${dateHe(proposals.date)}):`));
+    const ul = el("ul", { class: "heads" });
+    for (const p of proposals.items) ul.append(el("li", {}, el("b", {}, `${p.name}${p.ticker ? " (" + p.ticker + ")" : ""}`), `: ${p.verdict || ""}`,
+      p.why ? el("div", { class: "meta" }, p.why) : ""));
+    pbox.append(ul);
+  }
+  const rows = (radar && radar.discovery) || [];
+  if (!rows.length) { t.append(el("tr", {}, el("td", { class: "empty" }, "עוד אין מספיק כותרות. הרשימה תתמלא אחרי כמה לילות."))); return; }
+  t.append(el("tr", {}, ...["חברה", "שכבה משוערת", "אזכורים ב-30 יום", "מתוכם מחסור", "ב-7 ימים", "כותרת אחרונה"].map(h => el("th", {}, h))));
+  const lname = Object.fromEntries((radar.layers || []).map(l => [l.key, l.name]));
+  for (const d of rows) {
+    const h = d.headline;
+    const a = h ? el("a", { href: h.url, target: "_blank", rel: "noopener", dir: "ltr" }, h.title) : "–";
+    t.append(el("tr", {}, el("td", {}, el("b", {}, d.name), d.ticker ? el("span", { class: "empty" }, ` ${d.ticker}`) : el("span", { class: "empty" }, " (פרטית)")),
+      el("td", {}, lname[d.layer] || "–"), el("td", { class: "num" }, String(d.mentions30)), el("td", { class: "num" }, String(d.tight30)),
+      el("td", { class: "num" }, String(d.mentions7)), el("td", { style: "white-space:normal;min-width:220px" }, a)));
+  }
+}
 const LABEL = {
   confirmed: { text: "מועמד מאושר", color: "var(--good)", hint: "גם החדשות וגם המחיר מצביעים על מחסור" },
   early: { text: "מועמד מוקדם", color: "var(--heating)", hint: "החדשות מתחממות לפני שהמחיר זז" },
