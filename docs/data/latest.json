@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-11",
- "generated_utc": "2026-11-12T19:54:01+00:00",
+ "generated_utc": "2026-11-12T19:59:36+00:00",
  "regime": {
   "status": "red",
   "breadth": 0.2826,
@@ -40,7 +40,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 45,
+    "items7": 48,
     "tight7": 2,
     "ease7": 0,
     "friction7": 1,
@@ -50,7 +50,7 @@
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 9
+   "news_rank": 10
   },
   {
    "key": "analog_power",
@@ -80,7 +80,7 @@
    ],
    "monitor_only": true,
    "news": {
-    "items7": 79,
+    "items7": 94,
     "tight7": 6,
     "ease7": 1,
     "friction7": 0,
@@ -117,9 +117,9 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 93,
-    "tight7": 13,
-    "ease7": 0,
+    "items7": 126,
+    "tight7": 14,
+    "ease7": 1,
     "friction7": 2,
     "net7": 13,
     "net_prev7": 9,
@@ -127,7 +127,7 @@
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 1
+   "news_rank": 3
   },
   {
    "key": "edge_devices",
@@ -155,10 +155,10 @@
    ],
    "monitor_only": true,
    "news": {
-    "items7": 34,
+    "items7": 55,
     "tight7": 0,
     "ease7": 2,
-    "friction7": 1,
+    "friction7": 2,
     "net7": -2,
     "net_prev7": 0,
     "trend": -2
@@ -227,17 +227,17 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 84,
+    "items7": 118,
     "tight7": 4,
     "ease7": 0,
-    "friction7": 1,
+    "friction7": 2,
     "net7": 4,
     "net_prev7": 0,
     "trend": 4
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 6
+   "news_rank": 7
   },
   {
    "key": "datacenter_reits",
@@ -262,10 +262,10 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 86,
+    "items7": 140,
     "tight7": 0,
     "ease7": 1,
-    "friction7": 56,
+    "friction7": 79,
     "net7": -1,
     "net_prev7": 0,
     "trend": -1
@@ -334,17 +334,17 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 49,
-    "tight7": 13,
-    "ease7": 1,
+    "items7": 91,
+    "tight7": 23,
+    "ease7": 4,
     "friction7": 1,
-    "net7": 12,
+    "net7": 19,
     "net_prev7": 15,
-    "trend": -3
+    "trend": 4
    },
-   "news_label": null,
-   "news_label_he": null,
-   "news_rank": 2
+   "news_label": "early",
+   "news_label_he": "מועמד מוקדם: החדשות מקדימות את המחיר",
+   "news_rank": 1
   },
   {
    "key": "hyperscalers",
@@ -372,13 +372,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 43,
-    "tight7": 1,
+    "items7": 50,
+    "tight7": 2,
     "ease7": 0,
-    "friction7": 1,
-    "net7": 1,
+    "friction7": 2,
+    "net7": 2,
     "net_prev7": 1,
-    "trend": 0
+    "trend": 1
    },
    "news_label": null,
    "news_label_he": null,
@@ -409,7 +409,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 44,
+    "items7": 66,
     "tight7": 5,
     "ease7": 0,
     "friction7": 0,
@@ -446,7 +446,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 41,
+    "items7": 43,
     "tight7": 4,
     "ease7": 0,
     "friction7": 0,
@@ -456,7 +456,7 @@
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 7
+   "news_rank": 8
   },
   {
    "key": "power_equipment",
@@ -483,17 +483,17 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 124,
-    "tight7": 9,
+    "items7": 158,
+    "tight7": 15,
     "ease7": 1,
     "friction7": 2,
-    "net7": 8,
+    "net7": 14,
     "net_prev7": 4,
-    "trend": 4
+    "trend": 10
    },
    "news_label": "early",
    "news_label_he": "מועמד מוקדם: החדשות מקדימות את המחיר",
-   "news_rank": 3
+   "news_rank": 2
   },
   {
    "key": "equipment",
@@ -523,17 +523,17 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 71,
-    "tight7": 4,
+    "items7": 94,
+    "tight7": 6,
     "ease7": 2,
     "friction7": 0,
-    "net7": 2,
+    "net7": 4,
     "net_prev7": 0,
-    "trend": 2
+    "trend": 4
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 10
+   "news_rank": 9
   },
   {
    "key": "neoclouds",
@@ -558,17 +558,17 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 73,
-    "tight7": 5,
+    "items7": 97,
+    "tight7": 6,
     "ease7": 1,
-    "friction7": 4,
-    "net7": 4,
+    "friction7": 5,
+    "net7": 5,
     "net_prev7": 1,
-    "trend": 3
+    "trend": 4
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 8
+   "news_rank": 6
   }
  ],
  "stocks": [
@@ -643,7 +643,7 @@
    "score_in_layer": 0.571,
    "smh_weight": 5.48,
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 0,
     "ease": 1,
     "friction": 0
@@ -955,7 +955,7 @@
    "score_in_layer": 0.917,
    "smh_weight": 5.41,
    "news7": {
-    "items": 16,
+    "items": 17,
     "tight": 2,
     "ease": 0,
     "friction": 0
@@ -981,7 +981,7 @@
    "score_in_layer": 0.583,
    "smh_weight": null,
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 1,
     "ease": 0,
     "friction": 1
@@ -1054,7 +1054,7 @@
    "score_in_layer": 0.417,
    "smh_weight": 19.17,
    "news7": {
-    "items": 27,
+    "items": 30,
     "tight": 4,
     "ease": 0,
     "friction": 0
@@ -1080,7 +1080,7 @@
    "score_in_layer": 0.917,
    "smh_weight": 4.85,
    "news7": {
-    "items": 10,
+    "items": 12,
     "tight": 0,
     "ease": 0,
     "friction": 2
@@ -1106,7 +1106,7 @@
    "score_in_layer": 0.5,
    "smh_weight": 7.59,
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -1132,7 +1132,7 @@
    "score_in_layer": 0.667,
    "smh_weight": 1.77,
    "news7": {
-    "items": 13,
+    "items": 14,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1210,7 +1210,7 @@
    "score_in_layer": 0.75,
    "smh_weight": null,
    "news7": {
-    "items": 11,
+    "items": 12,
     "tight": 2,
     "ease": 0,
     "friction": 0
@@ -1574,7 +1574,7 @@
    "score_in_layer": 0.533,
    "smh_weight": null,
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1600,7 +1600,7 @@
    "score_in_layer": 0.6,
    "smh_weight": null,
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -1626,7 +1626,7 @@
    "score_in_layer": 0.867,
    "smh_weight": null,
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 0,
     "ease": 0,
     "friction": 1
@@ -1652,8 +1652,8 @@
    "score_in_layer": 0.2,
    "smh_weight": null,
    "news7": {
-    "items": 10,
-    "tight": 0,
+    "items": 12,
+    "tight": 1,
     "ease": 0,
     "friction": 0
    },
@@ -1678,8 +1678,8 @@
    "score_in_layer": 0.5,
    "smh_weight": null,
    "news7": {
-    "items": 15,
-    "tight": 2,
+    "items": 17,
+    "tight": 3,
     "ease": 0,
     "friction": 0
    },
@@ -1938,7 +1938,7 @@
    "score_in_layer": 0.524,
    "smh_weight": 1.1,
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -1964,7 +1964,7 @@
    "score_in_layer": 0.5,
    "smh_weight": 5.02,
    "news7": {
-    "items": 12,
+    "items": 13,
     "tight": 0,
     "ease": 1,
     "friction": 0
@@ -2086,12 +2086,11 @@
   "ייצור חשמל: קפצה מהמקום 13 למקום 5 בחודש האחרון",
   "נדל\"ן דאטה-סנטרים: קפצה מהמקום 13 למקום 5 בחודש האחרון",
   "שבבים אנלוגיים וחשמל: קפצה מהמקום 10 למקום 2 בחודש האחרון",
-  "שבבים אנלוגיים וחשמל: מועמד מאושר לצוואר בקבוק: גם החדשות וגם המחיר (חדשות 7 ימים: 6 סימני מחסור, 1 סימני הקלה; שלב מחיר: מתחמם)",
-  "ציוד חשמל וקירור: מועמד מוקדם: החדשות מקדימות את המחיר (חדשות 7 ימים: 9 סימני מחסור, 1 סימני הקלה; שלב מחיר: קר)"
+  "זיכרון: מועמד מוקדם: החדשות מקדימות את המחיר (חדשות 7 ימים: 23 סימני מחסור, 4 סימני הקלה; שלב מחיר: קר)"
  ],
  "news_radar": {
   "as_of": "2026-11-12",
-  "generated_utc": "2026-11-12T19:51:56+00:00",
+  "generated_utc": "2026-11-12T19:57:29+00:00",
   "sources_ok": {
    "google": 86,
    "yahoo": 56
