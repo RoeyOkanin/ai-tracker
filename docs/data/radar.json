@@ -3,8 +3,8 @@
  "layers": [
   {
    "key": "equipment",
-   "name": "ציוד לייצור שבבים",
-   "items7": 94,
+   "name": "ציוד וחומרים לייצור שבבים",
+   "items7": 106,
    "tight7": 6,
    "ease7": 2,
    "friction7": 0,
@@ -12,7 +12,7 @@
    "net_prev7": 0,
    "trend": 4,
    "tight30": 14,
-   "ease30": 3,
+   "ease30": 4,
    "headlines": [
     {
      "title": "Genesem Swings to Profit, Order Backlog Surges",
@@ -73,7 +73,7 @@
   {
    "key": "design",
    "name": "תכנון שבבים ו-IP",
-   "items7": 31,
+   "items7": 32,
    "tight7": 1,
    "ease7": 1,
    "friction7": 2,
@@ -192,15 +192,15 @@
   },
   {
    "key": "memory",
-   "name": "זיכרון",
-   "items7": 91,
-   "tight7": 23,
+   "name": "זיכרון ואחסון",
+   "items7": 105,
+   "tight7": 24,
    "ease7": 4,
    "friction7": 1,
-   "net7": 19,
-   "net_prev7": 15,
-   "trend": 4,
-   "tight30": 86,
+   "net7": 20,
+   "net_prev7": 19,
+   "trend": 1,
+   "tight30": 93,
    "ease30": 7,
    "headlines": [
     {
@@ -262,16 +262,25 @@
   {
    "key": "compute",
    "name": "שבבי AI",
-   "items7": 128,
+   "items7": 133,
    "tight7": 14,
    "ease7": 1,
-   "friction7": 2,
+   "friction7": 3,
    "net7": 13,
    "net_prev7": 9,
    "trend": 4,
    "tight30": 43,
    "ease30": 2,
    "headlines": [
+    {
+     "title": "AMD Is Up 127% in a Year. William Blair Just Upgraded It as Nvidia Loses Its CEO",
+     "source": "TIKR",
+     "url": "https://www.tikr.com/blog/amd-is-up-127-in-a-year-william-blair-just-upgraded-it-as-nvidia-loses-its-ceo?ref=yahoofinance&tlnk=yf-261112-7jqr74fj",
+     "published": "2026-11-12T20:05+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
     {
      "title": "Nvidia Stock Hammered As CEO Resigns In Disgrace",
      "source": "Investor's Business Daily",
@@ -316,36 +325,45 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "NVIDIA Reportedly Cancels the 24 GB RTX 5080 Due to a Shortage of 3 GB GDDR7 Memory Modules",
-     "source": "eTeknix",
-     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQVHhyMW01RG90WUNuRjRoaGpHMFBjejYtUjF3ajg5NTBpVHRnWkxndUp0TXppYzlQdUJSR01TQ1MzTkhMandYSFE3aV82QjhSeE81S3ktTWRlM1U2UktaNkh1cjVieG1rRm5jMWp5ZDNmQ3VRdng5UDFtckNINkFoM2xoeEFSaDRmV3RrdlEyOHpTandnU3k0T2x0QWlHOEdfMmxfVi04akJtVmNEX2k4ekRfY2tiQzg?oc=5",
-     "published": "2026-11-11T19:47+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "networking",
-   "name": "רשתות ואופטיקה",
-   "items7": 43,
-   "tight7": 4,
-   "ease7": 0,
-   "friction7": 0,
-   "net7": 4,
-   "net_prev7": 2,
+   "name": "רשתות, אופטיקה וקישוריות",
+   "items7": 94,
+   "tight7": 6,
+   "ease7": 1,
+   "friction7": 1,
+   "net7": 5,
+   "net_prev7": 3,
    "trend": 2,
-   "tight30": 15,
-   "ease30": 0,
+   "tight30": 20,
+   "ease30": 1,
    "headlines": [
     {
      "title": "Coherent Soars 20% in a Week as Its Growth Guide Outlasts the AI Selloff: “Basically Booked Out”",
      "source": "TIKR",
      "url": "https://www.tikr.com/blog/coherent-soars-20-in-a-week-as-its-growth-guide-outlasts-the-ai-selloff-basically-booked-out?ref=yahoofinance&tlnk=yf-261112-wp82fq6q",
      "published": "2026-11-12T13:50+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Buy, Sell, or Hold? Wednesday’s Top Upgrades and Downgrades: Akamai Technologies, Apple, BILL Holdings, Corning, Form Factor, Guidewire Software, NVIDIA, Riot Platforms, Toast, and More",
+     "source": "24/7 Wall St.",
+     "url": "https://247wallst.com/investing/2026/11/11/buy-sell-or-hold-wednesdays-top-upgrades-and-downgrades-akamai-technologies-apple-bill-holdings-corning-form-factor-guidewire-software-nvidia-riot-platforms-toast-and-more/",
+     "published": "2026-11-11T12:57+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "AI Boom Isn't Over: 4 Stocks to Buy the Dip Amid Tech Bloodbath",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/ai-boom-isnt-over-4-125400177.html",
+     "published": "2026-11-10T12:54+00:00",
      "tight": 1,
      "ease": 0,
      "friction": 0
@@ -360,37 +378,19 @@
      "friction": 0
     },
     {
-     "title": "Coherent: Selling Volume While Lumentum Sells Scarcity (NYSE:COHR)",
-     "source": "Seeking Alpha",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOelZpcVMwd1pnSWtleFR5LWN3bUhjOE11UjRYRVNmZldTX0NOUkF2MzRlaW91RmFJQk5PbTByalRDZW1BcE96WmNsLUI0Nmk4bVkxb0w1bjREWkFxZlhERGZUem5MdHNuR25Nb2NnTlQ5Q3Y3MWY5aWUtRWUxMGlfbTNMR0hTb2dYR2VtOWN3Y25DZFFkbjFtZnhR?oc=5",
-     "published": "2026-11-06T15:57+00:00",
-     "tight": 1,
-     "ease": 0,
+     "title": "Amphenol (APH) Lifts Dividend And Guidance As The Undervalued Case Gets A Fresh Look",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/amphenol-aph-lifts-dividend-guidance-121112569.html",
+     "published": "2026-11-09T12:11+00:00",
+     "tight": 0,
+     "ease": 1,
      "friction": 0
     },
     {
-     "title": "Marvell Is Betting $115 Billion on 1 of AI's Biggest Bottlenecks",
-     "source": "The Motley Fool",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPVXJIcDNyMHRtRE8xaHNOekpkTUp6XzJBbXFqTDR0UGptVGxqZ045cmJ1WXlvX2RUU085cW01XzZ4YTFCUzQ2VjdtZEIzOEk1eTNjZkVPRWJGMWZuTGZGeEE3eWk3UERZWDBCM3l0djN5T1pyMWMwTFRvV1JjZVhsN0lqSTFCR2hxUFN3T2lXZWswM3F2cWQxeQ?oc=5",
-     "published": "2026-11-06T15:45+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "AAOI Falls 7.35%; Serenity Says Laser Shortages Could Persist",
-     "source": "www.tokenpost.com",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4ydWNUYjRVV2FvUFcyV0hpU3JqS2V1TkpWMWIyNGhyb3NiaXI2YUIwd3dFX2VRR2UtamhkVnpGRm5XejZVQ0pMUDhucFlVNUFnelB3R1M4bV81UQ?oc=5",
-     "published": "2026-11-05T00:18+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Stellantis Flags Chip Shortage Hitting Fiat Output in Italy Through December",
-     "source": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9vcHNLWGVfZl82U2VVMGxoQ3ZDMFptRURxbmFsMXdycF8xbk45b1dUV3pZREFka3JRRThyek42MnFfdHB3MEN6TVVXQmZfcjdLZElSaldEWHdyUkpWaUdSQkhhbzBFdVV1aVpjUkVqcS13eVRsRFE?oc=5",
-     "published": "2026-11-02T16:05+00:00",
+     "title": "Applied Optoelectronics Says AI Demand Will Outrun Its Capacity Through 2027",
+     "source": "24/7 Wall St.",
+     "url": "https://247wallst.com/investing/2026/11/07/applied-optoelectronics-says-ai-demand-will-outrun-its-capacity-through-2027/",
+     "published": "2026-11-07T17:06+00:00",
      "tight": 1,
      "ease": 0,
      "friction": 0
@@ -399,15 +399,15 @@
   },
   {
    "key": "servers",
-   "name": "שרתים",
-   "items7": 48,
+   "name": "שרתים ומתלים",
+   "items7": 68,
    "tight7": 2,
    "ease7": 0,
    "friction7": 1,
    "net7": 2,
-   "net_prev7": 0,
-   "trend": 2,
-   "tight30": 2,
+   "net_prev7": 1,
+   "trend": 1,
+   "tight30": 3,
    "ease30": 0,
    "headlines": [
     {
@@ -420,11 +420,29 @@
      "friction": 1
     },
     {
+     "title": "Nebul Picks NetApp Novus: Why It Matters for NTAP's AI Growth",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/nebul-picks-netapp-novus-why-121100773.html",
+     "published": "2026-11-12T12:11+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
      "title": "Super Micro's Record Backlog Comes With a 44% Customer Bet and a $434 Million Cash Drain",
      "source": "ad-hoc-news.de",
      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOTEV1c19zV0ZESzNfSHhnZl82a2RxZ09SVXdEWm4ybGxwLURaOVhJLVN5SXFjTXI2eE1IY0lyUm9fYWtYOFBhWjh6MDJVb3RiZ1dmRjc0TERpRFBrVEl2aFBEbExUaFo5b3NYcW1pX0psMlloWVhXZ2ZMMW5EU2phczBrUEdQNTl4SEJVT290eGUzV3JNaWdteHVfZEhiRFBUQ1RIaktURV96cHBaclMxcmgxcGJtc3djMjBub0VjMHZXRzBDRGh2b2JZWWRrZGhPQjBBMUlOaHdwd1ctdGQtbzVPQXZUUlh6Qlh6cGtRNA?oc=5",
      "published": "2026-11-11T02:11+00:00",
      "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Can Sanmina's Diversified Medical Portfolio Boost Its Competitive Edge?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/healthcare/articles/sanminas-diversified-medical-portfolio-boost-131400390.html",
+     "published": "2026-11-09T13:14+00:00",
+     "tight": 0,
      "ease": 0,
      "friction": 0
     },
@@ -436,21 +454,30 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
+    },
+    {
+     "title": "Dell Sinks 11% as Intel's Warning on PC Slump and Memory Shortage Hits Hardware Stocks; HP Tumbles 9%, Hewlett Packard Enterprise and Super Micro Fall 7%",
+     "source": "24/7 Wall St.",
+     "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxOcS1XS0Nfa0Nub0NDaEwzQkEtQmRpQUR5Mi1PQkVwZUJGWXlfTkFvUFFob0NGX0dXOExoUHVKTWNGbDBqaXVUc05lTk9KTFFpb3ZZOVhzc0tIMjhFNzBjWDNWRXVqdjNqdDRCa0o3eWhVaWlZRThvWjFvczRqOWhVZ25SdlF0bGhFTmZyNEhhczM5R1lBUnUwTDg2UUVvUnZtMlpNVUFFOFZ5OU9kVTNycGF4MlVHWGtsRWRGUjYxVlZNT1ZJZXBfdUFnYVBiN0s1cFhhYXU4YzJnZkRwYktYWVF0ZUFsdmZ1Snk0bUViX2dWNV81cWRxaXJUY09qaGZtOUtjLVJHdXFrUGZBSUZpWm5UWTI3cnVaT2Rv?oc=5",
+     "published": "2026-10-30T07:00+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
     }
    ]
   },
   {
    "key": "power_equipment",
    "name": "ציוד חשמל וקירור",
-   "items7": 159,
-   "tight7": 15,
+   "items7": 205,
+   "tight7": 22,
    "ease7": 1,
    "friction7": 2,
-   "net7": 14,
+   "net7": 21,
    "net_prev7": 4,
-   "trend": 10,
-   "tight30": 27,
-   "ease30": 1,
+   "trend": 17,
+   "tight30": 36,
+   "ease30": 2,
    "headlines": [
     {
      "title": "Broadwind Matches Loss Forecast But Misses On Revenue As Record Backlog Collides With A Sequential Step-Down",
@@ -458,6 +485,15 @@
      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxObWI1NTM0TFZJUC1WemdBYkxKYTNEcHlqR1hoRnBnT3dGdlZBSzhia3ZzRVVuZ1lxNU50aEc2WnVxLVJHbEM3ajI1MEsxODBJLXc0RnZmQ1NSeDh1UEpHUTZwMEtUeHhHQjRVMklTTWRuZ1d0WnduLXpjemJCNVJCcmVYV1dEWkttTXFCVTFKZ0hCbEZuY3RyaUluTVRIaUdVdDZFdTcyWl9WM0lXYmZ4NW1KaU9PMXRxODlvTkFVOHVqTlhRZkFzZmhHRzJiYm5aT2d1dWtB?oc=5",
      "published": "2026-11-12T18:16+00:00",
      "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Supply Chain Bottlenecks and Weak Margin Dragged Modine Manufacturing Company (MOD) in Q3",
+     "source": "Insider Monkey",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/supply-chain-bottlenecks-weak-margin-163216657.html",
+     "published": "2026-11-12T16:32+00:00",
+     "tight": 2,
      "ease": 0,
      "friction": 0
     },
@@ -480,6 +516,15 @@
      "friction": 0
     },
     {
+     "title": "Siemens Energy's Record Backlog Now Faces a Margin Reckoning, and Analysts Are Racing to Keep Up",
+     "source": "ad-hoc-news.de",
+     "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxPeklTUVVOblpUcFhOUHNsSjJ2MlEzbkRHNnFKX3AwdTYzUUl0TFhPOEJENEZyRmNwOHZkV21VRmtveEV1MG15OHgyZFJmR3BJbExOY3F0YjJqR2k2UHBocFFJNFZYWW1mM01UMURqQ1VWRmhRdlBVajMzdzhHajNDMnJWcHlSY1NleUpuVGt0cXhudkxMRFBCMXczZTZQYnhSc0hrVlFIeU91a29hZF85U1VyMGg1QWVPRUg0QmV3QUk3cEdiXzJSV29naWhfajk4cHB2WTdobGpMUl9MZHpxd1lrLVIwd01Hem5uc01fUGdkdlhRWHRpc0FiSQ?oc=5",
+     "published": "2026-11-12T13:21+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
      "title": "Smaller AI Spending Forecasts, Sold-Out Computing Power: Both Can Be True",
      "source": "24/7 Wall St.",
      "url": "https://247wallst.com/investing/2026/11/12/smaller-ai-spending-forecasts-sold-out-computing-power-both-can-be-true/",
@@ -487,38 +532,20 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Karachi to Face Major Water Shortage on Friday",
-     "source": "Bloom Pakistan",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOU2dZTTZYeVhkM1E4dGFvcEptRGViQy15VzdDSFJhT1RBMTBmQ3hKSlRDTGdzcnFIX3l0LWROWTB1NHR6VnR4X2daTHM3aGt0MjN0ckJiOXJrSGtGSjE1ek9NMXYyZTNOLU43UFRxaEJOQzk0aWtOOVBEcXlqb20tdDF1NDJRa09uR3c?oc=5",
-     "published": "2026-11-12T06:59+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Fort Worth data center commission gives recommendations ahead of moratorium ruling",
-     "source": "Community Impact",
-     "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQdEFMWHBLTWJKSmpGamowR2N4RXFqeGV2emx4TmwyRXh3eDlkSzhhcUZGZkVkTUFBdzA5dUR0azZPRHRhMm9QUkdMZURpc3ZLUnRPN3dQY2ZHUnRXVElXQ2hlRTBIOGluTTF4NXpYQllEWDJ3VGloVV9tWjRlOUZqX0otY1hYalFfbXBseEZqT2R6amJwVU9QVFNLd0E5TlF1cHFMZUtoSkRTdmVaSU01UnZfbF9La0I5dTdnZ3BPMDVXNWtzTGZBcXlVX0czUHoyOXVBQmtxTWQ0NkJ2NFhDS09GWXVDYlFQQ0dWb3QwNA?oc=5",
-     "published": "2026-11-12T05:25+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
     }
    ]
   },
   {
    "key": "power_generation",
    "name": "ייצור חשמל",
-   "items7": 119,
-   "tight7": 4,
+   "items7": 149,
+   "tight7": 5,
    "ease7": 0,
    "friction7": 2,
-   "net7": 4,
+   "net7": 5,
    "net_prev7": 0,
-   "trend": 4,
-   "tight30": 5,
+   "trend": 5,
+   "tight30": 6,
    "ease30": 1,
    "headlines": [
     {
@@ -538,6 +565,15 @@
      "tight": 0,
      "ease": 0,
      "friction": 1
+    },
+    {
+     "title": "3 AI Power Stocks With Earnings Growth Over 21%",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-power-stocks-earnings-111348197.html",
+     "published": "2026-11-12T11:13+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
     },
     {
      "title": "Hawley Becomes First Senate Republican to Back National Data Center Moratorium",
@@ -565,25 +601,16 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Shortage of Turbines Drives Market for Second-Hand Market for AI Data Centers",
-     "source": "24/7 Wall St.",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNendGUlBYMFl2T0taU1RKLUYwY0oxY0FFNW5JSW5fdHJsRE9vTzBhSWF2anl0eWNQRk5YNnR5WWVGM2pjckFHaDVUTVBVZE1tWjlPcURKeGNoVjZuN0F3TEJndkRMNi1JeGhwQkNzMmlSRnNuemlGOHRPUTJ5X3dlc2ktWUJoZy1wN3NWaTJ3UWotTmpzUTEyYndZMTl5Q3BFOG80RkxncVByZ1ZHT3B6eC1zV1FLRkhwblRoWl9R?oc=5",
-     "published": "2026-11-09T16:47+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "datacenter_reits",
-   "name": "נדל\"ן דאטה-סנטרים",
-   "items7": 140,
+   "name": "נדל\"ן ופיתוח דאטה-סנטרים",
+   "items7": 152,
    "tight7": 0,
    "ease7": 1,
-   "friction7": 79,
+   "friction7": 80,
    "net7": -1,
    "net_prev7": 0,
    "trend": -1,
@@ -649,7 +676,7 @@
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "items7": 51,
+   "items7": 52,
    "tight7": 2,
    "ease7": 0,
    "friction7": 2,
@@ -718,10 +745,10 @@
   {
    "key": "neoclouds",
    "name": "ענן AI עצמאי",
-   "items7": 98,
+   "items7": 122,
    "tight7": 6,
    "ease7": 1,
-   "friction7": 5,
+   "friction7": 6,
    "net7": 5,
    "net_prev7": 1,
    "trend": 4,
@@ -786,7 +813,7 @@
   },
   {
    "key": "software",
-   "name": "תוכנה ואפליקציות AI",
+   "name": "תוכנה ופלטפורמות AI",
    "items7": 21,
    "tight7": 0,
    "ease7": 1,
@@ -810,7 +837,7 @@
   },
   {
    "key": "analog_power",
-   "name": "שבבים אנלוגיים וחשמל",
+   "name": "שבבים אנלוגיים וחשמל (מעקב)",
    "items7": 94,
    "tight7": 6,
    "ease7": 1,
@@ -879,7 +906,7 @@
   },
   {
    "key": "edge_devices",
-   "name": "מעבדים ומכשירי קצה",
+   "name": "מעבדים ומכשירי קצה (מעקב)",
    "items7": 55,
    "tight7": 0,
    "ease7": 2,
@@ -968,7 +995,7 @@
    0,
    3,
    2,
-   2,
+   1,
    2,
    2
   ],
@@ -1003,9 +1030,9 @@
    0,
    0,
    8,
-   12,
-   32,
-   11,
+   13,
+   36,
+   13,
    16
   ],
   "compute": [
@@ -1026,10 +1053,10 @@
    0,
    0,
    0,
-   0,
-   2,
-   7,
+   1,
    4,
+   7,
+   6,
    2
   ],
   "servers": [
@@ -1040,7 +1067,7 @@
    0,
    0,
    0,
-   0,
+   1,
    0,
    2
   ],
@@ -1050,11 +1077,11 @@
    0,
    0,
    0,
-   4,
+   5,
    0,
    5,
-   7,
-   10
+   8,
+   16
   ],
   "power_generation": [
    0,
@@ -1062,11 +1089,11 @@
    0,
    0,
    0,
-   -1,
+   0,
    1,
    0,
    0,
-   4
+   5
   ],
   "datacenter_reits": [
    0,
@@ -1176,22 +1203,22 @@
    [
     2,
     0,
-    15
+    16
+   ],
+   [
+    3,
+    2,
+    12
    ],
    [
     3,
     1,
-    9
+    26
    ],
    [
     3,
     1,
-    20
-   ],
-   [
-    3,
-    1,
-    82
+    92
    ]
   ],
   "design": [
@@ -1243,7 +1270,7 @@
    [
     0,
     1,
-    30
+    31
    ]
   ],
   "foundry": [
@@ -1285,7 +1312,7 @@
    [
     13,
     0,
-    16
+    17
    ],
    [
     3,
@@ -1330,24 +1357,24 @@
     11
    ],
    [
+    14,
+    1,
+    17
+   ],
+   [
+    37,
+    1,
+    48
+   ],
+   [
     13,
-    1,
-    16
-   ],
-   [
-    33,
-    1,
-    44
-   ],
-   [
-    11,
     0,
-    25
+    28
    ],
    [
     20,
     4,
-    82
+    95
    ]
   ],
   "compute": [
@@ -1399,7 +1426,7 @@
    [
     11,
     1,
-    124
+    129
    ]
   ],
   "networking": [
@@ -1429,14 +1456,14 @@
     0
    ],
    [
+    1,
     0,
-    0,
-    3
+    7
    ],
    [
-    2,
+    4,
     0,
-    3
+    12
    ],
    [
     7,
@@ -1444,14 +1471,14 @@
     9
    ],
    [
-    4,
+    6,
     0,
-    5
+    16
    ],
    [
-    2,
-    0,
-    41
+    3,
+    1,
+    83
    ]
   ],
   "servers": [
@@ -1483,7 +1510,7 @@
    [
     0,
     0,
-    2
+    5
    ],
    [
     0,
@@ -1491,19 +1518,19 @@
     7
    ],
    [
+    1,
     0,
-    0,
-    4
+    5
    ],
    [
     0,
     0,
-    9
+    11
    ],
    [
     2,
     0,
-    47
+    67
    ]
   ],
   "power_equipment": [
@@ -1533,9 +1560,9 @@
     0
    ],
    [
-    4,
+    5,
     0,
-    15
+    16
    ],
    [
     0,
@@ -1545,17 +1572,17 @@
    [
     5,
     0,
-    34
+    39
    ],
    [
-    7,
-    0,
-    31
-   ],
-   [
-    11,
+    9,
     1,
-    151
+    50
+   ],
+   [
+    17,
+    1,
+    185
    ]
   ],
   "power_generation": [
@@ -1585,14 +1612,14 @@
     0
    ],
    [
-    0,
     1,
-    16
+    1,
+    17
    ],
    [
     1,
     0,
-    31
+    33
    ],
    [
     0,
@@ -1602,12 +1629,12 @@
    [
     0,
     0,
-    17
+    18
    ],
    [
-    4,
+    5,
     0,
-    112
+    141
    ]
   ],
   "datacenter_reits": [
@@ -1644,7 +1671,7 @@
    [
     0,
     0,
-    19
+    20
    ],
    [
     0,
@@ -1654,12 +1681,12 @@
    [
     0,
     0,
-    19
+    29
    ],
    [
     0,
     1,
-    132
+    141
    ]
   ],
   "hyperscalers": [
@@ -1711,7 +1738,7 @@
    [
     2,
     0,
-    49
+    50
    ]
   ],
   "neoclouds": [
@@ -1758,12 +1785,12 @@
    [
     0,
     0,
-    8
+    15
    ],
    [
     6,
     1,
-    94
+    111
    ]
   ],
   "software": [
@@ -1930,23 +1957,41 @@
    "ease": 0,
    "friction": 0
   },
+  "285A.T": {
+   "items": 1,
+   "tight": 1,
+   "ease": 0,
+   "friction": 0
+  },
+  "AAOI": {
+   "items": 9,
+   "tight": 1,
+   "ease": 0,
+   "friction": 0
+  },
   "ADI": {
    "items": 10,
    "tight": 1,
    "ease": 0,
    "friction": 0
   },
+  "ALAB": {
+   "items": 6,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "AMAT": {
-   "items": 11,
+   "items": 12,
    "tight": 1,
    "ease": 0,
    "friction": 0
   },
   "AMD": {
-   "items": 12,
+   "items": 13,
    "tight": 0,
    "ease": 0,
-   "friction": 2
+   "friction": 3
   },
   "AMKR": {
    "items": 6,
@@ -1966,8 +2011,20 @@
    "ease": 0,
    "friction": 0
   },
+  "APH": {
+   "items": 9,
+   "tight": 0,
+   "ease": 1,
+   "friction": 0
+  },
+  "APLD": {
+   "items": 9,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "ARM": {
-   "items": 11,
+   "items": 12,
    "tight": 1,
    "ease": 0,
    "friction": 2
@@ -1990,9 +2047,21 @@
    "ease": 0,
    "friction": 0
   },
+  "BE": {
+   "items": 7,
+   "tight": 1,
+   "ease": 0,
+   "friction": 0
+  },
   "CAMT": {
    "items": 11,
    "tight": 2,
+   "ease": 0,
+   "friction": 0
+  },
+  "CCJ": {
+   "items": 9,
+   "tight": 1,
    "ease": 0,
    "friction": 0
   },
@@ -2005,6 +2074,18 @@
   "CEG": {
    "items": 12,
    "tight": 1,
+   "ease": 0,
+   "friction": 0
+  },
+  "CIEN": {
+   "items": 16,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "CLS": {
+   "items": 9,
+   "tight": 0,
    "ease": 0,
    "friction": 0
   },
@@ -2021,7 +2102,7 @@
    "friction": 0
   },
   "CRWV": {
-   "items": 17,
+   "items": 19,
    "tight": 3,
    "ease": 0,
    "friction": 0
@@ -2038,6 +2119,18 @@
    "ease": 0,
    "friction": 1
   },
+  "ENR.DE": {
+   "items": 8,
+   "tight": 3,
+   "ease": 0,
+   "friction": 0
+  },
+  "ENTG": {
+   "items": 6,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "EQIX": {
    "items": 10,
    "tight": 0,
@@ -2050,15 +2143,39 @@
    "ease": 0,
    "friction": 0
   },
+  "FN": {
+   "items": 6,
+   "tight": 1,
+   "ease": 0,
+   "friction": 0
+  },
   "GEV": {
    "items": 17,
    "tight": 1,
    "ease": 0,
    "friction": 0
   },
+  "GLW": {
+   "items": 10,
+   "tight": 0,
+   "ease": 0,
+   "friction": 1
+  },
   "GOOGL": {
    "items": 11,
    "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "HPE": {
+   "items": 2,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "HUBB": {
+   "items": 8,
+   "tight": 1,
    "ease": 0,
    "friction": 0
   },
@@ -2068,8 +2185,26 @@
    "ease": 1,
    "friction": 0
   },
+  "IREN": {
+   "items": 18,
+   "tight": 0,
+   "ease": 0,
+   "friction": 1
+  },
+  "IRM": {
+   "items": 2,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "JBL": {
+   "items": 11,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "KLAC": {
-   "items": 10,
+   "items": 11,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2081,7 +2216,7 @@
    "friction": 0
   },
   "LRCX": {
-   "items": 11,
+   "items": 12,
    "tight": 0,
    "ease": 1,
    "friction": 0
@@ -2098,6 +2233,12 @@
    "ease": 0,
    "friction": 1
   },
+  "MOD": {
+   "items": 7,
+   "tight": 2,
+   "ease": 0,
+   "friction": 0
+  },
   "MPWR": {
    "items": 11,
    "tight": 0,
@@ -2111,7 +2252,7 @@
    "friction": 0
   },
   "MSFT": {
-   "items": 11,
+   "items": 12,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2123,7 +2264,7 @@
    "friction": 0
   },
   "NBIS": {
-   "items": 14,
+   "items": 15,
    "tight": 2,
    "ease": 0,
    "friction": 0
@@ -2134,11 +2275,17 @@
    "ease": 1,
    "friction": 0
   },
-  "NVDA": {
-   "items": 31,
-   "tight": 4,
+  "NRG": {
+   "items": 10,
+   "tight": 0,
    "ease": 0,
    "friction": 0
+  },
+  "NVDA": {
+   "items": 35,
+   "tight": 4,
+   "ease": 0,
+   "friction": 1
   },
   "NVMI": {
    "items": 7,
@@ -2146,8 +2293,20 @@
    "ease": 1,
    "friction": 0
   },
+  "NVT": {
+   "items": 6,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "NXPI": {
    "items": 10,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "OKLO": {
+   "items": 4,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2158,14 +2317,26 @@
    "ease": 0,
    "friction": 0
   },
+  "ONTO": {
+   "items": 6,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "ORCL": {
-   "items": 12,
+   "items": 13,
    "tight": 1,
    "ease": 0,
    "friction": 0
   },
   "PLTR": {
    "items": 12,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "POWL": {
+   "items": 8,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2188,6 +2359,12 @@
    "ease": 0,
    "friction": 0
   },
+  "SMR": {
+   "items": 7,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "SNDK": {
    "items": 11,
    "tight": 1,
@@ -2206,6 +2383,18 @@
    "ease": 0,
    "friction": 0
   },
+  "STX": {
+   "items": 8,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "SU.PA": {
+   "items": 1,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "SWKS": {
    "items": 8,
    "tight": 0,
@@ -2213,7 +2402,7 @@
    "friction": 0
   },
   "TER": {
-   "items": 10,
+   "items": 11,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2253,12 +2442,245 @@
    "tight": 1,
    "ease": 0,
    "friction": 0
+  },
+  "WDC": {
+   "items": 8,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
   }
  },
- "generated_utc": "2026-11-12T20:02:02+00:00",
+ "discovery": [
+  {
+   "name": "Johnson Controls",
+   "ticker": "JCI",
+   "layer": "power_equipment",
+   "mentions30": 16,
+   "tight30": 4,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "Johnson Controls International (JCI) Has Data Center Backlog Momentum, Is The Valuation Gap Still Open?",
+    "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNNmdlM1c5NmRxSXM4WC1lSk0wSFZQXy0yRXFJVmM5WW1NWEwyQ0NwQ0s3Q0dFdHdaTWZQWS0taXUxY0tTaWNUSW83RmNjb20zM3hKbkhNQWxrVGFCaU1iWFE2amtKU3I0bm5JQUdYQUxkSHVxU2REM1QzNDNNcFRTNWNDOExic1BHZ3dDOEdpdjBoa29NeENfRUNrclR5aWMzQlpzdnlWS0k5SW5DMEhsTGVqNlVlNllPOEUzNTBDeTFYSzJTYUhIa0tlVmd0eEZGT3FYamt1a0dOM1ZoRTBxZE9HTnprQdIB6wFBVV95cUxPQUpEaU9nTUwyWDF0MEtUTEREZ1RFdUlVNm9uYjJpcGpVS01aWGdJXzllLWtjNy1vMnV0VkNDN3FSNnlZMjhZQTZobTNCbFdJQ2pURHFJWm5zUzFScmRNbDhaVmR5c2hkdm0wWUZjdm1WU3RQaWpBYjJDeE14bkVvUjFCTW50Qk53TmJOUGZKSFQ0STF5QjhEcDJqZlV6anV6NW1YTUUzZXdKU3dNU0FhUm9QZmFzYS0zRkl0U2pvVVhyUlZiMXk5SmctMmZLNjlLWHVHd3VBUHRuZjVHTHpxaFhyRnd0N1dvNnNN?oc=5",
+    "source": "Simply Wall St",
+    "published": "2026-11-10T05:28+00:00"
+   }
+  },
+  {
+   "name": "Comfort Systems",
+   "ticker": "FIX",
+   "layer": "power_equipment",
+   "mentions30": 13,
+   "tight30": 4,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "Is Comfort Systems USA (FIX) Undervalued As Strong AI Backlog Meets Policy Risk?",
+    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOckp4VkxrZmxDTVYwWTBpTUpCVTk5ZzFaV2p6UC1fd1lHWDZGNnMwRlRKV0dXSm14eE1VUDYwcWhZdWxyS1VsRktJSFFGZzRfTGIxZXhGYWxwR2FzMVNUdDNIejF5eWRHaFNsQUdTT04zdG14UW01MnhFbXVSR3hWcUxGcjF4elhkU011dGlwdUVXWEY0SGxnQm81alRGM19nTXpoU1lMNXMtc3FSTnh5NElETmZCTS1PTUM0U2tLalRmSnFUY0VUTXZrY1pWWC1lNjNoNjln0gHbAUFVX3lxTE0tQUx4eTFsV3dOSGE4bGUxZGcwQkJQcWEtNnZocHg5bWVyTE1GSXNYZjl5UWd0TW5pUDdjU0lINmZCd0h1d19NeGlkaTFIZzFMRVRnRzdvWFJ2MkpwaDlITDJSSkNka3dWTkhoY2NPM2t2RjBRZUhkTW5vZGlhNWF3a1BqUHhtaXVHUlpiazdKdklSMW5XcWFzQzFUN0JtVWNlNnBndzhjMDFkakI1bHg1THJGWmJTaS1lYlpoQV9qTUFCa1h4QjQzeDc1SENub2Z4M2RxWVdna0xwZw?oc=5",
+    "source": "Simply Wall St",
+    "published": "2026-11-06T19:27+00:00"
+   }
+  },
+  {
+   "name": "Hut 8",
+   "ticker": "HUT",
+   "layer": "neoclouds",
+   "mentions30": 7,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 3,
+   "headline": {
+    "title": "Hut 8: 3 Key Takeaways for Long-Term Investors",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQZVNuM1R6SVg1WXR3MUhVSnk1WWRyWjRGb3VfdFJydGpfd09zcWVadVlSbDJTSldwaDlhQnh6QmNINGNlR1gyV1Rfc1ZYTjlaQmVYUnJ5dFk2TDhrTGVnb1hmNGtZR3pNelZVODRjY0huMWpqSUlrWXZvZWY5anlMdjVzS212Vm1FeFlOd1Y0SQ?oc=5",
+    "source": "Yahoo Finance",
+    "published": "2026-11-11T20:37+00:00"
+   }
+  },
+  {
+   "name": "Trane",
+   "ticker": "TT",
+   "layer": "power_equipment",
+   "mentions30": 6,
+   "tight30": 3,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "Trane Americas Commercial Backlog Surges 80% in Q3",
+    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPcC0xRkt1VThpYWxoT2xpSE5nUGE4SUItcDJxTVc5QkFmaVNjMzl5bm5rZzJZdVI3THVFbXBzdExlNTZfNll2b1JjM2QyMXVteWJfcGFaZjE1OVlmYzFaUUpSLXJXWVFWTU16Um5qZnE3T0xQb0FxV0NhNFQxX25KaEJWRWlpSlBWb09kUVMzbENvS0hT?oc=5",
+    "source": "ACHR News",
+    "published": "2026-11-06T12:00+00:00"
+   }
+  },
+  {
+   "name": "Caterpillar",
+   "ticker": "CAT",
+   "layer": "power_equipment",
+   "mentions30": 5,
+   "tight30": 2,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "Caterpillar Stock Sinks 10% in a Week Despite Record Backlog: Is It a Buy?",
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQejZtY3VabmQ4VHhlRU9zZ1owV3F5dkpmSWEtYzFGR0dQLTVKcGtvMUloR1QyejZoSHFGdk80Q1EwU1Z6WUlyZWFIc0xvRUJfNm5KWXBFSGV1MjFyUjdXLUp4TVhXelBraEI5QVREMVBQdTFPVzE5WUZ3X19yaENmbUdSaTNWSFNuOXhabU1yMnVnd3ljejkwdkp4OWtVZw?oc=5",
+    "source": "TIKR.com",
+    "published": "2026-11-08T10:25+00:00"
+   }
+  },
+  {
+   "name": "Sterling Infrastructure",
+   "ticker": "STRL",
+   "layer": "power_equipment",
+   "mentions30": 5,
+   "tight30": 1,
+   "ease30": 0,
+   "mentions7": 2,
+   "headline": {
+    "title": "Sterling Infrastructure (NasdaqGS:STRL) Stock Forecast & Analyst Predictions",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPT1R6SUNZMGF1WXAtZzREWWY1V25CekpWcy11RWFYUlFEX3FtQ19sZGlQa0NpZlR6WUFvNnpKc3cybDJjUU82bXZZUDhpRmU0TmpsVXhqOGxybEF3QXJCUldULVJ2UTl6Wkw1Rm0zMGJMSXVYTzdVenJWN2hjUVZidWpGRDRjaXA5M1NPS3hjMVVzdw?oc=5",
+    "source": "Simply Wall St",
+    "published": "2026-11-10T08:00+00:00"
+   }
+  },
+  {
+   "name": "EMCOR",
+   "ticker": "EME",
+   "layer": "power_equipment",
+   "mentions30": 5,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "Can EMCOR Keep Its 10.5% Adjusted Margin as Project Volumes Scale?",
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNMXd0Mm1QUFZRZ2tGcUlDVlh3OXRhS285Z3MtRlhWVGwwdjI0YXJNM1dscjJKZzhGNWdhajA4WHJWUnRIcV91TExhdkYxQ2hvSFpuY2c2TDkwR0ZWeG92aTR4ckJORlFkbklJZU13Wk1EVnUtXzhhUDZaeGxyNV9NOEozSHZIbktMOC1oS002YVJBcnlqc2hpSklqdUtqcVFzajM5cm9kaUItMWRubGJBMmFndjJEVVhIOHl0Rw?oc=5",
+    "source": "TradingView",
+    "published": "2026-11-09T14:19+00:00"
+   }
+  },
+  {
+   "name": "Cisco",
+   "ticker": "CSCO",
+   "layer": "networking",
+   "mentions30": 4,
+   "tight30": 1,
+   "ease30": 0,
+   "mentions7": 0,
+   "headline": {
+    "title": "Cisco AI backlog and core demand underpin Bank of America’s bullish outlook",
+    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPd0NnOG54SVhPWGdSWGRBM2JQbGJ6dlhIdVlFeVVZa1VsaDJIZlJTZ2RoNk1OeU9CR3o4ZlNCVmhwVUU4RlhKTEc2TGRwLWRKbzc0UzZ1LWoyS2hKQ0h3cE5aUjBqb01zMWVhOUFiSDhIMmpDTXYzYzM1UWRfcjR4aUN6TQ?oc=5",
+    "source": "Yahoo! Finance Canada",
+    "published": "2026-11-03T08:00+00:00"
+   }
+  },
+  {
+   "name": "TE Connectivity",
+   "ticker": "TEL",
+   "layer": "networking",
+   "mentions30": 4,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "TE Connectivity FY 2026: Revenue $19.89B, EPS $11.06 — 10-K Summary",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNNV9INzE2bzVPVllyTHBXbHB1RzdCMFNKMmwxc2QzSGRIajUxOHBpU3U2RzU5THBvSS1qNEFyZklFcnJaZGRBeVRWUm00aWJhOEk0bWllV2R3ZUdROTE0dmpDcWhqMWdXc1E5U3BCM2xPcWJBaGdXVnJ4QkNTbmJ3WjBzZS0yUXJHdzVBWHlIOUw0cTFtOWFoZmVFbnBZZFpMU1lWY2JSLW5oSk5Ycl8zTXptQ3l4SDFtam1hdlY4UHA?oc=5",
+    "source": "TradingView",
+    "published": "2026-11-09T21:15+00:00"
+   }
+  },
+  {
+   "name": "Argan",
+   "ticker": "AGX",
+   "layer": "power_generation",
+   "mentions30": 4,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 0,
+   "headline": {
+    "title": "Can Argan Keep Its Earnings Streak Alive as Backlog Slips Further?",
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOekhDSWt5bTNCMm11enZhcGdMMmM4cFlaRmNYa1FjQV9BSWFmNHUzZVRQOUxZT01zU0xuRU1iallHM011Zkc1Rzg4X2hiYVJXSG5vSDdXUDlVTWs1YWl6d2IybTZYdTVaX3dzeEJadXJ3bUM3Y2drUzA0VEtfVFE5R0Q1Z2hoeGU1UmwzZXU0Tkl0NFFzT0E5eWRpdERkdw?oc=5",
+    "source": "Yahoo Finance",
+    "published": "2026-11-05T14:27+00:00"
+   }
+  },
+  {
+   "name": "MYR Group",
+   "ticker": "MYRG",
+   "layer": "power_equipment",
+   "mentions30": 3,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 0,
+   "headline": {
+    "title": "MYR Group Q3 Earnings Call Highlights 2027 Growth & Margin Outlook",
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOQ0kwazh3Y2dpZUJJM01OZGdIdm43cFV5T2lBd3hUX3N6c0pUbENaWlFEWkY3bmZfcmRJaW9ZNjBjTU1kaW9mTkFBYmdLSTk0SkF1dmVsdDR4UWR0dTlTaEgxTTY4NWU0NUQxazE3c0tTTmhFaGdBT0JSZF9pNWhMeU4yNDRQOVl0Z29QMThFX2tBaGtrOFdXUUdOS1VRRVNycFhzenhfcEtQUm96YXJFVF9aMEJlaTEwU3VCeQ?oc=5",
+    "source": "TradingView",
+    "published": "2026-11-04T19:00+00:00"
+   }
+  },
+  {
+   "name": "Rambus",
+   "ticker": "RMBS",
+   "layer": "memory",
+   "mentions30": 3,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 0,
+   "headline": {
+    "title": "Rambus Q3 Earnings Call Highlights AI Demand and Supply Pressures",
+    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQTUlhaEtwM0ZfbGIwNUk4VGNic3U1V3ppRkEycU1meHNwM3FocTBLVGdCTngwcmk1QWlYX1cwYXlVa3gxV19YRE9fenJuMEJqcG1NSnplQ25VUDlGOTV1VXNyUmtmaFFpTEdPYlU2YjhXaUVQbmtfcVByTDlGb29zNFdXRE03WmplSG10aFBZamI3NkEzNU5uOXNveWlwTGpEVEdVbnlxVWMxcTl0dHAyZWtJYnlNRFZheWRmal9n?oc=5",
+    "source": "TradingView",
+    "published": "2026-10-27T07:00+00:00"
+   }
+  },
+  {
+   "name": "NetApp",
+   "ticker": "NTAP",
+   "layer": "memory",
+   "mentions30": 3,
+   "tight30": 1,
+   "ease30": 0,
+   "mentions7": 3,
+   "headline": {
+    "title": "Nebul Picks NetApp Novus: Why It Matters for NTAP's AI Growth",
+    "url": "https://finance.yahoo.com/technology/ai/articles/nebul-picks-netapp-novus-why-121100773.html",
+    "source": "Zacks",
+    "published": "2026-11-12T12:11+00:00"
+   }
+  },
+  {
+   "name": "Primoris",
+   "ticker": "PRIM",
+   "layer": "power_equipment",
+   "mentions30": 3,
+   "tight30": 1,
+   "ease30": 0,
+   "mentions7": 2,
+   "headline": {
+    "title": "Primoris Services (PRIM) Beats On Q3 And Posts Record Backlog, Is It 60% Undervalued?",
+    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOWUNEYWNJMEd1U3VYNmhvYlRmR3h1WXc2eE9Lc25SSlloNlZ2QmFSMTBoc2g1Qk9VVDV5eHdoM0lRNkVURzhPei1kOGgzZEw2YzNFMFc4NVRkUnVRWUFUMHM0ajJyZlZLb1VPZ196QUJlN01CZEtSaVdRS3VmRXRUTUdnSzZxTkpFLW1YS2ppODdVcG1nRWF0Q0JkZThCQldQd01KemVJQVktei11YTNFVGs5V3ZoazlBa2twMWR1VFpPVkpFeGFaRnE4bEVrWG94WXVIctIB2gFBVV95cUxNZ25ad004ZmtaX0tCZ2U5dXJib2ZjTEk2bFlTMXVaM2pNQXBRcHRWX1VXdkROS3lWV3l2dEk2Yk5zMVBhMU42LU1QNUNWNVpGc3JVODFqcmM1b0hMemtOd3VLeVREYlc4Z1RZdExjV3pMWTNmWTFMcGlMcVZkSk85QXUwcGNCN1p4RlE1SkFzZlRKWkNOWGg5bE5Qb2Y5Y09FRlRhbWpGamJoY0VsUXpZTWthc0IyaDNmNS13Y3pZaEsxYU95WkJDRTM3T19RM2pwcFB1VFhMRC1TZw?oc=5",
+    "source": "Simply Wall St",
+    "published": "2026-11-08T09:31+00:00"
+   }
+  },
+  {
+   "name": "Galaxy Digital",
+   "ticker": "GLXY",
+   "layer": "neoclouds",
+   "mentions30": 3,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "Galaxy Digital rises 5% as CoreWeave results lift AI infrastructure stocks",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQa0tnbl93NVBzQzlsdFNFSG9hWlR3UU9Vd3FtSk9DTkNkWEJBUTk0aHVZVlZaNEd1RHk0cnplR0tVS21ldFVwcGtrYmg1eXF5dE42VTJ3dHUtMXJaZHJqZlVRRkZEbjVVaWJsM3diOEdjbmdwbk5tU0dTRXRxS3FrNDNsR2YwZG1fQmxXbWhld1ozemxEX3pnU2FTTnFiZUpEaElR?oc=5",
+    "source": "Startup Fortune",
+    "published": "2026-11-11T12:21+00:00"
+   }
+  }
+ ],
+ "generated_utc": "2026-11-12T20:18:52+00:00",
  "sources_ok": {
-  "google": 85,
-  "yahoo": 55
+  "google": 165,
+  "yahoo": 80
  },
  "sources_failed": {
   "google": 0,
