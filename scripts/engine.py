@@ -23,8 +23,22 @@ SCORE_KEYS = ("r3m", "r6m", "r12_1")
 
 # ---------------------------------------------------------------- config
 def load_config():
+    """universe.yaml holds the layers; companies.yaml holds one card per company
+    (layer, status, why). Membership is built from the cards."""
     uni = yaml.safe_load((ROOT / "config" / "universe.yaml").read_text(encoding="utf-8"))
     rules = yaml.safe_load((ROOT / "config" / "rules.yaml").read_text(encoding="utf-8"))
+    comp_path = ROOT / "config" / "companies.yaml"
+    if comp_path.exists():
+        comp = yaml.safe_load(comp_path.read_text(encoding="utf-8"))
+        cards = {str(t): c for t, c in comp["companies"].items()}
+        for layer in uni["layers"].values():
+            layer["tickers"] = []
+        for t, c in cards.items():
+            uni["layers"][c["layer"]]["tickers"].append(t)
+        uni["signal_only"] = [t for t, c in cards.items() if c.get("status") in ("watch", "signal")]
+        uni["news_names"] = {t: c.get("name", t) for t, c in cards.items()}
+        uni["companies"] = cards
+        uni["discovery"] = comp.get("discovery", [])
     return uni, rules
 
 

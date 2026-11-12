@@ -231,6 +231,28 @@ def build_radar(uni, layer_sig: pd.DataFrame, stock_sig: pd.DataFrame, today: da
             "heat": heat, "heat_counts": counts, "stocks": stocks}
 
 
+def build_discovery(uni, disc_sig: pd.DataFrame, today: datetime) -> list[dict]:
+    """Companies not yet in the system that keep showing up in bottleneck headlines."""
+    if disc_sig.empty:
+        return []
+    d = disc_sig.copy()
+    d["date"] = pd.to_datetime(d["date"])
+    end = pd.Timestamp(today.date())
+    w30 = d[d["date"] > end - pd.Timedelta(days=30)].groupby("name")[["items", "tight", "ease"]].sum()
+    w7 = d[d["date"] > end - pd.Timedelta(days=7)].groupby("name")["items"].sum()
+    meta = {x["name"]: x for x in uni.get("discovery", [])}
+    items = [i for i in load_recent_items(days=30) if i.get("discovery")]
+    out = []
+    for name, row in w30.sort_values("items", ascending=False).iterrows():
+        heads = sorted([i for i in items if name in i["discovery"]], key=lambda i: i.get("published") or "", reverse=True)
+        m = meta.get(name, {})
+        out.append({"name": name, "ticker": m.get("ticker"), "layer": m.get("layer"),
+                    "mentions30": int(row["items"]), "tight30": int(row["tight"]), "ease30": int(row["ease"]),
+                    "mentions7": int(w7.get(name, 0)),
+                    "headline": {k: heads[0].get(k) for k in ("title", "url", "source", "published")} if heads else None})
+    return out[:15]
+
+
 def load_recent_items(days: int) -> list[dict]:
     out = []
     cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).date()
@@ -267,52 +289,69 @@ def main() -> int:
 
     queries = [("stock", t, f'"{names.get(t, t)}" {SUPPLY_TERMS}', [layer_of[t]]) for t in layer_of]
     queries += [("theme", th["q"], th["q"], [th["layer"]]) for th in uni.get("news_themes", [])]
+    discovery = uni.get("discovery", [])
+    queries += [("discovery", d["name"], f'"{d["name"]}" {SUPPLY_TERMS}', []) for d in discovery]
+    disc_rx = {d["name"]: re.compile(r"\b" + re.escape(d["name"]) + r"\b", re.I) for d in discovery}
+
+    # backfill 30 days for anything we have never searched before (new companies, first discovery run)
+    known_stocks = set(pd.read_csv(NEWS / "stock_signals.csv")["ticker"].astype(str)) if (NEWS / "stock_signals.csv").exists() else set()
+    disc_first = not (NEWS / "discovery_signals.csv").exists()
 
     found: dict[str, dict] = {}
     ok = {"google": 0, "yahoo": 0}
     fail = {"google": 0, "yahoo": 0}
     for kind, key, q, layers in queries:
+        qdays = 30 if (first_run or (kind == "stock" and key not in known_stocks) or (kind == "discovery" and disc_first)) else days
         batches = []
-        g = google_news(q, days)
+        g = google_news(q, qdays)
         (ok if g is not None else fail)["google"] += 1
         batches.append(g or [])
-        if kind == "stock" and not key.endswith(".KS"):
+        if kind == "stock" and "." not in key:
             y = yahoo_news(key)
             (ok if y is not None else fail)["yahoo"] += 1
             batches.append(y or [])
         for item in (x for b in batches for x in b):
             if not item["title"] or item["published"] is None:
                 continue
-            if item["published"] < now - timedelta(days=days + 1):
+            if item["published"] < now - timedelta(days=qdays + 1):
                 continue
             iid = item_id(item["title"])
             rec = found.setdefault(iid, {**item, "id": iid, "tickers": set(), "themes": set(), "layers": set()})
-            (rec["tickers"] if kind == "stock" else rec["themes"]).add(key)
+            if kind == "stock":
+                rec["tickers"].add(key)
+            elif kind == "theme":
+                rec["themes"].add(key)
             rec["layers"].update(layers)
-        time.sleep(1.0)
+        time.sleep(0.8)
 
     new = [r for iid, r in found.items() if iid not in seen]
     print(f"  google ok {ok['google']}/{ok['google'] + fail['google']}, yahoo ok {ok['yahoo']}/{ok['yahoo'] + fail['yahoo']}; "
           f"{len(found)} headlines, {len(new)} new")
 
-    layer_rows, stock_rows, by_day = [], [], {}
+    layer_rows, stock_rows, disc_rows, by_day = [], [], [], {}
     for r in new:
         sc = score(f"{r['title']}. {r.get('text', '')}")
+        r["discovery"] = sorted(n for n, rx in disc_rx.items() if rx.search(r["title"]))
+        for n in r["discovery"]:
+            disc_rows.append({"date": r["published"].date().isoformat(), "name": n, "items": 1,
+                              **{k: sc[k] for k in ("tight", "ease", "friction")}})
         day = r["published"].date().isoformat()
         for L in r["layers"]:
             layer_rows.append({"date": day, "layer": L, "items": 1, **{k: sc[k] for k in ("tight", "ease", "friction")}})
         for t in r["tickers"]:
             stock_rows.append({"date": day, "ticker": t, "items": 1, **{k: sc[k] for k in ("tight", "ease", "friction")}})
-        if sc["tight"] or sc["ease"] or sc["friction"]:
+        if sc["tight"] or sc["ease"] or sc["friction"] or r["discovery"]:
             by_day.setdefault(now.date().isoformat(), []).append({
                 "id": r["id"], "title": r["title"], "source": r["source"], "url": r["url"],
                 "published": r["published"].isoformat(timespec="minutes"), "layers": sorted(r["layers"]),
-                "tickers": sorted(r["tickers"]), "themes": sorted(r["themes"]), **sc})
+                "tickers": sorted(r["tickers"]), "themes": sorted(r["themes"]), "discovery": r["discovery"], **sc})
         seen[r["id"]] = now.date().isoformat()
 
     cols_l, cols_s = ["date", "layer", "items", "tight", "ease", "friction"], ["date", "ticker", "items", "tight", "ease", "friction"]
     layer_sig = upsert(NEWS / "layer_signals.csv", pd.DataFrame(layer_rows, columns=cols_l), ["date", "layer"])
     stock_sig = upsert(NEWS / "stock_signals.csv", pd.DataFrame(stock_rows, columns=cols_s), ["date", "ticker"])
+    disc_sig = upsert(NEWS / "discovery_signals.csv", pd.DataFrame(disc_rows, columns=["date", "name", "items", "tight", "ease", "friction"]),
+                      ["date", "name"])
     for day, rows in by_day.items():
         with (NEWS / "items" / f"{day}.jsonl").open("a", encoding="utf-8") as f:
             for row in rows:
@@ -322,6 +361,7 @@ def main() -> int:
     seen_path.write_text(json.dumps(seen), encoding="utf-8")
 
     radar = build_radar(uni, layer_sig, stock_sig, now)
+    radar["discovery"] = build_discovery(uni, disc_sig, now)
     radar["generated_utc"] = now.isoformat(timespec="seconds")
     radar["sources_ok"] = ok
     radar["sources_failed"] = fail

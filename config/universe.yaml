@@ -1,147 +1,70 @@
-# השכבות של שרשרת האספקה של AI.
-# כל שכבה היא סל מניות, והציון שלה מחושב מהסל כולו ולא ממניה אחת.
-# signal_only: מניות שמשמשות רק לאיתות (קשה לקנות אותן מישראל), המערכת לא תבחר אותן לתיק.
+# השכבות של שרשרת האספקה של AI. החברות בכל שכבה מוגדרות ב-config/companies.yaml (כרטיס לכל חברה).
+# monitor_only: שכבה שנשארת במעקב בלבד. המערכת לא קונה ממנה (בבקטסט, הכנסתן לרוטציה הורידה את התשואה).
 
 calendar: SPY                 # לוח ימי המסחר של וול סטריט
 benchmarks: [SMH, QQQ, SPY]   # SMH = תעודת סל של שבבים, מדד ההשוואה הראשי
-signal_only: ["000660.KS", "005930.KS"]   # SK Hynix, Samsung (בורסת קוריאה)
 
 layers:
   equipment:
-    name: "ציוד לייצור שבבים"
-    tickers: [ASML, AMAT, LRCX, KLAC, NVMI, CAMT, TER]
+    name: "ציוד וחומרים לייצור שבבים"
   design:
     name: "תכנון שבבים ו-IP"
-    tickers: [SNPS, CDNS, ARM]
   foundry:
     name: "ייצור ואריזה מתקדמת"
-    tickers: [TSM, ASX, AMKR, TSEM]
   memory:
-    name: "זיכרון"
-    tickers: [MU, SNDK, "000660.KS", "005930.KS"]
+    name: "זיכרון ואחסון"
   compute:
     name: "שבבי AI"
-    tickers: [NVDA, AMD, AVGO, MRVL]
   networking:
-    name: "רשתות ואופטיקה"
-    tickers: [ANET, COHR, LITE, CRDO]
+    name: "רשתות, אופטיקה וקישוריות"
   servers:
-    name: "שרתים"
-    tickers: [SMCI, DELL]
+    name: "שרתים ומתלים"
   power_equipment:
     name: "ציוד חשמל וקירור"
-    tickers: [VRT, ETN, GEV, PWR]
   power_generation:
     name: "ייצור חשמל"
-    tickers: [CEG, VST, TLN]
   datacenter_reits:
-    name: 'נדל"ן דאטה-סנטרים'
-    tickers: [EQIX, DLR]
+    name: "נדל\"ן ופיתוח דאטה-סנטרים"
   hyperscalers:
     name: "ענקיות הענן"
-    tickers: [MSFT, AMZN, GOOGL, META, ORCL]
   neoclouds:
     name: "ענן AI עצמאי"
-    tickers: [CRWV, NBIS]
   software:
-    name: "תוכנה ואפליקציות AI"
-    tickers: [PLTR, NOW]
+    name: "תוכנה ופלטפורמות AI"
   analog_power:
-    name: "שבבים אנלוגיים וחשמל"
-    tickers: [TXN, ADI, NXPI, MCHP, "ON", STM, MPWR]
-    monitor_only: true      # מעקב בלבד עד שהבקטסט יאשר שהשכבה משפרת את הרוטציה
+    name: "שבבים אנלוגיים וחשמל (מעקב)"
+    monitor_only: true
   edge_devices:
-    name: "מעבדים ומכשירי קצה"
-    tickers: [INTC, QCOM, SWKS, OLED]   # QRVO נמחקה: התמזגה לתוך Skyworks ב-5.10.2026
+    name: "מעבדים ומכשירי קצה (מעקב)"
     monitor_only: true
 
-# המשקלים ב-SMH לפי VanEck, נכון ל-15.1.2026 (הדוח השבועי בודק שינויים)
+# המשקלים ב-SMH לפי VanEck, נכון ל-2026-01-15 (QRVO התמזגה לתוך Skyworks ב-5.10.2026). הדוח השבועי בודק שינויים.
 smh_weights_as_of: "2026-01-15"
 smh_weights:
-  NVDA: 19.17
-  TSM: 10.69
-  AVGO: 7.59
-  ASML: 5.60
-  LRCX: 5.48
-  MU: 5.41
-  KLAC: 5.28
-  INTC: 5.02
-  AMAT: 4.91
-  AMD: 4.85
-  TXN: 4.41
-  ADI: 4.32
-  QCOM: 3.75
-  SNPS: 2.89
-  CDNS: 2.49
-  MRVL: 1.77
-  NXPI: 1.47
-  MPWR: 1.10
-  MCHP: 1.03
-  TER: 0.99
-  STM: 0.66
+  "NVDA": 19.17
+  "TSM": 10.69
+  "AVGO": 7.59
+  "ASML": 5.6
+  "LRCX": 5.48
+  "MU": 5.41
+  "KLAC": 5.28
+  "INTC": 5.02
+  "AMAT": 4.91
+  "AMD": 4.85
+  "TXN": 4.41
+  "ADI": 4.32
+  "QCOM": 3.75
+  "SNPS": 2.89
+  "CDNS": 2.49
+  "MRVL": 1.77
+  "NXPI": 1.47
+  "MPWR": 1.1
+  "MCHP": 1.03
+  "TER": 0.99
+  "STM": 0.66
   "ON": 0.55
-  SWKS: 0.21
-  OLED: 0.14
-
-# השמות שבהם מחפשים חדשות על כל חברה
-news_names:
-  ASML: ASML
-  AMAT: Applied Materials
-  LRCX: Lam Research
-  KLAC: KLA Corp
-  NVMI: Nova Ltd
-  CAMT: Camtek
-  TER: Teradyne
-  SNPS: Synopsys
-  CDNS: Cadence Design
-  ARM: Arm Holdings
-  TSM: TSMC
-  ASX: ASE Technology
-  AMKR: Amkor
-  TSEM: Tower Semiconductor
-  MU: Micron
-  SNDK: SanDisk
-  "000660.KS": SK Hynix
-  "005930.KS": Samsung memory
-  NVDA: Nvidia
-  AMD: AMD
-  AVGO: Broadcom
-  MRVL: Marvell
-  ANET: Arista Networks
-  COHR: Coherent Corp
-  LITE: Lumentum
-  CRDO: Credo Technology
-  SMCI: Super Micro Computer
-  DELL: Dell AI servers
-  VRT: Vertiv
-  ETN: Eaton
-  GEV: GE Vernova
-  PWR: Quanta Services
-  CEG: Constellation Energy
-  VST: Vistra
-  TLN: Talen Energy
-  EQIX: Equinix
-  DLR: Digital Realty
-  MSFT: Microsoft data center
-  AMZN: AWS data center
-  GOOGL: Google data center
-  META: Meta data center
-  ORCL: Oracle data center
-  CRWV: CoreWeave
-  NBIS: Nebius
-  PLTR: Palantir
-  NOW: ServiceNow
-  TXN: Texas Instruments
-  ADI: Analog Devices
-  NXPI: NXP Semiconductors
-  MCHP: Microchip Technology
-  "ON": onsemi
-  STM: STMicroelectronics
-  MPWR: Monolithic Power
-  INTC: Intel
-  QCOM: Qualcomm
-  SWKS: Skyworks
-  OLED: Universal Display
+  "SWKS": 0.21
+  "OLED": 0.14
 
 # נושאי צוואר בקבוק שמחפשים בחדשות, וכל נושא שייך לשכבה
 news_themes:

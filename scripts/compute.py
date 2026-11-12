@@ -146,8 +146,11 @@ def main() -> None:
         avail = [t for t in ts if t in px.columns]
         sc = composite_score(ind, d, avail) if avail else pd.Series(dtype=float)
         for t in ts:
+            card = (uni.get("companies") or {}).get(t, {})
+            card_info = {"status": card.get("status", "active"), "exposure": card.get("exposure"), "why": card.get("why"),
+                         "company": card.get("name")}
             if t not in px.columns or pd.isna(px.at[d, t]):
-                stocks_out.append({"ticker": t, "layer": L, "layer_name": names[L], "missing": True})
+                stocks_out.append({"ticker": t, "layer": L, "layer_name": names[L], "missing": True, **card_info})
                 continue
             p = px.at[d, t]
             ma50, ma200, hi = ind["ma50"].at[d, t], ind["ma200"].at[d, t], ind["high52"].at[d, t]
@@ -160,6 +163,7 @@ def main() -> None:
                 "vol": num(ind["vol"].at[d, t]), "from_52w_high": num(p / hi - 1) if pd.notna(hi) else None,
                 "score_in_layer": num(sc.get(t), 3),
                 "smh_weight": smh_w.get(t),
+                **card_info,
                 "news7": news_by_stock.get(t),
                 "stretched": bool(pd.notna(ind["r1w"].at[d, t]) and pd.notna(ma50)
                                   and ind["r1w"].at[d, t] >= rules["profit_take"]["week_gain"]

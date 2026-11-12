@@ -1,0 +1,183 @@
+# כרטיס לכל חברה במערכת. החברה נכנסת לפי הערך שלה לשרשרת ה-AI, לא לפי התשואה שלה.
+# הכללים המלאים: docs/universe_rules.md
+#
+# status:
+#   active  עומדת בכל הכללים. המערכת יכולה לקנות אותה (אחרי 200 ימי מסחר לפחות).
+#   watch   בעלת ערך לשרשרת אבל לא עומדת בכלל אחד (חשיפה, הכנסות, נזילות). נספרת בדירוג השכבה, לא נקנית.
+#   signal  נסחרת מחוץ לארה"ב. נספרת בדירוג השכבה כאיתות, לא נקנית.
+# exposure (הערכה, נבדקת כל רבעון):
+#   high      רוב ההכנסות מ-AI ודאטה-סנטרים
+#   medium    חלק משמעותי מההכנסות (רבע ומעלה)
+#   driver    חלק קטן יותר, אבל AI ודאטה-סנטרים הם מנוע הצמיחה העיקרי
+#   critical  מונופול או כמעט מונופול ברכיב שבלעדיו אין AI
+#   low       חשיפה נמוכה (במעקב רק כי היא חלק מ-SMH)
+
+companies:
+  # ---------------- ציוד וחומרים לייצור שבבים
+  "ASML": {name: ASML, layer: equipment, status: active, exposure: critical, why: "המונופול היחיד במכונות ליתוגרפיה EUV, שבלעדיהן אין שבבי AI מתקדמים"}
+  "AMAT": {name: Applied Materials, layer: equipment, status: active, exposure: driver, why: "ציוד לייצור שבבים מתקדמים ולזיכרון HBM"}
+  "LRCX": {name: Lam Research, layer: equipment, status: active, exposure: driver, why: "ציוד איכול ושיקוע, קריטי ל-HBM ולשבבים מתקדמים"}
+  "KLAC": {name: KLA Corp, layer: equipment, status: active, exposure: critical, why: "מובילה עולמית בבקרת תהליך ומדידה בייצור שבבים"}
+  "TER": {name: Teradyne, layer: equipment, status: active, exposure: driver, why: "מערכות בדיקה לשבבי AI ולזיכרון"}
+  "NVMI": {name: Nova Ltd, layer: equipment, status: active, exposure: driver, why: "מדידה ובקרה בייצור שבבים מתקדמים (ישראלית)"}
+  "CAMT": {name: Camtek, layer: equipment, status: active, exposure: medium, why: "בדיקה אופטית לאריזה מתקדמת ו-HBM (ישראלית)"}
+  "ONTO": {name: Onto Innovation, layer: equipment, status: active, exposure: driver, why: "בדיקה ומדידה לאריזה מתקדמת של שבבי AI"}
+  "ENTG": {name: Entegris, layer: equipment, status: active, exposure: driver, why: "חומרים ופתרונות טוהר לייצור שבבים מתקדמים"}
+  "8035.T": {name: Tokyo Electron, layer: equipment, status: signal, exposure: driver, why: "יצרנית ציוד שבבים יפנית גדולה"}
+  "6857.T": {name: Advantest, layer: equipment, status: signal, exposure: high, why: "מובילה במערכות בדיקה לשבבי AI"}
+  "6146.T": {name: Disco Corp, layer: equipment, status: signal, exposure: driver, why: "ציוד חיתוך וליטוש קריטי לייצור HBM"}
+  "BESI.AS": {name: BE Semiconductor, layer: equipment, status: signal, exposure: driver, why: "ציוד הדבקה היברידית לאריזה מתקדמת"}
+
+  # ---------------- תכנון שבבים ו-IP
+  "SNPS": {name: Synopsys, layer: design, status: active, exposure: critical, why: "אחת משתי ענקיות תוכנת התכנון (EDA) שכל שבב AI עובר דרכן"}
+  "CDNS": {name: Cadence Design, layer: design, status: active, exposure: critical, why: "השנייה בדואופול ה-EDA"}
+  "ARM": {name: Arm Holdings, layer: design, status: active, exposure: critical, why: "הארכיטקטורה של מעבדי השרתים שענקיות הענן בונות לעצמן"}
+
+  # ---------------- ייצור ואריזה מתקדמת
+  "TSM": {name: TSMC, layer: foundry, status: active, exposure: critical, why: "מייצרת כמעט את כל שבבי ה-AI המתקדמים, כולל אריזת CoWoS"}
+  "ASX": {name: ASE Technology, layer: foundry, status: active, exposure: driver, why: "החברה הגדולה בעולם לאריזה ובדיקה של שבבים"}
+  "AMKR": {name: Amkor, layer: foundry, status: active, exposure: driver, why: "אריזה מתקדמת של שבבים, כולל שבבי AI"}
+  "TSEM": {name: Tower Semiconductor, layer: foundry, status: active, exposure: medium, why: "סיליקון פוטוני למשדרים אופטיים בדאטה-סנטרים (ישראלית)"}
+  "INTC": {name: Intel, layer: foundry, status: active, exposure: medium, why: "מעבדים לשרתי AI ושירותי ייצור שבבים"}
+  "4062.T": {name: Ibiden, layer: foundry, status: signal, exposure: driver, why: "מצעים (substrates) שעליהם יושבים שבבי AI"}
+
+  # ---------------- זיכרון ואחסון
+  "MU": {name: Micron, layer: memory, status: active, exposure: high, why: "אחת משלוש יצרניות ה-HBM בעולם"}
+  "SNDK": {name: SanDisk, layer: memory, status: active, exposure: medium, why: "זיכרון NAND ו-SSD לאחסון בדאטה-סנטרים"}
+  "WDC": {name: Western Digital, layer: memory, status: active, exposure: high, why: "כוננים בנפח גבוה, רובם לענן ולדאטה-סנטרים"}
+  "STX": {name: Seagate, layer: memory, status: active, exposure: high, why: "כוננים בנפח גבוה לענן, שבהם נשמרים הנתונים של AI"}
+  "000660.KS": {name: SK Hynix, layer: memory, status: signal, exposure: high, why: "מובילת ה-HBM העולמית (קשה לקנות מישראל)"}
+  "005930.KS": {name: Samsung memory, layer: memory, status: signal, exposure: medium, why: "יצרנית זיכרון ו-HBM"}
+  "285A.T": {name: Kioxia, layer: memory, status: signal, exposure: medium, why: "זיכרון NAND לדאטה-סנטרים"}
+
+  # ---------------- שבבי AI
+  "NVDA": {name: Nvidia, layer: compute, status: active, exposure: high, why: "המעבדים הגרפיים ששולטים באימון והרצה של מודלים"}
+  "AMD": {name: AMD, layer: compute, status: active, exposure: medium, why: "המתחרה העיקרית לאנבידיה במאיצי AI, ומעבדי שרתים"}
+  "AVGO": {name: Broadcom, layer: compute, status: active, exposure: high, why: "שבבי AI מותאמים (ASIC) לענקיות הענן, ושבבי רשת"}
+  "MRVL": {name: Marvell, layer: compute, status: active, exposure: high, why: "שבבים מותאמים ושבבי תקשורת אופטית לדאטה-סנטרים"}
+
+  # ---------------- רשתות, אופטיקה וקישוריות
+  "ANET": {name: Arista Networks, layer: networking, status: active, exposure: high, why: "מתגי הרשת של אשכולות שרתי AI"}
+  "COHR": {name: Coherent Corp, layer: networking, status: active, exposure: medium, why: "משדרים אופטיים ורכיבי לייזר לדאטה-סנטרים"}
+  "LITE": {name: Lumentum, layer: networking, status: active, exposure: high, why: "לייזרים ומשדרים אופטיים לרשתות AI"}
+  "CRDO": {name: Credo Technology, layer: networking, status: active, exposure: high, why: "כבלים אקטיביים ושבבי קישוריות מהירה בין שרתי AI"}
+  "ALAB": {name: Astera Labs, layer: networking, status: active, exposure: high, why: "שבבי קישוריות (PCIe/CXL) בתוך שרתי AI"}
+  "FN": {name: Fabrinet, layer: networking, status: active, exposure: high, why: "מייצרת משדרים אופטיים עבור חברות השבבים והרשת"}
+  "CIEN": {name: Ciena, layer: networking, status: active, exposure: medium, why: "תקשורת אופטית בין דאטה-סנטרים"}
+  "APH": {name: Amphenol, layer: networking, status: active, exposure: medium, why: "מחברים וכבלים בתוך מתלי שרתי AI"}
+  "GLW": {name: Corning, layer: networking, status: active, exposure: driver, why: "סיבים אופטיים לדאטה-סנטרים"}
+  "AAOI": {name: Applied Optoelectronics, layer: networking, status: active, exposure: high, why: "משדרים אופטיים לענקיות הענן (חברה קטנה ותנודתית)"}
+
+  # ---------------- שרתים ומתלים
+  "SMCI": {name: Super Micro Computer, layer: servers, status: active, exposure: high, why: "שרתי AI ומתלים מקוררי נוזל"}
+  "DELL": {name: Dell AI servers, layer: servers, status: active, exposure: medium, why: "שרתי AI לענקיות ולארגונים"}
+  "CLS": {name: Celestica, layer: servers, status: active, exposure: high, why: "מייצרת שרתים ומתגים לענקיות הענן"}
+  "JBL": {name: Jabil, layer: servers, status: active, exposure: medium, why: "מייצרת תשתיות לדאטה-סנטרים"}
+  "HPE": {name: Hewlett Packard Enterprise, layer: servers, status: watch, exposure: driver, why: "שרתי AI ורשתות, אבל חלק קטן מההכנסות"}
+  "2317.TW": {name: Hon Hai Foxconn, layer: servers, status: signal, exposure: medium, why: "מרכיבת שרתי ה-AI הגדולה בעולם"}
+  "2382.TW": {name: Quanta Computer, layer: servers, status: signal, exposure: high, why: "מרכיבת שרתי AI לענקיות הענן"}
+  "6669.TW": {name: Wiwynn, layer: servers, status: signal, exposure: high, why: "שרתי ענן ו-AI"}
+
+  # ---------------- ציוד חשמל וקירור
+  "VRT": {name: Vertiv, layer: power_equipment, status: active, exposure: high, why: "מערכות חשמל וקירור לדאטה-סנטרים"}
+  "ETN": {name: Eaton, layer: power_equipment, status: active, exposure: driver, why: "ציוד חלוקת חשמל; הדאטה-סנטרים הם מנוע הצמיחה"}
+  "GEV": {name: GE Vernova, layer: power_equipment, status: active, exposure: driver, why: "טורבינות גז וציוד רשת, בביקוש גבוה מדאטה-סנטרים"}
+  "PWR": {name: Quanta Services, layer: power_equipment, status: active, exposure: driver, why: "בונה את רשת החשמל והחיבורים לדאטה-סנטרים"}
+  "NVT": {name: nVent, layer: power_equipment, status: active, exposure: medium, why: "קירור נוזלי ומארזים לשרתי AI"}
+  "MOD": {name: Modine, layer: power_equipment, status: active, exposure: medium, why: "מערכות קירור לדאטה-סנטרים"}
+  "BE": {name: Bloom Energy, layer: power_equipment, status: active, exposure: medium, why: "תאי דלק לייצור חשמל באתר הדאטה-סנטר"}
+  "MPWR": {name: Monolithic Power, layer: power_equipment, status: active, exposure: medium, why: "שבבי ניהול חשמל לשרתי AI"}
+  "POWL": {name: Powell Industries, layer: power_equipment, status: watch, exposure: driver, why: "ציוד מיתוג חשמלי, חשיפה גדלה לדאטה-סנטרים"}
+  "HUBB": {name: Hubbell, layer: power_equipment, status: watch, exposure: driver, why: "ציוד לרשת החשמל, חשיפה עקיפה"}
+  "SU.PA": {name: Schneider Electric, layer: power_equipment, status: signal, exposure: driver, why: "מובילה עולמית בחשמל וקירור לדאטה-סנטרים"}
+  "ENR.DE": {name: Siemens Energy, layer: power_equipment, status: signal, exposure: driver, why: "טורבינות וציוד לרשת החשמל"}
+
+  # ---------------- ייצור חשמל
+  "CEG": {name: Constellation Energy, layer: power_generation, status: active, exposure: driver, why: "חשמל גרעיני בחוזים ארוכים עם ענקיות הענן"}
+  "VST": {name: Vistra, layer: power_generation, status: active, exposure: driver, why: "ייצור חשמל עם חוזים לדאטה-סנטרים"}
+  "TLN": {name: Talen Energy, layer: power_generation, status: active, exposure: medium, why: "תחנה גרעינית שמספקת חשמל לדאטה-סנטר של אמזון"}
+  "NRG": {name: NRG Energy, layer: power_generation, status: watch, exposure: driver, why: "ייצור חשמל, חשיפה גדלה לדאטה-סנטרים"}
+  "OKLO": {name: Oklo, layer: power_generation, status: watch, exposure: driver, why: "כורים גרעיניים קטנים לדאטה-סנטרים, עוד בלי הכנסות משמעותיות"}
+  "SMR": {name: NuScale Power, layer: power_generation, status: watch, exposure: driver, why: "כורים גרעיניים קטנים, עוד בלי הכנסות משמעותיות"}
+  "CCJ": {name: Cameco, layer: power_generation, status: watch, exposure: driver, why: "אורניום לתחנות גרעיניות, חשיפה עקיפה"}
+
+  # ---------------- נדל"ן ופיתוח דאטה-סנטרים
+  "EQIX": {name: Equinix, layer: datacenter_reits, status: active, exposure: high, why: "רשת הדאטה-סנטרים הגדולה בעולם"}
+  "DLR": {name: Digital Realty, layer: datacenter_reits, status: active, exposure: high, why: "דאטה-סנטרים להשכרה לענקיות הענן"}
+  "APLD": {name: Applied Digital, layer: datacenter_reits, status: active, exposure: high, why: "בונה ומשכירה דאטה-סנטרים ייעודיים ל-AI"}
+  "IRM": {name: Iron Mountain, layer: datacenter_reits, status: watch, exposure: driver, why: "דאטה-סנטרים הם מנוע הצמיחה, אבל חלק קטן מההכנסות"}
+
+  # ---------------- ענקיות הענן
+  "MSFT": {name: Microsoft data center, layer: hyperscalers, status: active, exposure: driver, why: "Azure, ומהמשקיעות הגדולות בתשתיות AI"}
+  "AMZN": {name: AWS data center, layer: hyperscalers, status: active, exposure: driver, why: "AWS ושבבי Trainium"}
+  "GOOGL": {name: Google data center, layer: hyperscalers, status: active, exposure: driver, why: "Google Cloud, שבבי TPU ומודלי Gemini"}
+  "META": {name: Meta data center, layer: hyperscalers, status: active, exposure: driver, why: "מהמשקיעות הגדולות בדאטה-סנטרים למודלים שלה"}
+  "ORCL": {name: Oracle data center, layer: hyperscalers, status: active, exposure: driver, why: "ענן AI שגדל מהר, ממומן בחלקו בחוב"}
+
+  # ---------------- ענן AI עצמאי
+  "CRWV": {name: CoreWeave, layer: neoclouds, status: active, exposure: high, why: "ענן GPU ייעודי ל-AI"}
+  "NBIS": {name: Nebius, layer: neoclouds, status: active, exposure: high, why: "ענן GPU ייעודי ל-AI"}
+  "IREN": {name: IREN, layer: neoclouds, status: watch, exposure: medium, why: "עוברת מכריית ביטקוין לענן AI"}
+
+  # ---------------- תוכנה ופלטפורמות AI
+  "PLTR": {name: Palantir, layer: software, status: active, exposure: high, why: "פלטפורמת AI לארגונים ולממשלות"}
+  "NOW": {name: ServiceNow, layer: software, status: watch, exposure: driver, why: "סוכני AI לארגונים, עוד חלק קטן מההכנסות"}
+
+  # ---------------- במעקב בלבד: שאר מניות SMH, חשיפה נמוכה ל-AI
+  "TXN": {name: Texas Instruments, layer: analog_power, status: watch, exposure: low, why: "שבבים אנלוגיים לתעשייה ולרכב; במעקב כי היא ב-SMH"}
+  "ADI": {name: Analog Devices, layer: analog_power, status: watch, exposure: low, why: "שבבים אנלוגיים; במעקב כי היא ב-SMH"}
+  "NXPI": {name: NXP Semiconductors, layer: analog_power, status: watch, exposure: low, why: "שבבים לרכב ולתעשייה; במעקב כי היא ב-SMH"}
+  "MCHP": {name: Microchip Technology, layer: analog_power, status: watch, exposure: low, why: "מיקרו-בקרים; במעקב כי היא ב-SMH"}
+  "ON": {name: onsemi, layer: analog_power, status: watch, exposure: low, why: "שבבי הספק לרכב ולתעשייה; במעקב כי היא ב-SMH"}
+  "STM": {name: STMicroelectronics, layer: analog_power, status: watch, exposure: low, why: "שבבים לרכב ולתעשייה; במעקב כי היא ב-SMH"}
+  "QCOM": {name: Qualcomm, layer: edge_devices, status: watch, exposure: low, why: "שבבים לסמארטפונים ומחשבי AI; במעקב כי היא ב-SMH"}
+  "SWKS": {name: Skyworks, layer: edge_devices, status: watch, exposure: low, why: "שבבי תקשורת לסמארטפונים; במעקב כי היא ב-SMH"}
+  "OLED": {name: Universal Display, layer: edge_devices, status: watch, exposure: low, why: "חומרים למסכי OLED; במעקב כי היא ב-SMH"}
+
+# חברות שעוד לא במערכת: המכ"ם סופר כמה פעמים הן מופיעות בכותרות של צוואר בקבוק.
+# כשאחת מהן חוזרת הרבה, הדוח השבועי בודק אותה מול הכללים ומציע להוסיף.
+discovery:
+  - {name: EMCOR, ticker: EME, layer: power_equipment}
+  - {name: Comfort Systems, ticker: FIX, layer: power_equipment}
+  - {name: Sterling Infrastructure, ticker: STRL, layer: power_equipment}
+  - {name: Dycom, ticker: DY, layer: networking}
+  - {name: Argan, ticker: AGX, layer: power_generation}
+  - {name: Primoris, ticker: PRIM, layer: power_equipment}
+  - {name: MYR Group, ticker: MYRG, layer: power_equipment}
+  - {name: Vicor, ticker: VICR, layer: power_equipment}
+  - {name: Navitas, ticker: NVTS, layer: power_equipment}
+  - {name: Trane, ticker: TT, layer: power_equipment}
+  - {name: Johnson Controls, ticker: JCI, layer: power_equipment}
+  - {name: Cummins, ticker: CMI, layer: power_equipment}
+  - {name: Caterpillar, ticker: CAT, layer: power_equipment}
+  - {name: Generac, ticker: GNRC, layer: power_equipment}
+  - {name: Centrus Energy, ticker: LEU, layer: power_generation}
+  - {name: BWX Technologies, ticker: BWXT, layer: power_generation}
+  - {name: Fermi America, ticker: FRMI, layer: power_generation}
+  - {name: Rambus, ticker: RMBS, layer: memory}
+  - {name: Pure Storage, ticker: PSTG, layer: memory}
+  - {name: NetApp, ticker: NTAP, layer: memory}
+  - {name: TE Connectivity, ticker: TEL, layer: networking}
+  - {name: Nokia, ticker: NOK, layer: networking}
+  - {name: Cisco, ticker: CSCO, layer: networking}
+  - {name: Flex Ltd, ticker: FLEX, layer: servers}
+  - {name: Sanmina, ticker: SANM, layer: servers}
+  - {name: Wistron, ticker: 3231.TW, layer: servers}
+  - {name: Accton, ticker: 2345.TW, layer: networking}
+  - {name: InnoLight, ticker: 300308.SZ, layer: networking}
+  - {name: Eoptolink, ticker: 300502.SZ, layer: networking}
+  - {name: Unimicron, ticker: 3037.TW, layer: foundry}
+  - {name: Hanmi Semiconductor, ticker: 042700.KS, layer: equipment}
+  - {name: ASM International, ticker: ASM.AS, layer: equipment}
+  - {name: Lasertec, ticker: 6920.T, layer: equipment}
+  - {name: Cipher Mining, ticker: CIFR, layer: neoclouds}
+  - {name: TeraWulf, ticker: WULF, layer: neoclouds}
+  - {name: Core Scientific, ticker: CORZ, layer: neoclouds}
+  - {name: Hut 8, ticker: HUT, layer: neoclouds}
+  - {name: Galaxy Digital, ticker: GLXY, layer: neoclouds}
+  - {name: Cerebras, ticker: null, layer: compute}
+  - {name: Groq, ticker: null, layer: compute}
+  - {name: Lambda Labs, ticker: null, layer: neoclouds}
+  - {name: Crusoe, ticker: null, layer: neoclouds}
+  - {name: Ayar Labs, ticker: null, layer: networking}
+  - {name: Lightmatter, ticker: null, layer: networking}
