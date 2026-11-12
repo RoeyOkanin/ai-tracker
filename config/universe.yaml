@@ -1,0 +1,48 @@
+# השכבות של שרשרת האספקה של AI.
+# כל שכבה היא סל מניות, והציון שלה מחושב מהסל כולו ולא ממניה אחת.
+# signal_only: מניות שמשמשות רק לאיתות (קשה לקנות אותן מישראל), המערכת לא תבחר אותן לתיק.
+
+calendar: SPY                 # לוח ימי המסחר של וול סטריט
+benchmarks: [SMH, QQQ, SPY]   # SMH = תעודת סל של שבבים, מדד ההשוואה הראשי
+signal_only: ["000660.KS", "005930.KS"]   # SK Hynix, Samsung (בורסת קוריאה)
+
+layers:
+  equipment:
+    name: "ציוד לייצור שבבים"
+    tickers: [ASML, AMAT, LRCX, KLAC, NVMI, CAMT]
+  design:
+    name: "תכנון שבבים ו-IP"
+    tickers: [SNPS, CDNS, ARM]
+  foundry:
+    name: "ייצור ואריזה מתקדמת"
+    tickers: [TSM, ASX, AMKR, TSEM]
+  memory:
+    name: "זיכרון"
+    tickers: [MU, SNDK, "000660.KS", "005930.KS"]
+  compute:
+    name: "שבבי AI"
+    tickers: [NVDA, AMD, AVGO, MRVL]
+  networking:
+    name: "רשתות ואופטיקה"
+    tickers: [ANET, COHR, LITE, CRDO]
+  servers:
+    name: "שרתים"
+    tickers: [SMCI, DELL]
+  power_equipment:
+    name: "ציוד חשמל וקירור"
+    tickers: [VRT, ETN, GEV, PWR]
+  power_generation:
+    name: "ייצור חשמל"
+    tickers: [CEG, VST, TLN]
+  datacenter_reits:
+    name: 'נדל"ן דאטה-סנטרים'
+    tickers: [EQIX, DLR]
+  hyperscalers:
+    name: "ענקיות הענן"
+    tickers: [MSFT, AMZN, GOOGL, META, ORCL]
+  neoclouds:
+    name: "ענן AI עצמאי"
+    tickers: [CRWV, NBIS]
+  software:
+    name: "תוכנה ואפליקציות AI"
+    tickers: [PLTR, NOW]
