@@ -124,7 +124,7 @@
   {
    "key": "foundry",
    "name": "ייצור ואריזה מתקדמת",
-   "items7": 66,
+   "items7": 68,
    "tight7": 5,
    "ease7": 0,
    "friction7": 0,
@@ -262,7 +262,7 @@
   {
    "key": "compute",
    "name": "שבבי AI",
-   "items7": 126,
+   "items7": 128,
    "tight7": 14,
    "ease7": 1,
    "friction7": 2,
@@ -442,7 +442,7 @@
   {
    "key": "power_equipment",
    "name": "ציוד חשמל וקירור",
-   "items7": 158,
+   "items7": 159,
    "tight7": 15,
    "ease7": 1,
    "friction7": 2,
@@ -511,7 +511,7 @@
   {
    "key": "power_generation",
    "name": "ייצור חשמל",
-   "items7": 118,
+   "items7": 119,
    "tight7": 4,
    "ease7": 0,
    "friction7": 2,
@@ -649,7 +649,7 @@
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "items7": 50,
+   "items7": 51,
    "tight7": 2,
    "ease7": 0,
    "friction7": 2,
@@ -718,7 +718,7 @@
   {
    "key": "neoclouds",
    "name": "ענן AI עצמאי",
-   "items7": 97,
+   "items7": 98,
    "tight7": 6,
    "ease7": 1,
    "friction7": 5,
@@ -1295,7 +1295,7 @@
    [
     2,
     0,
-    49
+    51
    ]
   ],
   "memory": [
@@ -1399,7 +1399,7 @@
    [
     11,
     1,
-    122
+    124
    ]
   ],
   "networking": [
@@ -1555,7 +1555,7 @@
    [
     11,
     1,
-    150
+    151
    ]
   ],
   "power_generation": [
@@ -1607,7 +1607,7 @@
    [
     4,
     0,
-    111
+    112
    ]
   ],
   "datacenter_reits": [
@@ -1711,7 +1711,7 @@
    [
     2,
     0,
-    48
+    49
    ]
   ],
   "neoclouds": [
@@ -1763,7 +1763,7 @@
    [
     6,
     1,
-    93
+    94
    ]
   ],
   "software": [
@@ -2135,7 +2135,7 @@
    "friction": 0
   },
   "NVDA": {
-   "items": 30,
+   "items": 31,
    "tight": 4,
    "ease": 0,
    "friction": 0
@@ -2219,7 +2219,7 @@
    "friction": 0
   },
   "TLN": {
-   "items": 13,
+   "items": 14,
    "tight": 2,
    "ease": 0,
    "friction": 0
@@ -2255,10 +2255,10 @@
    "friction": 0
   }
  },
- "generated_utc": "2026-11-12T19:57:29+00:00",
+ "generated_utc": "2026-11-12T20:02:02+00:00",
  "sources_ok": {
-  "google": 86,
-  "yahoo": 56
+  "google": 85,
+  "yahoo": 55
  },
  "sources_failed": {
   "google": 0,
