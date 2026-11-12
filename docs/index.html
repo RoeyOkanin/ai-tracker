@@ -12,6 +12,7 @@
     --series: #2a78d6; --up: #006300; --down: #b42d2d;
     --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
     --heating: #2a78d6; --cold: #898781; --neutral: #c3c2b7;
+    --s2: #eb6834; --s3: #1baf7a; --mid: #f0efec; --hot: #e34948; --coolc: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -19,6 +20,7 @@
       --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
       --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
       --series: #3987e5; --up: #0ca30c; --down: #e66767; --heating: #3987e5; --neutral: #52514e;
+      --s2: #d95926; --s3: #199e70; --mid: #383835; --hot: #e66767; --coolc: #3987e5;
     }
   }
   * { box-sizing: border-box; }
@@ -64,6 +66,21 @@
   details { border-top: 1px solid var(--grid); padding: 8px 0; }
   details:first-of-type { border-top: none; }
   summary { cursor: pointer; font-weight: 500; }
+  .heat { display: grid; gap: 2px; font-size: 12px; align-items: center; }
+  .heat .cell { height: 22px; border-radius: 3px; outline-offset: 1px; }
+  .heat .cell:focus { outline: 2px solid var(--ink); }
+  .heat .lab { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 8px; }
+  .heat .wk { color: var(--muted); font-size: 11px; text-align: center; }
+  .legend-bar { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+  .legend-bar .grad { width: 140px; height: 10px; border-radius: 5px; }
+  .heads { margin: 8px 0 0; padding: 0 18px 0 0; }
+  .heads li { margin: 5px 0; font-size: 14px; }
+  .heads .meta { color: var(--muted); font-size: 12px; }
+  select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--axis); background: var(--surface); color: var(--ink); }
+  .bigchart svg { display: block; width: 100%; height: 260px; touch-action: none; }
+  .keys { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); margin: 8px 0; }
+  .key { display: inline-flex; align-items: center; gap: 6px; }
+  .key i { width: 16px; height: 2px; display: inline-block; border-radius: 1px; }
   footer { color: var(--muted); font-size: 12px; margin-top: 18px; line-height: 1.7; }
   footer a, .card a { color: var(--series); }
   .empty { color: var(--muted); }
@@ -83,6 +100,28 @@
     <h2>צוואר הבקבוק עכשיו</h2>
     <p class="sub">השכבות שהכסף זורם אליהן, ובאיזה שלב הן במחזור החיים. <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/playbook.md">איך קוראים את השלבים</a></p>
     <div class="now" id="now"></div>
+  </section>
+
+  <section class="card">
+    <h2>מכ"ם צוואר בקבוק: מה החדשות אומרות</h2>
+    <p class="sub">כל יום נספרות הכותרות על כל חברה ועל כל נושא: סימני מחסור (sold out, זמני אספקה, העלאות מחירים) מול סימני הקלה (עודף היצע, ירידת מחירים, האטה). <b>מועמד מוקדם</b> = החדשות מתחממות לפני המחיר.</p>
+    <div class="now" id="radar-now"></div>
+    <div class="scroll" style="margin-top:10px"><table id="radar-table"></table></div>
+    <h2 style="margin-top:16px">מפת חום: לחץ החדשות לפי שבוע</h2>
+    <p class="sub">אדום = יותר כותרות מחסור, כחול = יותר כותרות הקלה. נגיעה בתא מראה את המספרים.</p>
+    <div class="scroll"><div class="heat" id="heat"></div></div>
+    <div class="legend-bar"><span>הקלה</span><span class="grad" id="heat-grad"></span><span>מחסור</span></div>
+    <h2 style="margin-top:16px">הכותרות החשובות של השבוע</h2>
+    <ul class="heads" id="heads"></ul>
+    <p class="sub" id="radar-meta" style="margin-top:8px"></p>
+  </section>
+
+  <section class="card">
+    <h2>גרף מניה</h2>
+    <p class="sub">מחיר בשנה האחרונה, עם ממוצע 50 ו-200 ימים. מעל ממוצע 200 = מגמה עולה.</p>
+    <select id="pick" aria-label="בחירת מניה"></select>
+    <div class="keys" id="chart-keys"></div>
+    <div class="bigchart" id="bigchart"></div>
   </section>
 
   <section class="card" id="weekly-card" hidden>
@@ -166,9 +205,13 @@ async function load() {
   const bust = "?t=" + Date.now();
   const latest = await (await fetch("data/latest.json" + bust)).json();
   const hist = parseCSV(await (await fetch("data/layers_history.csv" + bust)).text());
-  let weekly = null;
+  let weekly = null, radar = null, prices = null;
   try { const r = await fetch("data/weekly.json" + bust); if (r.ok) weekly = await r.json(); } catch (e) {}
+  try { const r = await fetch("data/radar.json" + bust); if (r.ok) radar = await r.json(); } catch (e) {}
+  try { const r = await fetch("data/prices_1y.csv" + bust); if (r.ok) prices = parseCSV(await r.text()); } catch (e) {}
   render(latest, hist, weekly);
+  renderRadar(latest, radar);
+  if (prices) renderStockPicker(latest, prices);
 }
 
 function render(j, hist, weekly) {
@@ -253,7 +296,7 @@ function render(j, hist, weekly) {
   for (const l of j.layers) {
     const mv = (l.rank_1m_ago ?? l.rank) - l.rank;
     lt.append(el("tr", {},
-      el("td", { class: "num" }, String(l.rank ?? "–")), el("td", {}, el("b", {}, l.name)), el("td", {}, stageChip(l.stage)),
+      el("td", { class: "num" }, String(l.rank ?? "–")), el("td", {}, el("b", {}, l.name), l.monitor_only ? el("span", { class: "empty" }, " (מעקב)") : ""), el("td", {}, stageChip(l.stage)),
       el("td", { class: "num " + (mv > 0 ? "up" : mv < 0 ? "down" : "") }, mv > 0 ? "▲" + mv : mv < 0 ? "▼" + (-mv) : "–"),
       el("td", {}, pct(l.r1m)), el("td", {}, pct(l.r3m)), el("td", {}, pct(l.r6m)), el("td", {}, pct(l.r12m)),
       el("td", {}, pct(l.dist_ma200))));
@@ -278,16 +321,18 @@ function render(j, hist, weekly) {
   // stocks per layer
   const st = document.getElementById("stocks");
   for (const l of j.layers) {
-    const det = el("details", {}, el("summary", {}, `${l.name} `, stageChip(l.stage)));
+    const det = el("details", {}, el("summary", {}, `${l.name} `, stageChip(l.stage), l.monitor_only ? " · מעקב בלבד" : ""));
     const tb = el("table");
-    tb.append(el("tr", {}, ...["מניה", "מחיר", "שבוע", "חודש", "3 ח׳", "מממוצע 200", "מהשיא"].map(h => el("th", {}, h))));
+    tb.append(el("tr", {}, ...["מניה", "מחיר", "שבוע", "חודש", "3 ח׳", "מממוצע 200", "מהשיא", "משקל ב-SMH", "חדשות 7 ימים"].map(h => el("th", {}, h))));
     for (const s of j.stocks.filter(s => s.layer === l.key)) {
       if (s.missing) { tb.append(el("tr", {}, el("td", {}, s.ticker), el("td", { class: "empty" }, "אין נתונים"))); continue; }
       tb.append(el("tr", {},
         el("td", {}, el("b", {}, s.ticker), s.tradable ? "" : " (איתות בלבד)", s.stretched ? " · מתוחה" : ""),
         el("td", { class: "num" }, s.price?.toLocaleString("en-US") ?? "–"),
         el("td", {}, pct(s.r1w)), el("td", {}, pct(s.r1m)), el("td", {}, pct(s.r3m)),
-        el("td", {}, pct(s.dist_ma200)), el("td", {}, pct(s.from_52w_high))));
+        el("td", {}, pct(s.dist_ma200)), el("td", {}, pct(s.from_52w_high)),
+        el("td", { class: "num" }, s.smh_weight ? s.smh_weight.toFixed(1) + "%" : "–"),
+        el("td", { class: "num" }, s.news7 ? `▲${s.news7.tight} ▼${s.news7.ease}` : "–")));
     }
     det.append(el("div", { class: "scroll" }, tb));
     st.append(det);
@@ -346,6 +391,136 @@ function miniChart(layer, pts) {
   box.append(svg);
   box.append(el("div", { class: "h" }, stageChip(layer.stage), el("span", { class: "num", style: "color:var(--muted)" }, "#" + (layer.rank ?? "–"))));
   return box;
+}
+
+const LABEL = {
+  confirmed: { text: "מועמד מאושר", color: "var(--good)", hint: "גם החדשות וגם המחיר מצביעים על מחסור" },
+  early: { text: "מועמד מוקדם", color: "var(--heating)", hint: "החדשות מתחממות לפני שהמחיר זז" },
+  easing: { text: "סימני הקלה", color: "var(--serious)", hint: "יותר כותרות הקלה ממחסור: לשקול לשחרר" },
+};
+function mix(a, b, t) {
+  const p = c => { const d = document.createElement("div"); d.style.color = c; document.body.append(d); const v = getComputedStyle(d).color.match(/\d+/g).map(Number); d.remove(); return v; };
+  const A = p(a), B = p(b);
+  return `rgb(${A.map((x, i) => Math.round(x + (B[i] - x) * t)).join(",")})`;
+}
+function renderRadar(j, radar) {
+  const box = document.getElementById("radar-now"), meta = document.getElementById("radar-meta");
+  if (!radar) { box.append(el("div", { class: "empty" }, "המכ\"ם יתחיל לעבוד אחרי הריצה הלילית הראשונה.")); return; }
+  const byKey = Object.fromEntries(j.layers.map(l => [l.key, l]));
+  const labeled = j.layers.filter(l => l.news_label);
+  if (!labeled.length) box.append(el("div", { class: "empty" }, "אין כרגע שכבה עם סימן חדשותי חזק. זה בדרך כלל אומר שהשוק לא מחכה לצוואר בקבוק חדש."));
+  for (const l of labeled) {
+    const L = LABEL[l.news_label];
+    box.append(el("div", { class: "box" }, el("div", { class: "t" }, l.name), chip(L.color, L.text),
+      el("div", { class: "d" }, `${L.hint} · מחסור ${l.news.tight7}, הקלה ${l.news.ease7} ב-7 ימים`)));
+  }
+  // table
+  const t = document.getElementById("radar-table");
+  t.append(el("tr", {}, ...["שכבה", "שלב מחיר", "מחסור", "הקלה", "נטו", "מול שבוע קודם", "סימן"].map(h => el("th", {}, h))));
+  const rows = [...radar.layers].sort((a, b) => b.net7 - a.net7);
+  for (const r of rows) {
+    const l = byKey[r.key] || {};
+    const d = r.net7 - r.net_prev7;
+    t.append(el("tr", {}, el("td", {}, el("b", {}, r.name)), el("td", {}, l.stage ? stageChip(l.stage) : "–"),
+      el("td", { class: "num" }, String(r.tight7)), el("td", { class: "num" }, String(r.ease7)),
+      el("td", { class: "num " + (r.net7 > 0 ? "up" : r.net7 < 0 ? "down" : "") }, (r.net7 > 0 ? "+" : "") + r.net7),
+      el("td", { class: "num " + (d > 0 ? "up" : d < 0 ? "down" : "") }, d > 0 ? "▲" + d : d < 0 ? "▼" + (-d) : "–"),
+      el("td", {}, l.news_label ? chip(LABEL[l.news_label].color, LABEL[l.news_label].text) : "")));
+  }
+  // heat map
+  const heat = document.getElementById("heat"), tip = document.getElementById("tip");
+  const weeks = radar.weeks, maxAbs = Math.max(1, ...Object.values(radar.heat).flat().map(Math.abs));
+  heat.style.gridTemplateColumns = `minmax(110px, 160px) repeat(${weeks.length}, minmax(26px, 1fr))`;
+  heat.append(el("div"), ...weeks.map(w => el("div", { class: "wk" }, w.slice(8, 10) + "." + w.slice(5, 7))));
+  const midC = "var(--mid)";
+  for (const r of rows) {
+    heat.append(el("div", { class: "lab" }, r.name));
+    radar.heat[r.key].forEach((v, i) => {
+      const [tt, ee, nn] = radar.heat_counts[r.key][i];
+      const c = el("div", { class: "cell", tabindex: "0", style: `background:${v === 0 ? mix(midC, midC, 0) : mix(midC, v > 0 ? "var(--hot)" : "var(--coolc)", Math.min(1, Math.abs(v) / maxAbs) * 0.9 + 0.1)}` });
+      const show = ev => {
+        tip.replaceChildren(el("b", { class: "num" }, (v > 0 ? "+" : "") + v), el("br"), `${r.name} · שבוע ${dateHe(weeks[i])}`, el("br"), `מחסור ${tt} · הקלה ${ee} · ${nn} כותרות`);
+        const b = c.getBoundingClientRect(); tip.style.display = "block";
+        tip.style.left = Math.min(window.innerWidth - 190, (ev.clientX ?? b.left) + 12) + "px"; tip.style.top = ((ev.clientY ?? b.bottom) + 14) + "px";
+      };
+      c.addEventListener("pointermove", show); c.addEventListener("focus", show);
+      c.addEventListener("pointerleave", () => tip.style.display = "none"); c.addEventListener("blur", () => tip.style.display = "none");
+      heat.append(c);
+    });
+  }
+  document.getElementById("heat-grad").style.background = `linear-gradient(to left, ${mix(midC, "var(--coolc)", 1)}, ${mix(midC, midC, 0)}, ${mix(midC, "var(--hot)", 1)})`;
+  // headlines: labeled layers first, then the strongest
+  const ul = document.getElementById("heads");
+  const order = [...labeled.map(l => l.key), ...rows.map(r => r.key)];
+  const seen = new Set(); let n = 0;
+  for (const k of order) {
+    const r = radar.layers.find(x => x.key === k);
+    for (const h of (r?.headlines || []).slice(0, 2)) {
+      if (seen.has(h.title) || n >= 10) continue; seen.add(h.title); n++;
+      const kind = h.tight ? ["מחסור", "var(--hot)"] : h.ease ? ["הקלה", "var(--coolc)"] : ["חיכוך", "var(--muted)"];
+      const a = el("a", { href: h.url, target: "_blank", rel: "noopener" }, h.title);
+      a.setAttribute("dir", "ltr");
+      ul.append(el("li", {}, chip(kind[1], kind[0]), " ", a, el("div", { class: "meta" }, `${r.name} · ${h.source || ""} · ${dateHe((h.published || "").slice(0, 10))}`)));
+    }
+  }
+  if (!n) ul.append(el("li", { class: "empty" }, "עוד אין כותרות עם סימנים."));
+  const ok = radar.sources_ok || {}, bad = radar.sources_failed || {};
+  meta.textContent = `נאסף ב-${new Date(radar.generated_utc).toLocaleString("he-IL")} · Google News: ${ok.google ?? 0} חיפושים הצליחו, ${bad.google ?? 0} נכשלו · Yahoo: ${ok.yahoo ?? 0}/${(ok.yahoo ?? 0) + (bad.yahoo ?? 0)}. הספירה מבוססת מילים, לא הבנה מלאה. את השיפוט עושה הדוח השבועי.`;
+}
+
+function renderStockPicker(j, prices) {
+  const sel = document.getElementById("pick");
+  for (const l of j.layers) {
+    const g = el("optgroup", { label: l.name });
+    for (const s of j.stocks.filter(s => s.layer === l.key && !s.missing)) g.append(el("option", { value: s.ticker }, s.ticker));
+    sel.append(g);
+  }
+  const lead = j.portfolio?.positions?.[0]?.ticker || Object.keys(j.portfolio?.planned_targets || {})[0] || "NVDA";
+  sel.value = lead;
+  const draw = () => stockChart(sel.value, prices);
+  sel.addEventListener("change", draw); draw();
+  let t; window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(draw, 200); });
+}
+
+function stockChart(tk, prices) {
+  const box = document.getElementById("bigchart"), keys = document.getElementById("chart-keys"), NS = "http://www.w3.org/2000/svg";
+  box.replaceChildren(); keys.replaceChildren();
+  const all = prices.map(r => ({ d: r.date, v: r[tk] })).filter(p => p.v != null && !isNaN(p.v));
+  if (all.length < 30) { box.append(el("div", { class: "empty" }, "אין מספיק נתונים למניה הזו עדיין.")); return; }
+  const ma = (n, i) => i + 1 >= n ? all.slice(i + 1 - n, i + 1).reduce((a, p) => a + p.v, 0) / n : null;
+  const pts = all.map((p, i) => ({ ...p, m50: ma(50, i), m200: ma(200, i) })).slice(-252);
+  const series = [["v", "מחיר", "var(--series)"], ["m50", "ממוצע 50", "var(--s2)"], ["m200", "ממוצע 200", "var(--s3)"]];
+  for (const [, name, col] of series) keys.append(el("span", { class: "key" }, el("i", { style: `background:${col}` }), name));
+  const vals = pts.flatMap(p => [p.v, p.m50, p.m200]).filter(v => v != null);
+  const lo = Math.min(...vals), hi = Math.max(...vals), W = Math.max(320, box.clientWidth || 700), H = 260, L = 8, R = 52, T = 10, B = 22;
+  const x = i => L + (W - L - R) * i / (pts.length - 1), y = v => T + (H - T - B) * (1 - (v - lo) / (hi - lo || 1));
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("direction", "ltr"); svg.style.direction = "ltr";
+  svg.setAttribute("role", "img"); svg.setAttribute("aria-label", `${tk}: מחיר בשנה האחרונה עם ממוצע 50 ו-200`);
+  const add = (tag, attrs) => { const n = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v); svg.append(n); return n; };
+  for (const f of [0, 0.5, 1]) {
+    const v = lo + (hi - lo) * f;
+    add("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: "var(--grid)", "stroke-width": 1, "vector-effect": "non-scaling-stroke" });
+    const tx = add("text", { x: W - R + 6, y: y(v) + 4, fill: "var(--muted)", "font-size": 11 }); tx.textContent = v.toFixed(v < 100 ? 1 : 0);
+  }
+  for (const [k, , col] of series) {
+    const seg = pts.map((p, i) => p[k] == null ? null : `${x(i).toFixed(1)},${y(p[k]).toFixed(1)}`).filter(Boolean);
+    if (seg.length > 1) add("polyline", { points: seg.join(" "), fill: "none", stroke: col, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", "vector-effect": "non-scaling-stroke" });
+  }
+  const d0 = add("text", { x: L, y: H - 6, fill: "var(--muted)", "font-size": 11 }); d0.textContent = dateHe(pts[0].d);
+  const d1 = add("text", { x: W - R, y: H - 6, fill: "var(--muted)", "font-size": 11, "text-anchor": "end" }); d1.textContent = dateHe(pts.at(-1).d);
+  const hair = add("line", { y1: T, y2: H - B, stroke: "var(--muted)", "stroke-width": 1, "vector-effect": "non-scaling-stroke", visibility: "hidden" });
+  const tip = document.getElementById("tip");
+  svg.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect(), i = Math.round(Math.min(1, Math.max(0, (ev.clientX - r.left - L * r.width / W) / (r.width * (W - L - R) / W))) * (pts.length - 1));
+    const p = pts[Math.min(i, pts.length - 1)];
+    hair.setAttribute("x1", x(i)); hair.setAttribute("x2", x(i)); hair.setAttribute("visibility", "visible");
+    tip.replaceChildren(el("b", { class: "num" }, p.v.toFixed(2)), ` ${tk} · ${dateHe(p.d)}`, el("br"),
+      `ממוצע 50: ${p.m50 ? p.m50.toFixed(2) : "–"} · ממוצע 200: ${p.m200 ? p.m200.toFixed(2) : "–"}`);
+    tip.style.display = "block"; tip.style.left = Math.min(window.innerWidth - 230, ev.clientX + 12) + "px"; tip.style.top = (ev.clientY + 14) + "px";
+  });
+  svg.addEventListener("pointerleave", () => { hair.setAttribute("visibility", "hidden"); tip.style.display = "none"; });
+  box.append(svg);
 }
 
 load().catch(e => { document.getElementById("asof").textContent = "שגיאה בטעינת הנתונים: " + e.message; });
