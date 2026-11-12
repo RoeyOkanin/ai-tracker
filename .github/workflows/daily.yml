@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: daily-update
@@ -34,6 +35,8 @@ jobs:
         run: python scripts/fetch_prices.py
 
       - name: Score layers, run paper portfolio
+        env:
+          NOTIFY_PATH: /tmp/notify.md
         run: python scripts/compute.py
 
       - name: Save results to the repo
@@ -47,4 +50,12 @@ jobs:
             git commit -m "data: $(date -u +%F)"
             git pull --rebase origin main
             git push
+          fi
+
+      - name: Notify (GitHub issue = email + app notification)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s /tmp/notify.md ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "AI Tracker · $(date -u +%d.%m.%Y)" --body-file /tmp/notify.md
           fi

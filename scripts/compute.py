@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import math
+import os
 from datetime import datetime, timezone
 
 import pandas as pd
@@ -126,7 +127,19 @@ def main() -> None:
                 "above_ma200": bool(p > ma200) if pd.notna(ma200) else None,
                 "vol": num(ind["vol"].at[d, t]), "from_52w_high": num(p / hi - 1) if pd.notna(hi) else None,
                 "score_in_layer": num(sc.get(t), 3),
+                "stretched": bool(pd.notna(ind["r1w"].at[d, t]) and pd.notna(ma50)
+                                  and ind["r1w"].at[d, t] >= rules["profit_take"]["week_gain"]
+                                  and p >= ma50 * (1 + rules["profit_take"]["above_ma50"])),
             })
+
+    # ---- how concentrated is the bottleneck? (top-3 layers vs the median layer, 6 months)
+    r6 = lind["r6m"][lidx.columns]
+    spread = (r6.apply(lambda row: row.nlargest(3).mean() - row.median() if row.notna().sum() >= 6 else float("nan"), axis=1)
+              .dropna())
+    concentration = {
+        "spread_6m": num(spread.iloc[-1]) if len(spread) else None,
+        "percentile": num((spread <= spread.iloc[-1]).mean()) if len(spread) else None,
+    }
 
     # ---- regime + "if the month ended today"
     reg, reg_1w = regime_at(px, ind, d, uni, rules), regime_at(px, ind, ago(5), uni, rules)
@@ -198,6 +211,31 @@ def main() -> None:
         for o in portfolio["orders_next_close"]:
             if o["action"] in ("sell_all", "sell_third"):
                 alerts.append(f"פקודה לסגירה הבאה: {o['ticker']}, {o['reason']}")
+        held = {p["ticker"] for p in portfolio["positions"]}
+        for s in stocks_out:
+            if s.get("stretched") and s["ticker"] in held:
+                alerts.append(f"{s['ticker']} מתוחה (קפיצה חדה בשבוע): לא מוכרים, אבל גם לא מוסיפים עכשיו")
+
+    # ---- notification (the workflow turns this into a GitHub issue = email + app push)
+    notify: list[str] = []
+    if portfolio["status"] == "live" and portfolio["orders_next_close"]:
+        notify.append(f"### פקודות לביצוע בסגירה הבאה (נתונים לסגירה של {iso(d)})")
+        for o in portfolio["orders_next_close"]:
+            act = {"sell_all": "מכירה מלאה", "sell_third": "מכירת שליש"}.get(o["action"], f"משקל יעד {round((o.get('weight') or 0) * 100, 1)}%")
+            notify.append(f"- **{o['ticker']}**: {act} ({o['reason']})")
+    if portfolio["status"] == "not_started" and d + BDay(1) >= live_start:
+        notify.append(f"### תוכנית פתיחה לתיק, ביצוע בסגירה של {iso(live_start)}")
+        notify.append(f"מצב השוק: {REGIME_HE[reg['status']]}, להשקיע {round(reg['exposure'] * 100)}% מהסכום שהקצית")
+        for t, w in preview["targets"].items():
+            notify.append(f"- **{t}** ({names.get(preview['layer_of'][t], '')}): {round(w * 100, 1)}%")
+    reg_prev = regime_at(px, ind, ago(1), uni, rules)
+    if reg_prev["status"] != reg["status"]:
+        notify.append(f"### מצב השוק השתנה: {REGIME_HE[reg_prev['status']]} ← {REGIME_HE[reg['status']]}")
+        notify.append(f"חשיפה לפי החוקים: {round(reg['exposure'] * 100)}% (ייושם בהחלטה החודשית הבאה)")
+    if notify and os.environ.get("NOTIFY_PATH"):
+        notify.append("\nדשבורד: https://roeyokanin.github.io/ai-tracker/")
+        with open(os.environ["NOTIFY_PATH"], "w", encoding="utf-8") as f:
+            f.write("\n".join(notify) + "\n")
 
     decision_day = BMonthEnd().rollforward(d)
     latest = {
@@ -205,6 +243,7 @@ def main() -> None:
         "generated_utc": now,
         "regime": {**{k: (num(v) if isinstance(v, float) else v) for k, v in reg.items()},
                    "label": REGIME_HE[reg["status"]]},
+        "bottleneck_concentration": concentration,
         "next_decision_close": iso(decision_day),
         "next_execution": iso(decision_day + BDay(1)),
         "layers": layers_out,
@@ -222,11 +261,11 @@ def main() -> None:
     # ---- chart data: last 2 years of layer indices (100 = start of window) and daily ranks
     win = lidx.loc[ago(504):].copy()
     base = win.apply(lambda s: s.dropna().iloc[0] if s.notna().any() else float("nan"))
-    hist = (win / base * 100).rename(columns=names)
+    hist = win / base * 100
     smh = px["SMH"].loc[win.index]
     hist["SMH"] = smh / smh.dropna().iloc[0] * 100
     hist.round(2).to_csv(DOCS_DATA / "layers_history.csv", index_label="date")
-    lrank.loc[ago(252):].rename(columns=names).to_csv(DOCS_DATA / "layer_ranks.csv", index_label="date", float_format="%.0f")
+    lrank.loc[ago(252):].to_csv(DOCS_DATA / "layer_ranks.csv", index_label="date", float_format="%.0f")
 
     print(f"{iso(d)} | {REGIME_HE[reg['status']]} | top: {[x['name'] for x in layers_out[:3]]} | alerts: {len(alerts)}")
 

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Tracker · צווארי בקבוק בשרשרת ה-AI</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+    --series: #2a78d6; --up: #006300; --down: #b42d2d;
+    --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+    --heating: #2a78d6; --cold: #898781; --neutral: #c3c2b7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+      --series: #3987e5; --up: #0ca30c; --down: #e66767; --heating: #3987e5; --neutral: #52514e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 16px 14px 48px; }
+  header h1 { font-size: 20px; margin: 0 0 2px; }
+  header p { margin: 0; color: var(--ink-2); font-size: 13px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+          padding: 14px 16px; margin-top: 14px; }
+  .card h2 { font-size: 16px; margin: 0 0 10px; }
+  .card .sub { color: var(--ink-2); font-size: 13px; margin: -6px 0 10px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+  .tile .label { color: var(--ink-2); font-size: 13px; }
+  .tile .value { font-size: 22px; font-weight: 600; margin-top: 2px; }
+  .tile .note { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .num { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+  .up { color: var(--up); } .down { color: var(--down); }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th { text-align: right; font-weight: 500; color: var(--ink-2); font-size: 12px;
+       border-bottom: 1px solid var(--axis); padding: 6px 8px; white-space: nowrap; }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  .now { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .now .box { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .now .box .t { font-weight: 600; font-size: 16px; }
+  .now .box .d { color: var(--ink-2); font-size: 13px; }
+  ul.alerts { margin: 0; padding: 0 18px 0 0; }
+  ul.alerts li { margin: 4px 0; }
+  .multiples { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+  .mini { position: relative; }
+  .mini .h { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; font-size: 13px; }
+  .mini .h .n { font-weight: 600; }
+  .mini svg { display: block; width: 100%; height: 76px; touch-action: none; }
+  #tip { position: fixed; pointer-events: none; background: var(--surface); color: var(--ink);
+         border: 1px solid var(--border); border-radius: 8px; padding: 6px 9px; font-size: 12px;
+         box-shadow: 0 4px 14px rgba(0,0,0,.12); display: none; z-index: 10; }
+  #tip b { font-size: 14px; }
+  details { border-top: 1px solid var(--grid); padding: 8px 0; }
+  details:first-of-type { border-top: none; }
+  summary { cursor: pointer; font-weight: 500; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 18px; line-height: 1.7; }
+  footer a, .card a { color: var(--series); }
+  .empty { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>AI Tracker</h1>
+    <p>צווארי הבקבוק בשרשרת האספקה של AI</p>
+    <p id="asof">טוען נתונים…</p>
+  </header>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="card">
+    <h2>צוואר הבקבוק עכשיו</h2>
+    <p class="sub">השכבות שהכסף זורם אליהן, ובאיזה שלב הן במחזור החיים. <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/playbook.md">איך קוראים את השלבים</a></p>
+    <div class="now" id="now"></div>
+  </section>
+
+  <section class="card" id="weekly-card" hidden>
+    <h2>הניתוח השבועי</h2>
+    <div id="weekly"></div>
+  </section>
+
+  <section class="card">
+    <h2 id="pf-title">התיק</h2>
+    <p class="sub" id="pf-sub"></p>
+    <div class="scroll"><table id="pf"></table></div>
+    <div id="orders"></div>
+  </section>
+
+  <section class="card">
+    <h2>התראות</h2>
+    <ul class="alerts" id="alerts"></ul>
+  </section>
+
+  <section class="card">
+    <h2>כל השכבות</h2>
+    <p class="sub">דירוג לפי חוזק ב-3, 6 ו-12 חודשים. החץ מראה כמה מקומות השכבה זזה בחודש.</p>
+    <div class="scroll"><table id="layers"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>חוזק יחסי מול SMH, 12 חודשים</h2>
+    <p class="sub">קו שעולה = הכסף זורם לשכבה יותר מאשר לשבבים בכלל. 100 = נקודת ההתחלה.</p>
+    <div class="multiples" id="multiples"></div>
+  </section>
+
+  <section class="card">
+    <h2>המניות</h2>
+    <div id="stocks"></div>
+  </section>
+
+  <footer>
+    <div id="gen"></div>
+    זה לא ייעוץ השקעות. הבדיקה ההיסטורית מחמיאה, כי רשימת המניות נבחרה ב-2026.
+    בחשבון רגיל כל מכירה ברווח חייבת ב-25% מס.
+    · <a href="https://github.com/RoeyOkanin/ai-tracker">הקוד והנתונים</a>
+  </footer>
+</main>
+<div id="tip"></div>
+
+<script>
+const STAGE = {
+  heating: { label: "מתחמם", color: "var(--heating)", hint: "הכסף מתחיל לזרום" },
+  leading: { label: "מוביל", color: "var(--good)", hint: "צוואר הבקבוק של עכשיו" },
+  fading:  { label: "מאבד תאוצה", color: "var(--serious)", hint: "זמן לשחרר" },
+  cold:    { label: "קר", color: "var(--cold)", hint: "הכסף עזב" },
+  neutral: { label: "באמצע", color: "var(--neutral)", hint: "" },
+};
+const REGIME = { green: "var(--good)", yellow: "var(--warning)", red: "var(--critical)" };
+
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v; else if (k === "style") n.style.cssText = v; else n.setAttribute(k, v);
+  }
+  for (const k of kids) n.append(k instanceof Node ? k : document.createTextNode(k ?? ""));
+  return n;
+};
+const pct = (x, sign = true) => {
+  if (x === null || x === undefined) return el("span", { class: "num empty" }, "–");
+  const v = x * 100, d = Math.abs(v) < 10 ? 1 : 0;
+  const s = (sign && v > 0 ? "+" : "") + v.toFixed(d) + "%";
+  return el("span", { class: "num " + (sign ? (v > 0 ? "up" : v < 0 ? "down" : "") : "") }, s);
+};
+const chip = (color, text) => el("span", { class: "chip" }, el("span", { class: "dot", style: `background:${color}` }), text);
+const stageChip = s => chip(STAGE[s]?.color || "var(--neutral)", STAGE[s]?.label || s);
+const dateHe = iso => iso ? iso.split("-").reverse().join(".") : "–";
+
+function parseCSV(text) {
+  const [head, ...rows] = text.trim().split("\n");
+  const cols = head.split(",");
+  return rows.map(r => { const v = r.split(","); const o = {}; cols.forEach((c, i) => o[c] = v[i] === "" ? null : (i ? +v[i] : v[i])); return o; });
+}
+
+async function load() {
+  const bust = "?t=" + Date.now();
+  const latest = await (await fetch("data/latest.json" + bust)).json();
+  const hist = parseCSV(await (await fetch("data/layers_history.csv" + bust)).text());
+  let weekly = null;
+  try { const r = await fetch("data/weekly.json" + bust); if (r.ok) weekly = await r.json(); } catch (e) {}
+  render(latest, hist, weekly);
+}
+
+function render(j, hist, weekly) {
+  const nameOf = Object.fromEntries(j.layers.map(l => [l.key, l.name]));
+  const layerOfTicker = Object.fromEntries(j.stocks.map(s => [s.ticker, s.layer]));
+  document.getElementById("asof").textContent = `נכון לסגירה של ${dateHe(j.as_of)} · ההחלטה החודשית הבאה: סגירה של ${dateHe(j.next_decision_close)}, ביצוע ב-${dateHe(j.next_execution)}`;
+
+  // tiles
+  const t = document.getElementById("tiles");
+  const conc = j.bottleneck_concentration || {};
+  const concText = conc.percentile == null ? "–" : conc.percentile >= 0.7 ? "כן, ברור" : conc.percentile >= 0.4 ? "חלקית" : "לא, השוק רחב";
+  t.append(
+    el("div", { class: "tile" }, el("div", { class: "label" }, "מצב השוק"),
+       el("div", { class: "value" }, chip(REGIME[j.regime.status], j.regime.label)),
+       el("div", { class: "note" }, `${Math.round(j.regime.breadth * 100)}% מהמניות מעל ממוצע 200`)),
+    el("div", { class: "tile" }, el("div", { class: "label" }, "כמה מהכסף להשקיע"),
+       el("div", { class: "value num" }, Math.round(j.regime.exposure * 100) + "%"),
+       el("div", { class: "note" }, "מתוך הסכום שהקצית למערכת")),
+    el("div", { class: "tile" }, el("div", { class: "label" }, "יש צוואר בקבוק אחד ברור?"),
+       el("div", { class: "value" }, concText),
+       el("div", { class: "note" }, conc.percentile == null ? "" : `ריכוז הכסף גבוה מ-${Math.round(conc.percentile * 100)}% מהזמן מאז 2018`)),
+  );
+
+  // now: leading / heating / fading
+  const now = document.getElementById("now");
+  const pick = j.layers.filter(l => ["leading", "heating", "fading"].includes(l.stage));
+  if (!pick.length) now.append(el("div", { class: "empty" }, "אף שכבה לא מובילה עכשיו. השוק בתיקון רחב."));
+  for (const l of pick) {
+    const move = (l.rank_1m_ago ?? l.rank) - l.rank;
+    now.append(el("div", { class: "box" },
+      el("div", { class: "t" }, `${l.rank}. ${l.name}`),
+      stageChip(l.stage),
+      el("div", { class: "d" }, `${STAGE[l.stage].hint} · ${move > 0 ? "עלתה " + move + " מקומות" : move < 0 ? "ירדה " + (-move) + " מקומות" : "באותו מקום"} בחודש`),
+    ));
+  }
+
+  // weekly analysis written by Claude
+  if (weekly && weekly.text) {
+    document.getElementById("weekly-card").hidden = false;
+    const w = document.getElementById("weekly");
+    w.append(el("div", { class: "sub" }, `נכתב ב-${dateHe(weekly.date)}`));
+    for (const para of weekly.text.split("\n").filter(Boolean)) w.append(el("p", {}, para));
+  }
+
+  // portfolio
+  const pf = j.portfolio, table = document.getElementById("pf");
+  if (pf.status === "not_started") {
+    document.getElementById("pf-title").textContent = `התיק מתחיל ב-${dateHe(pf.start)}`;
+    document.getElementById("pf-sub").textContent = "אם מתחילים לפי הנתונים של היום, זה מה שהמערכת הייתה קונה (משקל = אחוז מהכסף שהקצית):";
+    table.append(el("tr", {}, el("th", {}, "מניה"), el("th", {}, "שכבה"), el("th", {}, "משקל")));
+    for (const [tk, w] of Object.entries(pf.planned_targets))
+      table.append(el("tr", {}, el("td", {}, el("b", {}, tk)), el("td", {}, nameOf[layerOfTicker[tk]] || ""), el("td", {}, pct(w, false))));
+    const cash = 1 - Object.values(pf.planned_targets).reduce((a, b) => a + b, 0);
+    table.append(el("tr", {}, el("td", {}, "מזומן"), el("td", {}, ""), el("td", {}, pct(cash, false))));
+  } else {
+    document.getElementById("pf-title").textContent = "תיק הנייר";
+    const sub = document.getElementById("pf-sub");
+    sub.append(`מאז ${dateHe(pf.start)}: `, pct(pf.return), " · SMH באותה תקופה: ", pct(pf.bench_return), " · מזומן: ", pct(pf.cash_weight, false));
+    table.append(el("tr", {}, ...["מניה", "שכבה", "משקל", "רווח", "מרחק מהסטופ", "נכנסה"].map(h => el("th", {}, h))));
+    for (const p of pf.positions)
+      table.append(el("tr", {}, el("td", {}, el("b", {}, p.ticker)), el("td", {}, p.name), el("td", {}, pct(p.weight, false)),
+        el("td", {}, pct(p.pnl)), el("td", {}, pct(p.dist_to_stop, false)), el("td", {}, dateHe(p.entry_date))));
+    if (!pf.positions.length) table.append(el("tr", {}, el("td", { class: "empty" }, "כרגע הכול במזומן")));
+    const o = document.getElementById("orders");
+    if (pf.orders_next_close.length) {
+      o.append(el("p", { class: "sub", style: "margin-top:10px" }, "פקודות לסגירה הבאה:"));
+      const ul = el("ul", { class: "alerts" });
+      for (const x of pf.orders_next_close)
+        ul.append(el("li", {}, `${x.ticker}: ${x.action === "target" ? "משקל יעד " + Math.round(x.weight * 100) + "%" : x.action === "sell_all" ? "מכירה מלאה" : "מכירת שליש"} (${x.reason})`));
+      o.append(ul);
+    }
+  }
+
+  // alerts
+  const al = document.getElementById("alerts");
+  if (!j.alerts.length) al.append(el("li", { class: "empty" }, "אין התראות חדשות"));
+  for (const a of j.alerts) al.append(el("li", {}, a));
+
+  // layers table
+  const lt = document.getElementById("layers");
+  lt.append(el("tr", {}, ...["#", "שכבה", "שלב", "בחודש", "1 ח׳", "3 ח׳", "6 ח׳", "12 ח׳", "מממוצע 200"].map(h => el("th", {}, h))));
+  for (const l of j.layers) {
+    const mv = (l.rank_1m_ago ?? l.rank) - l.rank;
+    lt.append(el("tr", {},
+      el("td", { class: "num" }, String(l.rank ?? "–")), el("td", {}, el("b", {}, l.name)), el("td", {}, stageChip(l.stage)),
+      el("td", { class: "num " + (mv > 0 ? "up" : mv < 0 ? "down" : "") }, mv > 0 ? "▲" + mv : mv < 0 ? "▼" + (-mv) : "–"),
+      el("td", {}, pct(l.r1m)), el("td", {}, pct(l.r3m)), el("td", {}, pct(l.r6m)), el("td", {}, pct(l.r12m)),
+      el("td", {}, pct(l.dist_ma200))));
+  }
+
+  // small multiples: layer / SMH, last ~252 rows
+  const rows = hist.slice(-252);
+  const mul = document.getElementById("multiples");
+  for (const l of j.layers) {
+    const pts = [];
+    let base = null;
+    for (const r of rows) {
+      const a = r[l.key], b = r.SMH;
+      if (a == null || b == null) continue;
+      const rel = a / b;
+      if (base === null) base = rel;
+      pts.push({ d: r.date, v: rel / base * 100 });
+    }
+    mul.append(miniChart(l, pts));
+  }
+
+  // stocks per layer
+  const st = document.getElementById("stocks");
+  for (const l of j.layers) {
+    const det = el("details", {}, el("summary", {}, `${l.name} `, stageChip(l.stage)));
+    const tb = el("table");
+    tb.append(el("tr", {}, ...["מניה", "מחיר", "שבוע", "חודש", "3 ח׳", "מממוצע 200", "מהשיא"].map(h => el("th", {}, h))));
+    for (const s of j.stocks.filter(s => s.layer === l.key)) {
+      if (s.missing) { tb.append(el("tr", {}, el("td", {}, s.ticker), el("td", { class: "empty" }, "אין נתונים"))); continue; }
+      tb.append(el("tr", {},
+        el("td", {}, el("b", {}, s.ticker), s.tradable ? "" : " (איתות בלבד)", s.stretched ? " · מתוחה" : ""),
+        el("td", { class: "num" }, s.price?.toLocaleString("en-US") ?? "–"),
+        el("td", {}, pct(s.r1w)), el("td", {}, pct(s.r1m)), el("td", {}, pct(s.r3m)),
+        el("td", {}, pct(s.dist_ma200)), el("td", {}, pct(s.from_52w_high))));
+    }
+    det.append(el("div", { class: "scroll" }, tb));
+    st.append(det);
+  }
+  document.getElementById("gen").textContent = `עודכן אוטומטית: ${new Date(j.generated_utc).toLocaleString("he-IL")}`;
+}
+
+function miniChart(layer, pts) {
+  const W = 300, H = 76, P = 4, NS = "http://www.w3.org/2000/svg";
+  const box = el("div", { class: "mini" });
+  const last = pts.length ? pts[pts.length - 1].v : null;
+  box.append(el("div", { class: "h" },
+    el("span", {}, el("span", { class: "n" }, layer.name), " "),
+    el("span", { class: "num" }, last == null ? "–" : last.toFixed(0))));
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("preserveAspectRatio", "none");
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", `${layer.name}: חוזק יחסי מול SMH, כעת ${last == null ? "אין נתון" : last.toFixed(0)}`);
+  if (pts.length > 1) {
+    const vs = pts.map(p => p.v);
+    const lo = Math.min(...vs, 100), hi = Math.max(...vs, 100), span = hi - lo || 1;
+    // time runs right-to-left would confuse; charts keep time left-to-right
+    const x = i => P + (W - 2 * P) * i / (pts.length - 1);
+    const y = v => P + (H - 2 * P) * (1 - (v - lo) / span);
+    const base = document.createElementNS(NS, "line");
+    Object.entries({ x1: P, x2: W - P, y1: y(100), y2: y(100), stroke: "var(--axis)", "stroke-width": 1, "vector-effect": "non-scaling-stroke" })
+      .forEach(([k, v]) => base.setAttribute(k, v));
+    svg.append(base);
+    const line = document.createElementNS(NS, "polyline");
+    line.setAttribute("points", pts.map((p, i) => `${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(" "));
+    Object.entries({ fill: "none", stroke: "var(--series)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", "vector-effect": "non-scaling-stroke" })
+      .forEach(([k, v]) => line.setAttribute(k, v));
+    svg.append(line);
+    const hair = document.createElementNS(NS, "line");
+    Object.entries({ y1: 0, y2: H, stroke: "var(--muted)", "stroke-width": 1, "vector-effect": "non-scaling-stroke", visibility: "hidden" })
+      .forEach(([k, v]) => hair.setAttribute(k, v));
+    svg.append(hair);
+    const tip = document.getElementById("tip");
+    const move = ev => {
+      const r = svg.getBoundingClientRect();
+      const fx = Math.min(1, Math.max(0, (ev.clientX - r.left) / r.width));
+      const i = Math.round(fx * (pts.length - 1));
+      const xi = x(i);
+      hair.setAttribute("x1", xi); hair.setAttribute("x2", xi); hair.setAttribute("visibility", "visible");
+      tip.replaceChildren(el("b", { class: "num" }, pts[i].v.toFixed(1)), el("br"), `${layer.name} · ${dateHe(pts[i].d)}`);
+      tip.style.display = "block";
+      tip.style.left = Math.min(window.innerWidth - 170, ev.clientX + 12) + "px";
+      tip.style.top = (ev.clientY + 14) + "px";
+    };
+    const out = () => { hair.setAttribute("visibility", "hidden"); tip.style.display = "none"; };
+    svg.addEventListener("pointermove", move);
+    svg.addEventListener("pointerdown", move);
+    svg.addEventListener("pointerleave", out);
+  }
+  box.append(svg);
+  box.append(el("div", { class: "h" }, stageChip(layer.stage), el("span", { class: "num", style: "color:var(--muted)" }, "#" + (layer.rank ?? "–"))));
+  return box;
+}
+
+load().catch(e => { document.getElementById("asof").textContent = "שגיאה בטעינת הנתונים: " + e.message; });
+</script>
+</body>
+</html>
