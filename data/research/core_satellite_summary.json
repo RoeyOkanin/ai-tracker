@@ -1,0 +1,260 @@
+{
+ "results": {
+  "SMH 100%": {
+   "calibration_2018_2022": {
+    "total_return": 0.3079,
+    "cagr": 0.0553,
+    "vol": 0.3116,
+    "sharpe": 0.3222,
+    "max_drawdown": -0.6312,
+    "calmar": 0.0876,
+    "worst_month": -0.1487,
+    "pct_positive_months": 0.5085
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 1.9862,
+    "cagr": 0.3279,
+    "vol": 0.3206,
+    "sharpe": 1.0143,
+    "max_drawdown": -0.3076,
+    "calmar": 1.066,
+    "worst_month": -0.2038,
+    "pct_positive_months": 0.6087
+   },
+   "full_2018_2026": {
+    "total_return": 3.0361,
+    "cagr": 0.1706,
+    "vol": 0.3155,
+    "sharpe": 0.6396,
+    "max_drawdown": -0.6312,
+    "calmar": 0.2702,
+    "worst_month": -0.2038,
+    "pct_positive_months": 0.5566
+   }
+  },
+  "שרשרת במשקל שווה 100%": {
+   "calibration_2018_2022": {
+    "total_return": 1.4212,
+    "cagr": 0.1938,
+    "vol": 0.036,
+    "sharpe": 4.7726,
+    "max_drawdown": -0.0189,
+    "calmar": 10.2482,
+    "worst_month": -0.0039,
+    "pct_positive_months": 0.9322
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 1.0793,
+    "cagr": 0.209,
+    "vol": 0.0357,
+    "sharpe": 5.157,
+    "max_drawdown": -0.0164,
+    "calmar": 12.7472,
+    "worst_month": -0.0079,
+    "pct_positive_months": 0.8913
+   },
+   "full_2018_2026": {
+    "total_return": 4.064,
+    "cagr": 0.2009,
+    "vol": 0.0358,
+    "sharpe": 4.9528,
+    "max_drawdown": -0.0189,
+    "calmar": 10.6231,
+    "worst_month": -0.0079,
+    "pct_positive_months": 0.9151
+   }
+  },
+  "רוטציה H 100%": {
+   "calibration_2018_2022": {
+    "total_return": 0.1338,
+    "cagr": 0.0255,
+    "vol": 0.2497,
+    "sharpe": 0.2257,
+    "max_drawdown": -0.5201,
+    "calmar": 0.049,
+    "worst_month": -0.2203,
+    "pct_positive_months": 0.4746
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 5.5931,
+    "cagr": 0.6305,
+    "vol": 0.4297,
+    "sharpe": 1.3573,
+    "max_drawdown": -0.3488,
+    "calmar": 1.8078,
+    "worst_month": -0.2241,
+    "pct_positive_months": 0.6304
+   },
+   "full_2018_2026": {
+    "total_return": 6.3492,
+    "cagr": 0.2525,
+    "vol": 0.3402,
+    "sharpe": 0.8334,
+    "max_drawdown": -0.5425,
+    "calmar": 0.4654,
+    "worst_month": -0.2241,
+    "pct_positive_months": 0.5377
+   }
+  },
+  "SMH 70% + H 30%": {
+   "calibration_2018_2022": {
+    "total_return": 0.4981,
+    "cagr": 0.0844,
+    "vol": 0.2417,
+    "sharpe": 0.4558,
+    "max_drawdown": -0.438,
+    "calmar": 0.1926,
+    "worst_month": -0.1392,
+    "pct_positive_months": 0.4915
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 3.0417,
+    "cagr": 0.4363,
+    "vol": 0.2762,
+    "sharpe": 1.4534,
+    "max_drawdown": -0.2916,
+    "calmar": 1.496,
+    "worst_month": -0.115,
+    "pct_positive_months": 0.6522
+   },
+   "full_2018_2026": {
+    "total_return": 5.1657,
+    "cagr": 0.2279,
+    "vol": 0.2574,
+    "sharpe": 0.928,
+    "max_drawdown": -0.438,
+    "calmar": 0.5204,
+    "worst_month": -0.1392,
+    "pct_positive_months": 0.566
+   }
+  },
+  "SMH 50% + H 50%": {
+   "calibration_2018_2022": {
+    "total_return": 0.5369,
+    "cagr": 0.0899,
+    "vol": 0.2141,
+    "sharpe": 0.5092,
+    "max_drawdown": -0.3401,
+    "calmar": 0.2644,
+    "worst_month": -0.1366,
+    "pct_positive_months": 0.5593
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 3.7741,
+    "cagr": 0.4996,
+    "vol": 0.2943,
+    "sharpe": 1.5294,
+    "max_drawdown": -0.2831,
+    "calmar": 1.7651,
+    "worst_month": -0.159,
+    "pct_positive_months": 0.6739
+   },
+   "full_2018_2026": {
+    "total_return": 6.3979,
+    "cagr": 0.2534,
+    "vol": 0.2522,
+    "sharpe": 1.0237,
+    "max_drawdown": -0.3401,
+    "calmar": 0.745,
+    "worst_month": -0.159,
+    "pct_positive_months": 0.6132
+   }
+  },
+  "שרשרת שווה 70% + H 30%": {
+   "calibration_2018_2022": {
+    "total_return": 1.029,
+    "cagr": 0.1523,
+    "vol": 0.0798,
+    "sharpe": 1.8174,
+    "max_drawdown": -0.1044,
+    "calmar": 1.4583,
+    "worst_month": -0.0431,
+    "pct_positive_months": 0.8305
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 2.0713,
+    "cagr": 0.3376,
+    "vol": 0.1688,
+    "sharpe": 1.8138,
+    "max_drawdown": -0.1577,
+    "calmar": 2.1411,
+    "worst_month": -0.1154,
+    "pct_positive_months": 0.7391
+   },
+   "full_2018_2026": {
+    "total_return": 5.2258,
+    "cagr": 0.2293,
+    "vol": 0.1265,
+    "sharpe": 1.6987,
+    "max_drawdown": -0.1577,
+    "calmar": 1.4539,
+    "worst_month": -0.1154,
+    "pct_positive_months": 0.7925
+   }
+  },
+  "שרשרת שווה 50% + H 50%": {
+   "calibration_2018_2022": {
+    "total_return": 0.7643,
+    "cagr": 0.1205,
+    "vol": 0.1265,
+    "sharpe": 0.9622,
+    "max_drawdown": -0.1989,
+    "calmar": 0.6058,
+    "worst_month": -0.0937,
+    "pct_positive_months": 0.6949
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 2.8899,
+    "cagr": 0.4221,
+    "vol": 0.2536,
+    "sharpe": 1.5206,
+    "max_drawdown": -0.2374,
+    "calmar": 1.7779,
+    "worst_month": -0.1606,
+    "pct_positive_months": 0.6522
+   },
+   "full_2018_2026": {
+    "total_return": 5.8252,
+    "cagr": 0.2421,
+    "vol": 0.1926,
+    "sharpe": 1.225,
+    "max_drawdown": -0.2374,
+    "calmar": 1.0197,
+    "worst_month": -0.1606,
+    "pct_positive_months": 0.6792
+   }
+  },
+  "SMH 50% + שרשרת שווה 50%": {
+   "calibration_2018_2022": {
+    "total_return": 1.0238,
+    "cagr": 0.1517,
+    "vol": 0.158,
+    "sharpe": 0.9421,
+    "max_drawdown": -0.2075,
+    "calmar": 0.7313,
+    "worst_month": -0.0668,
+    "pct_positive_months": 0.5763
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 1.5708,
+    "cagr": 0.2773,
+    "vol": 0.1697,
+    "sharpe": 1.4778,
+    "max_drawdown": -0.1515,
+    "calmar": 1.8306,
+    "worst_month": -0.1006,
+    "pct_positive_months": 0.6739
+   },
+   "full_2018_2026": {
+    "total_return": 4.3049,
+    "cagr": 0.2072,
+    "vol": 0.1632,
+    "sharpe": 1.1963,
+    "max_drawdown": -0.2075,
+    "calmar": 0.9989,
+    "worst_month": -0.1006,
+    "pct_positive_months": 0.6226
+   }
+  }
+ }
+}
