@@ -2,9 +2,11 @@
 
 1. Episodes: every fall of 15%+ in QQQ since 1999 (zig-zag: a fall counts once
    it is 15% below the peak; it ends when the price rallies 15% off the low).
-2. Cause of each fall, from data over the fall itself (thresholds fixed in advance):
-     recession / credit : BAA corporate spread widens >= 0.5 pt, or unemployment up >= 0.5 pt
-     rates / inflation  : (else) 2-year or 10-year Treasury yield up >= 0.4 pt
+2. Cause of each fall, from market data over the fall itself (thresholds fixed in advance;
+   all from Yahoo, because FRED blocks GitHub Actions):
+     recession / credit : junk bonds (Vanguard High-Yield fund) lag Treasuries
+                          (Vanguard Intermediate Treasury fund) by 5% or more
+     rates / inflation  : (else) the 5-year or 10-year Treasury yield rises 0.5 pt or more
      valuation / other  : neither
 3. What every refuge did during each fall: sectors, small caps, value, equal weight,
    abroad, real estate, gold, long and medium Treasuries, dollar, commodities, cash.
@@ -52,41 +54,24 @@ BASKETS = {
     "credit": ["LONG_TSY", "IEF", "GOLD", "XLP", "UUP", "CASH"],
     "other": ["IWM", "IWD", "RSP", "EFA", "VNQ", "XLV", "XLF", "XLI", "CASH"],
 }
-FRED = ["DGS2", "DGS10", "BAA10Y", "UNRATE", "DTB3", "CPIAUCSL"]
-YF = TECH + [t for t in REFUGES if t not in ("GOLD", "LONG_TSY", "CASH")] + ["GLD", "GC=F", "TLT", "VUSTX"]
+MACRO = ["^IRX", "^FVX", "^TNX", "VWEHX", "VFITX"]   # 3m bill, 5y, 10y yields; junk-bond and Treasury funds
+YF = TECH + [t for t in REFUGES if t not in ("GOLD", "LONG_TSY", "CASH")] + ["GLD", "GC=F", "TLT", "VUSTX"] + MACRO
 
 
 # ---------------------------------------------------------------- data
-def fred(series: str) -> pd.Series:
-    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
-    for attempt in range(4):
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=60) as r:
-                df = pd.read_csv(io.BytesIO(r.read()))
-            df.columns = ["date", series]
-            s = pd.to_numeric(df[series], errors="coerce")
-            s.index = pd.to_datetime(df["date"])
-            return s.dropna()
-        except Exception as e:
-            print(series, "error", e, flush=True)
-            time.sleep(5 * (attempt + 1))
-    raise SystemExit(f"FRED {series} failed")
-
-
-def load() -> tuple[pd.DataFrame, pd.DataFrame]:
+def load() -> pd.DataFrame:
     RAW.mkdir(parents=True, exist_ok=True)
-    pf, mf = RAW / "selloff_prices.pkl", RAW / "selloff_macro.pkl"
-    if pf.exists() and mf.exists():
-        return pd.read_pickle(pf), pd.read_pickle(mf)
+    pf = RAW / "selloff_prices.pkl"
+    if pf.exists():
+        return pd.read_pickle(pf)
     import yfinance as yf
     raw = yf.download(YF, start="1998-01-01", auto_adjust=True, progress=False, group_by="column", threads=True)
     px = raw["Close"]
     px.index = pd.to_datetime([x.date() for x in px.index])
-    macro = pd.concat([fred(s) for s in FRED], axis=1)
+    missing = [t for t in YF if t not in px.columns or px[t].notna().sum() < 1000]
+    print("missing / short:", missing, flush=True)
     px.to_pickle(pf)
-    macro.to_pickle(mf)
-    return px, macro
+    return px
 
 
 def splice(new: pd.Series, old: pd.Series) -> pd.Series:
@@ -102,27 +87,22 @@ def splice(new: pd.Series, old: pd.Series) -> pd.Series:
     return pd.concat([o.iloc[:-1], new])
 
 
-def build(px: pd.DataFrame, macro: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+def build(px: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     cal = px["SPY"].dropna().index
     p = px.reindex(cal).ffill(limit=5)
     p["GOLD"] = splice(px["GLD"], px["GC=F"]).reindex(cal).ffill(limit=5)
     p["LONG_TSY"] = splice(px["TLT"], px["VUSTX"]).reindex(cal).ffill(limit=5)
-    tb = macro["DTB3"].reindex(cal).ffill() / 100
+
+    def yld(t):
+        y = px[t].reindex(cal).ffill(limit=5)
+        return y / 10 if y.median() > 20 else y      # some feeds quote yield x10
+
+    tb = yld("^IRX").ffill() / 100
     p["CASH"] = (1 + tb.shift(1).fillna(0) / 252).cumprod()
-    m = macro.copy()
-    m = m.reindex(m.index.union(cal)).sort_index()
-    daily = m[["DGS2", "DGS10", "BAA10Y"]].ffill().reindex(cal)
-    # monthly series become known ~1 month after the month: shift by 2 months to be safe
-    un = macro["UNRATE"].dropna()
-    un.index = un.index + pd.DateOffset(months=2)
-    un = un[~un.index.duplicated(keep="last")]
-    daily["UNRATE"] = un.reindex(un.index.union(cal)).sort_index().ffill().reindex(cal)
-    cpi = macro["CPIAUCSL"].dropna()
-    cpi_yoy = cpi / cpi.shift(12) - 1
-    cpi_yoy.index = cpi_yoy.index + pd.DateOffset(months=2)
-    cpi_yoy = cpi_yoy[~cpi_yoy.index.duplicated(keep="last")]
-    daily["CPI_YOY"] = cpi_yoy.reindex(cpi_yoy.index.union(cal)).sort_index().ffill().reindex(cal)
-    return p, daily
+    macro = pd.DataFrame({"Y5": yld("^FVX"), "Y10": yld("^TNX"),
+                          "HY": px["VWEHX"].reindex(cal).ffill(limit=5),
+                          "TSY": px["VFITX"].reindex(cal).ffill(limit=5)}, index=cal).ffill()
+    return p, macro
 
 
 # ---------------------------------------------------------------- 1-3. episodes
@@ -148,10 +128,10 @@ def zigzag(s: pd.Series, th: float) -> list[tuple]:
     return legs
 
 
-def classify(d_rates: float, d_spread: float, d_unemp: float) -> str:
-    if (pd.notna(d_spread) and d_spread >= 0.5) or (pd.notna(d_unemp) and d_unemp >= 0.5):
+def classify(d_rates: float, credit_rel: float) -> str:
+    if pd.notna(credit_rel) and credit_rel <= -0.05:
         return "credit"
-    if pd.notna(d_rates) and d_rates >= 0.4:
+    if pd.notna(d_rates) and d_rates >= 0.5:
         return "rates"
     return "other"
 
@@ -160,15 +140,14 @@ def episodes(p: pd.DataFrame, macro: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for a, b, ongoing in zigzag(p["QQQ"], TH):
         dm = macro.loc[a:b]
-        d2 = dm["DGS2"].iloc[-1] - dm["DGS2"].iloc[0]
-        d10 = dm["DGS10"].iloc[-1] - dm["DGS10"].iloc[0]
-        dsp = dm["BAA10Y"].iloc[-1] - dm["BAA10Y"].iloc[0]
-        dun = dm["UNRATE"].iloc[-1] - dm["UNRATE"].iloc[0]   # already lagged: what was known
+        d5 = dm["Y5"].iloc[-1] - dm["Y5"].iloc[0]
+        d10 = dm["Y10"].iloc[-1] - dm["Y10"].iloc[0]
+        cr = (dm["HY"].iloc[-1] / dm["HY"].iloc[0]) / (dm["TSY"].iloc[-1] / dm["TSY"].iloc[0]) - 1
         row = {"peak": a.date(), "trough": b.date(), "ongoing": ongoing, "days": (b - a).days,
                "qqq": p.at[b, "QQQ"] / p.at[a, "QQQ"] - 1,
-               "d_2y": d2, "d_10y": d10, "d_baa_spread": dsp, "d_unemployment": dun,
-               "cpi_yoy_at_peak": dm["CPI_YOY"].iloc[0],
-               "cause": classify(max(d2, d10), dsp, dun)}
+               "d_5y": d5, "d_10y": d10, "junk_vs_treasury": cr,
+               "yield_10y_at_peak": dm["Y10"].iloc[0],
+               "cause": classify(max(d5, d10), cr)}
         for t in ["SMH"] + list(REFUGES):
             x = p[t]
             row[t] = (x.at[b] / x.at[a] - 1) if pd.notna(x.get(a)) and pd.notna(x.get(b)) else np.nan
@@ -197,13 +176,12 @@ def pattern(ep: pd.DataFrame) -> dict:
 # ---------------------------------------------------------------- 4. rule test
 def cause_now(macro: pd.DataFrame, d) -> str:
     """Same thresholds, measured over the last 6 months with data known at d."""
-    m = macro.loc[:d].iloc[:-1] if d in macro.index else macro.loc[:d]   # yesterday's FRED print
+    m = macro.loc[:d]                       # market closes, known at d
     if len(m) < 130:
         return "other"
     now, then = m.iloc[-1], m.iloc[-127]
-    d_rates = max(now["DGS2"] - then["DGS2"], now["DGS10"] - then["DGS10"])
-    un12 = m["UNRATE"].iloc[-252:]
-    return classify(d_rates, now["BAA10Y"] - then["BAA10Y"], now["UNRATE"] - un12.min())
+    d_rates = max(now["Y5"] - then["Y5"], now["Y10"] - then["Y10"])
+    return classify(d_rates, (now["HY"] / then["HY"]) / (now["TSY"] / then["TSY"]) - 1)
 
 
 def backtest(p, macro, tech, start, mode, rng=None):
@@ -264,11 +242,11 @@ def backtest(p, macro, tech, start, mode, rng=None):
 
 
 def main() -> None:
-    px, macro_raw = load()
-    p, macro = build(px, macro_raw)
+    px = load()
+    p, macro = build(px)
     ep = episodes(p, macro)
     pat = pattern(ep)
-    print(ep[["peak", "trough", "qqq", "d_2y", "d_10y", "d_baa_spread", "d_unemployment", "cause"]].round(3).to_string())
+    print(ep[["peak", "trough", "qqq", "d_5y", "d_10y", "junk_vs_treasury", "cause"]].round(3).to_string())
     for c, v in pat.items():
         print(c, v["episodes"], [(x["ticker"], x["median"], x["pct_up"]) for x in v["ranking"][:6]])
 
