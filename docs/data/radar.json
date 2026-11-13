@@ -271,14 +271,14 @@
   {
    "key": "compute",
    "name": "שבבי AI",
-   "items7": 260,
-   "tight7": 21,
+   "items7": 262,
+   "tight7": 22,
    "ease7": 3,
    "friction7": 8,
-   "net7": 18,
+   "net7": 19,
    "net_prev7": 11,
-   "trend": 7,
-   "tight30": 50,
+   "trend": 8,
+   "tight30": 51,
    "ease30": 4,
    "headlines": [
     {
@@ -547,7 +547,7 @@
   {
    "key": "power_generation",
    "name": "ייצור חשמל",
-   "items7": 189,
+   "items7": 190,
    "tight7": 6,
    "ease7": 0,
    "friction7": 4,
@@ -685,7 +685,7 @@
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "items7": 151,
+   "items7": 152,
    "tight7": 7,
    "ease7": 2,
    "friction7": 7,
@@ -754,7 +754,7 @@
   {
    "key": "neoclouds",
    "name": "ענן AI עצמאי",
-   "items7": 191,
+   "items7": 192,
    "tight7": 10,
    "ease7": 2,
    "friction7": 8,
@@ -1054,7 +1054,7 @@
    7,
    9,
    10,
-   17
+   18
   ],
   "networking": [
    0,
@@ -1433,9 +1433,9 @@
     15
    ],
    [
-    20,
+    21,
     3,
-    258
+    260
    ]
   ],
   "networking": [
@@ -1643,7 +1643,7 @@
    [
     6,
     0,
-    186
+    187
    ]
   ],
   "datacenter_reits": [
@@ -1747,7 +1747,7 @@
    [
     7,
     2,
-    151
+    152
    ]
   ],
   "neoclouds": [
@@ -1799,7 +1799,7 @@
    [
     10,
     2,
-    185
+    186
    ]
   ],
   "software": [
@@ -2503,10 +2503,10 @@
    "name": "Cisco",
    "ticker": "CSCO",
    "layer": "networking",
-   "mentions30": 12,
+   "mentions30": 13,
    "tight30": 1,
    "ease30": 0,
-   "mentions7": 8,
+   "mentions7": 9,
    "headline": {
     "title": "Nvidia, AMD, Microsoft, Cerebras, Cisco, Modine, and More Stocks That Explain Today’s Market",
     "url": "https://www.barrons.com/articles/stock-movers-9a030e1c?siteid=yhoof2&yptr=yahoo",
@@ -2680,7 +2680,7 @@
    }
   }
  ],
- "generated_utc": "2026-11-13T19:17:07+00:00",
+ "generated_utc": "2026-11-13T19:25:07+00:00",
  "sources_ok": {
   "google": 165,
   "yahoo": 80

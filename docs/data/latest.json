@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-12",
- "generated_utc": "2026-11-13T19:20:26+00:00",
+ "generated_utc": "2026-11-13T19:28:31+00:00",
  "regime": {
   "status": "red",
   "breadth": 0.2469,
@@ -42,13 +42,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 260,
-    "tight7": 21,
+    "items7": 262,
+    "tight7": 22,
     "ease7": 3,
     "friction7": 8,
-    "net7": 18,
+    "net7": 19,
     "net_prev7": 11,
-    "trend": 7
+    "trend": 8
    },
    "news_label": null,
    "news_label_he": null,
@@ -232,7 +232,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 151,
+    "items7": 152,
     "tight7": 7,
     "ease7": 2,
     "friction7": 7,
@@ -557,7 +557,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 189,
+    "items7": 190,
     "tight7": 6,
     "ease7": 0,
     "friction7": 4,
@@ -593,7 +593,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 191,
+    "items7": 192,
     "tight7": 10,
     "ease7": 2,
     "friction7": 8,
@@ -3387,7 +3387,7 @@
  ],
  "news_radar": {
   "as_of": "2026-11-13",
-  "generated_utc": "2026-11-13T19:17:07+00:00",
+  "generated_utc": "2026-11-13T19:25:07+00:00",
   "sources_ok": {
    "google": 165,
    "yahoo": 80

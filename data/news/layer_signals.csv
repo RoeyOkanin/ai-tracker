@@ -313,7 +313,7 @@ date,layer,items,tight,ease,friction
 2026-11-10,power_generation,44,0,0,0
 2026-11-10,servers,7,0,0,0
 2026-11-11,analog_power,30,1,1,0
-2026-11-11,compute,22,2,0,0
+2026-11-11,compute,23,3,0,0
 2026-11-11,datacenter_reits,60,0,0,35
 2026-11-11,design,11,0,0,1
 2026-11-11,edge_devices,12,0,1,1
@@ -334,7 +334,7 @@ date,layer,items,tight,ease,friction
 2026-11-12,edge_devices,34,0,0,0
 2026-11-12,equipment,58,1,0,0
 2026-11-12,foundry,31,1,1,0
-2026-11-12,hyperscalers,69,3,1,4
+2026-11-12,hyperscalers,70,3,1,4
 2026-11-12,memory,51,10,1,1
 2026-11-12,neoclouds,75,7,0,3
 2026-11-12,networking,34,1,0,0
@@ -343,7 +343,7 @@ date,layer,items,tight,ease,friction
 2026-11-12,servers,40,0,0,1
 2026-11-12,software,17,0,1,0
 2026-11-13,analog_power,32,6,0,1
-2026-11-13,compute,102,7,2,4
+2026-11-13,compute,103,7,2,4
 2026-11-13,datacenter_reits,44,1,0,17
 2026-11-13,design,16,0,0,1
 2026-11-13,edge_devices,16,2,0,1
@@ -351,9 +351,9 @@ date,layer,items,tight,ease,friction
 2026-11-13,foundry,39,2,1,0
 2026-11-13,hyperscalers,73,4,1,2
 2026-11-13,memory,36,3,1,0
-2026-11-13,neoclouds,53,2,1,1
+2026-11-13,neoclouds,54,2,1,1
 2026-11-13,networking,40,0,0,1
 2026-11-13,power_equipment,62,5,1,0
-2026-11-13,power_generation,29,1,0,0
+2026-11-13,power_generation,30,1,0,0
 2026-11-13,servers,31,0,0,0
 2026-11-13,software,15,0,0,0
