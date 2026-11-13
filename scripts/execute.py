@@ -243,6 +243,9 @@ def main(argv=None) -> int:
             b = FakeBroker(prices=closes, days=[d.date().isoformat() for d in pd.bdate_range("2026-01-01", "2027-12-31")])
         if args.force_date:
             now_ny = datetime.fromisoformat(args.force_date).replace(hour=12, tzinfo=NY)
+        acct = b.positions()
+        print(f"account {b.name} ({'paper' if b.paper else 'LIVE'}): equity ${b.equity():,.0f}, cash ${b.cash():,.0f}, "
+              f"{len(acct)} positions ({len([t for t in acct if t in managed])} managed by this book)")
         why = session_check(b, book["signal_date"], now_ny, cfg.get("moc_cutoff_et", "15:45"), order_type)
         if why:
             print(f"not trading: {why}")
