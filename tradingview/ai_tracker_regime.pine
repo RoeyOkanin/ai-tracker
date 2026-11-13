@@ -1,0 +1,12 @@
+//@version=6
+// AI Tracker: market regime on SMH (the benchmark in rules.yaml).
+// Green = SMH above its 200-day average, red = below. The full rule also needs breadth
+// (share of the 93 stocks above their MA200), which only the Python engine can compute,
+// so this is the half you can see on a chart. Put it on SMH, daily.
+indicator("AI Tracker · Regime (SMH)", overlay = true)
+ma200 = ta.sma(close, 200)
+up = close > ma200
+plot(ma200, "MA200", up ? color.green : color.red, 2)
+bgcolor(up ? color.new(color.green, 92) : color.new(color.red, 92))
+alertcondition(up and not up[1], "SMH crossed above MA200", "SMH back above MA200: regime may turn green")
+alertcondition(not up and up[1], "SMH crossed below MA200", "SMH below MA200: regime may turn red")

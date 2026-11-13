@@ -233,6 +233,34 @@ def main() -> None:
             log_rows += plan_rows(preview, px, "initial", now)
     append_log(log_rows)
 
+    # ---- target book: what the account should look like after the next close (read by execute.py)
+    book = {"signal_date": iso(d), "generated_utc": now, "regime": reg["status"],
+            "rebalance_band": rules["portfolio"]["rebalance_band"], "mode": "none", "targets": {}, "exits": [],
+            "layer_of": {}}
+    if portfolio["status"] == "live":
+        cur = {p["ticker"]: p for p in sim["positions"]}
+        base = {t: float(p["weight"]) for t, p in cur.items()}
+        book["layer_of"] = {t: p["layer"] for t, p in cur.items()}
+        for t, e in sim["pending_exits"].items():
+            if e["kind"] == "all":
+                base.pop(t, None)
+                book["exits"].append({"ticker": t, "reason": e["reason"]})
+            elif t in base:
+                base[t] *= 1 - float(e["fraction"])
+        if pend is not None:
+            book["mode"] = "rebalance"
+            book["targets"] = {t: round(float(w), 6) for t, w in pend["targets"].items()}
+            book["current_weights"] = {t: round(w, 6) for t, w in base.items()}
+            book["layer_of"].update(pend["layer_of"])
+        else:
+            book["mode"] = "hold"
+            book["targets"] = {t: round(w, 6) for t, w in base.items()}
+    elif d + BDay(1) >= live_start:
+        book["mode"] = "initial"
+        book["targets"] = {t: round(float(w), 6) for t, w in preview["targets"].items()}
+        book["layer_of"] = dict(preview["layer_of"])
+    (DOCS_DATA / "target_book.json").write_text(json.dumps(book, ensure_ascii=False, indent=1), encoding="utf-8")
+
     # ---- alerts
     alerts = []
     if reg["status"] != reg_1w["status"]:
