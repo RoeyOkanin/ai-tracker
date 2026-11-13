@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["scripts/switch_live.py", "scripts/systematic_rules.py", ".github/workflows/switch.yml"]
+    paths: ["scripts/switch_live.py", "scripts/systematic_rules.py", "scripts/account_snapshot.py", ".github/workflows/switch.yml"]
 
 permissions:
   contents: write
@@ -39,12 +39,17 @@ jobs:
           if python -c "import yaml,sys;c=yaml.safe_load(open('config/execution.yaml'));sys.exit(0 if c.get('ticket_enabled') and c.get('book')=='switch' else 1)"; then
             python scripts/execute.py --broker ticket --book switch
           fi
+      - name: Account snapshot for the dashboard (read-only)
+        env:
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/account_snapshot.py
       - name: Save
         run: |
           git config user.name "ai-tracker-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/data/switch.json docs/data/switch_target_book.json data/switch
-          git add data/manual_book_switch.json 2>/dev/null || true
+          git add data/manual_book_switch.json docs/data/account.json 2>/dev/null || true
           git commit -m "switch: $(date -u +%F)" || exit 0
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
