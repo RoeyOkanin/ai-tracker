@@ -27,7 +27,7 @@ jobs:
           python-version: "3.13"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Switch rule: decide, paper portfolio, target book
+      - name: "Switch rule - decide, paper portfolio, target book"
         working-directory: scripts
         env:
           NOTIFY_PATH: /tmp/notify.md
