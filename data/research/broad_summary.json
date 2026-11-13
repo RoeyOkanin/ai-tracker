@@ -7,121 +7,217 @@
   "min_dollar_vol": 20000000.0
  },
  "results": {
+  "E: שרשרת פיזית, 3 ענפים x 2": {
+   "5y": {
+    "total_return": 1.596844582655529,
+    "cagr": 0.2103209204973615,
+    "vol": 0.3461670505068604,
+    "sharpe": 0.7273741190344948,
+    "max_drawdown": -0.3470715293501476,
+    "calmar": 0.6059872467533242,
+    "worst_month": -0.238584488531996,
+    "pct_positive_months": 0.5833333333333334,
+    "trades": 374
+   },
+   "7y": {
+    "total_return": 4.4878303473897,
+    "cagr": 0.24184361735789617,
+    "vol": 0.32786059694615194,
+    "sharpe": 0.8259370302308309,
+    "max_drawdown": -0.36875184013873397,
+    "calmar": 0.6558438251234444,
+    "worst_month": -0.238584488531996,
+    "pct_positive_months": 0.5957446808510638,
+    "trades": 567
+   }
+  },
+  "F: שרשרת פיזית, 6 החזקות": {
+   "5y": {
+    "total_return": 2.9355869411152438,
+    "cagr": 0.3152799350074542,
+    "vol": 0.4089293448579138,
+    "sharpe": 0.8770644631233218,
+    "max_drawdown": -0.39535507684036253,
+    "calmar": 0.797460190791375,
+    "worst_month": -0.26356291091262896,
+    "pct_positive_months": 0.5666666666666667,
+    "trades": 440
+   },
+   "7y": {
+    "total_return": 7.617189199556334,
+    "cagr": 0.3152177604095614,
+    "vol": 0.3896448346406976,
+    "sharpe": 0.8991837059239132,
+    "max_drawdown": -0.521976056156449,
+    "calmar": 0.603893141633077,
+    "worst_month": -0.25177371752124256,
+    "pct_positive_months": 0.5957446808510638,
+    "trades": 689
+   }
+  },
+  "G: שרשרת פיזית, 3x2, רק מניות עם 100M$ ביום": {
+   "5y": {
+    "total_return": 1.6522846858410114,
+    "cagr": 0.2154458838604425,
+    "vol": 0.30670384902910625,
+    "sharpe": 0.7931535904670107,
+    "max_drawdown": -0.3382432069756508,
+    "calmar": 0.6369555379598558,
+    "worst_month": -0.22008936150814318,
+    "pct_positive_months": 0.6166666666666667,
+    "trades": 308
+   },
+   "7y": {
+    "total_return": 4.375749394084474,
+    "cagr": 0.2385878131651984,
+    "vol": 0.2865407232670137,
+    "sharpe": 0.8922420668847034,
+    "max_drawdown": -0.36129633116647364,
+    "calmar": 0.6603660003822869,
+    "worst_month": -0.22114661153093118,
+    "pct_positive_months": 0.648936170212766,
+    "trades": 477
+   }
+  },
+  "H: שרשרת פיזית, 6 החזקות, 100M$ ביום": {
+   "5y": {
+    "total_return": 3.3841805233310467,
+    "cagr": 0.34398760066468004,
+    "vol": 0.3890044950629039,
+    "sharpe": 0.9583427348662273,
+    "max_drawdown": -0.3802614320274773,
+    "calmar": 0.9046081766184056,
+    "worst_month": -0.24493849702692694,
+    "pct_positive_months": 0.55,
+    "trades": 440
+   },
+   "7y": {
+    "total_return": 6.653137647329446,
+    "cagr": 0.29551512932203083,
+    "vol": 0.3584490467900387,
+    "sharpe": 0.9032017349609789,
+    "max_drawdown": -0.5424707199261808,
+    "calmar": 0.5447577509109514,
+    "worst_month": -0.22407408560587305,
+    "pct_positive_months": 0.5531914893617021,
+    "trades": 675
+   }
+  },
   "A: 10 ענפים, 3 ענפים x 2 מניות (החוקים הנוכחיים)": {
    "5y": {
-    "total_return": 0.15524745382655203,
-    "cagr": 0.029287551166099712,
-    "vol": 0.29198011652034356,
-    "sharpe": 0.24609053729187283,
-    "max_drawdown": -0.45426089554398263,
-    "calmar": 0.06447297456900299,
-    "worst_month": -0.18195025785693997,
+    "total_return": 0.1552474862022939,
+    "cagr": 0.02928755693603402,
+    "vol": 0.2919801223959899,
+    "sharpe": 0.2460905566970376,
+    "max_drawdown": -0.4542608707182453,
+    "calmar": 0.06447299079431297,
+    "worst_month": -0.18195024353171108,
     "pct_positive_months": 0.5666666666666667,
     "trades": 376
    },
    "7y": {
-    "total_return": 1.9092820744968013,
-    "cagr": 0.14552100304219318,
-    "vol": 0.31359313087800766,
-    "sharpe": 0.5912284974117036,
-    "max_drawdown": -0.559466746784526,
-    "calmar": 0.2601066173790654,
-    "worst_month": -0.18542187275134348,
+    "total_return": 1.9092821090301713,
+    "cagr": 0.1455210047720621,
+    "vol": 0.313593121697145,
+    "sharpe": 0.5912285098569611,
+    "max_drawdown": -0.5594667045503945,
+    "calmar": 0.26010664010650547,
+    "worst_month": -0.1854218727527014,
     "pct_positive_months": 0.5638297872340425,
     "trades": 577
    }
   },
   "B: תעשיות מפורטות, 3 x 2": {
    "5y": {
-    "total_return": 0.5483728218290216,
-    "cagr": 0.09139084680167509,
-    "vol": 0.26754636227915135,
-    "sharpe": 0.46210480976946117,
-    "max_drawdown": -0.428420810075811,
-    "calmar": 0.21332027915614804,
-    "worst_month": -0.21166687082312974,
+    "total_return": 0.5483727881716634,
+    "cagr": 0.09139084205625969,
+    "vol": 0.26754636413555993,
+    "sharpe": 0.46210479229985174,
+    "max_drawdown": -0.42842079825923784,
+    "calmar": 0.2133202739633546,
+    "worst_month": -0.211666887094481,
     "pct_positive_months": 0.55,
     "trades": 400
    },
    "7y": {
-    "total_return": 3.541668938594725,
-    "cagr": 0.21230324720322225,
-    "vol": 0.2892216502636498,
-    "sharpe": 0.8110872852780571,
-    "max_drawdown": -0.428420810075811,
-    "calmar": 0.4955484005682502,
-    "worst_month": -0.21166687082312996,
+    "total_return": 3.541667526924596,
+    "cagr": 0.2123031992645379,
+    "vol": 0.28922163657724625,
+    "sharpe": 0.8110871734333283,
+    "max_drawdown": -0.4284207982592376,
+    "calmar": 0.4955483023400585,
+    "worst_month": -0.21166688709448134,
     "pct_positive_months": 0.5531914893617021,
     "trades": 594
    }
   },
   "C: 6 המניות החזקות ביותר": {
    "5y": {
-    "total_return": 0.9045634913730676,
-    "cagr": 0.1375401977314865,
-    "vol": 0.3739717700519754,
-    "sharpe": 0.5325475447906889,
-    "max_drawdown": -0.41295908193699093,
-    "calmar": 0.33306011115278567,
-    "worst_month": -0.2319331806255308,
+    "total_return": 0.9045634058966512,
+    "cagr": 0.13754018751957475,
+    "vol": 0.3739717748612882,
+    "sharpe": 0.5325475187058284,
+    "max_drawdown": -0.4129590879270345,
+    "calmar": 0.33306008159306244,
+    "worst_month": -0.2319331806027919,
     "pct_positive_months": 0.5333333333333333,
     "trades": 485
    },
    "7y": {
-    "total_return": 3.968655049753469,
-    "cagr": 0.22624102217450104,
-    "vol": 0.39313283816890204,
-    "sharpe": 0.7156707155536294,
-    "max_drawdown": -0.6448834015635101,
-    "calmar": 0.35082469424082413,
-    "worst_month": -0.2612866562020292,
+    "total_return": 3.9686549449835153,
+    "cagr": 0.22624101888499437,
+    "vol": 0.39313284021466116,
+    "sharpe": 0.7156707067685254,
+    "max_drawdown": -0.644883406298986,
+    "calmar": 0.3508246865637332,
+    "worst_month": -0.2612866562020293,
     "pct_positive_months": 0.5425531914893617,
     "trades": 744
    }
   },
   "D: 10 המניות החזקות ביותר": {
    "5y": {
-    "total_return": 0.867947727300133,
-    "cagr": 0.1331316608070916,
-    "vol": 0.33244318727800665,
-    "sharpe": 0.5446226430822946,
-    "max_drawdown": -0.39477520053457293,
-    "calmar": 0.3372341034259887,
+    "total_return": 0.8679476544090414,
+    "cagr": 0.13313165196246368,
+    "vol": 0.332443188121432,
+    "sharpe": 0.5446226191104395,
+    "max_drawdown": -0.39477523685477867,
+    "calmar": 0.33723404999548456,
     "worst_month": -0.17318797645940698,
     "pct_positive_months": 0.55,
     "trades": 717
    },
    "7y": {
-    "total_return": 2.9994992406872236,
-    "cagr": 0.1928544201107114,
-    "vol": 0.3430757825066116,
-    "sharpe": 0.6870984976207462,
-    "max_drawdown": -0.5998541787757362,
-    "calmar": 0.32150216991788716,
-    "worst_month": -0.19429366433705342,
+    "total_return": 2.9994992187625984,
+    "cagr": 0.19285441927881153,
+    "vol": 0.3430757799755368,
+    "sharpe": 0.6870984979725141,
+    "max_drawdown": -0.5998541670727213,
+    "calmar": 0.32150217480348264,
+    "worst_month": -0.1942936640873253,
     "pct_positive_months": 0.5638297872340425,
     "trades": 1072
    }
   },
   "קנה והחזק SPY": {
    "5y": {
-    "total_return": 0.7323863900599445,
-    "cagr": 0.11618321472840965,
-    "vol": 0.17333536766771895,
-    "sharpe": 0.7236399139903871,
-    "max_drawdown": -0.24496393992794452,
-    "calmar": 0.4742870104170623,
-    "worst_month": -0.09244575805599997,
+    "total_return": 0.7323862690907343,
+    "cagr": 0.1161831991380895,
+    "vol": 0.1733352802896787,
+    "sharpe": 0.723640109306066,
+    "max_drawdown": -0.24496371769512237,
+    "calmar": 0.47428737705021734,
+    "worst_month": -0.09244552814693163,
     "pct_positive_months": 0.6333333333333333
    },
    "7y": {
-    "total_return": 2.3913313185265217,
-    "cagr": 0.16808367517918765,
-    "vol": 0.19228034431288046,
-    "sharpe": 0.9061948232940055,
-    "max_drawdown": -0.33717273705917383,
-    "calmar": 0.49850909253582076,
-    "worst_month": -0.12487165761770025,
+    "total_return": 2.3913308549454118,
+    "cagr": 0.16808365486560506,
+    "vol": 0.19228022768197128,
+    "sharpe": 0.9061951657558656,
+    "max_drawdown": -0.33717268745960116,
+    "calmar": 0.49850910562186107,
+    "worst_month": -0.12487123275442213,
     "pct_positive_months": 0.6595744680851063
    }
   },
@@ -129,48 +225,110 @@
    "5y": {
     "total_return": 2.434777735425187,
     "cagr": 0.2799541179572993,
-    "vol": 0.37651660942706777,
-    "sharpe": 0.8469801377862192,
-    "max_drawdown": -0.45302636110769323,
-    "calmar": 0.6179642996332143,
+    "vol": 0.3765166781562056,
+    "sharpe": 0.8469800504064365,
+    "max_drawdown": -0.4530263070509237,
+    "calmar": 0.6179643733709933,
     "worst_month": -0.1758831248763506,
     "pct_positive_months": 0.6166666666666667
    },
    "7y": {
-    "total_return": 11.022810938251851,
-    "cagr": 0.37214145282773003,
-    "vol": 0.364836284505365,
-    "sharpe": 1.0520656845431973,
-    "max_drawdown": -0.45302636110769334,
-    "calmar": 0.8214565084420432,
+    "total_return": 11.02281203726294,
+    "cagr": 0.3721414687847562,
+    "vol": 0.36483635377655127,
+    "sharpe": 1.0520655853488656,
+    "max_drawdown": -0.4530263070509237,
+    "calmar": 0.821456641684441,
     "worst_month": -0.1758831248763505,
     "pct_positive_months": 0.6702127659574468
    }
   },
   "קנה והחזק QQQ": {
    "5y": {
-    "total_return": 0.7964243196357625,
-    "cagr": 0.124316932903759,
-    "vol": 0.23358574395729054,
-    "sharpe": 0.6206667537034847,
-    "max_drawdown": -0.3511872883525313,
-    "calmar": 0.3539904120304215,
-    "worst_month": -0.13595741255287375,
+    "total_return": 0.7964240334143518,
+    "cagr": 0.1243168970717281,
+    "vol": 0.23358580714157268,
+    "sharpe": 0.6206665158709235,
+    "max_drawdown": -0.35118731568587624,
+    "calmar": 0.3539902824478002,
+    "worst_month": -0.13595766033100043,
     "pct_positive_months": 0.5833333333333334
    },
    "7y": {
-    "total_return": 3.658470702549428,
-    "cagr": 0.21622588572798063,
-    "vol": 0.2400333413054942,
-    "sharpe": 0.9376276528473898,
-    "max_drawdown": -0.3511872883525313,
-    "calmar": 0.6156996363459694,
-    "worst_month": -0.13595741255287386,
+    "total_return": 3.6584726272857937,
+    "cagr": 0.21622594965715258,
+    "vol": 0.24003345597423964,
+    "sharpe": 0.9376275412679256,
+    "max_drawdown": -0.35118731568587624,
+    "calmar": 0.6156997704625485,
+    "worst_month": -0.13595766033100043,
     "pct_positive_months": 0.6382978723404256
    }
   }
  },
  "picks_now": {
+  "E: שרשרת פיזית, 3 ענפים x 2": {
+   "positions": [
+    {
+     "ticker": "VLTO",
+     "group": "electrical",
+     "weight": 0.189,
+     "pnl": 0.015
+    },
+    {
+     "ticker": "QMCO",
+     "group": "hardware",
+     "weight": 0.1,
+     "pnl": -0.006
+    }
+   ],
+   "next_plan": null
+  },
+  "F: שרשרת פיזית, 6 החזקות": {
+   "positions": [
+    {
+     "ticker": "QMCO",
+     "group": "QMCO",
+     "weight": 0.105,
+     "pnl": -0.006
+    },
+    {
+     "ticker": "NTAP",
+     "group": "NTAP",
+     "weight": 0.106,
+     "pnl": 0.004
+    }
+   ],
+   "next_plan": null
+  },
+  "G: שרשרת פיזית, 3x2, רק מניות עם 100M$ ביום": {
+   "positions": [
+    {
+     "ticker": "VLTO",
+     "group": "electrical",
+     "weight": 0.188,
+     "pnl": 0.015
+    },
+    {
+     "ticker": "P",
+     "group": "hardware",
+     "weight": 0.153,
+     "pnl": -0.032
+    }
+   ],
+   "next_plan": null
+  },
+  "H: שרשרת פיזית, 6 החזקות, 100M$ ביום": {
+   "positions": [
+    {
+     "ticker": "NTAP",
+     "group": "NTAP",
+     "weight": 0.105,
+     "pnl": 0.004
+    }
+   ],
+   "next_plan": null
+  },
   "A: 10 ענפים, 3 ענפים x 2 מניות (החוקים הנוכחיים)": {
    "positions": [
     {
@@ -393,6 +551,17 @@
    "mcap_b": 0.9
   },
   {
+   "ticker": "MGNI",
+   "name": "Magnite Inc. Common Stock",
+   "bucket": "cloud_services",
+   "industry": "Computer Software: Programming Data Processing",
+   "score": 0.896,
+   "r3m": 0.186,
+   "r6m": 1.362,
+   "above_ma200": true,
+   "mcap_b": 4.2
+  },
+  {
    "ticker": "AMPL",
    "name": "Amplitude Inc. Class A Common Stock",
    "bucket": "software",
@@ -413,17 +582,6 @@
    "r6m": 1.043,
    "above_ma200": true,
    "mcap_b": 2.9
-  },
-  {
-   "ticker": "MGNI",
-   "name": "Magnite Inc. Common Stock",
-   "bucket": "cloud_services",
-   "industry": "Computer Software: Programming Data Processing",
-   "score": 0.896,
-   "r3m": 0.186,
-   "r6m": 1.362,
-   "above_ma200": true,
-   "mcap_b": 4.2
   },
   {
    "ticker": "AZTA",
@@ -679,17 +837,6 @@
    "mcap_b": 3.5
   },
   {
-   "ticker": "SWKS",
-   "name": "Skyworks Solutions Inc. Common Stock",
-   "bucket": "semis",
-   "industry": "Semiconductors",
-   "score": 0.775,
-   "r3m": 0.293,
-   "r6m": 0.354,
-   "above_ma200": true,
-   "mcap_b": 20.6
-  },
-  {
    "ticker": "PCTY",
    "name": "Paylocity Holding Corporation Common Sto",
    "bucket": "software",
@@ -699,6 +846,17 @@
    "r6m": 0.722,
    "above_ma200": true,
    "mcap_b": 9.4
+  },
+  {
+   "ticker": "SWKS",
+   "name": "Skyworks Solutions Inc. Common Stock",
+   "bucket": "semis",
+   "industry": "Semiconductors",
+   "score": 0.775,
+   "r3m": 0.293,
+   "r6m": 0.354,
+   "above_ma200": true,
+   "mcap_b": 20.6
   },
   {
    "ticker": "FDS",
@@ -756,26 +914,26 @@
    "mcap_b": 283.1
   },
   {
-   "ticker": "NTSK",
-   "name": "Netskope Inc. Class A Common Stock",
+   "ticker": "ANET",
+   "name": "Arista Networks Inc. Common Stock",
+   "bucket": "networking",
+   "industry": "Computer Communications Equipment",
+   "score": 0.756,
+   "r3m": 0.039,
+   "r6m": 0.398,
+   "above_ma200": true,
+   "mcap_b": 248.5
+  },
+  {
+   "ticker": "NET",
+   "name": "Cloudflare Inc. Class A Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
    "score": 0.756,
-   "r3m": 0.41,
-   "r6m": 1.042,
+   "r3m": 0.009,
+   "r6m": 0.594,
    "above_ma200": true,
-   "mcap_b": 9.1
-  },
-  {
-   "ticker": "DE",
-   "name": "Deere & Company Common Stock",
-   "bucket": "industrial_equipment",
-   "industry": "Industrial Machinery/Components",
-   "score": 0.756,
-   "r3m": 0.118,
-   "r6m": 0.187,
-   "above_ma200": true,
-   "mcap_b": 186.4
+   "mcap_b": 112.9
   }
  ],
  "first_liquid": {
@@ -784,9 +942,9 @@
   "RNG": "2017-07-27",
   "ZETA": "2024-05-07",
   "BMBL": "2021-04-09",
+  "MGNI": "2020-11-10",
   "AMPL": "2021-11-22",
   "PRCH": "2021-02-10",
-  "MGNI": "2020-11-10",
   "AZTA": "2017-11-10",
   "MANH": "2017-07-27",
   "SAIC": "2017-07-27",
@@ -810,14 +968,14 @@
   "TMO": "2017-07-27",
   "ALRM": "2017-10-06",
   "AVPT": "2020-11-30",
-  "SWKS": "2017-07-27",
   "PCTY": "2018-09-17",
+  "SWKS": "2017-07-27",
   "FDS": "2017-07-27",
   "VEEV": "2017-07-27",
   "PTC": "2017-07-27",
   "ATEX": "2026-06-12",
   "TXN": "2017-07-27",
-  "NTSK": "2025-11-12",
-  "DE": "2017-07-27"
+  "ANET": "2017-07-27",
+  "NET": "2019-11-07"
  }
 }
