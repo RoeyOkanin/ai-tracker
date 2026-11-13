@@ -1,0 +1,875 @@
+ticker,name,exchange,sector,industry,bucket,market_cap_now
+AAOI,Applied Optoelectronics Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,5070453090.0
+AAON,AAON Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,6294365297.0
+AAPL,Apple Inc. Common Stock,nasdaq,Technology,Computer Manufacturing,hardware,5168079884660.0
+ACCV,Accelevation Holdings Corp. Class A Ordinary Shares,nasdaq,Energy,Industrial Machinery/Components,industrial_equipment,2815806970.0
+ACIW,ACI Worldwide Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,6197032052.0
+ACLS,Axcelis Technologies Inc. Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,3433342597.0
+ACMR,ACM Research Inc. Class A Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,3670685014.0
+AD,Array Digital Infrastructure Inc. Common Shares,nyse,Telecommunications,Telecommunications Equipment,networking,2402105000.0
+ADBE,Adobe Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,92473920000.0
+ADI,Analog Devices Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,198226040422.0
+ADP,Automatic Data Processing Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,120938499588.0
+ADSK,Autodesk Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,54342090000.0
+ADTN,ADTRAN Holdings Inc. Common Stock,nasdaq,Utilities,Telecommunications Equipment,networking,382215419.0
+AEE,Ameren Corporation Common Stock,nyse,Utilities,Power Generation,power,31370094293.0
+AEHL,Antelope Enterprise Holdings Limited Class A Ordinary Shares,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,215818616.0
+AEHR,Aehr Test Systems Common Stock,nasdaq,Industrials,Electrical Products,electrical,2157241352.0
+AEIS,Advanced Energy Industries Inc. Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,9375629116.0
+AEP,American Electric Power Company Inc. Common Stock,nasdaq,Utilities,Electric Utilities: Central,power,70358247099.0
+AES,The AES Corporation Common Stock,nyse,Industrials,Electric Utilities: Central,power,10657088167.0
+AEYE,AudioEye Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,174666625.0
+AGCO,AGCO Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,7919692908.0
+AGLT,Agility Robotics Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,2452238532.0
+AGLTW,Agility Robotics Inc. Warrants,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,980358230.0
+AGX,Argan Inc. Common Stock,nyse,Consumer Discretionary,Engineering & Construction,construction,4521256883.0
+AGYS,Agilysys Inc. Common Stock (DE),nasdaq,Technology,EDP Services,cloud_services,3483241127.0
+AI,C3.ai Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,1959906445.0
+AIAI,AIAI Holdings Corporation Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,81472541.0
+AIOT,PowerFleet Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,361683983.0
+AIP,Arteris Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,1010616500.0
+AIRG,Airgain Inc. Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,50872479.0
+AIRJ,AirJoule Technologies Corporation Class A Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,178240348.0
+AISP,Airship AI Holdings Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,57514069.0
+ALAB,Astera Labs Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,40358928938.0
+ALG,Alamo Group Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1724501327.0
+ALGM,Allegro MicroSystems Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,5987980433.0
+ALH,Alliance Laundry Holdings Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,4752127338.0
+ALKT,Alkami Technology Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1505015005.0
+ALLT,Allot Ltd. Ordinary Shares,nasdaq,Telecommunications,Computer Communications Equipment,networking,438840198.0
+ALMU,Aeluma Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,139260595.0
+ALNT,Allient Inc. Common Stock,nasdaq,Industrials,Electrical Products,electrical,1467164308.0
+ALRM,Alarm.com Holdings Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,3251466960.0
+ALTG,Alta Equipment Group Inc. Class A Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,180254466.0
+AMAT,Applied Materials Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,313534477780.0
+AMBA,Ambarella Inc. Ordinary Shares,nasdaq,Technology,Semiconductors,semis,2758369278.0
+AMBQ,Ambiq Micro Inc. Common Stock,nyse,Technology,Semiconductors,semis,1253747140.0
+AMD,Advanced Micro Devices Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,906804241078.0
+AME,AMETEK Inc.,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,54974403661.0
+AMKR,Amkor Technology Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,9441568201.0
+AMPG,Amplitech Group Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,76824908.0
+AMPL,Amplitude Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2194239823.0
+AMRC,Ameresco Inc. Class A Common Stock,nyse,Consumer Discretionary,Engineering & Construction,construction,1407982551.0
+AMX,America Movil S.A.B. de C.V. American Depositary Shares (each representing the right to receive twenty (20) Series B Shares,nyse,Telecommunications,Telecommunications Equipment,networking,77681647500.0
+ANET,Arista Networks Inc. Common Stock,nyse,Telecommunications,Computer Communications Equipment,networking,248536507341.0
+AOSL,Alpha and Omega Semiconductor Limited Common Shares,nasdaq,Technology,Semiconductors,semis,935502384.0
+APH,Amphenol Corporation Common Stock,nyse,Technology,Electrical Products,hardware,195812412208.0
+API,Agora Inc. American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,361489125.0
+APLD,Applied Digital Corporation Common Stock,nasdaq,Technology,EDP Services,cloud_services,5415753677.0
+APP,Applovin Corporation Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,134109205940.0
+APPF,AppFolio Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,7972231234.0
+APPN,Appian Corporation Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,3826149918.0
+AQN,Algonquin Power & Utilities Corp. Common Shares,nyse,Utilities,Electric Utilities: Central,power,4281008458.0
+AQNB,Algonquin Power & Utilities Corp. 6.20% Fixed-to-Floating Subordinated Notes Series 2019-A due July 1 2079,nyse,Utilities,Electric Utilities: Central,power,19530875775.0
+ARBE,Arbe Robotics Ltd. Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,64966562.0
+ARM,Arm Holdings plc American Depositary Shares,nasdaq,Technology,Semiconductors,semis,216386276047.0
+ARQQ,Arqit Quantum Inc. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,271303587.0
+ARRY,Array Technologies Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,802200703.0
+ARW,Arrow Electronics Inc. Common Stock,nyse,Technology,Electronic Components,hardware,10001792203.0
+ASAN,Asana Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,2242762296.0
+ASML,ASML Holding N.V. New York Registry Shares,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,591392573529.0
+ASTS,AST SpaceMobile Inc. Class A Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,14285815346.0
+ASUR,Asure Software Inc Common Stock,nasdaq,Technology,EDP Services,cloud_services,313161984.0
+ASX,ASE Technology Holding Co. Ltd. American Depositary Shares (each representing Two Common Shares) ,nyse,Technology,Semiconductors,semis,84154505312.0
+ASYS,Amtech Systems Inc. Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,222527964.0
+ATEN,A10 Networks Inc. Common Stock,nyse,Telecommunications,Computer Communications Equipment,networking,2071481631.0
+ATEX,Anterix Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,1505478262.0
+ATGL,Alpha Technology Group Limited Class A Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,151455000.0
+ATHM,Autohome Inc. American Depositary Shares each representing four class A ordinary shares.,nyse,Technology,EDP Services,cloud_services,2492298514.0
+ATNI,ATN International Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,469340288.0
+ATOM,Atomera Incorporated Common Stock,nasdaq,Technology,Semiconductors,semis,116859378.0
+ATS,ATS Corporation Common Shares,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1693330725.0
+AUDC,AudioCodes Ltd. Common Stock,nasdaq,Utilities,Telecommunications Equipment,networking,212956752.0
+AUR,Aurora Innovation Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,9294060142.0
+AVA,Avista Corporation Common Stock,nyse,Utilities,Power Generation,power,3378736726.0
+AVGO,Broadcom Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,1647952501995.0
+AVNW,Aviat Networks Inc. Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,212303069.0
+AVPT,AvePoint Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,3476769186.0
+AVT,Avnet Inc. Common Stock,nasdaq,Technology,Electronic Components,hardware,7139634018.0
+AXTI,AXT Inc Common Stock,nasdaq,Technology,Semiconductors,semis,3079973768.0
+AZ,A2Z Cust2Mate Solutions Corp. Common Shares,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,280373750.0
+AZTA,Azenta Inc.,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,2142230418.0
+BAND,Bandwidth Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1556670567.0
+BB,BlackBerry Limited Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,5515168261.0
+BBAI,BigBear.ai Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,1109606156.0
+BBCP,Concrete Pumping Holdings Inc. Common Stock,nasdaq,Consumer Discretionary,Engineering & Construction,construction,516028621.0
+BBUC,Brookfield Business Corporation Class A Subordinate Voting Shares,nyse,Consumer Discretionary,Engineering & Construction,construction,6106023000.0
+BC,Brunswick Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,5030448253.0
+BCE,BCE Inc. Common Stock,nyse,Telecommunications,Telecommunications Equipment,networking,20053967695.0
+BDC,Belden Inc Common Stock,nyse,Industrials,Telecommunications Equipment,networking,4072658396.0
+BE,Bloom Energy Corporation Class A Common Stock,nyse,Energy,Industrial Machinery/Components,industrial_equipment,61940076346.0
+BEP,Brookfield Renewable Partners L.P. Limited Partnership Units,nyse,Utilities,Electric Utilities: Central,power,20734459765.0
+BEPC,Brookfield Renewable Corporation Brookfield Renewable Corporation Class A Subordinate Voting Shares,nyse,Utilities,Electric Utilities: Central,power,11810051835.0
+BEPH,Brookfield BRP Holdings (Canada) Inc. 4.625% Perpetual Subordinated Notes,nyse,Utilities,Electric Utilities: Central,power,3916921598.0
+BEPI,Brookfield BRP Holdings (Canada) Inc. 4.875% Perpetual Subordinated Notes,nyse,Utilities,Electric Utilities: Central,power,4120808279.0
+BEPJ,Brookfield BRP Holdings (Canada) Inc. 7.250% Perpetual Subordinated Notes,nyse,Utilities,Electric Utilities: Central,power,6333409519.0
+BHE,Benchmark Electronics Inc. Common Stock,nyse,Technology,Electrical Products,hardware,2321885938.0
+BIDU,Baidu Inc. ADS,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,27138552082.0
+BILI,Bilibili Inc. American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,5811899876.0
+BILL,BILL Holdings Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,4674613976.0
+BKH,Black Hills Corporation Common Stock,nyse,Utilities,Electric Utilities: Central,power,6653066460.0
+BKSY,BlackSky Technology Inc. Class A Common Stock,nyse,Technology,Radio And Television Broadcasting And Communications Equipment,networking,996466902.0
+BKTI,BK Technologies Corporation Common Stock,amex,Technology,Radio And Television Broadcasting And Communications Equipment,networking,259635514.0
+BL,BlackLine Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1565925873.0
+BLDP,Ballard Power Systems Inc. Common Shares,nasdaq,Energy,Industrial Machinery/Components,industrial_equipment,530146966.0
+BLKB,Blackbaud Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2446850800.0
+BLND,Blend Labs Inc. Class A Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,248992652.0
+BLZE,Backblaze Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,558056000.0
+BMBL,Bumble Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,927599510.0
+BMI,Badger Meter Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,4533051572.0
+BOX,Box Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,5974407660.0
+BRAI,Braiin Limited Common Stock,nasdaq,Technology,EDP Services,cloud_services,405993809.0
+BRUN,Boost Run Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,586617315.0
+BRZE,Braze Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,5279404167.0
+BSP,Bending Spoons S.p.A. Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,28126411650.0
+BSY,Bentley Systems Incorporated Class B Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,13440354630.0
+BWXT,BWX Technologies Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,11513164129.0
+BZ,KANZHUN LIMITED American Depository Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,7888829163.0
+CACI,CACI International Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,14345735753.0
+CALX,Calix Inc Common Stock,nyse,Consumer Discretionary,Telecommunications Equipment,networking,2014135099.0
+CAMT,Camtek Ltd. Ordinary Shares,nasdaq,Technology,Electronic Components,hardware,4983028379.0
+CARG,CarGurus Inc. Class A Common Stock ,nasdaq,Technology,EDP Services,cloud_services,3111874203.0
+CARR,Carrier Global Corporation Common Stock ,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,44638820839.0
+CARS,Cars.com Inc. Common Stock ,nyse,Technology,EDP Services,cloud_services,703025285.0
+CAST,FreeCast Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,62976393.0
+CBRS,Cerebras Systems Inc. Class A Common Stock,nasdaq,Technology,Semiconductors,semis,24012973264.0
+CCC,CCC Intelligent Solutions Holdings Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,4556927436.0
+CCLD,CareCloud Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,112754476.0
+CCOI,Cogent Communications Holdings Inc.,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,227345241.0
+CCSI,Consensus Cloud Solutions Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,795810695.0
+CDNS,Cadence Design Systems Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,90342029540.0
+CEG,Constellation Energy Corporation Common Stock ,nasdaq,Utilities,Electric Utilities: Central,power,96597404304.0
+CEPL,Capstone Energy Plus Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,100443694.0
+CEPU,Central Puerto S.A. American Depositary Shares (each represents ten Common Shares),nyse,Utilities,Electric Utilities: Central,power,1551614476.0
+CERT,Certara Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1789334105.0
+CEVA,CEVA Inc. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,768524762.0
+CGNT,Cognyte Software Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,626675231.0
+CGNX,Cognex Corporation Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,8708513263.0
+CHKP,Check Point Software Technologies Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,14965910932.0
+CHRN,ChronoScale Holdings Corporation Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,1677743447.0
+CHT,Chunghwa Telecom Co. Ltd.,nyse,Telecommunications,Telecommunications Equipment,networking,38011488046.0
+CIEN,Ciena Corporation Common Stock,nyse,Utilities,Telecommunications Equipment,networking,42005103190.0
+CIG,Comp En De Mn Cemig ADS American Depositary Shares,nyse,Utilities,Electric Utilities: Central,power,5451694510.0
+CIG-C,Comp En De Mn Cemig ADS American Depositary Receipts,nyse,Utilities,Electric Utilities: Central,power,8585345685.0
+CINT,CI&T Inc Class A Common Shares,nyse,Technology,EDP Services,cloud_services,433069570.0
+CLBT,Cellebrite DI Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,3192031462.0
+CLFD,Clearfield Inc. Common Stock,nasdaq,Utilities,Telecommunications Equipment,networking,415533183.0
+CLS,Celestica Inc. Common Stock,nyse,Technology,Electrical Products,hardware,30645421568.0
+CLVT,Clarivate Plc Ordinary Shares,nyse,Technology,EDP Services,cloud_services,1484577978.0
+CMCM,Cheetah Mobile Inc. American Depositary Shares each representing fifty (50) Class A Ordinary Shares,nyse,Technology,Computer Software: Prepackaged Software,software,71704427.0
+CMI,Cummins Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,63483512417.0
+CMRC,Commerce.com Inc. Series 1 Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,305070776.0
+CMS,CMS Energy Corporation Common Stock,nyse,Utilities,Power Generation,power,21828343013.0
+CMSA,CMS Energy Corporation 5.625% Junior Subordinated Notes due 2078,nyse,Utilities,Power Generation,power,5723294014.0
+CMSC,CMS Energy Corporation 5.875% Junior Subordinated Notes due 2078,nyse,Utilities,Power Generation,power,5917862064.0
+CMSD,CMS Energy Corporation 5.875% Junior Subordinated Notes due 2079,nyse,Utilities,Power Generation,power,5947795610.0
+CNP,CenterPoint Energy Inc (Holding Co) Common Stock,nyse,Utilities,Electric Utilities: Central,power,27171435050.0
+CNXC,Concentrix Corporation Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2001508687.0
+CODA,Coda Octopus Group Inc. Common stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,98501472.0
+COHR,Coherent Corp. Common Stock,nyse,Technology,Electronic Components,hardware,46198625401.0
+COHU,Cohu Inc. Common Stock,nasdaq,Industrials,Electrical Products,electrical,2176845954.0
+COUR,Coursera Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,929611000.0
+CRCT,Cricut Inc. Class A Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,1849670815.0
+CRDO,Credo Technology Group Holding Ltd Ordinary Shares,nasdaq,Technology,Semiconductors,semis,26578280724.0
+CRM,Salesforce Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,179372850000.0
+CRNC,Cerence Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,393503236.0
+CRNT,Ceragon Networks Ltd. Ordinary Shares,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,230026890.0
+CRSR,Corsair Gaming Inc. Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,1390777387.0
+CRUS,Cirrus Logic Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,6070704831.0
+CRWD,CrowdStrike Holdings Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,234542514909.0
+CRWV,CoreWeave Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,33516879304.0
+CSCO,Cisco Systems Inc. Common Stock (DE),nasdaq,Telecommunications,Computer Communications Equipment,networking,397255053323.0
+CSIQ,Canadian Solar Inc. Common Shares (ON),nasdaq,Technology,Semiconductors,semis,689696083.0
+CSPI,CSP Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,70967741.0
+CSQR,Csquare Inc. Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,2834444068.0
+CTS,CTS Corporation Common Stock,nyse,Technology,Electrical Products,hardware,1769701643.0
+CTSH,Cognizant Technology Solutions Corporation Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,28802170283.0
+CTW,CTW Class A Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,95044153.0
+CUB,Lionheart Holdings Class A Ordinary Shares,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,348501279.0
+CVLT,Commvault Systems Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,6821765423.0
+CW,Curtiss-Wright Corporation Common Stock,nyse,Technology,Industrial Machinery/Components,tech_equipment,17390009612.0
+CWEN,Clearway Energy Inc. Class C Common Stock,nyse,Utilities,Electric Utilities: Central,power,7038874675.0
+CXDO,Crexendo Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,168546709.0
+CXM,Sprinklr Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,1540456841.0
+CYD,China Yuchai International Limited Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,816773870.0
+D,Dominion Energy Inc. Common Stock,nyse,Utilities,Electric Utilities: Central,power,59819288965.0
+DAVA,Endava plc American Depositary Shares (each representing one Class A Ordinary Share),nyse,Technology,EDP Services,cloud_services,85294337.0
+DBX,Dropbox Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,7413149556.0
+DCBO,Docebo Inc. Common Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,817278383.0
+DDD,3D Systems Corporation Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,300264488.0
+DDI,DoubleDown Interactive Co. Ltd. American Depository Shares,nasdaq,Technology,EDP Services,cloud_services,778980077.0
+DDOG,Datadog Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,66569024447.0
+DE,Deere & Company Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,186424402365.0
+DELL,Dell Technologies Inc. Class C Common Stock ,nyse,Technology,Computer Manufacturing,hardware,237615940930.0
+DGII,Digi International Inc. Common Stock,nasdaq,Telecommunications,Computer Communications Equipment,networking,2541006316.0
+DGNX,Diginex Limited Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,60156156.0
+DH,Definitive Healthcare Corp. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,186242981.0
+DHR,Danaher Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,165544318424.0
+DIOD,Diodes Incorporated Common Stock,nasdaq,Technology,Semiconductors,semis,4171066655.0
+DJT,Trump Media & Technology Group Corp. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,1445042680.0
+DJTWW,Trump Media & Technology Group Corp. Warrants,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,760109155.0
+DMRC,Digimarc Corporation Common Stock,nasdaq,Technology,EDP Services,cloud_services,207732104.0
+DOCN,DigitalOcean Holdings Inc. Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,10294042141.0
+DOCS,Doximity Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,5930330251.0
+DOCU,DocuSign Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,14980231528.0
+DOV,Dover Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,28257483103.0
+DOX,Amdocs Limited Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,4654784122.0
+DOYU,DouYu International Holdings Limited ADS,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,119508282.0
+DQ,DAQO New Energy Corp. American Depositary Shares each representing five ordinary shares,nyse,Technology,Semiconductors,semis,790340480.0
+DRS,Leonardo DRS Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,9768996554.0
+DSC,DSC Holdings Ltd. American Depositary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,123178330.0
+DSGX,Descartes Systems Group Inc. (The) Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,8211805602.0
+DSP,Viant Technology Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,784730061.0
+DT,Dynatrace Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,12688669561.0
+DTB,DTE Energy Company 2020 Series G 4.375% Junior Subordinated Debentures due 2080,nyse,Utilities,Electric Utilities: Central,power,3059997291.0
+DTE,DTE Energy Company Common Stock,nyse,Utilities,Electric Utilities: Central,power,29074137523.0
+DTG,DTE Energy Company 2021 Series E 4.375% Junior Subordinated Debentures,nyse,Utilities,Electric Utilities: Central,power,3070405445.0
+DTW,DTE Energy Company 2017 Series E 5.25% Junior Subordinated Debentures due 2077,nyse,Utilities,Electric Utilities: Central,power,3659506964.0
+DUK,Duke Energy Corporation (Holding Company) Common Stock,nyse,Utilities,Power Generation,power,100395240322.0
+DUKB,Duke Energy Corporation 5.625% Junior Subordinated Debentures due 2078,nyse,Utilities,Power Generation,power,15796890097.0
+DUOL,Duolingo Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,7742896031.0
+DUOT,Duos Technologies Group Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,172469295.0
+DV,DoubleVerify Holdings Inc. Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,2119003951.0
+DXC,DXC Technology Company Common Stock ,nyse,Technology,EDP Services,cloud_services,2375591838.0
+DXPE,DXP Enterprises Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,2401719093.0
+DY,Dycom Industries Inc. Common Stock,nyse,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,6879834936.0
+EAF,GrafTech International Ltd. Common Stock,nyse,Energy,Industrial Machinery/Components,industrial_equipment,303403495.0
+EAI,Entergy Arkansas LLC First Mortgage Bonds 4.875% Series Due September 1 2066,nyse,Utilities,Electric Utilities: Central,power,8648670890.0
+ECHO,EchoStar  Corporation Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,29737967441.0
+ECX,ECARX Holdings Inc. Class A Ordinary shares,nasdaq,Technology,EDP Services,cloud_services,300046631.0
+ED,Consolidated Edison Inc. Common Stock,nyse,Utilities,Power Generation,power,44213164829.0
+EDN,Empresa Distribuidora Y Comercializadora Norte S.A. (Edenor) American Depositary Shares,nyse,Utilities,Electric Utilities: Central,power,654665081.0
+EFXT,Enerflex Ltd Common Shares,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,2470141323.0
+EGAN,eGain Corporation Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,157447432.0
+EGHT,8x8 Inc Common Stock,nasdaq,Technology,EDP Services,cloud_services,335565216.0
+EIX,Edison International Common Stock,nyse,Utilities,Electric Utilities: Central,power,23056450282.0
+ELC,Entergy Louisiana Inc. Collateral Trust Mortgage Bonds 4.875 % Series due September 1 2066,nyse,Utilities,Electric Utilities: Central,power,3853202565.0
+ELLO,Ellomay Capital Ltd Ordinary Shares (Israel),amex,Utilities,Electric Utilities: Central,power,253611432.0
+ELPC,Companhia Paranaense de Energia (COPEL) American Depositary Shares (each representing four (4) Common Shares),nyse,Utilities,Electric Utilities: Central,power,8169172509.0
+EMA,Emera Incorporated Common Shares,nyse,Utilities,Electric Utilities: Central,power,15647766500.0
+EME,EMCOR Group Inc. Common Stock,nyse,Industrials,Engineering & Construction,construction,29188148607.0
+EMP,Entergy Mississippi LLC First Mortgage Bonds 4.90% Series Due October 1 2066,nyse,Utilities,Electric Utilities: Central,power,8667783975.0
+ENIC,Enel Chile S.A. American Depositary Shares (Each representing 50 shares of Common Stock),nyse,Utilities,Electric Utilities: Central,power,5830740772.0
+ENJ,Entergy New Orleans LLC First Mortgage Bonds 5.0% Series due December 1 2052,nyse,Utilities,Power Generation,power,8830245196.0
+ENLT,Enlight Renewable Energy Ltd. Ordinary Shares,nasdaq,Utilities,Electric Utilities: Central,power,9499815693.0
+ENO,Entergy New Orleans LLC First Mortgage Bonds 5.50% Series due April 1 2066,nyse,Utilities,Power Generation,power,4082030850.0
+ENPH,Enphase Energy Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,3744494039.0
+ENRD,Einride AB American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,306580656.0
+EPAC,Enerpac Tool Group Corp. Common Stock,nyse,Technology,Industrial Machinery/Components,tech_equipment,2025035387.0
+EPAM,EPAM Systems Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,8303027305.0
+ERIC,Ericsson American Depositary Shares,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,35837468943.0
+ERII,Energy Recovery Inc. Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,372094205.0
+EROC,ERock Inc. Class A Common Stock,nyse,Energy,Industrial Machinery/Components,industrial_equipment,1937302706.0
+ES,Eversource Energy (D/B/A) Common Stock,nyse,Utilities,Electric Utilities: Central,power,26587983179.0
+ESAB,ESAB Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,5332233228.0
+ESE,ESCO Technologies Inc. Common Stock,nyse,Telecommunications,Telecommunications Equipment,networking,7418560405.0
+ESOA,Energy Services of America Corporation Common Stock,nasdaq,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,169425363.0
+ESP,Espey Mfg. & Electronics Corp. Common Stock,amex,Technology,Industrial Machinery/Components,tech_equipment,145281123.0
+ESTC,Elastic N.V. Ordinary Shares,nyse,Technology,Computer Software: Prepackaged Software,software,9252069016.0
+ETN,Eaton Corporation PLC Ordinary Shares,nyse,Technology,Industrial Machinery/Components,tech_equipment,140054250000.0
+ETR,Entergy Corporation Common Stock,nyse,Utilities,Electric Utilities: Central,power,53497524467.0
+EVCM,EverCommerce Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1208363096.0
+EVER,EverQuote Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,1026918192.0
+EVLV,Evolv Technologies Holdings Inc. Class A Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,818048402.0
+EVRG,Evergy Inc. Common Stock,nasdaq,Utilities,Power Generation,power,20715434679.0
+EVTC,Evertec Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,1928657222.0
+EXC,Exelon Corporation Common Stock,nasdaq,Utilities,Power Generation,power,47201637848.0
+EXFY,Expensify Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,164460499.0
+EXTR,Extreme Networks Inc. Common Stock,nasdaq,Telecommunications,Computer Communications Equipment,networking,3498861196.0
+FA,First Advantage Corporation Common Stock,nasdaq,Technology,EDP Services,cloud_services,3705959189.0
+FATN,FatPipe Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,68664354.0
+FCEL,FuelCell Energy Inc. Common Stock,nasdaq,Energy,Industrial Machinery/Components,industrial_equipment,875258584.0
+FDS,FactSet Research Systems Inc. Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,11812232162.0
+FE,FirstEnergy Corp. Common Stock,nyse,Utilities,Electric Utilities: Central,power,26930117712.0
+FEIM,Frequency Electronics Inc. Common Stock,nasdaq,Industrials,Electrical Products,electrical,769176372.0
+FFIV,F5 Inc. Common Stock,nasdaq,Telecommunications,Computer Communications Equipment,networking,18121264512.0
+FIG,Figma Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,10160983582.0
+FIRY,Firy Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,211102664.0
+FISN,Deep Fission Inc. Common Stock,nasdaq,Utilities,Electric Utilities: Central,power,121942847.0
+FIVN,Five9 Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,2113681554.0
+FIX,Comfort Systems USA Inc. Common Stock,nyse,Industrials,Engineering & Construction,construction,40658518475.0
+FLEX,Flex Ltd. Ordinary Shares,nasdaq,Technology,Electrical Products,hardware,29176319692.0
+FLUT,Flutter Entertainment plc Ordinary Shares,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,14858167241.0
+FN,Fabrinet Ordinary Shares,nyse,Utilities,Telecommunications Equipment,networking,13186192557.0
+FORM,FormFactor Inc. FormFactor Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,7509450355.0
+FORTY,Formula Systems (1985) Ltd. American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,1838120040.0
+FPS,Forgent Power Solutions Inc. Class A Common Stock,nyse,Energy,Industrial Machinery/Components,industrial_equipment,7476773514.0
+FROG,JFrog Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,13647411618.0
+FRSH,Freshworks Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,3168921129.0
+FRVO,Fervo Energy Company Class A common stock,nasdaq,Utilities,Electric Utilities: Central,power,3817569812.0
+FSLR,First Solar Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,19143467805.0
+FSLY,Fastly Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2782312000.0
+FTNT,Fortinet Inc. Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,94116317822.0
+FTS,Fortis Inc. Common Shares,nyse,Utilities,Electric Utilities: Central,power,30470885000.0
+FTV,Fortive Corporation Common Stock ,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,20201129229.0
+GCL,GCL Global Holdings Ltd Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,136642204.0
+GCTS,GCT Semiconductor Holding Inc. Common Stock,nyse,Technology,Semiconductors,semis,145312167.0
+GDDY,GoDaddy Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,13773774166.0
+GDEV,GDEV Inc. Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,164080421.0
+GDRX,GoodRx Holdings Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,1245180666.0
+GDS,GDS Holdings Limited ADS,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,4532541606.0
+GDYN,Grid Dynamics Holdings Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1111528869.0
+GEG,Great Elm Group Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,66324243.0
+GEGGL,Great Elm Group Inc.  7.25% Notes due 2027,nasdaq,Technology,Computer Software: Prepackaged Software,software,715350735.0
+GEN,Gen Digital Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,18175012711.0
+GENVR,Gen Digital Inc. Contingent Value Rights,nasdaq,Technology,Computer Software: Prepackaged Software,software,2076466280.0
+GFS,GlobalFoundries Inc. Ordinary Shares,nasdaq,Technology,Semiconductors,semis,23885387139.0
+GFUZ,General Fusion Group Ltd. Common Shares,nasdaq,Utilities,Electric Utilities: Central,power,367947095.0
+GFUZW,General Fusion Group Ltd. Warrant,nasdaq,Utilities,Electric Utilities: Central,power,62913234.0
+GHM,Graham Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1017564533.0
+GIBO,GIBO Holdings Limited Class A Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,273494025.0
+GIC,Global Industrial Company Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1801885651.0
+GILT,Gilat Satellite Networks Ltd. Ordinary Shares,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,454335107.0
+GLBE,Global-E Online Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,7073057436.0
+GLOB,Globant S.A. Common Shares,nyse,Technology,EDP Services,cloud_services,1999861136.0
+GLOO,Gloo Holdings Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,283746227.0
+GLW,Corning Incorporated Common Stock,nyse,Industrials,Telecommunications Equipment,networking,103695465140.0
+GMHS,Gamehaus Holdings Inc. Class A Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,61797595.0
+GMM,Global Mofy AI Limited Class A Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,54563151.0
+GNE,Genie Energy Ltd. Class B Common Stock Stock,nyse,Utilities,Power Generation,power,504404178.0
+GOGO,Gogo Inc. Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,500502895.0
+GOOG,Alphabet Inc. Class C Capital Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,3573005220000.0
+GOOGL,Alphabet Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,3607674300000.0
+GOOGM,Alphabet Inc. Depositary Shares representing a 1/20th Interest in a Share of Series A Mandatory Convertible Preferred Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,525445560000.0
+GOOGN,Alphabet Inc. Depositary Shares representing a 1/20th Interest in a Share of Series B Mandatory Convertible Preferred Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,523847340000.0
+GPJA,Georgia Power Company Series 2017A 5.00% Junior Subordinated Notes due October 1 2077,nyse,Utilities,Electric Utilities: Central,power,167633150.0
+GRMN,Garmin Ltd. Common Stock (Switzerland),nyse,Industrials,Industrial Machinery/Components,industrial_equipment,56617732458.0
+GRND,Grindr Inc. Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,2481282714.0
+GRRR,Gorilla Technology Group Inc. Ordinary shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,230832095.0
+GRVY,GRAVITY Co. Ltd. American Depository Shares,nasdaq,Technology,EDP Services,cloud_services,474679359.0
+GSAT,Globalstar Inc. Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,11152449648.0
+GSIT,GSI Technology Common Stock,nasdaq,Technology,Semiconductors,semis,128584990.0
+GTES,Gates Industrial Corporation Ltd. Common Shares,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,6415304628.0
+GTLB,GitLab Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,7883512000.0
+GTM,ZoomInfo Technologies Inc Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,983031105.0
+GWRE,Guidewire Software Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,13069362957.0
+HAWK,HawkEye 360 Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,1494954324.0
+HAYW,Hayward Holdings Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,3493660546.0
+HCAT,Health Catalyst Inc Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,108902318.0
+HE,Hawaiian Electric Industries Inc. Common Stock,nyse,Utilities,Electric Utilities: Central,power,1540733796.0
+HIMX,Himax Technologies Inc. American Depositary Shares,nasdaq,Technology,Semiconductors,semis,1585531558.0
+HLIT,Harmonic Inc. Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,1109961485.0
+HLP,Hongli Group Inc. Class A Ordinary Shares,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,326608338.0
+HNGE,Hinge Health Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,9893561949.0
+HNRG,Hallador Energy Company Common Stock,nasdaq,Utilities,Electric Utilities: Central,power,517654856.0
+HPQ,HP Inc. Common Stock,nyse,Technology,Computer Manufacturing,hardware,26115866462.0
+HQ,Horizon Quantum Holdings Ltd. Class A Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,690302903.0
+HQWWW,Horizon Quantum Holdings Ltd. Warrant,nasdaq,Technology,EDP Services,cloud_services,294147836.0
+HSAI,Hesai Group American Depositary Share,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,2303704813.0
+HSTM,HealthStream Inc. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,884680145.0
+HUBB,Hubbell Inc Common Stock,nyse,Technology,Electrical Products,hardware,23431281322.0
+HUBS,HubSpot Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,9909162119.0
+HUCK,Huckleberry.ai Inc. Class B Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,159922947.0
+HURC,Hurco Companies Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,134254155.0
+HUYA,HUYA Inc. American depositary shares each  representing one Class A ordinary share,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,516107370.0
+IA,Innovative Solutions and Support Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,396735170.0
+IBEX,IBEX Limited Common Shares,nasdaq,Technology,EDP Services,cloud_services,737627973.0
+IBM,International Business Machines Corporation Common Stock,nyse,Technology,Computer Manufacturing,hardware,234616788633.0
+ICG,Intchains Group Limited American Depositary Shares,nasdaq,Technology,Semiconductors,semis,175739122.0
+ICHR,Ichor Holdings Ordinary Shares,nasdaq,Technology,Semiconductors,semis,1407232660.0
+IDA,IDACORP Inc. Common Stock,nyse,Utilities,Electric Utilities: Central,power,8647317169.0
+IDT,IDT Corporation Class B Common Stock,nyse,Telecommunications,Telecommunications Equipment,networking,2063327442.0
+IESC,IES Holdings Inc. Common Stock,nasdaq,Industrials,Engineering & Construction,construction,7218814231.0
+IHS,IHS Holding Limited Ordinary Shares,nyse,Telecommunications,Telecommunications Equipment,networking,2840187144.0
+IIIV,i3 Verticals Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,515648156.0
+IMMR,Immersion Corporation Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,233438468.0
+IMOS,ChipMOS TECHNOLOGIES INC. American Depositary Shares,nasdaq,Technology,Semiconductors,semis,1847605445.0
+INDI,indie Semiconductor Inc. Class A Common Stock,nasdaq,Technology,Semiconductors,semis,553834197.0
+INFQ,Infleqtion Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,2118356289.0
+INFQ-WS,Infleqtion Inc. Warrants each whole warrant exercisable for one share of Common Stock at an exercise price of $11.50 per share,nyse,Technology,EDP Services,cloud_services,820299669.0
+INFY,Infosys Limited American Depositary Shares,nyse,Technology,EDP Services,cloud_services,49893229119.0
+INOD,Innodata Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,1313532454.0
+INSE,Inspired Entertainment Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,119968412.0
+INSG,Inseego Corp. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,83930481.0
+INTA,Intapp Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,3560456462.0
+INTC,Intel Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,332022735000.0
+INTT,inTest Corporation Common Stock,amex,Industrials,Electrical Products,electrical,186509507.0
+INTU,Intuit Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,91565743040.0
+INVE,INVE Technologies Inc. Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,64467103.0
+IONQ,IonQ Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,14725353267.0
+IOT,Samsara Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,24735964028.0
+IPGP,IPG Photonics Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,3010001393.0
+IQMX,IQM Quantum Computers Oyj American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,1419326673.0
+IQMXW,IQM Quantum Computers Oyj Warrants to purchase American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,174336521.0
+IR,Ingersoll Rand Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,32668562514.0
+IRDM,Iridium Communications Inc Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,5020234472.0
+ITG,ITG Inc. Class A Common Stock,nasdaq,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,636305747.0
+ITRI,Itron Inc. Common Stock,nasdaq,Industrials,Electrical Products,electrical,4320252257.0
+ITRN,Ituran Location and Control Ltd. Ordinary Shares,nasdaq,Technology,Electronic Components,hardware,995076872.0
+ITW,Illinois Tool Works Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,82059908000.0
+JBL,Jabil Inc. Common Stock,nyse,Technology,Electrical Products,hardware,26662149772.0
+JBTM,JBT Marel Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,6465948829.0
+JCI,Johnson Controls International plc Ordinary Share,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,87584159147.0
+JKHY,Jack Henry & Associates Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,12245931617.0
+JKS,Jinko Holdings Limited American Depositary Shares (each representing 4 Ordinary Shares),nyse,Technology,Semiconductors,semis,531033706.0
+JOYY,JOYY Inc. American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,3947874750.0
+KAI,Kadant Inc Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,3568554273.0
+KARO,Karooooo Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,1981496262.0
+KC,Kingsoft Cloud Holdings Limited American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,2550629537.0
+KD,Kyndryl Holdings Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,3731396689.0
+KDK,Kodiak AI Inc. Common Stock ,nasdaq,Technology,EDP Services,cloud_services,242859488.0
+KE,Kimball Electronics Inc. Common Stock,nasdaq,Technology,Electrical Products,hardware,468255987.0
+KEN,Kenon Holdings Ltd. Ordinary Shares,nyse,Utilities,Electric Utilities: Central,power,3221341103.0
+KEP,Korea Electric Power Corporation Common Stock,nyse,Utilities,Electric Utilities: Central,power,14636780956.0
+KEYS,Keysight Technologies Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,52035306309.0
+KLAC,KLA Corporation Common Stock,nasdaq,Technology,Electronic Components,hardware,209789981659.0
+KLIC,Kulicke and Soffa Industries Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,3830491218.0
+KLTR,Kaltura Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,228041774.0
+KMT,Kennametal Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1894329330.0
+KOPN,Kopin Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,691940884.0
+KRNT,Kornit Digital Ltd. Ordinary Shares,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,762226313.0
+KT,KT Corporation Common Stock,nyse,Telecommunications,Telecommunications Equipment,networking,8980791097.0
+KULR,KULR Technology Group Inc. Common Stock,amex,Technology,Electrical Products,hardware,95800724.0
+KVHI,KVH Industries Inc. Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,132846450.0
+KVYO,Klaviyo Inc. Series A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,5978977097.0
+KYIV,Kyivstar Group Ltd. Common Shares,nasdaq,Telecommunications,Telecommunications Equipment,networking,3028138929.0
+KYIVW,Kyivstar Group Ltd. Warrant,nasdaq,Telecommunications,Telecommunications Equipment,networking,1101352214.0
+LAES,SEALSQ Corp Ordinary Shares,nasdaq,Technology,Semiconductors,semis,316339079.0
+LASR,nLIGHT Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,2590252901.0
+LAW,CS Disco Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,400040706.0
+LDOS,Leidos Holdings Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,16322890459.0
+LECO,Lincoln Electric Holdings Inc. Common Shares,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,15604788471.0
+LFTO,Liftoff Mobile Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,3141099826.0
+LFUS,Littelfuse Inc. Common Stock,nasdaq,Energy,Electrical Products,electrical,10102990642.0
+LGL,LGL Group Inc. (The) Common Stock,amex,Technology,Industrial Machinery/Components,tech_equipment,86526202.0
+LGN,Legence Corp. Class A Common stock,nasdaq,Consumer Discretionary,Engineering & Construction,construction,4008519553.0
+LHX,L3Harris Technologies Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,51503122748.0
+LIF,Life360 Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,3651192591.0
+LII,Lennox International Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,11991081318.0
+LIME,Neutron Holdings Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1222352614.0
+LINK,Interlink Electronics Inc. Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,51041045.0
+LITE,Lumentum Holdings Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,58779042000.0
+LMB,Limbach Holdings Inc. Common Stock,nasdaq,Consumer Discretionary,Engineering & Construction,construction,678709661.0
+LNN,Lindsay Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1108013874.0
+LNT,Alliant Energy Corporation Common Stock,nasdaq,Utilities,Power Generation,power,19094204820.0
+LOGI,Logitech International S.A. Ordinary Shares,nasdaq,Technology,Computer peripheral equipment,hardware,14210218109.0
+LPL,LG Display Co Ltd AMERICAN DEPOSITORY SHARES,nyse,Technology,Industrial Machinery/Components,tech_equipment,2655000000.0
+LPTH,LightPath Technologies Inc. Class A Common Stock,nasdaq,Technology,Semiconductors,semis,527061956.0
+LRCX,Lam Research Corporation Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,294654455480.0
+LSCC,Lattice Semiconductor Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,17461048084.0
+LSPD,Lightspeed Commerce Inc. Subordinate Voting Shares,nyse,Technology,Computer Software: Prepackaged Software,software,1320074811.0
+LTRX,Lantronix Inc. Common Stock,nasdaq,Telecommunications,Computer Communications Equipment,networking,222046109.0
+LUMN,Lumen Technologies Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,4588139913.0
+LUNR,Intuitive Machines Inc. Class A Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,2788295148.0
+LYNX,Lyntris Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1726486328.0
+LZ,LegalZoom.com Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,796067219.0
+MANH,Manhattan Associates Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,15029901622.0
+MASS,908 Devices Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,418318914.0
+MBLY,Mobileye Global Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,4913993345.0
+MCHP,Microchip Technology Incorporated Common Stock,nasdaq,Technology,Semiconductors,semis,33812613946.0
+MCHPP,Microchip Technology Incorporated Depositary Shares Each Representing a 1/20th Interest in a Share of 7.50% Series A Mandatory Convertible Preferred Stock,nasdaq,Technology,Semiconductors,semis,29687398853.0
+MCHX,Marchex Inc. Class B Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,63846562.0
+MDA,MDA Space Ltd. Common Shares,nyse,Consumer Discretionary,Electronic Components,hardware,5020119293.0
+MDB,MongoDB Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,27237710019.0
+MEI,Methode Electronics Inc. Common Stock,nyse,Technology,Electrical Products,hardware,452335723.0
+META,Meta Platforms Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,1607287812649.0
+METAM,Meta Platforms Inc. Depositary Shares representing a 1/20th Interest in a Share of Series A Mandatory Convertible Preferred Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,130010430128.0
+MF,MindForge Inc. Class A Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,111441155.0
+MFI,mF International Limited Class A Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,311094207.0
+MFP,Midera Food Processing Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,2063413357.0
+MGEE,MGE Energy Inc,nasdaq,Energy,Electric Utilities: Central,power,3008104148.0
+MGNI,Magnite Inc. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,4193372060.0
+MGRT,Mega Fortune Company Limited Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,1582350000.0
+MIDD,Middleby Corporation (The) Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,6154761699.0
+MIR,Mirion Technologies Inc. Class A Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,4343983187.0
+MITK,Mitek Systems Inc. Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,845593289.0
+MKSI,MKS Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,15282227350.0
+MKTW,MarketWise Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,350023316.0
+MLAB,Mesa Laboratories Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,782432589.0
+MNDY,monday.com Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,3331295132.0
+MOMO,Hello Group Inc. American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,678160571.0
+MOVE,Corvex Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,179847968.0
+MPTI,M-tron Industries Inc. Common Stock,amex,Technology,Industrial Machinery/Components,tech_equipment,293495792.0
+MPWR,Monolithic Power Systems Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,72112753920.0
+MQ,Marqeta Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1921538704.0
+MRAM,Everspin Technologies Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,327507621.0
+MRCY,Mercury Systems Inc Common Stock,nasdaq,Technology,Electrical Products,hardware,5381257926.0
+MRDN,Meridian Holdings Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,80420028.0
+MRLN,Merlin Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,102078462.0
+MRVL,Marvell Technology Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,148020720000.0
+MSFT,Microsoft Corporation Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,3869975635911.0
+MSI,Motorola Solutions Inc. Common Stock,nyse,Technology,Radio And Television Broadcasting And Communications Equipment,networking,88488378027.0
+MSM,MSC Industrial Direct Company Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,6752425156.0
+MSTR,Strategy Inc Common Stock Class A,nasdaq,Technology,Computer Software: Prepackaged Software,software,51675086166.0
+MTC,MMTec Inc. Common Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,563667010.0
+MTCH,Match Group Inc. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,9472051586.0
+MTLS,Materialise NV American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,413174966.0
+MTRX,Matrix Service Company Common Stock,nasdaq,Consumer Discretionary,Engineering & Construction,construction,259390408.0
+MTSI,MACOM Technology Solutions Holdings Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,19082040820.0
+MTZ,MasTec Inc. Common Stock,nyse,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,15188099554.0
+MU,Micron Technology Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,917923651896.0
+MWC,Micware Co. Ltd. American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,84024826.0
+MX,Magnachip Semiconductor Corporation Common Stock,nyse,Technology,Semiconductors,semis,113012002.0
+MXL,MaxLinear Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,5455450480.0
+MYPS,PLAYSTUDIOS Inc.  Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,50631026.0
+MYRG,MYR Group Inc. Common Stock,nasdaq,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,4370034145.0
+NABL,N-able Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,847370089.0
+NANO,Forge Nano Holdings Inc. Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,611114029.0
+NANOW,Forge Nano Holdings Inc. Warrants,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,100351356.0
+NAVN,Navan Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,6874837015.0
+NBIS,Nebius Group N.V. Class A Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,42053283672.0
+NCNO,nCino Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2367432936.0
+NDSN,Nordson Corporation Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,18337902268.0
+NEE,NextEra Energy Inc. Common Stock,nyse,Utilities,Electric Utilities: Central,power,180347347154.0
+NET,Cloudflare Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,112864888945.0
+NEXN,Nexxen International Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,515399029.0
+NI,NiSource Inc Common Stock,nyse,Utilities,Power Generation,power,21844109957.0
+NICE,NICE Ltd American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,5597599343.0
+NIQ,NIQ Global Intelligence plc Ordinary Shares,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,6208820937.0
+NN,NextNav Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,1426443740.0
+NNBR,NN Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,299512860.0
+NNDM,Nano Dimension Ltd. American Depositary Shares,nasdaq,Technology,Electrical Products,hardware,263647989.0
+NNE,Nano Nuclear Energy Inc. Common Stock,nasdaq,Utilities,Electric Utilities: Central,power,622361512.0
+NOC,Northrop Grumman Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,78259065055.0
+NOK,Nokia Corporation Sponsored American Depositary Shares,nyse,Technology,Radio And Television Broadcasting And Communications Equipment,networking,48407080637.0
+NOW,ServiceNow Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,106644120000.0
+NPWR,NET Power Inc. Class A Common Stock,nyse,Energy,Industrial Machinery/Components,industrial_equipment,185260968.0
+NRDS,NerdWallet Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,488155137.0
+NRG,NRG Energy Inc. Common Stock,nyse,Utilities,Electric Utilities: Central,power,20481275226.0
+NSSC,NAPCO Security Technologies Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,1095229541.0
+NSTR,NorthStar Earth & Space Enterprises Inc. Common Shares,amex,Consumer Discretionary,Telecommunications Equipment,networking,186051034.0
+NTAP,NetApp Inc. Common Stock,nasdaq,Technology,Electronic Components,hardware,35968248196.0
+NTCT,NetScout Systems Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,2325331414.0
+NTES,NetEase Inc. American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,77934585464.0
+NTGR,NETGEAR Inc. Common Stock,nasdaq,Utilities,Telecommunications Equipment,networking,527429098.0
+NTNX,Nutanix Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,16402119500.0
+NTSK,Netskope Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,9140107923.0
+NTWK,NetSol Technologies Inc. Common  Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,82353194.0
+NVDA,NVIDIA Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,4186893000000.0
+NVEC,NVE Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,406757314.0
+NVMI,Nova Ltd. Ordinary Shares,nasdaq,Technology,Electronic Components,hardware,10825915923.0
+NVT,nVent Electric plc Ordinary Shares ,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,18863341544.0
+NVTS,Navitas Semiconductor Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,2713940807.0
+NWE,NorthWestern Energy Group Inc. Common Stock,nasdaq,Utilities,Power Generation,power,5227655024.0
+NXDR,Nextdoor Holdings Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,789042479.0
+NXPI,NXP Semiconductors N.V. Common Stock,nasdaq,Technology,Semiconductors,semis,67930800796.0
+NXT,Nextpower Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,15146393066.0
+NYAX,Nayax Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,1980037335.0
+OBAI,Our Bond Inc. Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,54228062.0
+OC,Owens Corning Inc Common Stock New,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,9442770511.0
+OCC,Optical Cable Corporation Common Stock,nasdaq,Industrials,Telecommunications Equipment,networking,101241175.0
+OCTV,Octave Intelligence plc Class B Ordinary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,5698934239.0
+OGE,OGE Energy Corp Common Stock,nyse,Utilities,Electric Utilities: Central,power,10559562803.0
+OKLO,Oklo Inc. Class A common stock,nyse,Utilities,Electric Utilities: Central,power,5052141771.0
+OKTA,Okta Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,31861114128.0
+OLED,Universal Display Corporation Common Stock,nasdaq,Technology,Electrical Products,hardware,4076455757.0
+OMCL,Omnicell Inc. Common Stock ($0.001 par value),nasdaq,Technology,Computer Manufacturing,hardware,1636043359.0
+ON,ON Semiconductor Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,28659124080.0
+ONDS,Ondas Inc. Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,3336594465.0
+ONEN,ONE Nuclear Energy Inc. Common Stock  ,nasdaq,Utilities,Electric Utilities: Central,power,161305879.0
+ONTO,Onto Innovation Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,10551166932.0
+OOMA,Ooma Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,505356000.0
+OPRA,Opera Limited American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,1431796572.0
+OPTX,Syntec Optics Holdings Inc. Class A Common Stock,nasdaq,Technology,Electronic Components,hardware,265847195.0
+OPTXW,Syntec Optics Holdings Inc. Warrant,nasdaq,Technology,Electronic Components,hardware,64447805.0
+OPXS,Optex Systems Holdings Inc. Common Stock,nasdaq,Technology,Electronic Components,hardware,60411698.0
+ORA,Ormat Technologies Inc. Common Stock,nyse,Utilities,Electric Utilities: Central,power,5737614030.0
+ORCL,Oracle Corporation Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,388247702400.0
+OSIS,OSI Systems Inc. Common Stock (DE),nasdaq,Technology,Semiconductors,semis,3091840906.0
+OSPN,OneSpan Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,818326420.0
+OSS,One Stop Systems Inc. Common Stock,nasdaq,Technology,Computer Manufacturing,hardware,122433106.0
+OTEX,Open Text Corporation Common Shares,nasdaq,Technology,EDP Services,cloud_services,6028836054.0
+OTTR,Otter Tail Corporation Common Stock,nasdaq,Utilities,Electric Utilities: Central,power,3267317836.0
+OUST,Ouster Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,2789951799.0
+OWLS,OBOOK Holdings Inc. Class A Common Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,83215904.0
+OWLT,Owlet Inc. Class A Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,134127497.0
+P,Everpure Inc. Class A common stock,nyse,Technology,Electronic Components,hardware,35465376324.0
+PAGS,PagSeguro Digital Ltd. Class A Common Shares,nyse,Technology,EDP Services,cloud_services,2307981009.0
+PAM,Pampa Energia S.A.,nyse,Utilities,Electric Utilities: Central,power,3468795834.0
+PANW,Palo Alto Networks Inc. Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,273744667671.0
+PATH,UiPath Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,6842770520.0
+PAYC,Paycom Software Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,10933095726.0
+PAYS,Paysign Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,538979086.0
+PCG,Pacific Gas & Electric Co. Common Stock,nyse,Utilities,Power Generation,power,35096869272.0
+PCOR,Procore Technologies Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,11595400973.0
+PCTY,Paylocity Holding Corporation Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,9355474512.0
+PD,PagerDuty Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,1233230009.0
+PDFS,PDF Solutions Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1765687176.0
+PDYN,Palladyne AI Corp. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,177778665.0
+PEG,Public Service Enterprise Group Incorporated Common Stock,nyse,Utilities,Power Generation,power,37029725175.0
+PEGA,Pegasystems Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,5137398678.0
+PENG,Penguin Solutions Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,2985369569.0
+PERI,Perion Network Ltd. Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,448168985.0
+PHI,PLDT Inc. Sponsored ADR,nyse,Telecommunications,Telecommunications Equipment,networking,3826347775.0
+PHOE,Phoenix Asia Holdings Limited Ordinary Shares,nasdaq,Consumer Discretionary,Engineering & Construction,construction,372384000.0
+PI,Impinj Inc. Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,5386848459.0
+PINS,Pinterest Inc. Class A Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,11034290842.0
+PL,Planet Labs PBC Class A Common Stock,nyse,Technology,Radio And Television Broadcasting And Communications Equipment,networking,5217580162.0
+PLAB,Photronics Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,1706788041.0
+PLPC,Preformed Line Products Company Common Stock,nasdaq,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,1469087991.0
+PLTK,Playtika Holding Corp. Common Stock,nasdaq,Technology,EDP Services,cloud_services,979647624.0
+PLTR,Palantir Technologies Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,415397364518.0
+PLUG,Plug Power Inc. Common Stock,nasdaq,Energy,Industrial Machinery/Components,industrial_equipment,1895471320.0
+PLXS,Plexus Corp. Common Stock,nasdaq,Technology,Electrical Products,hardware,5648112820.0
+PMA,PMA Graphene Technology Group Inc. Class A Ordinary Shares,nasdaq,Consumer Discretionary,Engineering & Construction,construction,203718750.0
+PNR,Pentair plc. Ordinary Share,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,11068060830.0
+PNW,Pinnacle West Capital Corporation Common Stock,nyse,Utilities,Electric Utilities: Central,power,13078822247.0
+PODC,PodcastOne Inc. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,65043296.0
+POET,POET Technologies Inc. Common Shares,nasdaq,Technology,Semiconductors,semis,967394712.0
+PONY,Pony AI Inc. American Depositary Shares ,nasdaq,Technology,EDP Services,cloud_services,2046316130.0
+POR,Portland General Electric Co Common Stock,nyse,Utilities,Electric Utilities: Central,power,5481673968.0
+POWI,Power Integrations Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,2597955993.0
+POWL,Powell Industries Inc. Common Stock,nasdaq,Energy,Electrical Products,electrical,5315511088.0
+PPL,PPL Corporation Common Stock,nyse,Utilities,Electric Utilities: Central,power,26632218049.0
+PPLC,PPL Corporation Corporate Units,nyse,Utilities,Electric Utilities: Central,power,34731784646.0
+PPLI,People Incorporated Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,3298941493.0
+PRCH,Porch Group Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2936740064.0
+PRGS,Progress Software Corporation Common Stock (DE),nasdaq,Technology,Computer Software: Prepackaged Software,software,1810726706.0
+PRIM,Primoris Services Corporation Common Stock,nyse,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,3794148145.0
+PSIX,Power Solutions International Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,915698365.0
+PSN,Parsons Corporation Common Stock,nyse,Technology,EDP Services,cloud_services,5333407452.0
+PSQL,Pasqal Holding SA Ordinary Share,nasdaq,Technology,EDP Services,cloud_services,959567483.0
+PSQLW,Pasqal Holding SA Warrant,nasdaq,Technology,EDP Services,cloud_services,174080827.0
+PTC,PTC Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,21282418033.0
+PUBM,PubMatic Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,839307531.0
+PWR,Quanta Services Inc. Common Stock,nyse,Industrials,Engineering & Construction,construction,91607183846.0
+Q,Qnity Electronics Inc. Common Stock,nyse,Technology,Semiconductors,semis,26450255708.0
+QBTS,D-Wave Quantum Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,4043023588.0
+QCOM,QUALCOMM Incorporated Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,188929900000.0
+QLYS,Qualys Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,6377601209.0
+QMCO,Quantum Corporation Common Stock,nasdaq,Technology,Electronic Components,hardware,667333220.0
+QMLS,QumulusAI Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,112206680.0
+QNT,Quantinuum Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,10784157432.0
+QSI,Quantum-Si Incorporated Class A Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,279072866.0
+QTWO,Q2 Holdings Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,4582954786.0
+QUBT,Quantum Computing Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1400168947.0
+QUIK,QuickLogic Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,170354991.0
+QXL,Quantum X Labs Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,65134835.0
+RAL,Ralliant Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,7924613040.0
+RBBN,Ribbon Communications Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,263385208.0
+RBLX,Roblox Corporation Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,37646522105.0
+RBRK,Rubrik Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,22652155394.0
+RCAT,Red Cat Holdings Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,655144613.0
+RDCM,Radcom Ltd. Ordinary Shares,nasdaq,Technology,Computer peripheral equipment,hardware,190771924.0
+RDDT,Reddit Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,20390697994.0
+RDNW,RideNow Group Inc. Class B Common Stock,nasdaq,Technology,EDP Services,cloud_services,185618168.0
+RDVT,Red Violet Inc. Common Stock ,nasdaq,Technology,Computer Software: Prepackaged Software,software,1206082434.0
+RELL,Richardson Electronics Ltd. Common Stock,nasdaq,Technology,Electronic Components,hardware,299320069.0
+RFIL,RF Industries Ltd. Common Stock,nasdaq,Technology,Electrical Products,hardware,82009073.0
+RGTI,Rigetti Computing Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,3808319330.0
+RGTIW,Rigetti Computing Inc. Warrants,nasdaq,Technology,EDP Services,cloud_services,805540092.0
+RMBS,Rambus Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,9141713280.0
+RNG,RingCentral Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,6345506171.0
+RNTZ,Rantizo Class A Ordinary Shares,nasdaq,Industrials,Water Sewer Pipeline Comm & Power Line Construction,construction,294854111.0
+RNW,ReNew Energy Global plc Class A Ordinary Shares,nasdaq,Utilities,Electric Utilities: Central,power,2536242708.0
+ROC,Rank One Computing Corporation Common stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,67734451.0
+ROK,Rockwell Automation Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,45198366969.0
+ROP,Roper Technologies Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,47309702133.0
+RPD,Rapid7 Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1012958651.0
+RR,Richtech Robotics Inc. Class B Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,213329111.0
+RRX,Regal Rexnord Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,12167978432.0
+RSSS,Research Solutions Inc Common Stock,nasdaq,Technology,EDP Services,cloud_services,65499578.0
+RUM,RUM Group Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,2955028756.0
+RUMBW,RUM Group Inc. Warrant,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,530516908.0
+RXT,Rackspace Technology Inc. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,823342919.0
+RZAI,Roze AI Inc. Common Shares,nasdaq,Technology,EDP Services,cloud_services,131318398.0
+RZLV,Rezolve AI PLC Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,536524966.0
+RZLVW,Rezolve AI PLC Warrants,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,104101859.0
+S,SentinelOne Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,8276608002.0
+SABR,Sabre Corporation Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,759122833.0
+SAIC,Science Applications International Corporation Common Stock,nasdaq,Technology,EDP Services,cloud_services,6392322172.0
+SAIL,SailPoint Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,11869252850.0
+SAIQ,WISeSat.Space Holdings Corp. Ordinary Shares,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,102567632.0
+SANG,Sangoma Technologies Corporation Common Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,157520392.0
+SANM,Sanmina Corporation Common Stock,nasdaq,Technology,Electrical Products,hardware,8535378943.0
+SAP,SAP  SE ADS,nyse,Technology,Computer Software: Prepackaged Software,software,287654265923.0
+SATL,Satellogic Inc. Class A Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,585552499.0
+SBET,Sharplink Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1308424124.0
+SEDG,SolarEdge Technologies Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,1651257075.0
+SERV,Serve Robotics Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,278155240.0
+SHAZ,SharonAI Holdings Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,945928602.0
+SHEN,Shenandoah Telecommunications Co Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,575249114.0
+SHLS,Shoals Technologies Group Inc. Class A Common Stock,nasdaq,Technology,Semiconductors,semis,1482552720.0
+SHMD,SCHMID Group N.V. Class A Ordinary Shares,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,162666675.0
+SHOP,Shopify Inc. Class A Subordinate Voting Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,192026275660.0
+SIDU,Sidus Space Inc. Class A Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,111347859.0
+SIFY,Sify Technologies Limited American Depositary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,958309956.0
+SILC,Silicom Ltd Ordinary Shares,nasdaq,Telecommunications,Computer Communications Equipment,networking,183923552.0
+SIMO,Silicon Motion Technology Corporation American Depositary Shares,nasdaq,Technology,Semiconductors,semis,6227247358.0
+SITM,SiTime Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,14275910481.0
+SKHY,SK hynix Inc. American Depositary Shares,nasdaq,Technology,Semiconductors,semis,1036811173750.0
+SKM,SK Telecom Co. Ltd. Common Stock,nyse,Telecommunications,Telecommunications Equipment,networking,13175973000.0
+SLAB,Silicon Laboratories Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,7398283643.0
+SLNH,Soluna Holdings Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,142667794.0
+SLNHP,Soluna Holdings Inc 9.0% Series A Cumulative Perpetual Preferred Stock ,nasdaq,Technology,EDP Services,cloud_services,2689052312.0
+SMCI,Super Micro Computer Inc. Common Stock,nasdaq,Technology,Computer Manufacturing,hardware,20060288778.0
+SMCIP,Super Micro Computer Inc. Depositary Shares representing a 1/20th Interest in a Share of 7% Series A Mandatory Convertible Preferred Stock,nasdaq,Technology,Computer Manufacturing,hardware,34787428157.0
+SMRT,SmartRent Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,322686828.0
+SMTC,Semtech Corporation Common Stock,nasdaq,Technology,Semiconductors,semis,11686234888.0
+SMWB,Similarweb Ltd. Ordinary Shares,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,723352190.0
+SNAP,Snap Inc. Class A Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,9245818507.0
+SNDK,Sandisk Corporation Common Stock,nasdaq,Technology,Electronic Components,hardware,139114889267.0
+SNOW,Snowflake Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,106298640000.0
+SNPS,Synopsys Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,88559126850.0
+SO,Southern Company (The) Common Stock,nyse,Utilities,Electric Utilities: Central,power,109219327130.0
+SOHU,Sohu.com Limited American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,316217237.0
+SOJC,Southern Company (The) Series 2017B 5.25% Junior Subordinated Notes due December 1 2077,nyse,Utilities,Electric Utilities: Central,power,20119867074.0
+SOJD,Southern Company (The) Series 2020A 4.95% Junior Subordinated Notes due January 30 2080,nyse,Utilities,Electric Utilities: Central,power,18898814452.0
+SOJE,Southern Company (The) Series 2020C 4.20% Junior Subordinated Notes due October 15 2060,nyse,Utilities,Electric Utilities: Central,power,16834421035.0
+SOMN,Southern Company (The) 2025 Series A Corporate Units,nyse,Utilities,Electric Utilities: Central,power,56629656451.0
+SOPH,SOPHiA GENETICS SA Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,635479214.0
+SOTK,Sono-Tek Corporation Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,67417430.0
+SOUN,SoundHound AI Inc Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,1909618229.0
+SOUNW,SoundHound AI Inc. Warrant,nasdaq,Technology,Computer Software: Prepackaged Software,software,97678682.0
+SPAI,Safe Pro Group Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,61903100.0
+SPCB,SuperCom Ltd. Ordinary Shares (Israel),nasdaq,Technology,Semiconductors,semis,54263105.0
+SPCX,Space Exploration Technologies Corp. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,1897953653333.0
+SPIR,Spire Global Inc. Class A Common Stock,nyse,Consumer Discretionary,Telecommunications Equipment,networking,403096761.0
+SPOK,Spok Holdings Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,247811816.0
+SPSC,SPS Commerce Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2936280719.0
+SPT,Sprout Social Inc Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,671360589.0
+SPWR,SunPower Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,73775382.0
+SPXC,SPX Technologies Inc. Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,7704688174.0
+SRAD,Sportradar Group AG Class A Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,4121432352.0
+SSNC,SS&C Technologies Holdings Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,18653778353.0
+SSTI,SoundThinking Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,108969414.0
+SSTK,Shutterstock Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,98278618.0
+SSYS,Stratasys Ltd. Ordinary Shares (Israel),nasdaq,Technology,Computer peripheral equipment,hardware,576060923.0
+ST,Sensata Technologies Holding plc Ordinary Shares,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,5868348237.0
+STM,STMicroelectronics N.V. Common Stock,nyse,Technology,Semiconductors,semis,41298066728.0
+STNE,StoneCo Ltd. Class A Common Shares,nasdaq,Technology,EDP Services,cloud_services,1936710136.0
+STRC,Strategy Inc Variable Rate Series A Perpetual Stretch Preferred Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,42231237154.0
+STRD,Strategy Inc 10.00% Series A Perpetual Stride Preferred Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,29036879231.0
+STRF,Strategy Inc 10.00% Series A Perpetual Strife Preferred Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,43227994026.0
+STRK,Strategy Inc 8.00% Series A Perpetual Strike Preferred Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,28842596112.0
+STX,Seagate Technology Holdings PLC Ordinary Shares (Ireland),nasdaq,Technology,Electronic Components,hardware,126653455057.0
+SVCO,Silvaco Group Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,261948346.0
+SVREW,SaverOne 2014 Ltd. Warrant,nasdaq,Technology,EDP Services,cloud_services,1112326723.0
+SWKS,Skyworks Solutions Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,20582658897.0
+SWMR,Swarmer Inc Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,160967092.0
+SXI,Standex International Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,2971884435.0
+SY,So-Young International Inc. American Depository Shares,nasdaq,Technology,EDP Services,cloud_services,211637581.0
+SYM,Symbotic Inc. Class A Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,22444191384.0
+SYNA,Synaptics Incorporated Common Stock $0.001 Par Value,nasdaq,Technology,Semiconductors,semis,4682402896.0
+T,AT&T Inc.,nyse,Telecommunications,Telecommunications Equipment,networking,149920216251.0
+TAC,TransAlta Corporation Ordinary Shares,nyse,Utilities,Electric Utilities: Central,power,4236838500.0
+TACT,TransAct Technologies Incorporated Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,50899642.0
+TASK,TaskUs Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,841179441.0
+TAYD,Taylor Devices Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,188139636.0
+TBB,AT&T Inc. 5.350% Global Notes due 2066,nyse,Telecommunications,Telecommunications Equipment,networking,129994008026.0
+TBCH,Turtle Beach Corporation Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,300140734.0
+TBLA,Taboola.com Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,545860267.0
+TCX,Tucows Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,147779503.0
+TDC,Teradata Corporation Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,3042249000.0
+TDS,Telephone and Data Systems Inc. Common Shares,nyse,Telecommunications,Telecommunications Equipment,networking,3469284000.0
+TDY,Teledyne Technologies Incorporated Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,29976612930.0
+TE,T1 Energy Inc. Common Stock,nyse,Technology,Semiconductors,semis,636435116.0
+TEAM,Atlassian Corporation Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,38392467357.0
+TEL,TE Connectivity plc Ordinary Shares,nyse,Technology,Electronic Components,hardware,62920972939.0
+TEM,Tempus AI Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,14488162027.0
+TENB,Tenable Holdings Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,4486512255.0
+TEO,Telecom Argentina SA,nyse,Telecommunications,Telecommunications Equipment,networking,4552896453.0
+TER,Teradyne Inc. Common Stock,nasdaq,Industrials,Electrical Products,electrical,41494836321.0
+TGEN,Tecogen Inc. Common Stock,amex,Industrials,Industrial Machinery/Components,industrial_equipment,51923054.0
+TGLS,Tecnoglass Holdings Inc. Common Stock,nyse,Consumer Discretionary,Electronic Components,hardware,2091343284.0
+TIGO,Millicom International Cellular S.A. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,14983176337.0
+TIMB,TIM S.A. American Depositary Shares (Each representing 5 Common Shares) ,nyse,Telecommunications,Telecommunications Equipment,networking,9343643726.0
+TKC,Turkcell Iletisim Hizmetleri AS Common Stock,nyse,Telecommunications,Telecommunications Equipment,networking,4210800000.0
+TLK,PT Telekomunikasi Indonesia Tbk,nyse,Telecommunications,Telecommunications Equipment,networking,11332717579.0
+TLN,Talen Energy Corporation Common Stock,nasdaq,Utilities,Electric Utilities: Central,power,16475896708.0
+TLS,Telos Corporation Common Stock,nasdaq,Technology,EDP Services,cloud_services,562527228.0
+TMO,Thermo Fisher Scientific Inc Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,265974815844.0
+TMUS,T-Mobile US Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,182364365823.0
+TNC,Tennant Company Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,1299296323.0
+TOST,Toast Inc. Class A Common Stock,nyse,Technology,EDP Services,cloud_services,19803385000.0
+TRAK,ReposiTrak Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,133198647.0
+TRBG,TurboGen Ltd. Ordinary Shares,nasdaq,Utilities,Power Generation,power,93932603.0
+TRIP,TripAdvisor Inc. Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,880163604.0
+TRMB,Trimble Inc. Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,12947644696.0
+TRNS,Transcat Inc. Common Stock,nasdaq,Industrials,Electrical Products,electrical,988590387.0
+TRT,Trio-Tech International Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,54623511.0
+TRVG,trivago N.V. American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,264823778.0
+TSEM,Tower Semiconductor Ltd. Ordinary Shares,nasdaq,Technology,Semiconductors,semis,17957234970.0
+TSM,Taiwan Semiconductor Manufacturing Company Ltd.,nyse,Technology,Semiconductors,semis,2141559739911.0
+TTAN,ServiceTitan Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,7893003823.0
+TTD,The Trade Desk Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,7556747204.0
+TTGT,TechTarget Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,200907593.0
+TTMI,TTM Technologies Inc. Common Stock,nasdaq,Technology,Electrical Products,hardware,8293053424.0
+TTWO,Take-Two Interactive Software Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,43304351909.0
+TU,Telus Corporation Ordinary Shares,nyse,Telecommunications,Telecommunications Equipment,networking,13768685000.0
+TUYA,Tuya Inc. American Depositary Shares each representing one Class A Ordinary Share,nyse,Technology,Computer Software: Prepackaged Software,software,1018054933.0
+TWIN,Twin Disc Incorporated Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,363763678.0
+TWLO,Twilio Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,33961025343.0
+TXN,Texas Instruments Incorporated Common Stock,nasdaq,Technology,Semiconductors,semis,283095181600.0
+TXNM,TXNM Energy Inc. Common Stock,nyse,Utilities,Electric Utilities: Central,power,6477597027.0
+TYGO,Tigo Energy Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,52325605.0
+TYL,Tyler Technologies Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,16919864236.0
+U,Unity Software Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,22036095402.0
+UCTT,Ultra Clean Holdings Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,2380262691.0
+UI,Ubiquiti Inc. Common Stock,nyse,Technology,Radio And Television Broadcasting And Communications Equipment,networking,41091576494.0
+UIS,Unisys Corporation New Common Stock,nyse,Technology,EDP Services,cloud_services,214789841.0
+UMAC,Unusual Machines Inc. Common Stock,amex,Technology,Radio And Television Broadcasting And Communications Equipment,networking,655125679.0
+UMC,United Microelectronics Corporation (NEW) Common Stock,nyse,Technology,Semiconductors,semis,40458334493.0
+UPWK,Upwork Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,1230100419.0
+UTL,UNITIL Corporation Common Stock,nyse,Utilities,Power Generation,power,1037126709.0
+UZD,Array Digital Infrastructure Inc. 6.250% Senior Notes due 2069,nyse,Telecommunications,Telecommunications Equipment,networking,1483500000.0
+UZE,Array Digital Infrastructure Inc. 5.500% Senior Notes due 2070,nyse,Telecommunications,Telecommunications Equipment,networking,1302900000.0
+UZF,Array Digital Infrastructure Inc. 5.500% Senior Notes due 2070,nyse,Telecommunications,Telecommunications Equipment,networking,1302040000.0
+VECO,Veeco Instruments Inc. Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,2502466626.0
+VEEV,Veeva Systems Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,49344960215.0
+VELO,Velo3D Inc. Common stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,158078263.0
+VEON,VEON Ltd. ADS,nasdaq,Telecommunications,Telecommunications Equipment,networking,5262372522.0
+VERI,Veritone Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,58065268.0
+VERX,Vertex Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,2893234464.0
+VIA,Via Transportation Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,3522092849.0
+VIAV,Viavi Solutions Inc. Common Stock,nasdaq,Technology,Semiconductors,semis,8115430026.0
+VICR,Vicor Corporation Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,7757579660.0
+VISN,Vistance Networks Inc. Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,826553241.0
+VIV,Telefonica Brasil S.A. American Depositary Shares (Each representing One Common Share),nyse,Telecommunications,Telecommunications Equipment,networking,19621023001.0
+VIVO,VivoPower PLC Class A Ordinary Shares,nasdaq,Utilities,Power Generation,power,70358152.0
+VLN,Valens Semiconductor Ltd. Ordinary Shares,nyse,Technology,Semiconductors,semis,150042098.0
+VLTO,Veralto Corp Common Stock ,nyse,Industrials,Electrical Products,electrical,28868228764.0
+VNET,VNET Group Inc. American Depositary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,994051325.0
+VNT,Vontier Corporation Common Stock ,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,5812656000.0
+VOD,Vodafone Group Plc American Depositary Shares,nasdaq,Telecommunications,Telecommunications Equipment,networking,36195591239.0
+VPG,Vishay Precision Group Inc. Common Stock,nyse,Technology,Electrical Products,hardware,716905543.0
+VREX,Varex Imaging Corporation Common Stock,nasdaq,Technology,Industrial Machinery/Components,tech_equipment,774219000.0
+VRNS,Varonis Systems Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,5653088789.0
+VRSK,Verisk Analytics Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,26424436174.0
+VRSN,VeriSign Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,28173873000.0
+VRT,Vertiv Holdings LLC Class A Common Stock,nyse,Technology,Industrial Machinery/Components,tech_equipment,79518827541.0
+VSAT,ViaSat Inc. Common Stock,nasdaq,Consumer Discretionary,Telecommunications Equipment,networking,10455225227.0
+VSH,Vishay Intertechnology Inc. Common Stock,nyse,Technology,Electrical Products,hardware,4466555912.0
+VST,Vistra Corp. Common Stock,nyse,Utilities,Electric Utilities: Central,power,45278644659.0
+VTEX,VTEX Class A Common Shares,nyse,Technology,Computer Software: Prepackaged Software,software,675539535.0
+VUZI,Vuzix Corporation Common Stock,nasdaq,Technology,Radio And Television Broadcasting And Communications Equipment,networking,171360887.0
+VZ,Verizon Communications Inc. Common Stock,nyse,Telecommunications,Telecommunications Equipment,networking,193034667499.0
+WAY,Waystar Holding Corp. Common Stock,nasdaq,Technology,EDP Services,cloud_services,5548575417.0
+WB,Weibo Corporation American Depositary Share,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,1542823752.0
+WCC,WESCO International Inc. Common Stock,nyse,Consumer Discretionary,Telecommunications Equipment,networking,15931337821.0
+WDAY,Workday Inc. Class A Common Stock,nasdaq,Technology,EDP Services,cloud_services,46069560000.0
+WDC,Western Digital Corporation Common Stock,nasdaq,Technology,Electronic Components,hardware,117279223410.0
+WEC,WEC Energy Group Inc. Common Stock,nyse,Utilities,Power Generation,power,38626989348.0
+WFCF,Where Food Comes From Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,79774201.0
+WIT,Wipro Limited Common Stock,nyse,Technology,EDP Services,cloud_services,21490703059.0
+WIX,Wix.com Ltd. Ordinary Shares,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,2859995582.0
+WK,Workiva Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,3801555443.0
+WLDSW,Wearable Devices Ltd. Warrant,nasdaq,Telecommunications,Computer Communications Equipment,networking,113151605.0
+WOLF,Wolfspeed Inc. Common Stock New,nyse,Technology,Semiconductors,semis,1481538927.0
+WQEY,WISeQey Corp Ordinary Shares,nasdaq,Technology,EDP Services,cloud_services,84019768.0
+WRD,WeRide Inc. American Depositary Shares,nasdaq,Technology,EDP Services,cloud_services,1491891314.0
+WSTN,Westin Acquisition Corp Class A Ordinary Share,nasdaq,Technology,EDP Services,cloud_services,82402650.0
+WWD,Woodward Inc. Common Stock,nasdaq,Energy,Industrial Machinery/Components,industrial_equipment,19989962361.0
+WYY,WidePoint Corporation Common Stock,amex,Technology,EDP Services,cloud_services,61089338.0
+XEL,Xcel Energy Inc. Common Stock,nasdaq,Utilities,Power Generation,power,52056017733.0
+XIFR,XPLR Infrastructure LP Common Units representing limited partner interests,nyse,Utilities,Electric Utilities: Central,power,694790499.0
+XLAB,Exascale Labs Holdings Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,66908181.0
+XNDU,Xanadu Quantum Technologies Limited Class B Subordinate Voting Shares,nasdaq,Technology,Computer Manufacturing,hardware,851827267.0
+XNET,Xunlei Limited American Depositary Shares,nasdaq,Technology,Computer Software: Prepackaged Software,software,222151706.0
+XPER,Xperi Inc. Common Stock ,nyse,Technology,Computer Software: Prepackaged Software,software,300728009.0
+XRX,Xerox Holdings Corporation Common Stock,nasdaq,Technology,Computer peripheral equipment,hardware,135872928.0
+XYZ,Block Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,51825671060.0
+XZO,Exzeo Group Inc. Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,1442661485.0
+YALA,Yalla Group Limited American Depositary Shares each representing one Class A Ordinary Share,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,838096008.0
+YEXT,Yext Inc. Common Stock,nyse,Technology,EDP Services,cloud_services,767882295.0
+YIBO,Planet Image International Limited Class A Ordinary Shares,nasdaq,Technology,Computer peripheral equipment,hardware,66342328.0
+YMM,Full Truck Alliance Co. Ltd. American Depositary Shares (each representing 20 Class A Ordinary Shares),nyse,Technology,Computer Software: Prepackaged Software,software,9078512879.0
+YOU,Clear Secure Inc. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,7264712088.0
+ZBRA,Zebra Technologies Corporation Class A Common Stock,nasdaq,Industrials,Industrial Machinery/Components,industrial_equipment,15418315938.0
+ZD,Ziff Davis Inc. Common Stock,nasdaq,Telecommunications,Telecommunications Equipment,networking,1704105374.0
+ZENA,ZenaTech Inc. Common Stock,nasdaq,Technology,Computer Software: Prepackaged Software,software,136787360.0
+ZETA,Zeta Global Holdings Corp. Class A Common Stock,nyse,Technology,Computer Software: Prepackaged Software,software,9646130972.0
+ZIP,ZipRecruiter Inc. Class A Common Stock,nyse,Technology,Computer Software: Programming Data Processing,cloud_services,482666036.0
+ZM,Zoom Communications Inc. Class A Common Stock,nasdaq,Technology,Computer Software: Programming Data Processing,cloud_services,28618146375.0
+ZS,Zscaler Inc. Common Stock,nasdaq,Technology,EDP Services,cloud_services,31599185199.0
+ZWS,Zurn Elkay Water Solutions Corporation Common Stock,nyse,Industrials,Industrial Machinery/Components,industrial_equipment,7498523061.0

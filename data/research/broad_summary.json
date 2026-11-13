@@ -1,0 +1,823 @@
+{
+ "asof": "2026-11-12",
+ "universe_size": 807,
+ "liquid_today": 460,
+ "rules": {
+  "min_price": 5.0,
+  "min_dollar_vol": 20000000.0
+ },
+ "results": {
+  "A: 10 ענפים, 3 ענפים x 2 מניות (החוקים הנוכחיים)": {
+   "5y": {
+    "total_return": 0.15524745382655203,
+    "cagr": 0.029287551166099712,
+    "vol": 0.29198011652034356,
+    "sharpe": 0.24609053729187283,
+    "max_drawdown": -0.45426089554398263,
+    "calmar": 0.06447297456900299,
+    "worst_month": -0.18195025785693997,
+    "pct_positive_months": 0.5666666666666667,
+    "trades": 376
+   },
+   "7y": {
+    "total_return": 1.9092820744968013,
+    "cagr": 0.14552100304219318,
+    "vol": 0.31359313087800766,
+    "sharpe": 0.5912284974117036,
+    "max_drawdown": -0.559466746784526,
+    "calmar": 0.2601066173790654,
+    "worst_month": -0.18542187275134348,
+    "pct_positive_months": 0.5638297872340425,
+    "trades": 577
+   }
+  },
+  "B: תעשיות מפורטות, 3 x 2": {
+   "5y": {
+    "total_return": 0.5483728218290216,
+    "cagr": 0.09139084680167509,
+    "vol": 0.26754636227915135,
+    "sharpe": 0.46210480976946117,
+    "max_drawdown": -0.428420810075811,
+    "calmar": 0.21332027915614804,
+    "worst_month": -0.21166687082312974,
+    "pct_positive_months": 0.55,
+    "trades": 400
+   },
+   "7y": {
+    "total_return": 3.541668938594725,
+    "cagr": 0.21230324720322225,
+    "vol": 0.2892216502636498,
+    "sharpe": 0.8110872852780571,
+    "max_drawdown": -0.428420810075811,
+    "calmar": 0.4955484005682502,
+    "worst_month": -0.21166687082312996,
+    "pct_positive_months": 0.5531914893617021,
+    "trades": 594
+   }
+  },
+  "C: 6 המניות החזקות ביותר": {
+   "5y": {
+    "total_return": 0.9045634913730676,
+    "cagr": 0.1375401977314865,
+    "vol": 0.3739717700519754,
+    "sharpe": 0.5325475447906889,
+    "max_drawdown": -0.41295908193699093,
+    "calmar": 0.33306011115278567,
+    "worst_month": -0.2319331806255308,
+    "pct_positive_months": 0.5333333333333333,
+    "trades": 485
+   },
+   "7y": {
+    "total_return": 3.968655049753469,
+    "cagr": 0.22624102217450104,
+    "vol": 0.39313283816890204,
+    "sharpe": 0.7156707155536294,
+    "max_drawdown": -0.6448834015635101,
+    "calmar": 0.35082469424082413,
+    "worst_month": -0.2612866562020292,
+    "pct_positive_months": 0.5425531914893617,
+    "trades": 744
+   }
+  },
+  "D: 10 המניות החזקות ביותר": {
+   "5y": {
+    "total_return": 0.867947727300133,
+    "cagr": 0.1331316608070916,
+    "vol": 0.33244318727800665,
+    "sharpe": 0.5446226430822946,
+    "max_drawdown": -0.39477520053457293,
+    "calmar": 0.3372341034259887,
+    "worst_month": -0.17318797645940698,
+    "pct_positive_months": 0.55,
+    "trades": 717
+   },
+   "7y": {
+    "total_return": 2.9994992406872236,
+    "cagr": 0.1928544201107114,
+    "vol": 0.3430757825066116,
+    "sharpe": 0.6870984976207462,
+    "max_drawdown": -0.5998541787757362,
+    "calmar": 0.32150216991788716,
+    "worst_month": -0.19429366433705342,
+    "pct_positive_months": 0.5638297872340425,
+    "trades": 1072
+   }
+  },
+  "קנה והחזק SPY": {
+   "5y": {
+    "total_return": 0.7323863900599445,
+    "cagr": 0.11618321472840965,
+    "vol": 0.17333536766771895,
+    "sharpe": 0.7236399139903871,
+    "max_drawdown": -0.24496393992794452,
+    "calmar": 0.4742870104170623,
+    "worst_month": -0.09244575805599997,
+    "pct_positive_months": 0.6333333333333333
+   },
+   "7y": {
+    "total_return": 2.3913313185265217,
+    "cagr": 0.16808367517918765,
+    "vol": 0.19228034431288046,
+    "sharpe": 0.9061948232940055,
+    "max_drawdown": -0.33717273705917383,
+    "calmar": 0.49850909253582076,
+    "worst_month": -0.12487165761770025,
+    "pct_positive_months": 0.6595744680851063
+   }
+  },
+  "קנה והחזק SMH": {
+   "5y": {
+    "total_return": 2.434777735425187,
+    "cagr": 0.2799541179572993,
+    "vol": 0.37651660942706777,
+    "sharpe": 0.8469801377862192,
+    "max_drawdown": -0.45302636110769323,
+    "calmar": 0.6179642996332143,
+    "worst_month": -0.1758831248763506,
+    "pct_positive_months": 0.6166666666666667
+   },
+   "7y": {
+    "total_return": 11.022810938251851,
+    "cagr": 0.37214145282773003,
+    "vol": 0.364836284505365,
+    "sharpe": 1.0520656845431973,
+    "max_drawdown": -0.45302636110769334,
+    "calmar": 0.8214565084420432,
+    "worst_month": -0.1758831248763505,
+    "pct_positive_months": 0.6702127659574468
+   }
+  },
+  "קנה והחזק QQQ": {
+   "5y": {
+    "total_return": 0.7964243196357625,
+    "cagr": 0.124316932903759,
+    "vol": 0.23358574395729054,
+    "sharpe": 0.6206667537034847,
+    "max_drawdown": -0.3511872883525313,
+    "calmar": 0.3539904120304215,
+    "worst_month": -0.13595741255287375,
+    "pct_positive_months": 0.5833333333333334
+   },
+   "7y": {
+    "total_return": 3.658470702549428,
+    "cagr": 0.21622588572798063,
+    "vol": 0.2400333413054942,
+    "sharpe": 0.9376276528473898,
+    "max_drawdown": -0.3511872883525313,
+    "calmar": 0.6156996363459694,
+    "worst_month": -0.13595741255287386,
+    "pct_positive_months": 0.6382978723404256
+   }
+  }
+ },
+ "picks_now": {
+  "A: 10 ענפים, 3 ענפים x 2 מניות (החוקים הנוכחיים)": {
+   "positions": [
+    {
+     "ticker": "VLTO",
+     "group": "electrical",
+     "weight": 0.171,
+     "pnl": 0.015
+    },
+    {
+     "ticker": "OKTA",
+     "group": "software",
+     "weight": 0.093,
+     "pnl": -0.013
+    },
+    {
+     "ticker": "RBRK",
+     "group": "software",
+     "weight": 0.103,
+     "pnl": -0.037
+    },
+    {
+     "ticker": "QMCO",
+     "group": "hardware",
+     "weight": 0.063,
+     "pnl": -0.006
+    },
+    {
+     "ticker": "P",
+     "group": "hardware",
+     "weight": 0.134,
+     "pnl": -0.032
+    }
+   ],
+   "next_plan": null
+  },
+  "B: תעשיות מפורטות, 3 x 2": {
+   "positions": [
+    {
+     "ticker": "QMCO",
+     "group": "Technology|Electronic Components",
+     "weight": 0.045,
+     "pnl": -0.006
+    },
+    {
+     "ticker": "NTAP",
+     "group": "Technology|Electronic Components",
+     "weight": 0.156,
+     "pnl": 0.004
+    },
+    {
+     "ticker": "VLTO",
+     "group": "Industrials|Electrical Products",
+     "weight": 0.17,
+     "pnl": 0.015
+    },
+    {
+     "ticker": "OKTA",
+     "group": "Technology|Computer Software: Prepackaged Software",
+     "weight": 0.093,
+     "pnl": -0.013
+    },
+    {
+     "ticker": "RBRK",
+     "group": "Technology|Computer Software: Prepackaged Software",
+     "weight": 0.103,
+     "pnl": -0.037
+    }
+   ],
+   "next_plan": null
+  },
+  "C: 6 המניות החזקות ביותר": {
+   "positions": [
+    {
+     "ticker": "RNG",
+     "group": "RNG",
+     "weight": 0.122,
+     "pnl": 0.074
+    },
+    {
+     "ticker": "CRWD",
+     "group": "CRWD",
+     "weight": 0.1,
+     "pnl": -0.136
+    },
+    {
+     "ticker": "QMCO",
+     "group": "QMCO",
+     "weight": 0.101,
+     "pnl": -0.006
+    },
+    {
+     "ticker": "HNGE",
+     "group": "HNGE",
+     "weight": 0.106,
+     "pnl": 0.048
+    },
+    {
+     "ticker": "RBRK",
+     "group": "RBRK",
+     "weight": 0.098,
+     "pnl": -0.037
+    }
+   ],
+   "next_plan": null
+  },
+  "D: 10 המניות החזקות ביותר": {
+   "positions": [
+    {
+     "ticker": "RNG",
+     "group": "RNG",
+     "weight": 0.067,
+     "pnl": 0.074
+    },
+    {
+     "ticker": "CRWD",
+     "group": "CRWD",
+     "weight": 0.067,
+     "pnl": 0.069
+    },
+    {
+     "ticker": "HNGE",
+     "group": "HNGE",
+     "weight": 0.084,
+     "pnl": 0.344
+    },
+    {
+     "ticker": "QMCO",
+     "group": "QMCO",
+     "weight": 0.059,
+     "pnl": -0.006
+    },
+    {
+     "ticker": "RBRK",
+     "group": "RBRK",
+     "weight": 0.057,
+     "pnl": -0.037
+    },
+    {
+     "ticker": "AMPL",
+     "group": "AMPL",
+     "weight": 0.061,
+     "pnl": 0.032
+    },
+    {
+     "ticker": "ZETA",
+     "group": "ZETA",
+     "weight": 0.072,
+     "pnl": 0.221
+    },
+    {
+     "ticker": "QLYS",
+     "group": "QLYS",
+     "weight": 0.049,
+     "pnl": -0.166
+    },
+    {
+     "ticker": "FROG",
+     "group": "FROG",
+     "weight": 0.077,
+     "pnl": 0.299
+    }
+   ],
+   "next_plan": null
+  }
+ },
+ "radar": [
+  {
+   "ticker": "HNGE",
+   "name": "Hinge Health Inc. Class A Common Stock",
+   "bucket": "cloud_services",
+   "industry": "EDP Services",
+   "score": 0.965,
+   "r3m": 0.367,
+   "r6m": 1.246,
+   "above_ma200": true,
+   "mcap_b": 9.9
+  },
+  {
+   "ticker": "OKTA",
+   "name": "Okta Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.954,
+   "r3m": 0.238,
+   "r6m": 1.252,
+   "above_ma200": true,
+   "mcap_b": 31.9
+  },
+  {
+   "ticker": "RNG",
+   "name": "RingCentral Inc. Class A Common Stock",
+   "bucket": "cloud_services",
+   "industry": "EDP Services",
+   "score": 0.935,
+   "r3m": 0.179,
+   "r6m": 0.939,
+   "above_ma200": true,
+   "mcap_b": 6.3
+  },
+  {
+   "ticker": "ZETA",
+   "name": "Zeta Global Holdings Corp. Class A Commo",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.913,
+   "r3m": 0.283,
+   "r6m": 1.248,
+   "above_ma200": true,
+   "mcap_b": 9.6
+  },
+  {
+   "ticker": "BMBL",
+   "name": "Bumble Inc. Class A Common Stock",
+   "bucket": "cloud_services",
+   "industry": "Computer Software: Programming Data Processing",
+   "score": 0.906,
+   "r3m": 1.218,
+   "r6m": 0.844,
+   "above_ma200": true,
+   "mcap_b": 0.9
+  },
+  {
+   "ticker": "AMPL",
+   "name": "Amplitude Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.896,
+   "r3m": 0.33,
+   "r6m": 1.827,
+   "above_ma200": true,
+   "mcap_b": 2.2
+  },
+  {
+   "ticker": "PRCH",
+   "name": "Porch Group Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.896,
+   "r3m": 0.226,
+   "r6m": 1.043,
+   "above_ma200": true,
+   "mcap_b": 2.9
+  },
+  {
+   "ticker": "MGNI",
+   "name": "Magnite Inc. Common Stock",
+   "bucket": "cloud_services",
+   "industry": "Computer Software: Programming Data Processing",
+   "score": 0.896,
+   "r3m": 0.186,
+   "r6m": 1.362,
+   "above_ma200": true,
+   "mcap_b": 4.2
+  },
+  {
+   "ticker": "AZTA",
+   "name": "Azenta Inc.",
+   "bucket": "tech_equipment",
+   "industry": "Industrial Machinery/Components",
+   "score": 0.864,
+   "r3m": 0.314,
+   "r6m": 1.611,
+   "above_ma200": true,
+   "mcap_b": 2.1
+  },
+  {
+   "ticker": "MANH",
+   "name": "Manhattan Associates Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.86,
+   "r3m": 0.299,
+   "r6m": 0.987,
+   "above_ma200": true,
+   "mcap_b": 15.0
+  },
+  {
+   "ticker": "SAIC",
+   "name": "Science Applications International Corpo",
+   "bucket": "cloud_services",
+   "industry": "EDP Services",
+   "score": 0.855,
+   "r3m": 0.197,
+   "r6m": 0.642,
+   "above_ma200": true,
+   "mcap_b": 6.4
+  },
+  {
+   "ticker": "AMD",
+   "name": "Advanced Micro Devices Inc. Common Stock",
+   "bucket": "semis",
+   "industry": "Semiconductors",
+   "score": 0.852,
+   "r3m": 0.138,
+   "r6m": 0.302,
+   "above_ma200": true,
+   "mcap_b": 906.8
+  },
+  {
+   "ticker": "PAYC",
+   "name": "Paycom Software Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.851,
+   "r3m": 0.143,
+   "r6m": 0.871,
+   "above_ma200": true,
+   "mcap_b": 10.9
+  },
+  {
+   "ticker": "FROG",
+   "name": "JFrog Ltd. Ordinary Shares",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.847,
+   "r3m": 0.15,
+   "r6m": 0.699,
+   "above_ma200": true,
+   "mcap_b": 13.6
+  },
+  {
+   "ticker": "BOX",
+   "name": "Box Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.84,
+   "r3m": 0.336,
+   "r6m": 0.813,
+   "above_ma200": true,
+   "mcap_b": 6.0
+  },
+  {
+   "ticker": "NIQ",
+   "name": "NIQ Global Intelligence plc Ordinary Sha",
+   "bucket": "cloud_services",
+   "industry": "Computer Software: Programming Data Processing",
+   "score": 0.835,
+   "r3m": 0.101,
+   "r6m": 1.344,
+   "above_ma200": true,
+   "mcap_b": 6.2
+  },
+  {
+   "ticker": "CERT",
+   "name": "Certara Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.834,
+   "r3m": 0.487,
+   "r6m": 1.581,
+   "above_ma200": true,
+   "mcap_b": 1.8
+  },
+  {
+   "ticker": "CRWD",
+   "name": "CrowdStrike Holdings Inc. Class A Common",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.833,
+   "r3m": 0.06,
+   "r6m": 0.585,
+   "above_ma200": true,
+   "mcap_b": 234.5
+  },
+  {
+   "ticker": "RBRK",
+   "name": "Rubrik Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.825,
+   "r3m": 0.08,
+   "r6m": 0.758,
+   "above_ma200": true,
+   "mcap_b": 22.7
+  },
+  {
+   "ticker": "TENB",
+   "name": "Tenable Holdings Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.814,
+   "r3m": 0.071,
+   "r6m": 1.007,
+   "above_ma200": true,
+   "mcap_b": 4.5
+  },
+  {
+   "ticker": "VRNS",
+   "name": "Varonis Systems Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.804,
+   "r3m": 0.091,
+   "r6m": 0.803,
+   "above_ma200": true,
+   "mcap_b": 5.7
+  },
+  {
+   "ticker": "PD",
+   "name": "PagerDuty Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.801,
+   "r3m": 0.321,
+   "r6m": 1.336,
+   "above_ma200": true,
+   "mcap_b": 1.2
+  },
+  {
+   "ticker": "DOCU",
+   "name": "DocuSign Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.799,
+   "r3m": 0.292,
+   "r6m": 0.762,
+   "above_ma200": true,
+   "mcap_b": 15.0
+  },
+  {
+   "ticker": "JOYY",
+   "name": "JOYY Inc. American Depositary Shares",
+   "bucket": "cloud_services",
+   "industry": "EDP Services",
+   "score": 0.797,
+   "r3m": 0.099,
+   "r6m": 0.432,
+   "above_ma200": true,
+   "mcap_b": 3.9
+  },
+  {
+   "ticker": "BB",
+   "name": "BlackBerry Limited Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.796,
+   "r3m": 0.025,
+   "r6m": 0.476,
+   "above_ma200": true,
+   "mcap_b": 5.5
+  },
+  {
+   "ticker": "BRZE",
+   "name": "Braze Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.793,
+   "r3m": 0.611,
+   "r6m": 1.346,
+   "above_ma200": true,
+   "mcap_b": 5.3
+  },
+  {
+   "ticker": "CVLT",
+   "name": "Commvault Systems Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.79,
+   "r3m": 0.13,
+   "r6m": 0.628,
+   "above_ma200": true,
+   "mcap_b": 6.8
+  },
+  {
+   "ticker": "GTLB",
+   "name": "GitLab Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.789,
+   "r3m": 0.109,
+   "r6m": 1.092,
+   "above_ma200": true,
+   "mcap_b": 7.9
+  },
+  {
+   "ticker": "TMO",
+   "name": "Thermo Fisher Scientific Inc Common Stoc",
+   "bucket": "industrial_equipment",
+   "industry": "Industrial Machinery/Components",
+   "score": 0.788,
+   "r3m": 0.19,
+   "r6m": 0.563,
+   "above_ma200": true,
+   "mcap_b": 266.0
+  },
+  {
+   "ticker": "ALRM",
+   "name": "Alarm.com Holdings Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.778,
+   "r3m": 0.195,
+   "r6m": 0.568,
+   "above_ma200": true,
+   "mcap_b": 3.3
+  },
+  {
+   "ticker": "AVPT",
+   "name": "AvePoint Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.777,
+   "r3m": 0.215,
+   "r6m": 0.673,
+   "above_ma200": true,
+   "mcap_b": 3.5
+  },
+  {
+   "ticker": "SWKS",
+   "name": "Skyworks Solutions Inc. Common Stock",
+   "bucket": "semis",
+   "industry": "Semiconductors",
+   "score": 0.775,
+   "r3m": 0.293,
+   "r6m": 0.354,
+   "above_ma200": true,
+   "mcap_b": 20.6
+  },
+  {
+   "ticker": "PCTY",
+   "name": "Paylocity Holding Corporation Common Sto",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.775,
+   "r3m": 0.207,
+   "r6m": 0.722,
+   "above_ma200": true,
+   "mcap_b": 9.4
+  },
+  {
+   "ticker": "FDS",
+   "name": "FactSet Research Systems Inc. Common Sto",
+   "bucket": "cloud_services",
+   "industry": "Computer Software: Programming Data Processing",
+   "score": 0.769,
+   "r3m": 0.175,
+   "r6m": 0.674,
+   "above_ma200": true,
+   "mcap_b": 11.8
+  },
+  {
+   "ticker": "VEEV",
+   "name": "Veeva Systems Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.764,
+   "r3m": 0.241,
+   "r6m": 0.935,
+   "above_ma200": true,
+   "mcap_b": 49.3
+  },
+  {
+   "ticker": "PTC",
+   "name": "PTC Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.762,
+   "r3m": 0.311,
+   "r6m": 0.403,
+   "above_ma200": true,
+   "mcap_b": 21.3
+  },
+  {
+   "ticker": "ATEX",
+   "name": "Anterix Inc. Common Stock",
+   "bucket": "networking",
+   "industry": "Telecommunications Equipment",
+   "score": 0.759,
+   "r3m": -0.097,
+   "r6m": 0.46,
+   "above_ma200": true,
+   "mcap_b": 1.5
+  },
+  {
+   "ticker": "TXN",
+   "name": "Texas Instruments Incorporated Common St",
+   "bucket": "semis",
+   "industry": "Semiconductors",
+   "score": 0.757,
+   "r3m": 0.123,
+   "r6m": 0.024,
+   "above_ma200": true,
+   "mcap_b": 283.1
+  },
+  {
+   "ticker": "NTSK",
+   "name": "Netskope Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.756,
+   "r3m": 0.41,
+   "r6m": 1.042,
+   "above_ma200": true,
+   "mcap_b": 9.1
+  },
+  {
+   "ticker": "DE",
+   "name": "Deere & Company Common Stock",
+   "bucket": "industrial_equipment",
+   "industry": "Industrial Machinery/Components",
+   "score": 0.756,
+   "r3m": 0.118,
+   "r6m": 0.187,
+   "above_ma200": true,
+   "mcap_b": 186.4
+  }
+ ],
+ "first_liquid": {
+  "HNGE": "2025-07-21",
+  "OKTA": "2017-10-20",
+  "RNG": "2017-07-27",
+  "ZETA": "2024-05-07",
+  "BMBL": "2021-04-09",
+  "AMPL": "2021-11-22",
+  "PRCH": "2021-02-10",
+  "MGNI": "2020-11-10",
+  "AZTA": "2017-11-10",
+  "MANH": "2017-07-27",
+  "SAIC": "2017-07-27",
+  "AMD": "2017-07-27",
+  "PAYC": "2017-07-27",
+  "FROG": "2020-11-10",
+  "BOX": "2017-07-27",
+  "NIQ": "2025-09-17",
+  "CERT": "2021-02-09",
+  "CRWD": "2019-08-07",
+  "RBRK": "2024-06-21",
+  "TENB": "2018-09-20",
+  "VRNS": "2018-05-02",
+  "PD": "2019-06-07",
+  "DOCU": "2018-06-22",
+  "JOYY": "2017-07-27",
+  "BB": "2017-07-27",
+  "BRZE": "2022-01-13",
+  "CVLT": "2017-10-25",
+  "GTLB": "2021-12-09",
+  "TMO": "2017-07-27",
+  "ALRM": "2017-10-06",
+  "AVPT": "2020-11-30",
+  "SWKS": "2017-07-27",
+  "PCTY": "2018-09-17",
+  "FDS": "2017-07-27",
+  "VEEV": "2017-07-27",
+  "PTC": "2017-07-27",
+  "ATEX": "2026-06-12",
+  "TXN": "2017-07-27",
+  "NTSK": "2025-11-12",
+  "DE": "2017-07-27"
+ }
+}
