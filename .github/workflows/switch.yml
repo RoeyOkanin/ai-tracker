@@ -13,7 +13,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: daily-update
+  group: switch-strategy      # own group: a queued daily-update must not cancel the nightly decision
   cancel-in-progress: false
 
 jobs:
