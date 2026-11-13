@@ -1,0 +1,36 @@
+name: prop-data
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/project-thread-fb7yo5]
+    paths: ["scripts/prop/fetch_intraday.py", ".github/workflows/prop-data.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Fetch intraday bars
+        env:
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python scripts/prop/fetch_intraday.py
+      - name: Save
+        if: always()
+        run: |
+          git config user.name "ai-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/prop
+          git commit -m "data: intraday bars for prop research $(date -u +%F)" || exit 0
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
