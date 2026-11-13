@@ -180,8 +180,19 @@ def main() -> None:
     buckets = {b: g["ticker"].tolist() for b, g in u.groupby("bucket")}
     ind_groups = {f"{s}|{i}": g["ticker"].tolist() for (s, i), g in u.groupby(["sector", "industry"]) if len(g) >= 5}
     per_stock = {t: [t] for t in tick}
+    # "physical" chain = the parts AI bottlenecks have historically formed in (chips, gear, power, build-out).
+    # Software / generic IT services / generic industrial machinery left out.
+    PHYS = {"semis", "tech_equipment", "hardware", "networking", "electrical", "power", "construction"}
+    phys_buckets = {b: v for b, v in buckets.items() if b in PHYS}
+    phys_stock = {t: [t] for b in phys_buckets.values() for t in b}
+    liquid_big = ((px[tick] >= MIN_PRICE) & (dv[tick] >= 100e6)).fillna(False)
 
+    top6 = {"portfolio": {"layers_to_hold": 6, "stocks_per_layer": 1, "keep_if_rank_at_most": 15, "max_weight": 0.30}}
     variants = {
+        "E: שרשרת פיזית, 3 ענפים x 2": (make_uni(phys_buckets, BUCKET_HE), {}),
+        "F: שרשרת פיזית, 6 החזקות": (make_uni(phys_stock, {}), top6),
+        "G: שרשרת פיזית, 3x2, רק מניות עם 100M$ ביום": (make_uni(phys_buckets, BUCKET_HE), {}, liquid_big),
+        "H: שרשרת פיזית, 6 החזקות, 100M$ ביום": (make_uni(phys_stock, {}), top6, liquid_big),
         "A: 10 ענפים, 3 ענפים x 2 מניות (החוקים הנוכחיים)": (make_uni(buckets, BUCKET_HE), {}),
         "B: תעשיות מפורטות, 3 x 2": (make_uni(ind_groups, {}), {}),
         "C: 6 המניות החזקות ביותר": (make_uni(per_stock, {}),
@@ -194,10 +205,12 @@ def main() -> None:
     starts = {"5y": "2021-11-12", "7y": "2019-01-02"}
     results, yearly, picks_now, navs5 = {}, {}, {}, {}
     trades_out = []
-    for name, (uni, ov) in variants.items():
+    for name, spec in variants.items():
+        uni, ov = spec[0], spec[1]
+        liq = spec[2] if len(spec) > 2 else liquid
         r = merge_rules(rules, ov)
         for sk, s in starts.items():
-            sim = run_variant(px, liquid, uni, r, s)
+            sim = run_variant(px, liq, uni, r, s)
             nav = sim["nav"]["nav"]
             st = perf_stats(nav)
             st["trades"] = len(sim["trades"])
