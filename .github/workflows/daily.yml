@@ -48,8 +48,9 @@ jobs:
         env:
           NOTIFY_PATH: /tmp/notify.md
         run: |
-          if python -c "import yaml,sys;sys.exit(0 if yaml.safe_load(open('config/execution.yaml')).get('ticket_enabled') else 1)"; then
-            python scripts/execute.py --broker ticket
+          # only for the old rotation book; the switch's ticket is written by switch.yml after its decision
+          if python -c "import yaml,sys;c=yaml.safe_load(open('config/execution.yaml'));sys.exit(0 if c.get('ticket_enabled') and c.get('book','rotation')=='rotation' else 1)"; then
+            python scripts/execute.py --broker ticket --book rotation
           fi
 
       - name: Save results to the repo

@@ -1,0 +1,1168 @@
+{
+ "asof": "2026-11-13",
+ "threshold": 0.15,
+ "pattern_by_cause": {
+  "credit": {
+   "episodes": 12,
+   "qqq_median": -0.2461,
+   "ranking": [
+    {
+     "ticker": "LONG_TSY",
+     "name": "אג\"ח ממשלתי ארוך",
+     "n": 12,
+     "median": 0.0857,
+     "mean": 0.081,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.3379
+    },
+    {
+     "ticker": "IEF",
+     "name": "אג\"ח ממשלתי בינוני",
+     "n": 9,
+     "median": 0.0562,
+     "mean": 0.0525,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.249
+    },
+    {
+     "ticker": "GOLD",
+     "name": "זהב",
+     "n": 12,
+     "median": 0.0361,
+     "mean": 0.0317,
+     "pct_up": 0.67,
+     "beat_qqq_by_median": 0.2752
+    },
+    {
+     "ticker": "UUP",
+     "name": "דולר",
+     "n": 9,
+     "median": 0.0305,
+     "mean": 0.0273,
+     "pct_up": 0.67,
+     "beat_qqq_by_median": 0.2302
+    },
+    {
+     "ticker": "CASH",
+     "name": "פיקדון קצר (T-bills)",
+     "n": 12,
+     "median": 0.0031,
+     "mean": 0.0047,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.2509
+    },
+    {
+     "ticker": "XLP",
+     "name": "צריכה בסיסית",
+     "n": 12,
+     "median": -0.0876,
+     "mean": -0.0843,
+     "pct_up": 0.17,
+     "beat_qqq_by_median": 0.1569
+    },
+    {
+     "ticker": "XLU",
+     "name": "תשתיות חשמל ומים",
+     "n": 12,
+     "median": -0.1108,
+     "mean": -0.1129,
+     "pct_up": 0.17,
+     "beat_qqq_by_median": 0.1333
+    },
+    {
+     "ticker": "XLV",
+     "name": "בריאות",
+     "n": 12,
+     "median": -0.1341,
+     "mean": -0.1577,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1074
+    },
+    {
+     "ticker": "DBC",
+     "name": "סחורות",
+     "n": 9,
+     "median": -0.1533,
+     "mean": -0.1244,
+     "pct_up": 0.11,
+     "beat_qqq_by_median": 0.0598
+    },
+    {
+     "ticker": "EEM",
+     "name": "שווקים מתעוררים",
+     "n": 9,
+     "median": -0.1683,
+     "mean": -0.2384,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0168
+    },
+    {
+     "ticker": "EFA",
+     "name": "חו\"ל מפותח",
+     "n": 10,
+     "median": -0.178,
+     "mean": -0.2262,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": -0.0002
+    },
+    {
+     "ticker": "IWD",
+     "name": "מניות ערך",
+     "n": 12,
+     "median": -0.1895,
+     "mean": -0.2041,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0467
+    },
+    {
+     "ticker": "RSP",
+     "name": "S&P במשקל שווה",
+     "n": 9,
+     "median": -0.1917,
+     "mean": -0.2373,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": -0.0162
+    },
+    {
+     "ticker": "XLB",
+     "name": "חומרי גלם",
+     "n": 12,
+     "median": -0.1949,
+     "mean": -0.2178,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0061
+    },
+    {
+     "ticker": "SPY",
+     "name": "S&P 500",
+     "n": 12,
+     "median": -0.2029,
+     "mean": -0.2163,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0374
+    },
+    {
+     "ticker": "XLY",
+     "name": "צריכה מחזורית",
+     "n": 12,
+     "median": -0.2034,
+     "mean": -0.2251,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0123
+    },
+    {
+     "ticker": "VNQ",
+     "name": "נדל\"ן",
+     "n": 9,
+     "median": -0.2046,
+     "mean": -0.2527,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0092
+    },
+    {
+     "ticker": "XLI",
+     "name": "תעשייה",
+     "n": 12,
+     "median": -0.2197,
+     "mean": -0.2278,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0156
+    },
+    {
+     "ticker": "XLF",
+     "name": "פיננסים",
+     "n": 12,
+     "median": -0.2256,
+     "mean": -0.263,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": -0.03
+    },
+    {
+     "ticker": "XLE",
+     "name": "אנרגיה",
+     "n": 12,
+     "median": -0.2318,
+     "mean": -0.2495,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": -0.0366
+    },
+    {
+     "ticker": "IWM",
+     "name": "מניות קטנות",
+     "n": 12,
+     "median": -0.2632,
+     "mean": -0.259,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": -0.0354
+    }
+   ]
+  },
+  "other": {
+   "episodes": 10,
+   "qqq_median": -0.2237,
+   "ranking": [
+    {
+     "ticker": "IEF",
+     "name": "אג\"ח ממשלתי בינוני",
+     "n": 4,
+     "median": 0.0405,
+     "mean": 0.0392,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.2332
+    },
+    {
+     "ticker": "LONG_TSY",
+     "name": "אג\"ח ממשלתי ארוך",
+     "n": 10,
+     "median": 0.0257,
+     "mean": 0.0272,
+     "pct_up": 0.9,
+     "beat_qqq_by_median": 0.24
+    },
+    {
+     "ticker": "GOLD",
+     "name": "זהב",
+     "n": 7,
+     "median": 0.0161,
+     "mean": 0.0236,
+     "pct_up": 0.57,
+     "beat_qqq_by_median": 0.2749
+    },
+    {
+     "ticker": "XLE",
+     "name": "אנרגיה",
+     "n": 10,
+     "median": 0.0079,
+     "mean": -0.0073,
+     "pct_up": 0.6,
+     "beat_qqq_by_median": 0.2263
+    },
+    {
+     "ticker": "XLB",
+     "name": "חומרי גלם",
+     "n": 10,
+     "median": 0.0066,
+     "mean": -0.0361,
+     "pct_up": 0.6,
+     "beat_qqq_by_median": 0.2181
+    },
+    {
+     "ticker": "CASH",
+     "name": "פיקדון קצר (T-bills)",
+     "n": 10,
+     "median": 0.0033,
+     "mean": 0.004,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.2283
+    },
+    {
+     "ticker": "XLP",
+     "name": "צריכה בסיסית",
+     "n": 10,
+     "median": -0.0009,
+     "mean": -0.0122,
+     "pct_up": 0.5,
+     "beat_qqq_by_median": 0.1896
+    },
+    {
+     "ticker": "XLU",
+     "name": "תשתיות חשמל ומים",
+     "n": 10,
+     "median": -0.021,
+     "mean": -0.0418,
+     "pct_up": 0.3,
+     "beat_qqq_by_median": 0.1772
+    },
+    {
+     "ticker": "UUP",
+     "name": "דולר",
+     "n": 1,
+     "median": -0.0329,
+     "mean": -0.0329,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1948
+    },
+    {
+     "ticker": "XLY",
+     "name": "צריכה מחזורית",
+     "n": 10,
+     "median": -0.0582,
+     "mean": -0.0763,
+     "pct_up": 0.2,
+     "beat_qqq_by_median": 0.1378
+    },
+    {
+     "ticker": "XLF",
+     "name": "פיננסים",
+     "n": 10,
+     "median": -0.0659,
+     "mean": -0.0851,
+     "pct_up": 0.1,
+     "beat_qqq_by_median": 0.1497
+    },
+    {
+     "ticker": "XLI",
+     "name": "תעשייה",
+     "n": 10,
+     "median": -0.0746,
+     "mean": -0.101,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1432
+    },
+    {
+     "ticker": "IWD",
+     "name": "מניות ערך",
+     "n": 7,
+     "median": -0.0761,
+     "mean": -0.0908,
+     "pct_up": 0.14,
+     "beat_qqq_by_median": 0.1165
+    },
+    {
+     "ticker": "XLV",
+     "name": "בריאות",
+     "n": 10,
+     "median": -0.0812,
+     "mean": -0.0764,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1436
+    },
+    {
+     "ticker": "SPY",
+     "name": "S&P 500",
+     "n": 10,
+     "median": -0.0894,
+     "mean": -0.113,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1239
+    },
+    {
+     "ticker": "EFA",
+     "name": "חו\"ל מפותח",
+     "n": 5,
+     "median": -0.1066,
+     "mean": -0.1183,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1052
+    },
+    {
+     "ticker": "RSP",
+     "name": "S&P במשקל שווה",
+     "n": 2,
+     "median": -0.115,
+     "mean": -0.115,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0782
+    },
+    {
+     "ticker": "DBC",
+     "name": "סחורות",
+     "n": 1,
+     "median": -0.1216,
+     "mean": -0.1216,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1061
+    },
+    {
+     "ticker": "VNQ",
+     "name": "נדל\"ן",
+     "n": 1,
+     "median": -0.1249,
+     "mean": -0.1249,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1028
+    },
+    {
+     "ticker": "EEM",
+     "name": "שווקים מתעוררים",
+     "n": 2,
+     "median": -0.129,
+     "mean": -0.129,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0641
+    },
+    {
+     "ticker": "IWM",
+     "name": "מניות קטנות",
+     "n": 7,
+     "median": -0.1497,
+     "mean": -0.1381,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0317
+    }
+   ]
+  },
+  "rates": {
+   "episodes": 4,
+   "qqq_median": -0.214,
+   "ranking": [
+    {
+     "ticker": "DBC",
+     "name": "סחורות",
+     "n": 3,
+     "median": 0.1392,
+     "mean": 0.114,
+     "pct_up": 0.67,
+     "beat_qqq_by_median": 0.4081
+    },
+    {
+     "ticker": "XLE",
+     "name": "אנרגיה",
+     "n": 4,
+     "median": 0.1008,
+     "mean": 0.1355,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.3435
+    },
+    {
+     "ticker": "UUP",
+     "name": "דולר",
+     "n": 3,
+     "median": 0.0509,
+     "mean": 0.049,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.2831
+    },
+    {
+     "ticker": "GOLD",
+     "name": "זהב",
+     "n": 4,
+     "median": 0.0202,
+     "mean": 0.022,
+     "pct_up": 0.5,
+     "beat_qqq_by_median": 0.2603
+    },
+    {
+     "ticker": "CASH",
+     "name": "פיקדון קצר (T-bills)",
+     "n": 4,
+     "median": 0.0047,
+     "mean": 0.0085,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.2179
+    },
+    {
+     "ticker": "XLU",
+     "name": "תשתיות חשמל ומים",
+     "n": 4,
+     "median": -0.0551,
+     "mean": -0.0449,
+     "pct_up": 0.5,
+     "beat_qqq_by_median": 0.1851
+    },
+    {
+     "ticker": "IEF",
+     "name": "אג\"ח ממשלתי בינוני",
+     "n": 4,
+     "median": -0.0556,
+     "mean": -0.054,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1609
+    },
+    {
+     "ticker": "XLV",
+     "name": "בריאות",
+     "n": 4,
+     "median": -0.0592,
+     "mean": -0.0694,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1358
+    },
+    {
+     "ticker": "XLP",
+     "name": "צריכה בסיסית",
+     "n": 4,
+     "median": -0.0592,
+     "mean": -0.0404,
+     "pct_up": 0.25,
+     "beat_qqq_by_median": 0.1667
+    },
+    {
+     "ticker": "XLF",
+     "name": "פיננסים",
+     "n": 4,
+     "median": -0.0593,
+     "mean": -0.0854,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1547
+    },
+    {
+     "ticker": "XLI",
+     "name": "תעשייה",
+     "n": 4,
+     "median": -0.0624,
+     "mean": -0.077,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1515
+    },
+    {
+     "ticker": "IWD",
+     "name": "מניות ערך",
+     "n": 4,
+     "median": -0.0673,
+     "mean": -0.0688,
+     "pct_up": 0.25,
+     "beat_qqq_by_median": 0.1466
+    },
+    {
+     "ticker": "XLB",
+     "name": "חומרי גלם",
+     "n": 4,
+     "median": -0.092,
+     "mean": -0.0911,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1219
+    },
+    {
+     "ticker": "RSP",
+     "name": "S&P במשקל שווה",
+     "n": 4,
+     "median": -0.0921,
+     "mean": -0.1047,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1202
+    },
+    {
+     "ticker": "EFA",
+     "name": "חו\"ל מפותח",
+     "n": 4,
+     "median": -0.1212,
+     "mean": -0.099,
+     "pct_up": 0.25,
+     "beat_qqq_by_median": 0.1026
+    },
+    {
+     "ticker": "LONG_TSY",
+     "name": "אג\"ח ממשלתי ארוך",
+     "n": 4,
+     "median": -0.1269,
+     "mean": -0.1144,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1133
+    },
+    {
+     "ticker": "SPY",
+     "name": "S&P 500",
+     "n": 4,
+     "median": -0.1288,
+     "mean": -0.1241,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0852
+    },
+    {
+     "ticker": "IWM",
+     "name": "מניות קטנות",
+     "n": 4,
+     "median": -0.1294,
+     "mean": -0.1333,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0846
+    },
+    {
+     "ticker": "EEM",
+     "name": "שווקים מתעוררים",
+     "n": 4,
+     "median": -0.1415,
+     "mean": -0.1238,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0889
+    },
+    {
+     "ticker": "VNQ",
+     "name": "נדל\"ן",
+     "n": 4,
+     "median": -0.1502,
+     "mean": -0.1105,
+     "pct_up": 0.25,
+     "beat_qqq_by_median": 0.0851
+    },
+    {
+     "ticker": "XLY",
+     "name": "צריכה מחזורית",
+     "n": 4,
+     "median": -0.2011,
+     "mean": -0.1928,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0128
+    }
+   ]
+  },
+  "all": {
+   "episodes": 26,
+   "qqq_median": -0.2278,
+   "ranking": [
+    {
+     "ticker": "IEF",
+     "name": "אג\"ח ממשלתי בינוני",
+     "n": 17,
+     "median": 0.0385,
+     "mean": 0.0243,
+     "pct_up": 0.76,
+     "beat_qqq_by_median": 0.2279
+    },
+    {
+     "ticker": "UUP",
+     "name": "דולר",
+     "n": 13,
+     "median": 0.0305,
+     "mean": 0.0277,
+     "pct_up": 0.69,
+     "beat_qqq_by_median": 0.241
+    },
+    {
+     "ticker": "LONG_TSY",
+     "name": "אג\"ח ממשלתי ארוך",
+     "n": 26,
+     "median": 0.0285,
+     "mean": 0.0302,
+     "pct_up": 0.81,
+     "beat_qqq_by_median": 0.2649
+    },
+    {
+     "ticker": "GOLD",
+     "name": "זהב",
+     "n": 23,
+     "median": 0.0255,
+     "mean": 0.0276,
+     "pct_up": 0.61,
+     "beat_qqq_by_median": 0.2749
+    },
+    {
+     "ticker": "CASH",
+     "name": "פיקדון קצר (T-bills)",
+     "n": 26,
+     "median": 0.0033,
+     "mean": 0.005,
+     "pct_up": 1.0,
+     "beat_qqq_by_median": 0.2342
+    },
+    {
+     "ticker": "XLU",
+     "name": "תשתיות חשמל ומים",
+     "n": 26,
+     "median": -0.0457,
+     "mean": -0.0751,
+     "pct_up": 0.27,
+     "beat_qqq_by_median": 0.1543
+    },
+    {
+     "ticker": "XLE",
+     "name": "אנרגיה",
+     "n": 26,
+     "median": -0.0479,
+     "mean": -0.0971,
+     "pct_up": 0.38,
+     "beat_qqq_by_median": 0.1823
+    },
+    {
+     "ticker": "XLP",
+     "name": "צריכה בסיסית",
+     "n": 26,
+     "median": -0.0608,
+     "mean": -0.0498,
+     "pct_up": 0.31,
+     "beat_qqq_by_median": 0.1685
+    },
+    {
+     "ticker": "XLV",
+     "name": "בריאות",
+     "n": 26,
+     "median": -0.1038,
+     "mean": -0.1128,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1339
+    },
+    {
+     "ticker": "DBC",
+     "name": "סחורות",
+     "n": 13,
+     "median": -0.1216,
+     "mean": -0.0692,
+     "pct_up": 0.23,
+     "beat_qqq_by_median": 0.1046
+    },
+    {
+     "ticker": "XLB",
+     "name": "חומרי גלם",
+     "n": 26,
+     "median": -0.1399,
+     "mean": -0.1284,
+     "pct_up": 0.23,
+     "beat_qqq_by_median": 0.1219
+    },
+    {
+     "ticker": "EEM",
+     "name": "שווקים מתעוררים",
+     "n": 15,
+     "median": -0.15,
+     "mean": -0.1932,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0386
+    },
+    {
+     "ticker": "SPY",
+     "name": "S&P 500",
+     "n": 26,
+     "median": -0.1561,
+     "mean": -0.1624,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0833
+    },
+    {
+     "ticker": "IWD",
+     "name": "מניות ערך",
+     "n": 23,
+     "median": -0.1588,
+     "mean": -0.1461,
+     "pct_up": 0.09,
+     "beat_qqq_by_median": 0.0815
+    },
+    {
+     "ticker": "EFA",
+     "name": "חו\"ל מפותח",
+     "n": 19,
+     "median": -0.1604,
+     "mean": -0.171,
+     "pct_up": 0.05,
+     "beat_qqq_by_median": 0.067
+    },
+    {
+     "ticker": "XLI",
+     "name": "תעשייה",
+     "n": 26,
+     "median": -0.1618,
+     "mean": -0.1559,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.1209
+    },
+    {
+     "ticker": "XLF",
+     "name": "פיננסים",
+     "n": 26,
+     "median": -0.1651,
+     "mean": -0.1673,
+     "pct_up": 0.04,
+     "beat_qqq_by_median": 0.0855
+    },
+    {
+     "ticker": "RSP",
+     "name": "S&P במשקל שווה",
+     "n": 15,
+     "median": -0.1722,
+     "mean": -0.1856,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0362
+    },
+    {
+     "ticker": "VNQ",
+     "name": "נדל\"ן",
+     "n": 14,
+     "median": -0.1772,
+     "mean": -0.2029,
+     "pct_up": 0.07,
+     "beat_qqq_by_median": 0.0351
+    },
+    {
+     "ticker": "XLY",
+     "name": "צריכה מחזורית",
+     "n": 26,
+     "median": -0.1803,
+     "mean": -0.1629,
+     "pct_up": 0.08,
+     "beat_qqq_by_median": 0.0377
+    },
+    {
+     "ticker": "IWM",
+     "name": "מניות קטנות",
+     "n": 23,
+     "median": -0.2015,
+     "mean": -0.2003,
+     "pct_up": 0.0,
+     "beat_qqq_by_median": 0.0317
+    }
+   ]
+  }
+ },
+ "rules": {
+  "QQQ:TECH": {
+   "first_half": {
+    "total_return": -0.2089,
+    "cagr": -0.0185,
+    "vol": 0.3013,
+    "sharpe": 0.0882,
+    "max_drawdown": -0.8045,
+    "calmar": -0.0229,
+    "worst_month": -0.2621,
+    "pct_positive_months": 0.5333
+   },
+   "second_half": {
+    "total_return": 10.2582,
+    "cagr": 0.1908,
+    "vol": 0.2093,
+    "sharpe": 0.941,
+    "max_drawdown": -0.3512,
+    "calmar": 0.5434,
+    "worst_month": -0.136,
+    "pct_positive_months": 0.6386
+   },
+   "full": {
+    "total_return": 8.1893,
+    "cagr": 0.0875,
+    "vol": 0.2572,
+    "sharpe": 0.4551,
+    "max_drawdown": -0.8045,
+    "calmar": 0.1087,
+    "worst_month": -0.2621,
+    "pct_positive_months": 0.5899
+   }
+  },
+  "QQQ:TECH_CASH": {
+   "first_half": {
+    "total_return": 1.2947,
+    "cagr": 0.0682,
+    "vol": 0.1618,
+    "sharpe": 0.4898,
+    "max_drawdown": -0.2619,
+    "calmar": 0.2605,
+    "worst_month": -0.1267,
+    "pct_positive_months": 0.7
+   },
+   "second_half": {
+    "total_return": 5.2413,
+    "cagr": 0.1412,
+    "vol": 0.1798,
+    "sharpe": 0.8262,
+    "max_drawdown": -0.2856,
+    "calmar": 0.4945,
+    "worst_month": -0.0875,
+    "pct_positive_months": 0.6566
+   },
+   "full": {
+    "total_return": 13.7769,
+    "cagr": 0.1072,
+    "vol": 0.1716,
+    "sharpe": 0.6806,
+    "max_drawdown": -0.2856,
+    "calmar": 0.3753,
+    "worst_month": -0.1267,
+    "pct_positive_months": 0.6782
+   }
+  },
+  "QQQ:TECH_BEST2": {
+   "first_half": {
+    "total_return": 0.5414,
+    "cagr": 0.035,
+    "vol": 0.1967,
+    "sharpe": 0.2737,
+    "max_drawdown": -0.3952,
+    "calmar": 0.0885,
+    "worst_month": -0.1278,
+    "pct_positive_months": 0.5467
+   },
+   "second_half": {
+    "total_return": 6.917,
+    "cagr": 0.161,
+    "vol": 0.195,
+    "sharpe": 0.8648,
+    "max_drawdown": -0.2856,
+    "calmar": 0.5637,
+    "worst_month": -0.1226,
+    "pct_positive_months": 0.6386
+   },
+   "full": {
+    "total_return": 11.5912,
+    "cagr": 0.1005,
+    "vol": 0.1959,
+    "sharpe": 0.5881,
+    "max_drawdown": -0.3952,
+    "calmar": 0.2543,
+    "worst_month": -0.1278,
+    "pct_positive_months": 0.5962
+   }
+  },
+  "QQQ:TECH_CAUSE": {
+   "first_half": {
+    "total_return": 1.1405,
+    "cagr": 0.0623,
+    "vol": 0.1838,
+    "sharpe": 0.4218,
+    "max_drawdown": -0.3491,
+    "calmar": 0.1786,
+    "worst_month": -0.1267,
+    "pct_positive_months": 0.5733
+   },
+   "second_half": {
+    "total_return": 5.8641,
+    "cagr": 0.1491,
+    "vol": 0.193,
+    "sharpe": 0.8182,
+    "max_drawdown": -0.2856,
+    "calmar": 0.522,
+    "worst_month": -0.1226,
+    "pct_positive_months": 0.6386
+   },
+   "full": {
+    "total_return": 14.1599,
+    "cagr": 0.1083,
+    "vol": 0.1888,
+    "sharpe": 0.6403,
+    "max_drawdown": -0.3491,
+    "calmar": 0.3101,
+    "worst_month": -0.1267,
+    "pct_positive_months": 0.6088
+   }
+  },
+  "QQQ:PLACEBO_random_refuges": {
+   "full_cagr_all": [
+    0.0936,
+    0.0849,
+    0.1203,
+    0.1185,
+    0.1032,
+    0.1043,
+    0.107,
+    0.1173,
+    0.1106,
+    0.0978,
+    0.0924,
+    0.1171,
+    0.1001,
+    0.1072,
+    0.1311,
+    0.0792,
+    0.1003,
+    0.1335,
+    0.1247,
+    0.1134
+   ],
+   "max": 0.1335,
+   "median": 0.1071
+  },
+  "SMH:TECH": {
+   "first_half": {
+    "total_return": -0.3061,
+    "cagr": -0.031,
+    "vol": 0.356,
+    "sharpe": 0.0888,
+    "max_drawdown": -0.7244,
+    "calmar": -0.0429,
+    "worst_month": -0.3251,
+    "pct_positive_months": 0.5145
+   },
+   "second_half": {
+    "total_return": 31.9712,
+    "cagr": 0.2868,
+    "vol": 0.3069,
+    "sharpe": 0.9772,
+    "max_drawdown": -0.453,
+    "calmar": 0.6331,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.6566
+   },
+   "full": {
+    "total_return": 22.786,
+    "cagr": 0.1326,
+    "vol": 0.3303,
+    "sharpe": 0.543,
+    "max_drawdown": -0.7244,
+    "calmar": 0.183,
+    "worst_month": -0.3251,
+    "pct_positive_months": 0.5934
+   }
+  },
+  "SMH:TECH_CASH": {
+   "first_half": {
+    "total_return": -0.1601,
+    "cagr": -0.015,
+    "vol": 0.179,
+    "sharpe": 0.0049,
+    "max_drawdown": -0.4945,
+    "calmar": -0.0302,
+    "worst_month": -0.1341,
+    "pct_positive_months": 0.6739
+   },
+   "second_half": {
+    "total_return": 14.1095,
+    "cagr": 0.2164,
+    "vol": 0.2703,
+    "sharpe": 0.8621,
+    "max_drawdown": -0.3632,
+    "calmar": 0.5957,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.6627
+   },
+   "full": {
+    "total_return": 11.6522,
+    "cagr": 0.1049,
+    "vol": 0.2333,
+    "sharpe": 0.5454,
+    "max_drawdown": -0.4945,
+    "calmar": 0.2121,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.6689
+   }
+  },
+  "SMH:TECH_BEST2": {
+   "first_half": {
+    "total_return": -0.0006,
+    "cagr": -0.0001,
+    "vol": 0.2199,
+    "sharpe": 0.1096,
+    "max_drawdown": -0.3938,
+    "calmar": -0.0001,
+    "worst_month": -0.1473,
+    "pct_positive_months": 0.529
+   },
+   "second_half": {
+    "total_return": 12.9755,
+    "cagr": 0.2096,
+    "vol": 0.28,
+    "sharpe": 0.8215,
+    "max_drawdown": -0.3837,
+    "calmar": 0.5462,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.6386
+   },
+   "full": {
+    "total_return": 13.2373,
+    "cagr": 0.11,
+    "vol": 0.2545,
+    "sharpe": 0.5386,
+    "max_drawdown": -0.3938,
+    "calmar": 0.2793,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.5902
+   }
+  },
+  "SMH:TECH_CAUSE": {
+   "first_half": {
+    "total_return": 0.2442,
+    "cagr": 0.019,
+    "vol": 0.211,
+    "sharpe": 0.1949,
+    "max_drawdown": -0.3546,
+    "calmar": 0.0537,
+    "worst_month": -0.1341,
+    "pct_positive_months": 0.5362
+   },
+   "second_half": {
+    "total_return": 12.2995,
+    "cagr": 0.2052,
+    "vol": 0.2786,
+    "sharpe": 0.8113,
+    "max_drawdown": -0.4125,
+    "calmar": 0.4975,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.6386
+   },
+   "full": {
+    "total_return": 15.8675,
+    "cagr": 0.1174,
+    "vol": 0.2502,
+    "sharpe": 0.5702,
+    "max_drawdown": -0.4125,
+    "calmar": 0.2846,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.5934
+   }
+  },
+  "SMH:PLACEBO_random_refuges": {
+   "full_cagr_all": [
+    0.1064,
+    0.1063,
+    0.1135,
+    0.124,
+    0.1348,
+    0.1144,
+    0.1185,
+    0.1111,
+    0.1215,
+    0.1186,
+    0.1139,
+    0.0944,
+    0.1243,
+    0.1148,
+    0.1168,
+    0.1159,
+    0.1253,
+    0.092,
+    0.1059,
+    0.0869
+   ],
+   "max": 0.1348,
+   "median": 0.11460000000000001
+  }
+ },
+ "cause_today": "rates",
+ "macro_today": {
+  "Y5": 4.956,
+  "Y10": 5.139,
+  "HY": 5.3,
+  "TSY": 9.5
+ },
+ "smh_vs_ma200": -0.0823,
+ "last_decisions": {
+  "QQQ:TECH_BEST2": {
+   "date": "2026-10-30",
+   "state": "tech",
+   "hold": {
+    "QQQ": 1.0
+   },
+   "cause": null
+  },
+  "QQQ:TECH_CAUSE": {
+   "date": "2026-10-30",
+   "state": "tech",
+   "hold": {
+    "QQQ": 1.0
+   },
+   "cause": null
+  },
+  "SMH:TECH_BEST2": {
+   "date": "2026-10-30",
+   "state": "tech",
+   "hold": {
+    "SMH": 1.0
+   },
+   "cause": null
+  },
+  "SMH:TECH_CAUSE": {
+   "date": "2026-10-30",
+   "state": "tech",
+   "hold": {
+    "SMH": 1.0
+   },
+   "cause": null
+  }
+ },
+ "baskets": {
+  "rates": [
+   "XLE",
+   "XLP",
+   "XLU",
+   "XLV",
+   "DBC",
+   "IWD",
+   "CASH"
+  ],
+  "credit": [
+   "LONG_TSY",
+   "IEF",
+   "GOLD",
+   "XLP",
+   "UUP",
+   "CASH"
+  ],
+  "other": [
+   "IWM",
+   "IWD",
+   "RSP",
+   "EFA",
+   "VNQ",
+   "XLV",
+   "XLF",
+   "XLI",
+   "CASH"
+  ]
+ }
+}

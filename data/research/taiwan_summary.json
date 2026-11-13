@@ -1,0 +1,312 @@
+{
+ "revenue_through": "2026-10",
+ "companies": {
+  "2330": "foundry",
+  "3711": "foundry",
+  "2449": "foundry",
+  "2408": "memory",
+  "2344": "memory",
+  "2337": "memory",
+  "8299": "memory",
+  "3260": "memory",
+  "3661": "compute",
+  "3443": "compute",
+  "5274": "compute",
+  "2382": "servers",
+  "6669": "servers",
+  "3231": "servers",
+  "2356": "servers",
+  "2317": "servers",
+  "2059": "servers",
+  "3706": "servers",
+  "2345": "networking",
+  "4979": "networking",
+  "3081": "networking",
+  "3363": "networking",
+  "2383": "networking",
+  "6274": "networking",
+  "3450": "networking",
+  "2308": "power_equipment",
+  "1519": "power_equipment",
+  "1513": "power_equipment",
+  "1503": "power_equipment",
+  "3017": "power_equipment",
+  "3324": "power_equipment",
+  "3653": "power_equipment"
+ },
+ "signal_test": {
+  "calibration_2018_2022": {
+   "months": 58,
+   "up_minus_down": -0.0212,
+   "up_minus_down_t": -0.65,
+   "up_minus_down_hit": 0.43,
+   "ic": -0.0362,
+   "ic_t": -1.92
+  },
+  "out_of_sample_2023_2026": {
+   "months": 36,
+   "up_minus_down": 0.1908,
+   "up_minus_down_t": 2.29,
+   "up_minus_down_hit": 0.81,
+   "ic": 0.2571,
+   "ic_t": 1.48
+  },
+  "per_layer_3m_excess_vs_smh": {
+   "compute": {
+    "up": 0.0736,
+    "down": 0.0222,
+    "months_up": 44,
+    "months_down": 59
+   },
+   "foundry": {
+    "up": -0.0091,
+    "down": 0.0302,
+    "months_up": 61,
+    "months_down": 42
+   },
+   "memory": {
+    "up": 0.1153,
+    "down": 0.002,
+    "months_up": 55,
+    "months_down": 48
+   },
+   "networking": {
+    "up": 0.0349,
+    "down": 0.0233,
+    "months_up": 49,
+    "months_down": 54
+   },
+   "power_equipment": {
+    "up": 0.0289,
+    "down": 0.0113,
+    "months_up": 50,
+    "months_down": 53
+   },
+   "servers": {
+    "up": 0.0417,
+    "down": 0.0288,
+    "months_up": 54,
+    "months_down": 49
+   }
+  }
+ },
+ "portfolio": {
+  "רוטציה חיה (בסיס)": {
+   "calibration_2019_2022": {
+    "total_return": 1.1545,
+    "cagr": 0.212,
+    "vol": 0.2486,
+    "sharpe": 0.8977,
+    "max_drawdown": -0.2601,
+    "calmar": 0.8153,
+    "worst_month": -0.1628,
+    "pct_positive_months": 0.6596
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 6.4026,
+    "cagr": 0.6802,
+    "vol": 0.4409,
+    "sharpe": 1.4035,
+    "max_drawdown": -0.3104,
+    "calmar": 2.1913,
+    "worst_month": -0.2216,
+    "pct_positive_months": 0.6304
+   },
+   "full_2019_2026": {
+    "total_return": 16.0024,
+    "cagr": 0.434,
+    "vol": 0.3573,
+    "sharpe": 1.191,
+    "max_drawdown": -0.3104,
+    "calmar": 1.3981,
+    "worst_month": -0.2216,
+    "pct_positive_months": 0.6489
+   }
+  },
+  "+ דילוג על שכבה שהמכירות בטאיוואן מאטות בה": {
+   "calibration_2019_2022": {
+    "total_return": 1.2453,
+    "cagr": 0.2246,
+    "vol": 0.2369,
+    "sharpe": 0.9739,
+    "max_drawdown": -0.2681,
+    "calmar": 0.838,
+    "worst_month": -0.1944,
+    "pct_positive_months": 0.6383
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 5.7531,
+    "cagr": 0.6407,
+    "vol": 0.4264,
+    "sharpe": 1.3804,
+    "max_drawdown": -0.3284,
+    "calmar": 1.9511,
+    "worst_month": -0.2405,
+    "pct_positive_months": 0.587
+   },
+   "full_2019_2026": {
+    "total_return": 14.0092,
+    "cagr": 0.4114,
+    "vol": 0.3432,
+    "sharpe": 1.1793,
+    "max_drawdown": -0.3284,
+    "calmar": 1.2529,
+    "worst_month": -0.2405,
+    "pct_positive_months": 0.617
+   }
+  },
+  "+ דירוג משולב: מומנטום ומכירות טאיוואן": {
+   "calibration_2019_2022": {
+    "total_return": 1.4029,
+    "cagr": 0.2456,
+    "vol": 0.238,
+    "sharpe": 1.0416,
+    "max_drawdown": -0.212,
+    "calmar": 1.1583,
+    "worst_month": -0.1294,
+    "pct_positive_months": 0.6809
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 9.3306,
+    "cagr": 0.8318,
+    "vol": 0.4314,
+    "sharpe": 1.6273,
+    "max_drawdown": -0.3242,
+    "calmar": 2.5656,
+    "worst_month": -0.2045,
+    "pct_positive_months": 0.6304
+   },
+   "full_2019_2026": {
+    "total_return": 23.5922,
+    "cagr": 0.5029,
+    "vol": 0.3467,
+    "sharpe": 1.3532,
+    "max_drawdown": -0.3242,
+    "calmar": 1.5511,
+    "worst_month": -0.2045,
+    "pct_positive_months": 0.6596
+   }
+  }
+ },
+ "placebo_cagr": {
+  "filter": {
+   "calibration_2019_2022": [
+    0.1919,
+    0.0881,
+    0.1476,
+    0.2322,
+    0.1581,
+    0.0861,
+    0.2187,
+    0.1216,
+    0.2283,
+    0.1195,
+    0.2232,
+    0.1766,
+    0.2133,
+    0.1492,
+    0.1619,
+    0.1691,
+    0.19,
+    0.1568,
+    0.1669,
+    0.2055
+   ],
+   "out_of_sample_2023_2026": [
+    0.461,
+    0.6177,
+    0.7043,
+    0.6024,
+    0.5547,
+    0.4734,
+    0.3605,
+    0.4767,
+    0.4009,
+    0.5753,
+    0.5313,
+    0.4837,
+    0.4043,
+    0.4696,
+    0.3712,
+    0.5961,
+    0.5919,
+    0.4583,
+    0.4776,
+    0.6567
+   ]
+  },
+  "blend": {
+   "calibration_2019_2022": [
+    0.1345,
+    0.1432,
+    0.1799,
+    0.172,
+    0.2474,
+    0.077,
+    0.1714,
+    0.0899,
+    0.1608,
+    0.1644,
+    0.1644,
+    0.0696,
+    0.1774,
+    0.0213,
+    0.1643,
+    0.1606,
+    0.1254,
+    0.1498,
+    0.0976,
+    0.1891
+   ],
+   "out_of_sample_2023_2026": [
+    0.7073,
+    0.9116,
+    0.7776,
+    0.8901,
+    0.7042,
+    0.7261,
+    0.8796,
+    0.8093,
+    0.762,
+    0.941,
+    0.7682,
+    0.7294,
+    0.7496,
+    0.8589,
+    0.82,
+    0.8683,
+    0.9789,
+    0.8054,
+    0.7506,
+    0.9057
+   ]
+  }
+ },
+ "kill_rule": {
+  "+ דילוג על שכבה שהמכירות בטאיוואן מאטות בה": {
+   "oos_cagr_add": -0.0395,
+   "cal_cagr_add": 0.0126,
+   "oos_dd_change": -0.018,
+   "beats_all_placebos": false,
+   "signal_ok": false,
+   "keep": false
+  },
+  "+ דירוג משולב: מומנטום ומכירות טאיוואן": {
+   "oos_cagr_add": 0.1516,
+   "cal_cagr_add": 0.0336,
+   "oos_dd_change": -0.0138,
+   "beats_all_placebos": false,
+   "signal_ok": false,
+   "keep": false
+  }
+ },
+ "layer_accel_now": {
+  "compute": 0.532,
+  "foundry": 0.097,
+  "memory": 0.174,
+  "networking": 0.401,
+  "power_equipment": 0.05,
+  "servers": 0.071,
+  "_all": 0.104
+ }
+}

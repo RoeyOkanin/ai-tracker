@@ -1,4 +1,8 @@
-"""Turns docs/data/target_book.json into broker orders.
+"""Turns a target book into broker orders.
+
+Which book is set by `book:` in config/execution.yaml (or --book):
+  switch    docs/data/switch_target_book.json  (switch_live.py, the main strategy)
+  rotation  docs/data/target_book.json         (compute.py, the 93-company rotation)
 
     python scripts/execute.py --broker alpaca          # automatic (paper unless execution.yaml says live)
     python scripts/execute.py --broker ticket          # manual broker (Colmex): writes an order ticket, sends nothing
@@ -109,7 +113,8 @@ def plan_orders(book: dict, capital: float, positions: dict[str, dict], price_of
         if o.notional < guards.get("min_order_usd", 0):
             notes.append(f"{o.ticker}: ${o.notional:.0f} under the minimum, skipped")
             continue
-        if o.notional > guards.get("max_order_pct", 1.0) * capital * 1.02 and o.side == "buy":
+        cap = guards.get("etf_max_order_pct", 1.0) if o.ticker in guards.get("etfs", ()) else guards.get("max_order_pct", 1.0)
+        if o.notional > cap * capital * 1.02 and o.side == "buy":
             notes.append(f"{o.ticker}: ${o.notional:.0f} above max_order_pct, blocked")
             continue
         out.append(o)
@@ -147,18 +152,23 @@ def append_log(rows: list[dict]) -> None:
         w.writerows(rows)
 
 
-def last_closes() -> dict[str, float]:
+BOOKS = {"switch": "switch_target_book.json", "rotation": "target_book.json"}
+
+
+def last_closes(book: dict | None = None) -> dict[str, float]:
+    if book and book.get("last_close"):
+        return {t: float(v) for t, v in book["last_close"].items()}
     px = pd.read_csv(DATA / "prices.csv", index_col=0)
     last = px.ffill().iloc[-1]
     return {str(k): float(v) for k, v in last.items() if pd.notna(v)}
 
 
 # ------------------------------------------------------------ manual broker (Colmex): a ticket + a shadow book
-MANUAL_BOOK = DATA / "manual_book.json"
+MANUAL_BOOK = DATA / "manual_book.json"   # per book: manual_book_switch.json for the switch
 
 
-def manual_broker(capital: float) -> FakeBroker:
-    closes = last_closes()
+def manual_broker(capital: float, book: dict | None = None) -> FakeBroker:
+    closes = last_closes(book)
     if MANUAL_BOOK.exists():
         st = json.loads(MANUAL_BOOK.read_text(encoding="utf-8"))
         return FakeBroker(cash_usd=st["cash"], holdings=st["holdings"], prices=closes, name="ticket")
@@ -180,7 +190,7 @@ def ticket_markdown(orders: list[Order], exec_date: str, book: dict, notes: list
                      f"${o.notional:,.0f} | {REASON_HE.get(o.reason, o.reason)} |")
     if notes:
         lines += ["", "הערות: " + "; ".join(notes)]
-    lines += ["", f"מצב שוק: {book.get('regime')}. מכירות לפני קניות. אם לא ביצעת, כתוב בגיטהאב issue ונסנכרן."]
+    lines += ["", f"מצב: {book.get('regime') or book.get('hold')}. מכירות לפני קניות. אם לא ביצעת, כתוב בגיטהאב issue ונסנכרן."]
     return "\n".join(lines)
 
 
@@ -189,18 +199,28 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--broker", choices=["alpaca", "ticket", "fake"], default=None)
     ap.add_argument("--dry-run", action="store_true", help="plan and print, send nothing")
+    ap.add_argument("--book", choices=sorted(BOOKS), default=None, help="which target book to execute")
     ap.add_argument("--force-date", help="treat this YYYY-MM-DD as today (tests / catching up)")
     args = ap.parse_args(argv)
 
     cfg = load_exec_config()
     broker_name = args.broker or cfg.get("broker", "alpaca")
-    book_path = DOCS_DATA / "target_book.json"
+    book_name = args.book or cfg.get("book", "rotation")
+    book_path = DOCS_DATA / BOOKS[book_name]
     if not book_path.exists():
-        print("no target_book.json yet; run compute.py first")
+        print(f"no {book_path.name} yet; run {'switch_live.py' if book_name == 'switch' else 'compute.py'} first")
         return 0
     book = json.loads(book_path.read_text(encoding="utf-8"))
-    uni, _ = load_config()
-    managed = set(stock_tickers(uni)) if cfg["guards"].get("only_universe_tickers", True) else set()
+    global MANUAL_BOOK
+    if book_name != "rotation":
+        MANUAL_BOOK = DATA / f"manual_book_{book_name}.json"
+    if not cfg["guards"].get("only_universe_tickers", True):
+        managed = set()
+    elif book.get("managed"):
+        managed = set(book["managed"])            # the switch: whole physical chain + SMH
+    else:
+        uni, _ = load_config()
+        managed = set(stock_tickers(uni))
     now_ny = datetime.now(NY)
     run_utc = datetime.now(timezone.utc).isoformat(timespec="seconds")
     order_type = cfg.get("order_type", "moc")
@@ -208,7 +228,7 @@ def main(argv=None) -> int:
 
     if broker_name == "ticket":
         capital = float(cfg.get("manual_capital_usd") or cfg.get("allocation_usd") or 10_000)
-        b = manual_broker(capital)
+        b = manual_broker(capital, book)
         exec_date = (pd.Timestamp(book["signal_date"]) + pd.offsets.BDay(1)).date().isoformat()
         managed = managed or set(b.holdings)
     else:
@@ -219,7 +239,7 @@ def main(argv=None) -> int:
         if broker_name == "alpaca":
             b = AlpacaBroker(paper=paper)
         else:
-            closes = last_closes()
+            closes = last_closes(book)
             b = FakeBroker(prices=closes, days=[d.date().isoformat() for d in pd.bdate_range("2026-01-01", "2027-12-31")])
         if args.force_date:
             now_ny = datetime.fromisoformat(args.force_date).replace(hour=12, tzinfo=NY)

@@ -1,0 +1,260 @@
+{
+ "results": {
+  "SMH 100%": {
+   "calibration_2018_2022": {
+    "total_return": 1.1416,
+    "cagr": 0.1648,
+    "vol": 0.3504,
+    "sharpe": 0.6112,
+    "max_drawdown": -0.453,
+    "calmar": 0.3639,
+    "worst_month": -0.167,
+    "pct_positive_months": 0.6441
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 3.8016,
+    "cagr": 0.5014,
+    "vol": 0.3647,
+    "sharpe": 1.3009,
+    "max_drawdown": -0.3574,
+    "calmar": 1.4031,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.6522
+   },
+   "full_2018_2026": {
+    "total_return": 9.204,
+    "cagr": 0.2996,
+    "vol": 0.3566,
+    "sharpe": 0.9154,
+    "max_drawdown": -0.453,
+    "calmar": 0.6614,
+    "worst_month": -0.1759,
+    "pct_positive_months": 0.6509
+   }
+  },
+  "שרשרת במשקל שווה 100%": {
+   "calibration_2018_2022": {
+    "total_return": 0.646,
+    "cagr": 0.105,
+    "vol": 0.2599,
+    "sharpe": 0.5147,
+    "max_drawdown": -0.3621,
+    "calmar": 0.29,
+    "worst_month": -0.1397,
+    "pct_positive_months": 0.6441
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 1.566,
+    "cagr": 0.2765,
+    "vol": 0.2614,
+    "sharpe": 1.0676,
+    "max_drawdown": -0.3125,
+    "calmar": 0.8847,
+    "worst_month": -0.1524,
+    "pct_positive_months": 0.5652
+   },
+   "full_2018_2026": {
+    "total_return": 3.2083,
+    "cagr": 0.176,
+    "vol": 0.2605,
+    "sharpe": 0.7546,
+    "max_drawdown": -0.3621,
+    "calmar": 0.4862,
+    "worst_month": -0.1524,
+    "pct_positive_months": 0.6132
+   }
+  },
+  "רוטציה H 100%": {
+   "calibration_2018_2022": {
+    "total_return": 0.1338,
+    "cagr": 0.0255,
+    "vol": 0.2497,
+    "sharpe": 0.2257,
+    "max_drawdown": -0.5201,
+    "calmar": 0.049,
+    "worst_month": -0.2203,
+    "pct_positive_months": 0.4746
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 5.5931,
+    "cagr": 0.6305,
+    "vol": 0.4297,
+    "sharpe": 1.3573,
+    "max_drawdown": -0.3488,
+    "calmar": 1.8078,
+    "worst_month": -0.2241,
+    "pct_positive_months": 0.6304
+   },
+   "full_2018_2026": {
+    "total_return": 6.3492,
+    "cagr": 0.2525,
+    "vol": 0.3402,
+    "sharpe": 0.8334,
+    "max_drawdown": -0.5425,
+    "calmar": 0.4654,
+    "worst_month": -0.2241,
+    "pct_positive_months": 0.5377
+   }
+  },
+  "SMH 70% + H 30%": {
+   "calibration_2018_2022": {
+    "total_return": 0.8298,
+    "cagr": 0.1287,
+    "vol": 0.2952,
+    "sharpe": 0.5581,
+    "max_drawdown": -0.4139,
+    "calmar": 0.3109,
+    "worst_month": -0.1486,
+    "pct_positive_months": 0.6102
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 4.5772,
+    "cagr": 0.5613,
+    "vol": 0.3532,
+    "sharpe": 1.4437,
+    "max_drawdown": -0.3381,
+    "calmar": 1.6603,
+    "worst_month": -0.1957,
+    "pct_positive_months": 0.6304
+   },
+   "full_2018_2026": {
+    "total_return": 9.0986,
+    "cagr": 0.2982,
+    "vol": 0.3218,
+    "sharpe": 0.9746,
+    "max_drawdown": -0.4139,
+    "calmar": 0.7205,
+    "worst_month": -0.1957,
+    "pct_positive_months": 0.6226
+   }
+  },
+  "SMH 50% + H 50%": {
+   "calibration_2018_2022": {
+    "total_return": 0.6248,
+    "cagr": 0.1021,
+    "vol": 0.2684,
+    "sharpe": 0.4969,
+    "max_drawdown": -0.415,
+    "calmar": 0.2461,
+    "worst_month": -0.1642,
+    "pct_positive_months": 0.5932
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 4.9004,
+    "cagr": 0.5843,
+    "vol": 0.3634,
+    "sharpe": 1.4537,
+    "max_drawdown": -0.3419,
+    "calmar": 1.7092,
+    "worst_month": -0.2058,
+    "pct_positive_months": 0.6522
+   },
+   "full_2018_2026": {
+    "total_return": 8.4696,
+    "cagr": 0.2888,
+    "vol": 0.3134,
+    "sharpe": 0.9689,
+    "max_drawdown": -0.415,
+    "calmar": 0.696,
+    "worst_month": -0.2058,
+    "pct_positive_months": 0.6226
+   }
+  },
+  "שרשרת שווה 70% + H 30%": {
+   "calibration_2018_2022": {
+    "total_return": 0.5059,
+    "cagr": 0.0855,
+    "vol": 0.2328,
+    "sharpe": 0.4692,
+    "max_drawdown": -0.3133,
+    "calmar": 0.2728,
+    "worst_month": -0.1346,
+    "pct_positive_months": 0.6102
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 2.5801,
+    "cagr": 0.3918,
+    "vol": 0.2903,
+    "sharpe": 1.2888,
+    "max_drawdown": -0.3269,
+    "calmar": 1.1987,
+    "worst_month": -0.1831,
+    "pct_positive_months": 0.587
+   },
+   "full_2018_2026": {
+    "total_return": 4.3505,
+    "cagr": 0.2084,
+    "vol": 0.2594,
+    "sharpe": 0.8617,
+    "max_drawdown": -0.3269,
+    "calmar": 0.6376,
+    "worst_month": -0.1831,
+    "pct_positive_months": 0.6038
+   }
+  },
+  "שרשרת שווה 50% + H 50%": {
+   "calibration_2018_2022": {
+    "total_return": 0.4044,
+    "cagr": 0.0704,
+    "vol": 0.2265,
+    "sharpe": 0.4141,
+    "max_drawdown": -0.379,
+    "calmar": 0.1858,
+    "worst_month": -0.1591,
+    "pct_positive_months": 0.6271
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 3.3116,
+    "cagr": 0.4605,
+    "vol": 0.3252,
+    "sharpe": 1.3325,
+    "max_drawdown": -0.3348,
+    "calmar": 1.3754,
+    "worst_month": -0.198,
+    "pct_positive_months": 0.6087
+   },
+   "full_2018_2026": {
+    "total_return": 4.9932,
+    "cagr": 0.224,
+    "vol": 0.2739,
+    "sharpe": 0.877,
+    "max_drawdown": -0.379,
+    "calmar": 0.591,
+    "worst_month": -0.198,
+    "pct_positive_months": 0.6226
+   }
+  },
+  "SMH 50% + שרשרת שווה 50%": {
+   "calibration_2018_2022": {
+    "total_return": 0.9062,
+    "cagr": 0.138,
+    "vol": 0.298,
+    "sharpe": 0.5833,
+    "max_drawdown": -0.3669,
+    "calmar": 0.3761,
+    "worst_month": -0.1306,
+    "pct_positive_months": 0.6271
+   },
+   "out_of_sample_2023_2026": {
+    "total_return": 2.58,
+    "cagr": 0.3915,
+    "vol": 0.3067,
+    "sharpe": 1.2344,
+    "max_drawdown": -0.321,
+    "calmar": 1.2198,
+    "worst_month": -0.1645,
+    "pct_positive_months": 0.6304
+   },
+   "full_2018_2026": {
+    "total_return": 5.7857,
+    "cagr": 0.2412,
+    "vol": 0.3018,
+    "sharpe": 0.869,
+    "max_drawdown": -0.3669,
+    "calmar": 0.6573,
+    "worst_month": -0.1645,
+    "pct_positive_months": 0.6321
+   }
+  }
+ }
+}

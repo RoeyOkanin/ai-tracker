@@ -3,6 +3,7 @@
 
 enabled: true                  # kill switch: false = the executor logs the plan and sends nothing
 broker: alpaca
+book: switch                   # switch = the main strategy (switch_live.py) | rotation = compute.py's 93-company book
 mode: paper                    # paper | live. live also needs the repo secret LIVE_TRADING_CONFIRM=YES
                                # (two locks, so a typo in one file can't move real money)
 
@@ -13,8 +14,10 @@ order_type: moc                # moc = market-on-close (same price the backtest 
 moc_cutoff_et: "15:45"         # Alpaca rejects MOC orders after 15:50 New York; we stop a bit earlier
 
 guards:
-  max_order_pct: 0.35          # no single order above 35% of the managed capital
+  max_order_pct: 0.35          # no single stock order above 35% of the managed capital
+  etfs: [SMH]                  # the parking / switch ETF may take the whole account
+  etf_max_order_pct: 1.0
   max_orders_per_run: 20
   min_order_usd: 25            # skip dust
   max_daily_turnover_pct: 2.1  # buys + sells in one run, as a share of capital (a full rotation = 2.0)
-  only_universe_tickers: true  # never touch a position that isn't in companies.yaml (your other holdings are safe)
+  only_universe_tickers: true  # never touch a position outside the book's universe (the switch: physical chain + SMH) (your other holdings are safe)
