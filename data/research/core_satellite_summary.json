@@ -12,22 +12,22 @@
     "pct_positive_months": 0.6441
    },
    "out_of_sample_2023_2026": {
-    "total_return": 3.9196,
-    "cagr": 0.5109,
-    "vol": 0.364,
-    "sharpe": 1.3199,
+    "total_return": 3.8016,
+    "cagr": 0.5014,
+    "vol": 0.3647,
+    "sharpe": 1.3009,
     "max_drawdown": -0.3574,
-    "calmar": 1.4296,
+    "calmar": 1.4031,
     "worst_month": -0.1759,
     "pct_positive_months": 0.6522
    },
    "full_2018_2026": {
-    "total_return": 9.4549,
-    "cagr": 0.3032,
-    "vol": 0.3563,
-    "sharpe": 0.9236,
+    "total_return": 9.204,
+    "cagr": 0.2996,
+    "vol": 0.3566,
+    "sharpe": 0.9154,
     "max_drawdown": -0.453,
-    "calmar": 0.6693,
+    "calmar": 0.6614,
     "worst_month": -0.1759,
     "pct_positive_months": 0.6509
    }
@@ -44,22 +44,22 @@
     "pct_positive_months": 0.6441
    },
    "out_of_sample_2023_2026": {
-    "total_return": 1.6053,
-    "cagr": 0.2815,
-    "vol": 0.2611,
-    "sharpe": 1.084,
+    "total_return": 1.566,
+    "cagr": 0.2765,
+    "vol": 0.2614,
+    "sharpe": 1.0676,
     "max_drawdown": -0.3125,
-    "calmar": 0.9009,
+    "calmar": 0.8847,
     "worst_month": -0.1524,
     "pct_positive_months": 0.5652
    },
    "full_2018_2026": {
-    "total_return": 3.2728,
-    "cagr": 0.1781,
-    "vol": 0.2603,
-    "sharpe": 0.7615,
+    "total_return": 3.2083,
+    "cagr": 0.176,
+    "vol": 0.2605,
+    "sharpe": 0.7546,
     "max_drawdown": -0.3621,
-    "calmar": 0.4918,
+    "calmar": 0.4862,
     "worst_month": -0.1524,
     "pct_positive_months": 0.6132
    }
@@ -236,22 +236,22 @@
     "pct_positive_months": 0.6271
    },
    "out_of_sample_2023_2026": {
-    "total_return": 2.6518,
-    "cagr": 0.3987,
-    "vol": 0.3062,
-    "sharpe": 1.2529,
+    "total_return": 2.58,
+    "cagr": 0.3915,
+    "vol": 0.3067,
+    "sharpe": 1.2344,
     "max_drawdown": -0.321,
-    "calmar": 1.2421,
+    "calmar": 1.2198,
     "worst_month": -0.1645,
     "pct_positive_months": 0.6304
    },
    "full_2018_2026": {
-    "total_return": 5.9217,
-    "cagr": 0.244,
-    "vol": 0.3015,
-    "sharpe": 0.8769,
+    "total_return": 5.7857,
+    "cagr": 0.2412,
+    "vol": 0.3018,
+    "sharpe": 0.869,
     "max_drawdown": -0.3669,
-    "calmar": 0.6649,
+    "calmar": 0.6573,
     "worst_month": -0.1645,
     "pct_positive_months": 0.6321
    }
