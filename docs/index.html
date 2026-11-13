@@ -3,171 +3,308 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Tracker · צווארי בקבוק בשרשרת ה-AI</title>
+<meta name="theme-color" content="#0a0d16">
+<title>AI Tracker · המתג</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    color-scheme: light;
-    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
-    --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
-    --series: #2a78d6; --up: #006300; --down: #b42d2d;
-    --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
-    --heating: #2a78d6; --cold: #898781; --neutral: #c3c2b7;
-    --s2: #eb6834; --s3: #1baf7a; --mid: #f0efec; --hot: #e34948; --coolc: #2a78d6;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      color-scheme: dark;
-      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
-      --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
-      --series: #3987e5; --up: #0ca30c; --down: #e66767; --heating: #3987e5; --neutral: #52514e;
-      --s2: #d95926; --s3: #199e70; --mid: #383835; --hot: #e66767; --coolc: #3987e5;
-    }
+    color-scheme: dark;
+    /* cockpit palette */
+    --bg: #0a0d16; --card: rgba(255,255,255,.035); --card2: rgba(255,255,255,.065); --line: rgba(255,255,255,.08);
+    --ink: #eef1f8; --ink-2: #a3abc0; --muted: #646d85;
+    --rot: #3ee6a8; --smh: #6f8bff; --cash: #ffb547; --pos: #3ee6a8; --neg: #ff5c7a;
+    /* names the render code uses */
+    --page: var(--bg); --surface: #121726; --border: var(--line); --grid: rgba(255,255,255,.06); --axis: rgba(255,255,255,.16);
+    --series: #6f8bff; --up: #3ee6a8; --down: #ff5c7a;
+    --good: #3ee6a8; --warning: #ffb547; --serious: #ff8a5c; --critical: #ff5c7a;
+    --heating: #6f8bff; --cold: #646d85; --neutral: #3a4157;
+    --s2: #ffb547; --s3: #3ee6a8; --mid: #1b2133; --hot: #ff5c7a; --coolc: #6f8bff;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--page); color: var(--ink);
-         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { max-width: 980px; margin: 0 auto; padding: 16px 14px 48px; }
-  header h1 { font-size: 20px; margin: 0 0 2px; }
-  header p { margin: 0; color: var(--ink-2); font-size: 13px; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-          padding: 14px 16px; margin-top: 14px; }
-  .card h2 { font-size: 16px; margin: 0 0 10px; }
-  .card .sub { color: var(--ink-2); font-size: 13px; margin: -6px 0 10px; }
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
-  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
-  .tile .label { color: var(--ink-2); font-size: 13px; }
-  .tile .value { font-size: 22px; font-weight: 600; margin-top: 2px; }
+  body { margin: 0; color: var(--ink); font: 14px/1.5 Rubik, system-ui, -apple-system, "Segoe UI", sans-serif; min-height: 100vh;
+         background: radial-gradient(900px 500px at 85% -10%, rgba(255,181,71,.10), transparent 60%),
+                     radial-gradient(700px 500px at 0% 20%, rgba(111,139,255,.09), transparent 60%), var(--bg); }
+  a { color: var(--smh); }
+  main { max-width: 1320px; margin: 0 auto; padding: 18px 22px 40px; }
+  .num, .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+  .up, .pos { color: var(--pos); } .down, .neg { color: var(--neg); }
+  .empty { color: var(--muted); }
+  .scroll { overflow-x: auto; }
+
+  /* top bar */
+  .top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; }
+  .logo i { width: 28px; height: 28px; border-radius: 8px; background: conic-gradient(from 200deg, var(--cash), var(--smh), var(--rot), var(--cash)); }
+  .tabs { display: flex; gap: 4px; background: var(--card); border: 1px solid var(--line); padding: 4px; border-radius: 12px; margin-right: auto; overflow-x: auto; max-width: 100%; }
+  .tabs a { padding: 7px 14px; border-radius: 9px; color: var(--ink-2); text-decoration: none; font-size: 13px; white-space: nowrap; }
+  .tabs a[aria-current="page"] { background: var(--card2); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+  .live { font-size: 12px; color: var(--ink-2); display: flex; align-items: center; gap: 6px; }
+  .live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--rot); box-shadow: 0 0 8px var(--rot); flex: none; }
+  .live.stale::before { background: var(--cash); box-shadow: 0 0 8px var(--cash); }
+  [data-view][hidden] { display: none !important; }
+
+  /* cards */
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; min-width: 0; margin-top: 14px; }
+  .card h2 { margin: 0 0 12px; font-size: 13px; font-weight: 500; color: var(--ink-2); }
+  .card h2.big { font-size: 16px; color: var(--ink); font-weight: 600; }
+  .card .sub { color: var(--ink-2); font-size: 13px; margin: -6px 0 12px; }
+  .g { display: grid; gap: 14px; }
+  .g > .card { margin-top: 0; }
+  .row1 { grid-template-columns: 1.15fr 1fr 1fr 1fr; }
+  .row2 { grid-template-columns: 2fr 1fr; margin-top: 14px; }
+  .row3 { grid-template-columns: 1.3fr 1fr; margin-top: 14px; }
+
+  /* switch state */
+  .state { position: relative; overflow: hidden; }
+  .state.C { background: linear-gradient(160deg, rgba(255,181,71,.16), rgba(255,181,71,.03) 60%); border-color: rgba(255,181,71,.28); }
+  .state.S { background: linear-gradient(160deg, rgba(111,139,255,.18), rgba(111,139,255,.03) 60%); border-color: rgba(111,139,255,.3); }
+  .state.H { background: linear-gradient(160deg, rgba(62,230,168,.16), rgba(62,230,168,.03) 60%); border-color: rgba(62,230,168,.28); }
+  .state .lab { font-size: 12px; color: var(--ink-2); }
+  .state .now { font-size: 46px; font-weight: 700; line-height: 1.1; margin: 4px 0 2px; }
+  .state .note { font-size: 13px; color: var(--ink-2); }
+  .state .changed { display: inline-block; margin-top: 6px; font-size: 12px; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,.1); color: var(--ink); font-weight: 600; }
+  .rocker { display: flex; margin-top: 16px; background: rgba(0,0,0,.35); border-radius: 14px; padding: 4px; gap: 4px; }
+  .rocker div { flex: 1; text-align: center; padding: 9px 0; border-radius: 10px; font-size: 13px; color: var(--muted); font-weight: 500; }
+  .rocker .on { color: #0a0d16; }
+  .state .why { font-size: 13px; color: var(--ink); margin-top: 14px; line-height: 1.55; }
+
+  /* gauges */
+  .gauge { text-align: center; }
+  .gauge svg { width: 100%; max-width: 240px; margin: 0 auto; display: block; }
+  .gauge .v { font-size: 30px; font-weight: 700; margin-top: -84px; margin-bottom: 34px; }
+  .gauge .t { font-size: 12px; color: var(--ink-2); }
+  .verdict { display: inline-block; margin-top: 10px; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+  .bad { background: rgba(255,92,122,.12); color: var(--neg); } .good { background: rgba(62,230,168,.12); color: var(--pos); } .wait { background: rgba(255,181,71,.12); color: var(--cash); }
+
+  /* equity */
+  .eqhead { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+  .big2 { display: flex; gap: 26px; flex-wrap: wrap; }
+  .big2 .k { font-size: 12px; color: var(--ink-2); } .big2 .v { font-size: 24px; font-weight: 700; }
+  .seg { display: flex; background: rgba(0,0,0,.3); border-radius: 10px; padding: 3px; }
+  .seg button { font: inherit; font-size: 12px; background: none; border: 0; color: var(--ink-2); padding: 5px 12px; border-radius: 8px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--card2); color: var(--ink); }
+  #eq svg { display: block; width: 100%; touch-action: none; }
+  .legend { display: flex; gap: 16px; font-size: 12px; color: var(--ink-2); margin-top: 8px; flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-left: 6px; vertical-align: -1px; }
+
+  /* countdown */
+  .count { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .count .ring { position: relative; width: 150px; height: 150px; }
+  .count .ring svg { width: 150px; height: 150px; }
+  .count .ring .v { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 700; }
+  .count .t { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+  .steps { margin-top: 16px; width: 100%; text-align: right; }
+  .steps div { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 13px; }
+  .steps div span:first-child { color: var(--ink-2); }
+
+  /* bench / positions */
+  .bench { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .pc { background: rgba(0,0,0,.25); border: 1px solid var(--line); border-radius: 14px; padding: 12px; min-width: 0; }
+  .pc .h { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+  .pc .tk { font-weight: 700; font-size: 16px; }
+  .pc .l { font-size: 11px; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mom { direction: ltr; display: flex; gap: 3px; margin-top: 10px; align-items: flex-end; height: 34px; }
+  .mom div { flex: 1; border-radius: 3px 3px 0 0; position: relative; }
+  .mom span { position: absolute; bottom: -16px; left: 0; right: 0; text-align: center; font-size: 9px; color: var(--muted); }
+  .meter { margin: 22px 0 4px; height: 4px; background: rgba(255,255,255,.07); border-radius: 2px; position: relative; }
+  .meter div { position: absolute; top: 0; bottom: 0; right: 0; border-radius: 2px; }
+  .pc em { font-style: normal; font-size: 10.5px; color: var(--muted); display: block; margin-top: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lchip { padding: 7px 10px; border-radius: 10px; font-size: 12px; border: 1px solid var(--line); display: flex; gap: 8px; align-items: center; }
+  .lchip b { font-weight: 600; }
+  .rules { margin: 0; padding: 0 18px 0 0; color: var(--ink-2); font-size: 12.5px; }
+  .rules li { margin: 5px 0; }
+
+  /* legacy sections, restyled */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 14px; }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 16px 18px; }
+  .tile .label { color: var(--ink-2); font-size: 12px; }
+  .tile .value { font-size: 22px; font-weight: 600; margin-top: 4px; }
   .tile .note { color: var(--muted); font-size: 12px; margin-top: 2px; }
   .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
-  .num { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
-  .up { color: var(--up); } .down { color: var(--down); }
-  .scroll { overflow-x: auto; }
-  table { border-collapse: collapse; width: 100%; font-size: 14px; }
-  th { text-align: right; font-weight: 500; color: var(--ink-2); font-size: 12px;
-       border-bottom: 1px solid var(--axis); padding: 6px 8px; white-space: nowrap; }
-  td { padding: 7px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; box-shadow: 0 0 6px currentColor; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th { text-align: right; font-weight: 500; color: var(--muted); font-size: 11.5px; border-bottom: 1px solid var(--axis); padding: 7px 8px; white-space: nowrap; }
+  td { padding: 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
   tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.02); }
   .now { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .now .box { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
-  .now .box .t { font-weight: 600; font-size: 16px; }
-  .now .box .d { color: var(--ink-2); font-size: 13px; }
+  .now .box { background: rgba(0,0,0,.22); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  .now .box .t { font-weight: 600; font-size: 15px; }
+  .now .box .d { color: var(--ink-2); font-size: 12.5px; }
   ul.alerts { margin: 0; padding: 0 18px 0 0; }
-  ul.alerts li { margin: 4px 0; }
+  ul.alerts li { margin: 6px 0; color: var(--ink-2); }
+  ul.alerts li::marker { color: var(--cash); }
   .multiples { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
-  .mini { position: relative; }
-  .mini .h { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; font-size: 13px; }
-  .mini .h .n { font-weight: 600; }
+  .mini { background: rgba(0,0,0,.22); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; }
+  .mini .h { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; font-size: 12.5px; }
+  .mini .h .n { font-weight: 600; font-family: inherit; direction: rtl; }
   .mini svg { display: block; width: 100%; height: 76px; touch-action: none; }
-  #tip { position: fixed; pointer-events: none; background: var(--surface); color: var(--ink);
-         border: 1px solid var(--border); border-radius: 8px; padding: 6px 9px; font-size: 12px;
-         box-shadow: 0 4px 14px rgba(0,0,0,.12); display: none; z-index: 10; }
+  #tip { position: fixed; pointer-events: none; background: rgba(14,18,30,.96); color: var(--ink); border: 1px solid var(--line);
+         border-radius: 10px; padding: 8px 10px; font-size: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.4); display: none; z-index: 10; }
   #tip b { font-size: 14px; }
-  details { border-top: 1px solid var(--grid); padding: 8px 0; }
+  details { border-top: 1px solid var(--line); padding: 10px 0; }
   details:first-of-type { border-top: none; }
   summary { cursor: pointer; font-weight: 500; }
   .heat { display: grid; gap: 2px; font-size: 12px; align-items: center; }
-  .heat .cell { height: 22px; border-radius: 3px; outline-offset: 1px; }
+  .heat .cell { height: 22px; border-radius: 4px; outline-offset: 1px; }
   .heat .cell:focus { outline: 2px solid var(--ink); }
-  .heat .lab { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 8px; }
+  .heat .lab { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 8px; color: var(--ink-2); }
   .heat .wk { color: var(--muted); font-size: 11px; text-align: center; }
   .legend-bar { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-2); margin-top: 8px; }
   .legend-bar .grad { width: 140px; height: 10px; border-radius: 5px; }
   .heads { margin: 8px 0 0; padding: 0 18px 0 0; }
-  .heads li { margin: 5px 0; font-size: 14px; }
+  .heads li { margin: 6px 0; font-size: 13.5px; }
   .heads .meta { color: var(--muted); font-size: 12px; }
-  select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--axis); background: var(--surface); color: var(--ink); }
+  select { font: inherit; padding: 7px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
   .bigchart svg { display: block; width: 100%; height: 260px; touch-action: none; }
-  .keys { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); margin: 8px 0; }
+  .keys { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); margin: 8px 0; }
   .key { display: inline-flex; align-items: center; gap: 6px; }
   .key i { width: 16px; height: 2px; display: inline-block; border-radius: 1px; }
   footer { color: var(--muted); font-size: 12px; margin-top: 18px; line-height: 1.7; }
-  footer a, .card a { color: var(--series); }
-  .empty { color: var(--muted); }
+  footer a { color: var(--ink-2); }
+
+  @media (max-width: 1000px) { .row1 { grid-template-columns: 1fr 1fr; } .row2, .row3 { grid-template-columns: 1fr; } .bench { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) {
+    main { padding: 12px 16px 30px; }
+    .row1 { grid-template-columns: 1fr; }
+    .row1 .gauge { display: grid; grid-template-columns: 120px 1fr; align-items: center; text-align: right; gap: 4px 10px; }
+    .row1 .gauge h2 { grid-column: 1 / -1; margin: 0; }
+    .row1 .gauge svg { max-width: 120px; grid-row: span 3; }
+    .gauge .v { margin: 0; font-size: 26px; }
+    .verdict { justify-self: start; }
+    .bench { grid-template-columns: 1fr; }
+    .state .now { font-size: 40px; }
+    .top { gap: 10px; } .tabs { order: 3; margin-right: 0; width: 100%; } .live { margin-right: auto; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <header>
-    <h1>AI Tracker</h1>
-    <p>צווארי הבקבוק בשרשרת האספקה של AI · <a href="guide.html" style="color:var(--series)">המדריך: איך משתמשים</a></p>
-    <p id="asof">טוען נתונים…</p>
+  <header class="top">
+    <a class="logo" href="#switch"><i aria-hidden="true"></i>AI Tracker</a>
+    <nav class="tabs" aria-label="מסכים">
+      <a href="#switch" data-tab="switch">המתג</a>
+      <a href="#layers" data-tab="layers">שכבות</a>
+      <a href="#radar" data-tab="radar">מכ"ם חדשות</a>
+      <a href="#stocks" data-tab="stocks">מניות</a>
+      <a href="guide.html">מדריך</a>
+    </nav>
+    <div class="live" id="asof">טוען נתונים…</div>
   </header>
 
-  <section class="tiles" id="tiles"></section>
+  <!-- ===================== המתג ===================== -->
+  <div data-view="switch">
+    <div class="g row1">
+      <section class="card state" id="state"></section>
+      <section class="card gauge" id="g1"></section>
+      <section class="card gauge" id="g2"></section>
+      <section class="card gauge" id="g3"></section>
+    </div>
+    <div class="g row2">
+      <section class="card">
+        <div class="eqhead">
+          <div class="big2" id="eq-stats"></div>
+          <div class="seg" role="group" aria-label="טווח">
+            <button type="button" data-range="all" aria-pressed="true">מאז 2018</button>
+            <button type="button" data-range="1y" aria-pressed="false">12 חודשים</button>
+          </div>
+        </div>
+        <div id="eq" style="margin-top:12px"></div>
+        <div class="legend"><span><i style="background:var(--cash)"></i>המתג</span><span><i style="background:var(--smh)"></i>SMH</span>
+          <span style="margin-right:auto" id="band-legend"><span><i style="background:var(--rot)"></i>רוטציה</span>&nbsp;&nbsp;<span><i style="background:var(--smh)"></i>SMH</span>&nbsp;&nbsp;<span><i style="background:#3a4157"></i>מזומן</span></span></div>
+        <p class="sub" id="eq-note" style="margin:8px 0 0"></p>
+      </section>
+      <section class="card count" id="count"></section>
+    </div>
+    <div class="g row3">
+      <section class="card"><h2 id="bench-title"></h2><div class="bench" id="bench"></div><p class="sub" id="bench-note" style="margin:10px 0 0"></p></section>
+      <section class="card"><h2>שכבות השרשרת · 3 חודשים</h2><div class="chips" id="chips"></div>
+        <h2 style="margin-top:18px">החוקים</h2><ol class="rules" id="rules"></ol></section>
+    </div>
+  </div>
 
-  <section class="card">
-    <h2>צוואר הבקבוק עכשיו</h2>
-    <p class="sub">השכבות שהכסף זורם אליהן, ובאיזה שלב הן במחזור החיים. <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/playbook.md">איך קוראים את השלבים</a></p>
-    <div class="now" id="now"></div>
-  </section>
+  <!-- ===================== שכבות ===================== -->
+  <div data-view="layers" hidden>
+    <section class="tiles" id="tiles"></section>
+    <section class="card">
+      <h2 class="big">צוואר הבקבוק עכשיו</h2>
+      <p class="sub">השכבות שהכסף זורם אליהן, ובאיזה שלב הן במחזור החיים. <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/playbook.md">איך קוראים את השלבים</a></p>
+      <div class="now" id="now"></div>
+    </section>
+    <section class="card" id="weekly-card" hidden>
+      <h2 class="big">הניתוח השבועי</h2>
+      <div id="weekly"></div>
+    </section>
+    <section class="card">
+      <h2 class="big" id="pf-title">התיק</h2>
+      <p class="sub" id="pf-sub"></p>
+      <div class="scroll"><table id="pf"></table></div>
+      <div id="orders"></div>
+    </section>
+    <section class="card">
+      <h2 class="big">התראות</h2>
+      <ul class="alerts" id="alerts"></ul>
+    </section>
+    <section class="card">
+      <h2 class="big">כל השכבות</h2>
+      <p class="sub">דירוג לפי חוזק ב-3, 6 ו-12 חודשים. החץ מראה כמה מקומות השכבה זזה בחודש.</p>
+      <div class="scroll"><table id="layers"></table></div>
+    </section>
+    <section class="card">
+      <h2 class="big">חוזק יחסי מול SMH, 12 חודשים</h2>
+      <p class="sub">קו שעולה = הכסף זורם לשכבה יותר מאשר לשבבים בכלל. 100 = נקודת ההתחלה.</p>
+      <div class="multiples" id="multiples"></div>
+    </section>
+  </div>
 
-  <section class="card">
-    <h2>מכ"ם צוואר בקבוק: מה החדשות אומרות</h2>
-    <p class="sub">כל יום נספרות הכותרות על כל חברה ועל כל נושא: סימני מחסור (sold out, זמני אספקה, העלאות מחירים) מול סימני הקלה (עודף היצע, ירידת מחירים, האטה). <b>מועמד מוקדם</b> = החדשות מתחממות לפני המחיר.</p>
-    <div class="now" id="radar-now"></div>
-    <div class="scroll" style="margin-top:10px"><table id="radar-table"></table></div>
-    <h2 style="margin-top:16px">מפת חום: לחץ החדשות לפי שבוע</h2>
-    <p class="sub">אדום = יותר כותרות מחסור, כחול = יותר כותרות הקלה. נגיעה בתא מראה את המספרים.</p>
-    <div class="scroll"><div class="heat" id="heat"></div></div>
-    <div class="legend-bar"><span>הקלה</span><span class="grad" id="heat-grad"></span><span>מחסור</span></div>
-    <h2 style="margin-top:16px">הכותרות החשובות של השבוע</h2>
-    <ul class="heads" id="heads"></ul>
-    <p class="sub" id="radar-meta" style="margin-top:8px"></p>
-  </section>
+  <!-- ===================== מכ"ם ===================== -->
+  <div data-view="radar" hidden>
+    <section class="card">
+      <h2 class="big">מכ"ם צוואר בקבוק: מה החדשות אומרות</h2>
+      <p class="sub">כל יום נספרות הכותרות על כל חברה ועל כל נושא: סימני מחסור (sold out, זמני אספקה, העלאות מחירים) מול סימני הקלה (עודף היצע, ירידת מחירים, האטה). <b>מועמד מוקדם</b> = החדשות מתחממות לפני המחיר.</p>
+      <div class="now" id="radar-now"></div>
+      <div class="scroll" style="margin-top:10px"><table id="radar-table"></table></div>
+    </section>
+    <section class="card">
+      <h2 class="big">מפת חום: לחץ החדשות לפי שבוע</h2>
+      <p class="sub">אדום = יותר כותרות מחסור, כחול = יותר כותרות הקלה. נגיעה בתא מראה את המספרים.</p>
+      <div class="scroll"><div class="heat" id="heat"></div></div>
+      <div class="legend-bar"><span>הקלה</span><span class="grad" id="heat-grad"></span><span>מחסור</span></div>
+    </section>
+    <section class="card">
+      <h2 class="big">הכותרות החשובות של השבוע</h2>
+      <ul class="heads" id="heads"></ul>
+      <p class="sub" id="radar-meta" style="margin-top:8px"></p>
+    </section>
+    <section class="card">
+      <h2 class="big">חברות חדשות שהמכ"ם רואה</h2>
+      <p class="sub">חברות שעוד לא במערכת, וחוזרות בכותרות של צוואר בקבוק. הדוח השבועי בודק אותן מול <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/universe_rules.md">כללי הכניסה</a> ומציע להוסיף. ההוספה רק באישור שלך.</p>
+      <div id="proposals"></div>
+      <div class="scroll"><table id="discovery"></table></div>
+    </section>
+  </div>
 
-  <section class="card">
-    <h2>חברות חדשות שהמכ"ם רואה</h2>
-    <p class="sub">חברות שעוד לא במערכת, וחוזרות בכותרות של צוואר בקבוק. הדוח השבועי בודק אותן מול <a href="https://github.com/RoeyOkanin/ai-tracker/blob/main/docs/universe_rules.md">כללי הכניסה</a> ומציע להוסיף. ההוספה רק באישור שלך.</p>
-    <div id="proposals"></div>
-    <div class="scroll"><table id="discovery"></table></div>
-  </section>
-
-  <section class="card">
-    <h2>גרף מניה</h2>
-    <p class="sub">מחיר בשנה האחרונה, עם ממוצע 50 ו-200 ימים. מעל ממוצע 200 = מגמה עולה.</p>
-    <select id="pick" aria-label="בחירת מניה"></select>
-    <div class="keys" id="chart-keys"></div>
-    <div class="bigchart" id="bigchart"></div>
-  </section>
-
-  <section class="card" id="weekly-card" hidden>
-    <h2>הניתוח השבועי</h2>
-    <div id="weekly"></div>
-  </section>
-
-  <section class="card">
-    <h2 id="pf-title">התיק</h2>
-    <p class="sub" id="pf-sub"></p>
-    <div class="scroll"><table id="pf"></table></div>
-    <div id="orders"></div>
-  </section>
-
-  <section class="card">
-    <h2>התראות</h2>
-    <ul class="alerts" id="alerts"></ul>
-  </section>
-
-  <section class="card">
-    <h2>כל השכבות</h2>
-    <p class="sub">דירוג לפי חוזק ב-3, 6 ו-12 חודשים. החץ מראה כמה מקומות השכבה זזה בחודש.</p>
-    <div class="scroll"><table id="layers"></table></div>
-  </section>
-
-  <section class="card">
-    <h2>חוזק יחסי מול SMH, 12 חודשים</h2>
-    <p class="sub">קו שעולה = הכסף זורם לשכבה יותר מאשר לשבבים בכלל. 100 = נקודת ההתחלה.</p>
-    <div class="multiples" id="multiples"></div>
-  </section>
-
-  <section class="card">
-    <h2>המניות</h2>
-    <div id="stocks"></div>
-  </section>
+  <!-- ===================== מניות ===================== -->
+  <div data-view="stocks" hidden>
+    <section class="card">
+      <h2 class="big">גרף מניה</h2>
+      <p class="sub">מחיר בשנה האחרונה, עם ממוצע 50 ו-200 ימים. מעל ממוצע 200 = מגמה עולה.</p>
+      <select id="pick" aria-label="בחירת מניה"></select>
+      <div class="keys" id="chart-keys"></div>
+      <div class="bigchart" id="bigchart"></div>
+    </section>
+    <section class="card">
+      <h2 class="big">המניות</h2>
+      <div id="stocks"></div>
+    </section>
+  </div>
 
   <footer>
     <div id="gen"></div>
-    זה לא ייעוץ השקעות. הבדיקה ההיסטורית מחמיאה, כי רשימת המניות נבחרה ב-2026.
+    זה לא ייעוץ השקעות. הבדיקה ההיסטורית מחמיאה (הערכה כנה: כ-35% לשנה, לא 39%), כי רשימת המניות נבחרה ב-2026.
     בחשבון רגיל כל מכירה ברווח חייבת ב-25% מס.
     · <a href="https://github.com/RoeyOkanin/ai-tracker">הקוד והנתונים</a>
   </footer>
@@ -218,7 +355,11 @@ async function load() {
   try { const r = await fetch("data/prices_1y.csv" + bust); if (r.ok) prices = parseCSV(await r.text()); } catch (e) {}
   let proposals = null;
   try { const r = await fetch("data/candidates.json" + bust); if (r.ok) proposals = await r.json(); } catch (e) {}
+  let sw = null, bt = null;
+  try { const r = await fetch("data/switch.json" + bust); if (r.ok) sw = await r.json(); } catch (e) {}
+  try { const r = await fetch("data/switch_backtest.json" + bust); if (r.ok) bt = await r.json(); } catch (e) {}
   render(latest, hist, weekly);
+  renderSwitch(sw, bt, latest);
   renderRadar(latest, radar);
   renderDiscovery(radar, proposals);
   if (prices) renderStockPicker(latest, prices);
@@ -269,7 +410,7 @@ function render(j, hist, weekly) {
   // portfolio
   const pf = j.portfolio, table = document.getElementById("pf");
   if (pf.status === "not_started") {
-    document.getElementById("pf-title").textContent = `התיק מתחיל ב-${dateHe(pf.start)}`;
+    document.getElementById("pf-title").textContent = `תיק השכבות (מסך משני, לא המתג) מתחיל ב-${dateHe(pf.start)}`;
     document.getElementById("pf-sub").textContent = "אם מתחילים לפי הנתונים של היום, זה מה שהמערכת הייתה קונה (משקל = אחוז מהכסף שהקצית):";
     table.append(el("tr", {}, el("th", {}, "מניה"), el("th", {}, "שכבה"), el("th", {}, "משקל")));
     for (const [tk, w] of Object.entries(pf.planned_targets))
@@ -277,7 +418,7 @@ function render(j, hist, weekly) {
     const cash = 1 - Object.values(pf.planned_targets).reduce((a, b) => a + b, 0);
     table.append(el("tr", {}, el("td", {}, "מזומן"), el("td", {}, ""), el("td", {}, pct(cash, false))));
   } else {
-    document.getElementById("pf-title").textContent = "תיק הנייר";
+    document.getElementById("pf-title").textContent = "תיק הנייר של השכבות (מסך משני, לא המתג)";
     const sub = document.getElementById("pf-sub");
     sub.append(`מאז ${dateHe(pf.start)}: `, pct(pf.return), " · SMH באותה תקופה: ", pct(pf.bench_return), " · מזומן: ", pct(pf.cash_weight, false));
     table.append(el("tr", {}, ...["מניה", "שכבה", "משקל", "רווח", "מרחק מהסטופ", "נכנסה"].map(h => el("th", {}, h))));
@@ -558,7 +699,208 @@ function stockChart(tk, prices) {
   box.append(svg);
 }
 
-load().catch(e => { document.getElementById("asof").textContent = "שגיאה בטעינת הנתונים: " + e.message; });
+
+// ---------------------------------------------------------------- tabs
+const VIEWS = ["switch", "layers", "radar", "stocks"];
+function showView() {
+  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "switch";
+  document.querySelectorAll("[data-view]").forEach(s => s.hidden = s.dataset.view !== v);
+  document.querySelectorAll("[data-tab]").forEach(a => a.dataset.tab === v ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  window.dispatchEvent(new Event("resize")); // charts drawn while hidden re-measure
+}
+window.addEventListener("hashchange", showView);
+
+// ---------------------------------------------------------------- the switch
+const HOLD = {
+  H: { he: "רוטציה", long: "6 המניות החזקות בשרשרת", color: "var(--rot)" },
+  S: { he: "SMH", long: "תעודת הסל של השבבים", color: "var(--smh)" },
+  C: { he: "מזומן", long: "T-bills", color: "var(--cash)" },
+};
+const holdKey = h => ({ H: "H", SMH: "S", CASH: "C", S: "S", C: "C" })[h] || "C";
+const P = (x, d) => { if (x == null) return "–"; const v = x * 100; return (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(d ?? (Math.abs(v) < 10 ? 1 : 0)) + "%"; };
+const tradingDaysBetween = (a, b) => { let n = 0; const d = new Date(a + "T12:00:00Z"), e = new Date(b + "T12:00:00Z"); while (d < e) { d.setUTCDate(d.getUTCDate() + 1); const w = d.getUTCDay(); if (w && w < 6) n++; } return n; };
+
+function svgArc(cx, cy, r, a0, a1) {
+  const p = a => [cx + r * Math.cos(a), cy + r * Math.sin(a)], [x0, y0] = p(a0), [x1, y1] = p(a1);
+  return `M${x0},${y0} A${r},${r} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${x1},${y1}`;
+}
+// gauge: v against a threshold; "good" side is above the threshold
+function gauge(id, title, v, lo, hi, thr, fmt, verdict, vclass) {
+  const box = document.getElementById(id);
+  if (v == null) { box.innerHTML = `<h2>${title}</h2><div class="empty">אין נתון עדיין</div>`; return; }
+  const A0 = Math.PI * 0.8, A1 = Math.PI * 2.2, ang = x => A0 + (A1 - A0) * (Math.max(lo, Math.min(hi, x)) - lo) / (hi - lo);
+  const cx = 100, cy = 100, r = 78, va = ang(v), ta = ang(thr), ok = v >= thr, col = ok ? "var(--pos)" : "var(--neg)";
+  let ticks = "";
+  for (let i = 0; i <= 40; i++) { const a = A0 + (A1 - A0) * i / 40, ri = i % 10 ? r - 14 : r - 20;
+    ticks += `<line x1="${cx + (r - 10) * Math.cos(a)}" y1="${cy + (r - 10) * Math.sin(a)}" x2="${cx + ri * Math.cos(a)}" y2="${cy + ri * Math.sin(a)}" stroke="rgba(255,255,255,${i % 10 ? .12 : .3})" stroke-width="${i % 10 ? 1 : 1.5}"/>`; }
+  box.innerHTML = `<h2>${title}</h2>
+  <svg viewBox="0 0 200 180" role="img" aria-label="${title}: ${fmt(v)}, סף ${fmt(thr)}">
+    <path d="${svgArc(cx, cy, r, A0, A1)}" stroke="rgba(255,255,255,.07)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="${svgArc(cx, cy, r, A0, ta)}" stroke="rgba(255,92,122,.2)" stroke-width="10" fill="none"/>
+    <path d="${svgArc(cx, cy, r, Math.min(va, ta), Math.max(va, ta) + 0.0001)}" stroke="${col}" stroke-width="10" fill="none" style="filter:drop-shadow(0 0 6px ${col})"/>
+    ${ticks}
+    <line x1="${cx + (r + 8) * Math.cos(ta)}" y1="${cy + (r + 8) * Math.sin(ta)}" x2="${cx + (r - 8) * Math.cos(ta)}" y2="${cy + (r - 8) * Math.sin(ta)}" stroke="#fff" stroke-width="2"/>
+    <circle cx="${cx + r * Math.cos(va)}" cy="${cy + r * Math.sin(va)}" r="7" fill="#0a0d16" stroke="${col}" stroke-width="3"/>
+    <text x="${cx + r * Math.cos(A0)}" y="${cy + r * Math.sin(A0) + 22}" fill="#646d85" font-size="10" text-anchor="middle" font-family="JetBrains Mono">${fmt(lo)}</text>
+    <text x="${cx + r * Math.cos(A1)}" y="${cy + r * Math.sin(A1) + 22}" fill="#646d85" font-size="10" text-anchor="middle" font-family="JetBrains Mono">${fmt(hi)}</text>
+  </svg>
+  <div class="v n" style="color:${col}">${fmt(v)}</div>
+  <div class="t">סף: <span class="n">${fmt(thr)}</span></div>
+  <div><span class="verdict ${vclass ?? (ok ? "good" : "bad")}">${verdict}</span></div>`;
+}
+
+function equityChart(series, withBand) {
+  const box = document.getElementById("eq"), tip = document.getElementById("tip");
+  const { d, sw, smh, held } = series, n = d.length;
+  if (n < 2) { box.innerHTML = `<div class="empty">אין עדיין היסטוריה</div>`; return; }
+  const narrow = (box.clientWidth || 880) < 600, W = narrow ? 420 : 880, H = narrow ? 260 : 290, pl = 40, pr = 6, pt = 10, pb = 36, band = withBand ? 12 : 0;
+  const lg = withBand, f = v => lg ? Math.log(v) : v;
+  const all = [...sw, ...smh].filter(v => v != null).map(f), lo = Math.min(...all), hi = Math.max(...all);
+  const x = i => pl + (W - pl - pr) * i / (n - 1), y = v => pt + (H - pt - pb - band - 10) * (1 - (f(v) - lo) / (hi - lo || 1));
+  const path = a => a.map((v, i) => v == null ? "" : (i && a[i - 1] != null ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join("");
+  let g = "";
+  const linTicks = () => { const span = hi - lo, step = span > 2 ? 0.5 : span > .8 ? 0.2 : 0.1, out = [];
+    for (let t = Math.ceil(lo / step) * step; t <= hi + 1e-9; t += step) out.push(+t.toFixed(2)); return out; };
+  for (const t of (lg ? [1, 2, 5, 10, 20, 50] : linTicks())) {
+    if (f(t) < lo - .001 || f(t) > hi + .001) continue;
+    g += `<line x1="${pl}" x2="${W - pr}" y1="${y(t)}" y2="${y(t)}" stroke="rgba(255,255,255,${t === 1 && !lg ? .14 : .05})"/><text x="${pl - 6}" y="${y(t) + 4}" text-anchor="end" fill="#646d85" font-size="10" font-family="JetBrains Mono">${lg ? "$" + t : ((t - 1) * 100).toFixed(0) + "%"}</text>`;
+  }
+  let xl = "";
+  d.forEach((s, i) => { const k = lg ? s.slice(0, 4) : s.slice(0, 7), pk = i ? (lg ? d[i - 1].slice(0, 4) : d[i - 1].slice(0, 7)) : null;
+    if (i && k !== pk && (lg || +s.slice(5, 7) % 2)) xl += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" fill="#646d85" font-size="10" font-family="JetBrains Mono">${lg ? k : s.slice(5, 7) + "/" + s.slice(2, 4)}</text>`; });
+  const BC = { H: "#3ee6a8", S: "#6f8bff", C: "#3a4157" }, by = H - pb - band;
+  let st = "";
+  if (withBand) { let s0 = 0; for (let i = 1; i <= n; i++) if (i === n || held[i] !== held[s0]) {
+    st += `<rect x="${x(s0)}" y="${by}" width="${Math.max(1.5, x(i - 1) - x(s0) + (W - pl - pr) / (n - 1))}" height="${band}" rx="3" fill="${BC[held[s0]]}" opacity=".85"/>`; s0 = i; } }
+  const base = withBand ? by - 6 : H - pb;
+  const area = path(sw) + `L${x(n - 1)},${base}L${x(0)},${base}Z`;
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="direction:ltr" role="img" aria-label="המתג מול SMH"><defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffb547" stop-opacity=".28"/><stop offset="1" stop-color="#ffb547" stop-opacity="0"/></linearGradient></defs>
+    ${g}${xl}<path d="${area}" fill="url(#ga)"/><path d="${path(smh)}" fill="none" stroke="var(--smh)" stroke-width="1.5" opacity=".8"/>
+    <path d="${path(sw)}" fill="none" stroke="var(--cash)" stroke-width="2.2" style="filter:drop-shadow(0 0 4px rgba(255,181,71,.6))"/>${st}
+    <line id="eq-x" y1="${pt}" y2="${base}" stroke="#fff" stroke-dasharray="3 3" opacity="0"/></svg>`;
+  const svg = box.querySelector("svg"), cxl = box.querySelector("#eq-x");
+  const fmt = v => v == null ? "–" : lg ? "$" + v.toFixed(2) : P(v - 1);
+  svg.onpointermove = e => { const b = svg.getBoundingClientRect(), px = (e.clientX - b.left) / b.width * W, i = Math.max(0, Math.min(n - 1, Math.round((px - pl) / (W - pl - pr) * (n - 1))));
+    cxl.setAttribute("x1", x(i)); cxl.setAttribute("x2", x(i)); cxl.setAttribute("opacity", .5);
+    tip.innerHTML = `<span class="n">${dateHe(d[i])}</span><br><b style="color:var(--cash)">המתג ${fmt(sw[i])}</b> · <span style="color:var(--smh)">SMH ${fmt(smh[i])}</span>${withBand ? "<br>החזקנו: " + HOLD[held[i]].he : ""}`;
+    tip.style.display = "block"; tip.style.left = Math.min(innerWidth - 210, e.clientX + 14) + "px"; tip.style.top = e.clientY + 14 + "px"; };
+  svg.onpointerleave = () => { tip.style.display = "none"; cxl.setAttribute("opacity", 0); };
+}
+
+function renderSwitch(sw, bt, j) {
+  // sw = data/switch.json from the nightly run; bt = static backtest export. Either may be missing.
+  const now = sw ? { hold: holdKey(sw.hold_next), holdNow: holdKey(sw.hold_now), changed: sw.changed, why: sw.why, rel: sw.rotation_vs_smh_6m,
+                     dist: sw.smh_vs_ma200, asOf: sw.as_of, nextExec: sw.next_execution, nextMonth: sw.next_monthly_decision, live: true }
+                 : { hold: holdKey(bt?.now?.hold), changed: false, rel: bt?.now?.rotation_vs_smh_6m, dist: bt?.now?.smh_vs_ma200 ?? j.regime.bench_dist_ma200,
+                     asOf: bt?.as_of || j.as_of, nextExec: j.next_execution, nextMonth: j.next_decision_close, live: false };
+  if (!now.why) now.why = now.hold === "C" ? `הרוטציה לא מובילה ו-SMH ${Math.abs(now.dist * 100).toFixed(1)}% מתחת לממוצע 200: יושבים במזומן עד ש-SMH ייסגר מעל הממוצע.`
+                         : now.hold === "S" ? "הרוטציה פיגרה אחרי SMH בחצי השנה האחרונה, ו-SMH מעל ממוצע 200: מחזיקים SMH." : "הרוטציה מנצחת את SMH בחצי השנה האחרונה: מריצים אותה.";
+  const H0 = HOLD[now.hold];
+
+  // state card
+  const st = document.getElementById("state");
+  st.classList.add(now.hold);
+  st.innerHTML = `<div class="lab">מחזיקים מהסגירה הבאה</div>
+    <div class="now" style="color:${H0.color}">${H0.he}</div>
+    <div class="note">${H0.long}${now.changed ? "" : " · ללא שינוי מאתמול"}</div>
+    ${now.changed ? `<span class="changed">שינוי! מ${HOLD[now.holdNow].he} ל${H0.he}, ביצוע בסגירה של ${dateHe(now.nextExec)}</span>` : ""}
+    <div class="rocker">${["H", "S", "C"].map(k => `<div class="${k === now.hold ? "on" : ""}" style="${k === now.hold ? `background:${HOLD[k].color};box-shadow:0 0 22px ${HOLD[k].color}` : ""}">${HOLD[k].he}</div>`).join("")}</div>
+    <div class="why"></div>
+    ${now.live ? "" : `<div class="note" style="margin-top:10px;color:var(--cash)">עוד אין ריצה לילית של המתג. המספרים מהבדיקה ההיסטורית של ${dateHe(now.asOf)}.</div>`}`;
+  st.querySelector(".why").textContent = now.why;
+
+  // gauges
+  gauge("g1", "רוטציה מול SMH · חצי שנה", now.rel, -.4, .4, 0, v => P(v, 1),
+        now.rel == null ? "" : now.rel >= 0 ? "מנצחת → רוטציה (בסוף החודש)" : "לא מנצחת → אין רוטציה");
+  gauge("g2", "SMH מול ממוצע 200", now.dist, -.2, .2, -.02, v => P(v, 1),
+        now.dist == null ? "" : now.dist >= -.02 ? "מעל הסף → מותר SMH" : "מתחת לסף → מזומן");
+  const br = j.regime.breadth;
+  gauge("g3", "רוחב: מניות מעל ממוצע 200", br, 0, 1, .5, v => Math.round(v * 100) + "%",
+        br >= .5 ? "רחב · מידע בלבד" : "צר · מידע בלבד", "wait");
+
+  // equity
+  const stats = bt?.stats, last = bt ? bt.switch.at(-1) : null, lastS = bt ? bt.smh.at(-1) : null;
+  const pp = sw?.paper;
+  document.getElementById("eq-stats").innerHTML =
+    (pp?.status === "live"
+      ? `<div><div class="k">תיק נייר מאז ${dateHe(pp.start)}</div><div class="v n ${pp.return >= 0 ? "pos" : "neg"}">${P(pp.return, 1)}</div></div>
+         <div><div class="k">SMH באותה תקופה</div><div class="v n" style="color:var(--smh)">${P(pp.smh_return, 1)}</div></div>`
+      : last ? `<div><div class="k">$1 מ-2018</div><div class="v n" style="color:var(--cash)">$${last.toFixed(2)}</div></div>
+         <div><div class="k">SMH</div><div class="v n" style="color:var(--smh)">$${lastS.toFixed(2)}</div></div>` : "") +
+    (stats ? `<div><div class="k">תשואה שנתית</div><div class="v n">${(stats.cagr * 100).toFixed(1)}%</div></div>
+      <div><div class="k">ירידה מקס׳</div><div class="v n neg">${P(stats.max_drawdown)}</div></div>` : "");
+  const ranges = {
+    all: bt && { d: bt.dates, sw: bt.switch, smh: bt.smh, held: bt.held, band: true,
+                 note: `בדיקה היסטורית, ${stats?.years_beating_smh ?? "–"} שנים מעל SMH, ${stats?.switch_changes_per_year ?? "–"} החלפות בשנה. הפס למטה: מה החזקנו בכל שבוע. תיק הנייר מתחיל ב-${dateHe(sw?.paper?.start || "2026-11-16")}.` },
+    "1y": sw?.history ? { d: sw.history.dates, sw: sw.history.switch, smh: sw.history.smh, band: false, note: "12 החודשים האחרונים, מהריצה הלילית. 0% = נקודת ההתחלה." }
+         : bt && (() => { const k = bt.dates.length - 53, b0 = bt.switch[k], s0 = bt.smh[k];
+             return { d: bt.dates.slice(k), sw: bt.switch.slice(k).map(v => v / b0), smh: bt.smh.slice(k).map(v => v / s0), band: false, note: "12 החודשים האחרונים בבדיקה ההיסטורית. 0% = נקודת ההתחלה." }; })(),
+  };
+  const draw = r => { const s = ranges[r] || ranges.all || ranges["1y"]; if (!s) { document.getElementById("eq").innerHTML = `<div class="empty">אין עדיין היסטוריה</div>`; return; }
+    equityChart(s, s.band); document.getElementById("band-legend").hidden = !s.band; document.getElementById("eq-note").textContent = s.note; };
+  let cur = "all";
+  document.querySelectorAll("[data-range]").forEach(b => b.onclick = () => { cur = b.dataset.range;
+    document.querySelectorAll("[data-range]").forEach(x => x.setAttribute("aria-pressed", x === b)); draw(cur); });
+  draw(cur);
+  let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => draw(cur), 150); });
+
+  // countdown to the monthly decision
+  const left = tradingDaysBetween(now.asOf, now.nextMonth), tot = 21, r = 58, c = 2 * Math.PI * r;
+  document.getElementById("count").innerHTML = `<h2 style="align-self:stretch">ההחלטה החודשית הבאה</h2>
+    <div class="ring"><svg viewBox="0 0 150 150" aria-hidden="true"><circle cx="75" cy="75" r="${r}" stroke="rgba(255,255,255,.07)" stroke-width="9" fill="none"/>
+      <circle cx="75" cy="75" r="${r}" stroke="var(--smh)" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="${c * Math.max(0.02, (tot - Math.min(tot, left)) / tot)} ${c}" transform="rotate(-90 75 75)" style="filter:drop-shadow(0 0 6px var(--smh))"/></svg>
+      <div class="v n">${left}</div></div>
+    <div class="t">ימי מסחר עד הסגירה של ${dateHe(now.nextMonth)}</div>
+    <div class="steps">
+      <div><span>ביצוע הבא</span><span><span class="n">${dateHe(now.nextExec)}</span> בסגירה</span></div>
+      <div><span>תיק נייר</span><span>${pp?.status === "live" ? "פעיל מ-" : "מתחיל ב-"}<span class="n">${dateHe(pp?.start || "2026-11-16")}</span></span></div>
+      ${now.hold === "C" ? `<div><span>חזרה ל-SMH אם</span><span>סגירה מעל ממוצע 200</span></div>` : ""}
+      ${now.hold !== "H" ? `<div><span>רוטציה אם</span><span>מנצחת את SMH ב-${dateHe(now.nextMonth)}</span></div>` : `<div><span>חזרה ל-SMH אם</span><span>מפגרת אחרי SMH בסוף חודש</span></div>`}
+    </div>`;
+
+  // positions (when the rotation is on) or the bench
+  const bench = document.getElementById("bench"), bt2 = document.getElementById("bench-title"), bn = document.getElementById("bench-note");
+  const pos = sw?.rotation_positions || [];
+  if (now.hold === "H" && pos.length) {
+    bt2.textContent = "בתיק עכשיו: הרוטציה";
+    const exits = Object.fromEntries((sw.exits || []).map(e => [e.ticker, e.reason]));
+    bench.innerHTML = pos.map(p => `<div class="pc"><div class="h"><span class="tk n">${p.ticker}</span><span class="n ${p.pnl >= 0 ? "pos" : "neg"}" style="font-size:13px">${P(p.pnl, 1)}</span></div>
+      <div class="l">משקל ${P(p.weight).replace("+", "")} · נכנסה ${dateHe(p.entry_date)}</div>
+      <div class="meter"><div style="width:${Math.min(100, (p.dist_to_stop ?? 0) / .25 * 100)}%;background:${(p.dist_to_stop ?? 1) < .05 ? "var(--neg)" : "var(--rot)"}"></div></div>
+      <em>${exits[p.ticker] ? "יוצאת בסגירה הבאה: " + exits[p.ticker] : P(p.dist_to_stop, 1).replace("+", "") + " עד הסטופ"}</em></div>`).join("");
+    bn.textContent = "הפס = המרחק מהסטופ הנגרר. אדום = פחות מ-5%.";
+  } else {
+    bt2.textContent = "על הספסל: מי ייכנס אם הרוטציה תידלק (3 / 6 / 12 חודשים)";
+    const cand = j.stocks.filter(s => s.tradable !== false && s.above_ma200 && s.r3m != null && s.r6m != null && s.r12m != null)
+      .map(s => ({ ...s, sc: (s.r3m + s.r6m + s.r12m) / 3 })).sort((a, b) => b.sc - a.sc).slice(0, 6);
+    bench.innerHTML = cand.map(c => { const vals = [c.r3m, c.r6m, c.r12m], mx = Math.max(...vals.map(Math.abs), .3);
+      return `<div class="pc"><div class="h"><span class="tk n">${c.ticker}</span><span class="n ${c.r12m > 0 ? "pos" : "neg"}" style="font-size:13px">${P(c.r12m)}</span></div><div class="l">${c.layer_name}</div>
+      <div class="mom">${vals.map((v, i) => `<div style="height:${Math.max(3, Math.abs(v) / mx * 34)}px;background:${v >= 0 ? "rgba(62,230,168,.7)" : "rgba(255,92,122,.7)"}"><span>${["3 ח׳", "6 ח׳", "12 ח׳"][i]}</span></div>`).join("")}</div>
+      <div class="meter"><div style="width:${Math.min(100, c.dist_ma200 / .4 * 100)}%;background:var(--rot)"></div></div>
+      <em>${P(c.dist_ma200, 1)} מעל ממוצע 200 · ${P(c.from_52w_high)} מהשיא</em></div>`; }).join("") || `<div class="empty">אין כרגע מניות מעל ממוצע 200</div>`;
+    bn.textContent = "קירוב מתוך המניות שבמעקב. הבחירה האמיתית נעשית בסוף החודש מכל השרשרת הפיזית (מחזור מעל $100M ליום).";
+  }
+
+  // layer chips + rules
+  document.getElementById("chips").innerHTML = j.layers.map(l => { const a = Math.min(1, Math.abs(l.r3m ?? 0) / .3);
+    return `<div class="lchip" style="background:${(l.r3m ?? 0) >= 0 ? `rgba(62,230,168,${a * .18})` : `rgba(255,92,122,${a * .18})`}"><b>${l.name.replace(" (מעקב)", "")}</b><span class="n ${(l.r3m ?? 0) >= 0 ? "pos" : "neg"}">${P(l.r3m)}</span></div>`; }).join("");
+  const rules = sw?.rules_he || [
+    "בסוף כל חודש: אם הרוטציה עשתה יותר מ-SMH ב-6 החודשים האחרונים, מריצים רוטציה. אחרת SMH.",
+    "רוטציה = 6 המניות החזקות בשרשרת הפיזית (3, 6 ו-12 חודשים), רק מעל ממוצע 200, מחזור מעל $100M ליום.",
+    "כל יום: סטופ נגרר (10%-25%) וסגירה 2% מתחת לממוצע 200 = מכירה למחרת.",
+    "כל יום: אם צריך להחזיק SMH ו-SMH נסגר 2% מתחת לממוצע 200, עוברים למזומן. חוזרים כשהוא נסגר מעליו.",
+    "כסף שהרוטציה לא משתמשת בו יושב ב-SMH.",
+  ];
+  const ol = document.getElementById("rules"); ol.replaceChildren(...rules.map(r => el("li", {}, r)));
+
+  // header
+  const a = document.getElementById("asof");
+  a.textContent = `סגירה ${dateHe(now.asOf)}` + (j.generated_utc ? ` · עודכן ${new Date(j.generated_utc).toLocaleString("he-IL", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" })}` : "");
+  a.classList.toggle("stale", !now.live);
+}
+
+showView();
+load().catch(e => { document.getElementById("asof").textContent = "שגיאה בטעינת הנתונים: " + e.message; console.error(e); });
 </script>
 </body>
 </html>
