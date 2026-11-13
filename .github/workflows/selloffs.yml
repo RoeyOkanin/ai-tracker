@@ -1,0 +1,34 @@
+name: tech-selloffs-research
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/project-thread-3o6yth]
+    paths: ["scripts/tech_selloffs.py", ".github/workflows/selloffs.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Where money goes when tech falls
+        working-directory: scripts
+        run: python tech_selloffs.py
+      - name: Save results
+        if: always()
+        run: |
+          git config user.name "ai-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research
+          git commit -m "research: tech sell-offs $(date -u +%F)" || exit 0
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
