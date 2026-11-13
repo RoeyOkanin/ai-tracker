@@ -1,0 +1,25 @@
+{
+ "as_of_utc": "2026-11-13T19:30:49+00:00",
+ "broker": "alpaca",
+ "paper": true,
+ "currency": "USD",
+ "equity": 100000.0,
+ "cash": 100000.0,
+ "last_equity": 100000.0,
+ "start_equity": 100000.0,
+ "pnl_total": 0.0,
+ "pnl_total_pct": 0.0,
+ "pnl_today": 0.0,
+ "pnl_today_pct": 0.0,
+ "invested_pct": 0.0,
+ "positions": [],
+ "orders": [],
+ "history": {
+  "dates": [
+   "2026-11-13"
+  ],
+  "equity": [
+   100000.0
+  ]
+ }
+}
