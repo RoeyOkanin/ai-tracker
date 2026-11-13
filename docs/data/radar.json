@@ -4,16 +4,25 @@
   {
    "key": "equipment",
    "name": "ציוד וחומרים לייצור שבבים",
-   "items7": 168,
+   "items7": 170,
    "tight7": 6,
-   "ease7": 3,
+   "ease7": 4,
    "friction7": 1,
-   "net7": 3,
+   "net7": 2,
    "net_prev7": 0,
-   "trend": 3,
+   "trend": 2,
    "tight30": 13,
-   "ease30": 6,
+   "ease30": 7,
    "headlines": [
+    {
+     "title": "AMAT Q4 Earnings Call Highlights AI Demand and 2027 Growth Outlook",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/amat-q4-earnings-call-highlights-181400500.html",
+     "published": "2026-11-13T18:14+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
     {
      "title": "Cerebras Soars on Sales; Cisco Down on Expectations Miss | Stock Movers",
      "source": "Bloomberg",
@@ -56,15 +65,6 @@
      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5ocWZUQ0RRMWlnNnNjeGxmZWNMT0d6U1l5cGI4RzI3RThBVUZOTUMzUjRISXVjeHk1MVVtT1UwMVJwQXVLSmVOSVd4aDNSRm1GSmdlODRnTGxYN3kxYVM0eTk3VnJtRkQ5YjhNSWt0MGVlNGlGb1ZPRGduYw?oc=5",
      "published": "2026-11-13T12:20+00:00",
      "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "US Stock Futures Edge Lower as Nvidia Leadership Changes Offset Cisco and Applied Materials Forecasts: Dow Jones, S&P, Nasdaq, Wall Street",
-     "source": "InvestorsHub",
-     "url": "https://investorshub.advfn.com/market-news/article/39930/us-stock-futures-edge-lower-as-nvidia-leadership-changes-offset-cisco-and-applied-materials-forecasts-dow-jones-sp-nasdaq-wall-street",
-     "published": "2026-11-13T09:54+00:00",
-     "tight": 0,
      "ease": 0,
      "friction": 0
     }
@@ -133,7 +133,7 @@
   {
    "key": "foundry",
    "name": "ייצור ואריזה מתקדמת",
-   "items7": 106,
+   "items7": 107,
    "tight7": 4,
    "ease7": 2,
    "friction7": 0,
@@ -202,7 +202,7 @@
   {
    "key": "memory",
    "name": "זיכרון ואחסון",
-   "items7": 151,
+   "items7": 152,
    "tight7": 25,
    "ease7": 5,
    "friction7": 1,
@@ -271,7 +271,7 @@
   {
    "key": "compute",
    "name": "שבבי AI",
-   "items7": 262,
+   "items7": 263,
    "tight7": 22,
    "ease7": 3,
    "friction7": 8,
@@ -340,7 +340,7 @@
   {
    "key": "networking",
    "name": "רשתות, אופטיקה וקישוריות",
-   "items7": 139,
+   "items7": 140,
    "tight7": 4,
    "ease7": 1,
    "friction7": 2,
@@ -616,7 +616,7 @@
   {
    "key": "datacenter_reits",
    "name": "נדל\"ן ופיתוח דאטה-סנטרים",
-   "items7": 224,
+   "items7": 225,
    "tight7": 1,
    "ease7": 1,
    "friction7": 104,
@@ -685,7 +685,7 @@
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "items7": 152,
+   "items7": 153,
    "tight7": 7,
    "ease7": 2,
    "friction7": 7,
@@ -1006,7 +1006,7 @@
    2,
    1,
    2,
-   1
+   0
   ],
   "design": [
    0,
@@ -1226,8 +1226,8 @@
    ],
    [
     4,
-    3,
-    162
+    4,
+    164
    ]
   ],
   "design": [
@@ -1331,7 +1331,7 @@
    [
     4,
     2,
-    101
+    102
    ]
   ],
   "memory": [
@@ -1383,7 +1383,7 @@
    [
     24,
     5,
-    146
+    147
    ]
   ],
   "compute": [
@@ -1435,7 +1435,7 @@
    [
     21,
     3,
-    260
+    261
    ]
   ],
   "networking": [
@@ -1487,7 +1487,7 @@
    [
     3,
     1,
-    133
+    134
    ]
   ],
   "servers": [
@@ -1695,7 +1695,7 @@
    [
     1,
     1,
-    218
+    219
    ]
   ],
   "hyperscalers": [
@@ -1747,7 +1747,7 @@
    [
     7,
     2,
-    152
+    153
    ]
   ],
   "neoclouds": [
@@ -1973,7 +1973,7 @@
    "friction": 0
   },
   "AAOI": {
-   "items": 10,
+   "items": 11,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -1991,9 +1991,9 @@
    "friction": 0
   },
   "AMAT": {
-   "items": 40,
+   "items": 41,
    "tight": 1,
-   "ease": 0,
+   "ease": 1,
    "friction": 1
   },
   "AMD": {
@@ -2051,7 +2051,7 @@
    "friction": 0
   },
   "AVGO": {
-   "items": 36,
+   "items": 37,
    "tight": 0,
    "ease": 0,
    "friction": 2
@@ -2261,7 +2261,7 @@
    "friction": 1
   },
   "MSFT": {
-   "items": 38,
+   "items": 39,
    "tight": 1,
    "ease": 0,
    "friction": 2
@@ -2393,7 +2393,7 @@
    "friction": 0
   },
   "STX": {
-   "items": 10,
+   "items": 11,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2423,7 +2423,7 @@
    "friction": 0
   },
   "TSM": {
-   "items": 27,
+   "items": 28,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2470,21 +2470,6 @@
    }
   },
   {
-   "name": "Comfort Systems",
-   "ticker": "FIX",
-   "layer": "power_equipment",
-   "mentions30": 16,
-   "tight30": 6,
-   "ease30": 0,
-   "mentions7": 3,
-   "headline": {
-    "title": "Comfort Systems Plunges 26.8% in a Month: Time to Buy FIX Stock?",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/comfort-systems-plunges-26-8-152700284.html",
-    "source": "Zacks",
-    "published": "2026-11-13T15:27+00:00"
-   }
-  },
-  {
    "name": "Johnson Controls",
    "ticker": "JCI",
    "layer": "power_equipment",
@@ -2497,6 +2482,21 @@
     "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNNmdlM1c5NmRxSXM4WC1lSk0wSFZQXy0yRXFJVmM5WW1NWEwyQ0NwQ0s3Q0dFdHdaTWZQWS0taXUxY0tTaWNUSW83RmNjb20zM3hKbkhNQWxrVGFCaU1iWFE2amtKU3I0bm5JQUdYQUxkSHVxU2REM1QzNDNNcFRTNWNDOExic1BHZ3dDOEdpdjBoa29NeENfRUNrclR5aWMzQlpzdnlWS0k5SW5DMEhsTGVqNlVlNllPOEUzNTBDeTFYSzJTYUhIa0tlVmd0eEZGT3FYamt1a0dOM1ZoRTBxZE9HTnprQdIB6wFBVV95cUxPQUpEaU9nTUwyWDF0MEtUTEREZ1RFdUlVNm9uYjJpcGpVS01aWGdJXzllLWtjNy1vMnV0VkNDN3FSNnlZMjhZQTZobTNCbFdJQ2pURHFJWm5zUzFScmRNbDhaVmR5c2hkdm0wWUZjdm1WU3RQaWpBYjJDeE14bkVvUjFCTW50Qk53TmJOUGZKSFQ0STF5QjhEcDJqZlV6anV6NW1YTUUzZXdKU3dNU0FhUm9QZmFzYS0zRkl0U2pvVVhyUlZiMXk5SmctMmZLNjlLWHVHd3VBUHRuZjVHTHpxaFhyRnd0N1dvNnNN?oc=5",
     "source": "Simply Wall St",
     "published": "2026-11-10T05:28+00:00"
+   }
+  },
+  {
+   "name": "Comfort Systems",
+   "ticker": "FIX",
+   "layer": "power_equipment",
+   "mentions30": 16,
+   "tight30": 6,
+   "ease30": 0,
+   "mentions7": 3,
+   "headline": {
+    "title": "Comfort Systems Plunges 26.8% in a Month: Time to Buy FIX Stock?",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/comfort-systems-plunges-26-8-152700284.html",
+    "source": "Zacks",
+    "published": "2026-11-13T15:27+00:00"
    }
   },
   {
@@ -2545,18 +2545,18 @@
    }
   },
   {
-   "name": "Argan",
-   "ticker": "AGX",
-   "layer": "power_generation",
+   "name": "Sterling Infrastructure",
+   "ticker": "STRL",
+   "layer": "power_equipment",
    "mentions30": 5,
-   "tight30": 0,
+   "tight30": 1,
    "ease30": 0,
-   "mentions7": 1,
+   "mentions7": 2,
    "headline": {
-    "title": "Argan: The Misunderstood Sell-Off",
-    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE0zXy1ZUHIwLWU3VDVMSVhCWkNzbE00UFJDWG1zenVDUmYwVEktTjhPLW1iRWRpT0JWQjdBRldLSURWSURqUzVlQmxuRzVDd1RuNFZBMXdGT09RR1Ezb1JLbnFvdkNnT0dzT1MwMXN2NUg3X2FERFV1QllvUjVTdw?oc=5",
-    "source": "Seeking Alpha",
-    "published": "2026-11-11T09:46+00:00"
+    "title": "Sterling Infrastructure (NasdaqGS:STRL) Stock Forecast & Analyst Predictions",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPT1R6SUNZMGF1WXAtZzREWWY1V25CekpWcy11RWFYUlFEX3FtQ19sZGlQa0NpZlR6WUFvNnpKc3cybDJjUU82bXZZUDhpRmU0TmpsVXhqOGxybEF3QXJCUldULVJ2UTl6Wkw1Rm0zMGJMSXVYTzdVenJWN2hjUVZidWpGRDRjaXA5M1NPS3hjMVVzdw?oc=5",
+    "source": "Simply Wall St",
+    "published": "2026-11-10T08:00+00:00"
    }
   },
   {
@@ -2590,33 +2590,18 @@
    }
   },
   {
-   "name": "Sterling Infrastructure",
-   "ticker": "STRL",
-   "layer": "power_equipment",
+   "name": "Argan",
+   "ticker": "AGX",
+   "layer": "power_generation",
    "mentions30": 5,
-   "tight30": 1,
-   "ease30": 0,
-   "mentions7": 2,
-   "headline": {
-    "title": "Sterling Infrastructure (NasdaqGS:STRL) Stock Forecast & Analyst Predictions",
-    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPT1R6SUNZMGF1WXAtZzREWWY1V25CekpWcy11RWFYUlFEX3FtQ19sZGlQa0NpZlR6WUFvNnpKc3cybDJjUU82bXZZUDhpRmU0TmpsVXhqOGxybEF3QXJCUldULVJ2UTl6Wkw1Rm0zMGJMSXVYTzdVenJWN2hjUVZidWpGRDRjaXA5M1NPS3hjMVVzdw?oc=5",
-    "source": "Simply Wall St",
-    "published": "2026-11-10T08:00+00:00"
-   }
-  },
-  {
-   "name": "Nokia",
-   "ticker": "NOK",
-   "layer": "networking",
-   "mentions30": 4,
    "tight30": 0,
    "ease30": 0,
-   "mentions7": 2,
+   "mentions7": 1,
    "headline": {
-    "title": "Is Nokia Attractive as AI Growth Meets Valuation and Execution Risks?",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nokia-attractive-ai-growth-meets-175700285.html",
-    "source": "Zacks",
-    "published": "2026-11-13T17:57+00:00"
+    "title": "Argan: The Misunderstood Sell-Off",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE0zXy1ZUHIwLWU3VDVMSVhCWkNzbE00UFJDWG1zenVDUmYwVEktTjhPLW1iRWRpT0JWQjdBRldLSURWSURqUzVlQmxuRzVDd1RuNFZBMXdGT09RR1Ezb1JLbnFvdkNnT0dzT1MwMXN2NUg3X2FERFV1QllvUjVTdw?oc=5",
+    "source": "Seeking Alpha",
+    "published": "2026-11-11T09:46+00:00"
    }
   },
   {
@@ -2635,18 +2620,18 @@
    }
   },
   {
-   "name": "MYR Group",
-   "ticker": "MYRG",
-   "layer": "power_equipment",
-   "mentions30": 3,
+   "name": "Nokia",
+   "ticker": "NOK",
+   "layer": "networking",
+   "mentions30": 4,
    "tight30": 0,
    "ease30": 0,
-   "mentions7": 0,
+   "mentions7": 2,
    "headline": {
-    "title": "MYR Group Q3 Earnings Call Highlights 2027 Growth & Margin Outlook",
-    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOQ0kwazh3Y2dpZUJJM01OZGdIdm43cFV5T2lBd3hUX3N6c0pUbENaWlFEWkY3bmZfcmRJaW9ZNjBjTU1kaW9mTkFBYmdLSTk0SkF1dmVsdDR4UWR0dTlTaEgxTTY4NWU0NUQxazE3c0tTTmhFaGdBT0JSZF9pNWhMeU4yNDRQOVl0Z29QMThFX2tBaGtrOFdXUUdOS1VRRVNycFhzenhfcEtQUm96YXJFVF9aMEJlaTEwU3VCeQ?oc=5",
-    "source": "TradingView",
-    "published": "2026-11-04T19:00+00:00"
+    "title": "Is Nokia Attractive as AI Growth Meets Valuation and Execution Risks?",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nokia-attractive-ai-growth-meets-175700285.html",
+    "source": "Zacks",
+    "published": "2026-11-13T17:57+00:00"
    }
   },
   {
@@ -2665,6 +2650,21 @@
    }
   },
   {
+   "name": "Galaxy Digital",
+   "ticker": "GLXY",
+   "layer": "neoclouds",
+   "mentions30": 3,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 1,
+   "headline": {
+    "title": "Galaxy Digital rises 5% as CoreWeave results lift AI infrastructure stocks",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQa0tnbl93NVBzQzlsdFNFSG9hWlR3UU9Vd3FtSk9DTkNkWEJBUTk0aHVZVlZaNEd1RHk0cnplR0tVS21ldFVwcGtrYmg1eXF5dE42VTJ3dHUtMXJaZHJqZlVRRkZEbjVVaWJsM3diOEdjbmdwbk5tU0dTRXRxS3FrNDNsR2YwZG1fQmxXbWhld1ozemxEX3pnU2FTTnFiZUpEaElR?oc=5",
+    "source": "Startup Fortune",
+    "published": "2026-11-11T12:21+00:00"
+   }
+  },
+  {
    "name": "Primoris",
    "ticker": "PRIM",
    "layer": "power_equipment",
@@ -2680,7 +2680,7 @@
    }
   }
  ],
- "generated_utc": "2026-11-13T19:25:07+00:00",
+ "generated_utc": "2026-11-13T19:30:49+00:00",
  "sources_ok": {
   "google": 165,
   "yahoo": 80

@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-12",
- "generated_utc": "2026-11-13T19:28:31+00:00",
+ "generated_utc": "2026-11-13T19:34:11+00:00",
  "regime": {
   "status": "red",
   "breadth": 0.2469,
@@ -42,7 +42,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 262,
+    "items7": 263,
     "tight7": 22,
     "ease7": 3,
     "friction7": 8,
@@ -129,7 +129,7 @@
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 10
+   "news_rank": 9
   },
   {
    "key": "design",
@@ -232,7 +232,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 152,
+    "items7": 153,
     "tight7": 7,
     "ease7": 2,
     "friction7": 7,
@@ -313,17 +313,17 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 168,
+    "items7": 170,
     "tight7": 6,
-    "ease7": 3,
+    "ease7": 4,
     "friction7": 1,
-    "net7": 3,
+    "net7": 2,
     "net_prev7": 0,
-    "trend": 3
+    "trend": 2
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 8
+   "news_rank": 10
   },
   {
    "key": "foundry",
@@ -352,7 +352,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 106,
+    "items7": 107,
     "tight7": 4,
     "ease7": 2,
     "friction7": 0,
@@ -392,7 +392,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 151,
+    "items7": 152,
     "tight7": 25,
     "ease7": 5,
     "friction7": 1,
@@ -429,7 +429,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 224,
+    "items7": 225,
     "tight7": 1,
     "ease7": 1,
     "friction7": 104,
@@ -517,7 +517,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 139,
+    "items7": 140,
     "tight7": 4,
     "ease7": 1,
     "friction7": 2,
@@ -527,7 +527,7 @@
    },
    "news_label": null,
    "news_label_he": null,
-   "news_rank": 9
+   "news_rank": 8
   },
   {
    "key": "power_generation",
@@ -660,9 +660,9 @@
    "why": "ציוד לייצור שבבים מתקדמים ולזיכרון HBM",
    "company": "Applied Materials",
    "news7": {
-    "items": 40,
+    "items": 41,
     "tight": 1,
-    "ease": 0,
+    "ease": 1,
     "friction": 1
    },
    "stretched": false
@@ -1090,7 +1090,7 @@
    "why": "מייצרת כמעט את כל שבבי ה-AI המתקדמים, כולל אריזת CoWoS",
    "company": "TSMC",
    "news7": {
-    "items": 27,
+    "items": 28,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1355,7 +1355,7 @@
    "why": "כוננים בנפח גבוה לענן, שבהם נשמרים הנתונים של AI",
    "company": "Seagate",
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -1530,7 +1530,7 @@
    "why": "שבבי AI מותאמים (ASIC) לענקיות הענן, ושבבי רשת",
    "company": "Broadcom",
    "news7": {
-    "items": 36,
+    "items": 37,
     "tight": 0,
     "ease": 0,
     "friction": 2
@@ -1860,7 +1860,7 @@
    "why": "משדרים אופטיים לענקיות הענן (חברה קטנה ותנודתית)",
    "company": "Applied Optoelectronics",
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -2800,7 +2800,7 @@
    "why": "Azure, ומהמשקיעות הגדולות בתשתיות AI",
    "company": "Microsoft data center",
    "news7": {
-    "items": 38,
+    "items": 39,
     "tight": 1,
     "ease": 0,
     "friction": 2
@@ -3387,7 +3387,7 @@
  ],
  "news_radar": {
   "as_of": "2026-11-13",
-  "generated_utc": "2026-11-13T19:25:07+00:00",
+  "generated_utc": "2026-11-13T19:30:49+00:00",
   "sources_ok": {
    "google": 165,
    "yahoo": 80
