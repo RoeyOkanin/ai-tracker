@@ -323,6 +323,16 @@ def _next_trading_day(all_dates, d):
     return all_dates[j + 1] if j + 1 < len(all_dates) else d + BDay(1)
 
 
+def _is_decision_day(all_dates, d, freq: str = "monthly") -> bool:
+    """Last close of the month (default), of the week, or every close."""
+    if freq == "daily":
+        return True
+    n = _next_trading_day(all_dates, d)
+    if freq == "weekly":
+        return n.isocalendar()[:2] != d.isocalendar()[:2]
+    return n.month != d.month
+
+
 def simulate(px, uni, rules, start, end=None, prepared=None) -> dict:
     """Day-by-day paper portfolio. Rebalance decided on each month's last close,
     exits checked every close; everything executes at the next close."""
@@ -443,7 +453,7 @@ def simulate(px, uni, rules, start, end=None, prepared=None) -> dict:
                   and r1w >= PT["week_gain"] and p >= ma50 * (1 + PT["above_ma50"])):
                 pending_exits[t] = ("frac", float(PT["fraction"]), "profit_take")
 
-        if _next_trading_day(all_dates, d).month != d.month:
+        if _is_decision_day(all_dates, d, P.get("rebalance_freq", "monthly")):
             held = {t: s["layer"] for t, s in pos.items()}
             exclude = {t for t, e in pending_exits.items() if e[0] == "all"}
             pending_rebal = pick_targets(d, px, ind, lidx, lind, uni, rules, held=held, exclude=exclude)
