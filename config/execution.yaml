@@ -9,7 +9,8 @@ mode: paper                    # paper | live. live also needs the repo secret L
 
 allocation_usd: null           # how much of the account the system manages (null = the whole account equity)
 ticket_enabled: true           # every evening: an order ticket for manual execution (Colmex) in the daily issue
-manual_capital_usd: 10000      # the sum the tickets are sized for (whole shares, so under ~$20k some names round to 0)
+manual_capital_usd: 100000     # the sum the Colmex tickets are sized for
+paper_start_usd: 100000        # the Alpaca paper account's starting value (the dashboard's P&L base)
 order_type: moc                # moc = market-on-close (same price the backtest uses) | market = right now
 moc_cutoff_et: "15:45"         # Alpaca rejects MOC orders after 15:50 New York; we stop a bit earlier
 
