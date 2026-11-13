@@ -89,14 +89,16 @@ def mix_yearly(a: pd.Series, b: pd.Series, wa: float) -> pd.Series:
     return pd.Series(out, index=idx)
 
 
-def main() -> None:
-    px, dv, tick = load_prices()
-    liquid_big = ((px[tick] >= MIN_PRICE) & (dv[tick] >= 100e6)).fillna(False)
+H_OVERRIDE = {"portfolio": {"layers_to_hold": 6, "stocks_per_layer": 1, "keep_if_rank_at_most": 15,
+                             "max_weight": 0.30}}
+
+
+def build_switch(px: pd.DataFrame, liquid_big: pd.DataFrame, tick: list[str], start: str = IS_START) -> dict:
+    """The switch rule, shared by the research run and the live run (one source of truth).
+    pick_t[d] = what to hold from the close after d: "H" (rotation, idle money in SMH), "SMH" or "CASH"."""
     _, rules = load_config()
     uni = make_uni({t: [t] for t in tick}, {})
-    r_h = merge_rules(rules, {"portfolio": {"layers_to_hold": 6, "stocks_per_layer": 1, "keep_if_rank_at_most": 15,
-                                            "max_weight": 0.30}})
-    sim = run_variant(px, liquid_big, uni, r_h, IS_START)
+    sim = run_variant(px, liquid_big, uni, merge_rules(rules, H_OVERRIDE), start)
     h = sim["nav"]
     idx = h.index
 
@@ -126,8 +128,6 @@ def main() -> None:
     h_park_r = h_r + idle * smh_r - park_cost
     h_park = (1 + h_park_r).cumprod()
 
-    core = mix_yearly(smh, h_park, 0.7)
-
     me = month_end_flags(idx)
     rel = (h_park / h_park.shift(LOOKBACK)) - (smh / smh.shift(LOOKBACK))
     pick, cur = [], "SMH"
@@ -136,9 +136,24 @@ def main() -> None:
             cur = "H" if rel[d] > 0 else "SMH"
         pick.append(cur)
     pick = pd.Series(pick, index=idx)
-    switch = from_signal({"H": h_park_r, "SMH": smh_r}, pick)
     pick_t = pick.where(~((pick == "SMH") & (trend_state == "CASH")), "CASH")
-    switch_trend = from_signal({"H": h_park_r, "SMH": smh_r, "CASH": cash_r}, pick_t)
+    return {"sim": sim, "h": h, "idx": idx, "smh_px": smh_px, "smh_r": smh_r, "smh": smh, "ma200": ma200,
+            "trend_state": trend_state, "cash_r": cash_r, "smh_trend": smh_trend, "h_cash": h_cash,
+            "h_park_r": h_park_r, "h_park": h_park, "rel": rel, "pick": pick, "pick_t": pick_t,
+            "switch": from_signal({"H": h_park_r, "SMH": smh_r}, pick),
+            "switch_trend": from_signal({"H": h_park_r, "SMH": smh_r, "CASH": cash_r}, pick_t)}
+
+
+def main() -> None:
+    px, dv, tick = load_prices()
+    liquid_big = ((px[tick] >= MIN_PRICE) & (dv[tick] >= 100e6)).fillna(False)
+    S = build_switch(px, liquid_big, tick)
+    sim, h, idx = S["sim"], S["h"], S["idx"]
+    smh_px, smh_r, smh, ma200 = S["smh_px"], S["smh_r"], S["smh"], S["ma200"]
+    trend_state, smh_trend, h_cash, h_park_r, h_park = (S["trend_state"], S["smh_trend"], S["h_cash"],
+                                                        S["h_park_r"], S["h_park"])
+    rel, pick, pick_t, switch, switch_trend = S["rel"], S["pick"], S["pick_t"], S["switch"], S["switch_trend"]
+    core = mix_yearly(smh, h_park, 0.7)
 
     cands = {"SMH": smh, "SMH_TREND": smh_trend, "H_CASH": h_cash, "H_PARK": h_park,
              "CORE_70_30": core, "SWITCH": switch, "SWITCH_TREND": switch_trend}

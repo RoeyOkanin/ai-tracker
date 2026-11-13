@@ -94,6 +94,11 @@
     <p id="asof">טוען נתונים…</p>
   </header>
 
+  <section class="card" id="switch-card" hidden>
+    <h2>האסטרטגיה הראשית: המתג</h2>
+    <div id="switch-body"></div>
+  </section>
+
   <section class="tiles" id="tiles"></section>
 
   <section class="card">
@@ -218,10 +223,47 @@ async function load() {
   try { const r = await fetch("data/prices_1y.csv" + bust); if (r.ok) prices = parseCSV(await r.text()); } catch (e) {}
   let proposals = null;
   try { const r = await fetch("data/candidates.json" + bust); if (r.ok) proposals = await r.json(); } catch (e) {}
+  let sw = null;
+  try { const r = await fetch("data/switch.json" + bust); if (r.ok) sw = await r.json(); } catch (e) {}
+  if (sw) renderSwitch(sw);
   render(latest, hist, weekly);
   renderRadar(latest, radar);
   renderDiscovery(radar, proposals);
   if (prices) renderStockPicker(latest, prices);
+}
+
+function renderSwitch(sw) {
+  const card = document.getElementById("switch-card"), b = document.getElementById("switch-body");
+  card.hidden = false;
+  const color = { H: "var(--good)", SMH: "var(--series)", CASH: "var(--warning)" }[sw.hold_next];
+  b.append(
+    el("div", { class: "tiles" },
+      el("div", { class: "tile" }, el("div", { class: "label" }, "מחזיקים מהסגירה הבאה"),
+         el("div", { class: "value" }, chip(color, sw.hold_next_he)),
+         el("div", { class: "note" }, sw.changed ? "שינוי! ביצוע בסגירה של " + dateHe(sw.next_execution) : "ללא שינוי")),
+      el("div", { class: "tile" }, el("div", { class: "label" }, "רוטציה מול SMH, 6 חודשים"),
+         el("div", { class: "value" }, pct(sw.rotation_vs_smh_6m)),
+         el("div", { class: "note" }, "חיובי = מריצים רוטציה (נבדק בסוף חודש)")),
+      el("div", { class: "tile" }, el("div", { class: "label" }, "SMH מול ממוצע 200"),
+         el("div", { class: "value" }, pct(sw.smh_vs_ma200)),
+         el("div", { class: "note" }, "מתחת ל-2%- = מזומן במקום SMH")),
+    ),
+    el("p", {}, sw.why),
+    el("p", { class: "note" }, `נכון לסגירה של ${dateHe(sw.as_of)} · ההחלטה החודשית הבאה: ${dateHe(sw.next_monthly_decision)}`),
+  );
+  const t = Object.entries(sw.targets || {}).sort((a, b) => b[1] - a[1]);
+  if (t.length) {
+    const table = el("table", {}, el("tr", {}, el("th", {}, "מניה"), el("th", {}, "משקל יעד")));
+    for (const [tk, w] of t) table.append(el("tr", {}, el("td", {}, el("b", {}, tk)), el("td", {}, pct(w, false))));
+    b.append(table);
+  }
+  const pp = sw.paper || {};
+  b.append(el("p", {}, pp.status === "live"
+    ? el("span", {}, `תיק נייר מאז ${dateHe(pp.start)}: `, pct(pp.return), " · SMH: ", pct(pp.smh_return), " · ירידה מקסימלית: ", pct(pp.max_drawdown))
+    : `תיק הנייר מתחיל ב-${dateHe(pp.start)}.`));
+  const ul = el("ul", { class: "note" });
+  for (const r of sw.rules_he || []) ul.append(el("li", {}, r));
+  b.append(el("details", {}, el("summary", {}, "החוקים"), ul));
 }
 
 function render(j, hist, weekly) {
