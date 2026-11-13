@@ -73,3 +73,28 @@ def test_session_check():
     assert "closed" in session_check(b, "2026-11-25", at("2026-11-26"), "15:45", "moc")
     assert "stale" in session_check(b, "2026-11-25", at("2026-11-30"), "15:45", "moc")
     assert "cutoff" in session_check(b, "2026-11-25", at("2026-11-27", 16), "15:45", "moc")
+
+
+# ---- the switch book: SMH may take the whole account, CASH empties it, outside holdings untouched
+GS = {**G, "etfs": ["SMH"], "etf_max_order_pct": 1.0}
+PXS = {**PX, "SMH": 250.0}
+
+
+def test_switch_to_smh_allows_full_etf_order():
+    book = {"mode": "rebalance", "targets": {"SMH": 1.0}}
+    orders, notes = plan_orders(book, 100_000, {}, PXS.get, M | {"SMH"}, GS, "2026-12-01", cash=100_000)
+    assert [(o.ticker, o.side, o.qty) for o in orders] == [("SMH", "buy", 400)], notes
+
+
+def test_stock_still_capped_with_etf_exemption():
+    book = {"mode": "rebalance", "targets": {"AAA": 0.9}}
+    orders, notes = plan_orders(book, 100_000, {}, PXS.get, M | {"SMH"}, GS, "2026-12-01", cash=100_000)
+    assert orders == [] and any("max_order_pct" in n for n in notes)
+
+
+def test_switch_to_cash_sells_managed_only():
+    book = {"mode": "rebalance", "targets": {}}
+    positions = {"SMH": {"qty": 400, "price": 250.0, "value": 100_000},
+                 "OTHER": {"qty": 5, "price": 10.0, "value": 50}}
+    orders, _ = plan_orders(book, 100_000, positions, PXS.get, M | {"SMH"}, GS, "2026-12-01", cash=0)
+    assert [(o.ticker, o.side, o.qty) for o in orders] == [("SMH", "sell", 400)]

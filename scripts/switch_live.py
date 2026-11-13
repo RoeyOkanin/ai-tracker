@@ -108,7 +108,10 @@ def main() -> None:
             "hold": hold_next, "rebalance_band": 0.05,
             "mode": ("initial" if started and next_exec == live_start else
                      "rebalance" if started and rebalance_today else "hold" if started else "none"),
-            "targets": {t: round(w, 6) for t, w in targets.items()}, "exits": exits, "layer_of": layer_of}
+            "targets": {t: round(w, 6) for t, w in targets.items()}, "exits": exits, "layer_of": layer_of,
+            # what execute.py may touch, and closes for the manual ticket (Alpaca prices itself)
+            "managed": sorted(set(tick) | {"SMH"}),
+            "last_close": {t: round(float(v), 4) for t, v in px.loc[d, sorted(set(tick) | {"SMH"})].items() if pd.notna(v)}}
     DOCS_DATA.mkdir(parents=True, exist_ok=True)
     (DOCS_DATA / "switch_target_book.json").write_text(json.dumps(book, ensure_ascii=False, indent=1), encoding="utf-8")
 
