@@ -1,0 +1,71 @@
+name: trade
+
+# Sends the orders decided at the previous close as market-on-close orders.
+# 19:05 UTC = 14:05 New York in winter, 15:05 in summer: always before the 15:50 MOC cutoff.
+on:
+  schedule:
+    - cron: "5 19 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Plan only, send nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: trade
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Execute target book
+        env:
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          LIVE_TRADING_CONFIRM: ${{ secrets.LIVE_TRADING_CONFIRM }}
+          NOTIFY_PATH: /tmp/trade.md
+        run: |
+          if [ -z "$ALPACA_KEY_ID" ]; then
+            echo "No ALPACA_KEY_ID secret: automatic execution is off. Nothing to do."
+            exit 0
+          fi
+          python scripts/execute.py --broker alpaca ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Save execution log
+        run: |
+          git config user.name "ai-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/execution_log.csv 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "nothing new"
+          else
+            git commit -m "trade: $(date -u +%F)"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Notify
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s /tmp/trade.md ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "AI Tracker · ביצוע · $(date -u +%d.%m.%Y)" --body-file /tmp/trade.md
+          fi

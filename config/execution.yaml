@@ -1,0 +1,20 @@
+# How the system sends orders to a broker. The rules of WHAT to hold live in rules.yaml;
+# this file only decides HOW and HOW MUCH.
+
+enabled: true                  # kill switch: false = the executor logs the plan and sends nothing
+broker: alpaca
+mode: paper                    # paper | live. live also needs the repo secret LIVE_TRADING_CONFIRM=YES
+                               # (two locks, so a typo in one file can't move real money)
+
+allocation_usd: null           # how much of the account the system manages (null = the whole account equity)
+ticket_enabled: true           # every evening: an order ticket for manual execution (Colmex) in the daily issue
+manual_capital_usd: 10000      # the sum the tickets are sized for (whole shares, so under ~$20k some names round to 0)
+order_type: moc                # moc = market-on-close (same price the backtest uses) | market = right now
+moc_cutoff_et: "15:45"         # Alpaca rejects MOC orders after 15:50 New York; we stop a bit earlier
+
+guards:
+  max_order_pct: 0.35          # no single order above 35% of the managed capital
+  max_orders_per_run: 20
+  min_order_usd: 25            # skip dust
+  max_daily_turnover_pct: 2.1  # buys + sells in one run, as a share of capital (a full rotation = 2.0)
+  only_universe_tickers: true  # never touch a position that isn't in companies.yaml (your other holdings are safe)
