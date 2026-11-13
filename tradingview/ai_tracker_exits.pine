@@ -1,0 +1,46 @@
+//@version=6
+// AI Tracker: exit levels for a stock the system holds.
+// Same rules as config/rules.yaml: trailing stop from the highest close since entry,
+// and a close more than 2% below the 200-day average. Daily chart only.
+// Entry date and stop % come from the dashboard (portfolio table) or the order ticket.
+indicator("AI Tracker · Exits", overlay = true)
+
+entryTime = input.time(timestamp("2026-11-16"), "Entry date")
+stopPct   = input.float(15.0, "Trailing stop %", minval = 10, maxval = 25, step = 0.1) / 100
+maBuffer  = input.float(2.0, "Below MA200 buffer %", step = 0.5) / 100
+showMa50  = input.bool(true, "Show MA50")
+
+ma200 = ta.sma(close, 200)
+ma50  = ta.sma(close, 50)
+inPos = time >= entryTime
+
+var float peak = na
+peak := inPos ? (na(peak) ? close : math.max(peak, close)) : na
+stopLevel  = inPos ? peak * (1 - stopPct) : na
+trendLevel = ma200 * (1 - maBuffer)
+
+stopHit  = inPos and close < stopLevel
+trendHit = inPos and close < trendLevel and not stopHit
+
+plot(ma200, "MA200", color.new(color.orange, 0), 2)
+plot(showMa50 ? ma50 : na, "MA50", color.new(color.gray, 40), 1)
+plot(trendLevel, "MA200 exit line", color.new(color.orange, 60), 1, plot.style_circles)
+plot(stopLevel, "Trailing stop", color.new(color.red, 0), 2, plot.style_linebr)
+plotshape(stopHit and not stopHit[1], "Stop hit", shape.xcross, location.abovebar, color.red, size = size.small)
+plotshape(trendHit and not trendHit[1], "Below MA200", shape.triangledown, location.abovebar, color.orange, size = size.small)
+
+var table t = table.new(position.top_right, 2, 3, bgcolor = color.new(color.black, 80))
+if barstate.islast and inPos
+    dist = close / stopLevel - 1
+    table.cell(t, 0, 0, "Stop", text_color = color.white)
+    table.cell(t, 1, 0, str.tostring(stopLevel, format.mintick), text_color = color.red)
+    table.cell(t, 0, 1, "Distance", text_color = color.white)
+    table.cell(t, 1, 1, str.tostring(dist * 100, "#.0") + "%", text_color = dist < 0.03 ? color.red : color.white)
+    table.cell(t, 0, 2, "MA200 exit", text_color = color.white)
+    table.cell(t, 1, 2, str.tostring(trendLevel, format.mintick), text_color = color.orange)
+
+// Alerts fire on the daily close. The message is JSON so a webhook bridge can act on it later.
+alertcondition(stopHit and not stopHit[1], "AI Tracker: trailing stop",
+     '{"source":"ai-tracker","ticker":"{{ticker}}","action":"sell_all","reason":"trailing_stop","price":{{close}}}')
+alertcondition(trendHit and not trendHit[1], "AI Tracker: below MA200",
+     '{"source":"ai-tracker","ticker":"{{ticker}}","action":"sell_all","reason":"below_ma200","price":{{close}}}')
