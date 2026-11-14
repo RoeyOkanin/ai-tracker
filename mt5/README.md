@@ -28,3 +28,6 @@ the EA prints live ("server winter offset=UTC+X"). Decisions are logged to `MQL5
 - Remaining ~-$4.7k over 139 days (~$23/trade) = spread + US100.cash vs QQQ price differences.
 - Drawdown this year is real in both: python -17.4k peak-to-trough, EA -23k. At $12/pt a challenge
   started Nov 2025 breaches the 10% limit in Jan-Feb 2026.
+- After the fix (InpServerDstRule=2): tester +$16.8k, Sharpe 2.10, PF 1.14, equity DD 23.9%.
+  Remaining gap to python ~3.5 pts/trade of extra cost. Re-run with cost 5 pts: scripts/prop/run_live_cost.py,
+  data/prop/results_live_cost.txt (eval $12/pt: 43% single pass, 89% funded <12m with retries, funded yr ~$11.7k avg).

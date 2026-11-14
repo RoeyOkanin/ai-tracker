@@ -1,0 +1,10 @@
+cost 1.5 eval $6/pt: single attempt pass 92% | funded<12m 62% (median day 149) | year-1 net avg $4,537 P(loss) 47%
+cost 1.5 eval $8/pt: single attempt pass 76% | funded<12m 78% (median day 135) | year-1 net avg $6,533 P(loss) 30%
+cost 1.5 eval $10/pt: single attempt pass 63% | funded<12m 87% (median day 114) | year-1 net avg $7,603 P(loss) 21%
+cost 1.5 eval $12/pt: single attempt pass 53% | funded<12m 91% (median day 97) | year-1 net avg $8,275 P(loss) 19%
+cost 5.0 eval $6/pt: single attempt pass 76% | funded<12m 45% (median day 153) | year-1 net avg $2,499 P(loss) 63%
+cost 5.0 eval $8/pt: single attempt pass 58% | funded<12m 65% (median day 143) | year-1 net avg $3,636 P(loss) 53%
+cost 5.0 eval $10/pt: single attempt pass 47% | funded<12m 75% (median day 126) | year-1 net avg $4,373 P(loss) 39%
+cost 5.0 eval $12/pt: single attempt pass 43% | funded<12m 89% (median day 114) | year-1 net avg $5,231 P(loss) 36%
+1.5 funded yr avg 15684 median 12893 zero-payout % 4 alive
+5.0 funded yr avg 11653 median 8387 zero-payout % 9 breach
