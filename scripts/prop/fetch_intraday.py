@@ -34,7 +34,9 @@ def alpaca(sym, tf="5Min", start="2016-01-01", feed="sip"):
     return df[["ts", "open", "high", "low", "close", "volume", "vwap"]]
 
 
-for sym in ["QQQ", "SPY"]:
+for sym in ["QQQ", "SPY", "IWM", "DIA", "GLD", "USO"]:
+    if (OUT / f"{sym}_5m.csv.gz").exists():
+        continue
     for feed in ["sip", "iex"]:
         try:
             df = alpaca(sym, feed=feed)
@@ -46,6 +48,8 @@ for sym in ["QQQ", "SPY"]:
 
 try:
     import yfinance as yf
+    if (OUT / "NQ_1h.csv.gz").exists():
+        raise SystemExit(0)
     for t in ["NQ=F", "ES=F"]:
         d = yf.download(t, interval="1h", period="730d", progress=False, auto_adjust=False)
         if isinstance(d.columns, pd.MultiIndex):

@@ -64,12 +64,12 @@ def orb(df, bar_minutes=5, target_r=10.0, min_body=0.0, exit_time="15:55"):
     return out
 
 
-def noise_momentum(df, lookback=14, vm=1.0, use_vwap=True, last_entry="15:30", exit_time="15:55", shift=()):
+def noise_momentum(df, lookback=14, vm=1.0, use_vwap=True, last_entry="15:30", exit_time="15:55", shift=(), step=30, side=0):
     """Concretum 'Beat the Market' intraday momentum, checks every 30 minutes.
     Noise band from avg |move from open| at the same time of day over `lookback` days.
     `shift`: checkpoint times (bar-end "HH:MM") moved 5 minutes later, e.g. ("10:00","14:00")
     to stay out of FTMO's 2-minute news blackout around 10:00 / 14:00 ET releases."""
-    checks = set(f"{h:02d}:{m:02d}" for h in range(10, 17) for m in (0, 30))
+    checks = set(f"{h:02d}:{m:02d}" for h in range(10, 17) for m in range(0, 60, step))
     for t in shift:
         checks.discard(t)
         checks.add((pd.Timestamp(t) + pd.Timedelta(minutes=5)).strftime("%H:%M"))
@@ -115,9 +115,9 @@ def noise_momentum(df, lookback=14, vm=1.0, use_vwap=True, last_entry="15:30", e
                     if ts.time() >= ex:
                         break
             if not pos and on_half and bar_end.time() >= pd.Timestamp("10:00").time() and ts.time() < le:
-                if b.close > ub:
+                if b.close > ub and side >= 0:
                     pos, entry, mae = 1, b.close, 0.0
-                elif b.close < lb:
+                elif b.close < lb and side <= 0:
                     pos, entry, mae = -1, b.close, 0.0
         if pos:
             trades.append(dict(pnl_pts=pos * (x.close.iloc[-1] - entry) * NQ_PER_QQQ, mae_pts=mae * NQ_PER_QQQ, risk_pts=0))
