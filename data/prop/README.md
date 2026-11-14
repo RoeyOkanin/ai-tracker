@@ -29,3 +29,15 @@ has no news rule. Conservative fix: move the 10:00 and 14:00 ET checkpoints to 1
 funded @ $5/pt $13.2k -> $11.0k/yr, breach 10% -> 12%. Targets and payout timing are the same as Swing.
 Speed comes from evaluation size, not account type: 2-Step @ $12/pt passes 54% (median 75 trading days);
 with immediate retries 91% are funded within 12 months and net ~$5.4k in year one (run_speed.py).
+
+## Improvement attempts (2026-11-14)
+- Parameter grid (band width 1/1.25/1.5, lookback 14/30, checks 15/30 min, long-only) on QQQ and SPY,
+  tuned 2016-21, tested 2022-26 (grid.py, grid_eval.py): IS-best variants are worse OOS than the paper's
+  defaults (QQQ base OOS Sharpe 1.61). Keep defaults.
+- Other markets (combo.py): net Sharpe NQ 1.31, ES 0.68, RTY -0.64, YM -0.15, gold -0.46, oil -1.12.
+  Every blend is worse than NQ alone. Trade US100 only. (Edge is concentrated in one market: a risk.)
+- Overnight long QQQ: Sharpe 0.56 after 2bp/night financing, 2022 -27%. Rejected.
+- Funded-account sizing scaled by distance to the 10% floor (size x buffer/10%, min 25%; run_dyn.py):
+  funded @ $8/pt -> $15.7k/yr, 0% breach in 1y, vs fixed $5/pt $13.2k, 10% breach. Adopted.
+- Plan (run_plan.py): eval $12/pt fixed, funded $8/pt buffer-scaled: 91% funded within 12m,
+  year-1 net avg $8.3k (vs $6.4k). Eval $15/pt: $9.2k avg, median day 80, 21% chance year-1 loss.

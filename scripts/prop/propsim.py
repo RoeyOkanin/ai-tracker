@@ -182,3 +182,57 @@ def ftmo1(days, start, dpp, acct=100_000, cost_pts=1.5, max_tdays=250):
         if bal >= 0.10 * acct and best <= 0.5 * bal:
             return "pass", k + 1
     return "timeout", max_tdays
+
+
+def ftmo_day_dyn(trades, dpp, cost_pts, day_stop=None):
+    """Like ftmo_day, but stops taking new trades once the day is down `day_stop` dollars."""
+    pnl, low = 0.0, 0.0
+    for tr in trades:
+        if day_stop is not None and pnl <= -day_stop:
+            break
+        low = min(low, pnl + (tr["mae_pts"] - cost_pts) * dpp)
+        pnl += (tr["pnl_pts"] - cost_pts) * dpp
+        low = min(low, pnl)
+    return pnl, low
+
+
+def scale_fn(bal, acct, power, floor_pct=0.10, minscale=0.25):
+    """Size multiplier from distance to the max-loss floor: 1 at start, shrinks as the buffer shrinks."""
+    buf = (bal + floor_pct * acct) / (floor_pct * acct)
+    return max(minscale, min(1.0, buf)) ** power if power else 1.0
+
+
+def ftmo2_dyn(days, start, dpp, acct=100_000, cost_pts=1.5, max_tdays=250, power=0, day_stop_pct=None):
+    k = start
+    for tgt in (0.10, 0.05):
+        bal, traded = 0.0, 0
+        while True:
+            if k >= len(days) or k - start > max_tdays:
+                return "timeout", k - start
+            d = dpp * scale_fn(bal, acct, power)
+            pnl, low = ftmo_day_dyn(days[k], d, cost_pts, day_stop_pct * acct if day_stop_pct else None)
+            k += 1
+            traded += bool(days[k - 1])
+            if low <= -0.05 * acct or bal + low <= -0.10 * acct:
+                return "fail", k - start
+            bal += pnl
+            if bal >= tgt * acct and traded >= 4:
+                break
+    return "pass", k - start
+
+
+def ftmo_funded_dyn(days, start, dpp, acct=100_000, cost_pts=1.5, split=0.8, horizon=252, power=0, day_stop_pct=None):
+    bal, paid = 0.0, 0.0
+    for i in range(horizon):
+        k = start + i
+        if k >= len(days):
+            break
+        d = dpp * scale_fn(bal, acct, power)
+        pnl, low = ftmo_day_dyn(days[k], d, cost_pts, day_stop_pct * acct if day_stop_pct else None)
+        if low <= -0.05 * acct or bal + low <= -0.10 * acct:
+            return paid, "breach"
+        bal += pnl
+        if i >= 10 and i % 10 == 0 and bal > 0:
+            paid += split * bal
+            bal = 0.0
+    return paid, "alive"
