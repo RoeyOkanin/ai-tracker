@@ -17,19 +17,23 @@
 //|  * Everything flat at 15:59.                                     |
 //|  * Size per day: DollarsPerPoint * (25000 / today open)          |
 //|    * min(VolCap, VolTarget / std of last 14 daily returns)       |
+//|    * BelowMAMult if yesterday closed below its 50-day average    |
 //|    * buffer scale (funded mode only).                            |
+//|  * No new entries at 12:00 / 14:00; skip the day after a big win.|
+//|  * Challenge: flat and done at the profit target (TargetPct),    |
+//|    then one micro trade per day until the minimum trading days.  |
 //|  Safety (not in the backtest, rarely binds): server-side         |
 //|  emergency stop and an equity guard below FTMO's daily loss.     |
 //+------------------------------------------------------------------+
 #property copyright "ai-tracker"
-#property version   "1.00"
+#property version   "2.00"
 
 #include <Trade\Trade.mqh>
 
 //--- sizing
-input double InpDollarsPerPoint = 12.0;   // $ per index point at full size (challenge 12, funded 6)
+input double InpDollarsPerPoint = 10.0;   // $ per index point at full size (challenge 10, funded 8)
 input double InpVolTarget       = 0.012;  // daily vol target (1.2%)
-input double InpVolCap          = 2.0;    // max vol multiplier
+input double InpVolCap          = 1.0;    // max vol multiplier (1 = only scale DOWN in volatile markets; tested better than 2)
 input bool   InpBufferScaling   = false;  // funded mode: shrink size as balance nears the max-loss floor
 input double InpMinBufferScale  = 0.25;   // smallest buffer multiplier
 //--- account / FTMO limits
@@ -42,7 +46,12 @@ input int    InpLookback        = 14;     // noise lookback (sessions)
 input double InpBandMult        = 1.0;    // band width multiplier
 input int    InpExitHHMM        = 1559;   // NY time to flatten (HHMM)
 input string InpNoEntryTimes    = "1200,1400"; // NY bar-close times with no NEW entries (lunch chop, 14:00 releases); exits still run
-input double InpSkipAfterWinPts = 167;    // skip the next day after a win > this many points at full size (167 x $12 = $2,000); 0 = off
+input double InpSkipAfterWinPts = 167;    // skip the next day after a win > this many points at full size (167 x $10 = $1,670); 0 = off
+input int    InpTrendMA         = 50;     // trend filter length in sessions (0 = off)
+input double InpBelowMAMult     = 1.5;    // size multiplier when yesterday closed below the trend MA (momentum is stronger in falling markets)
+//--- challenge
+input double InpTargetPct       = 10.0;   // profit target % of initial: phase 1 = 10, phase 2 = 5, funded = 0 (off). At target: flat and stop
+input int    InpMinTradingDays  = 4;      // FTMO minimum trading days: after the target, one micro trade per day until reached
 //--- time zone (server -> New York)
 input bool   InpAutoServerOffset   = true; // live: detect server UTC offset; tester: uses the manual values below
 input int    InpServerWinterOffset = 2;    // server UTC offset in winter (FTMO MT5 is usually 2)
@@ -67,6 +76,7 @@ int      g_serverDay     = -1;
 double   g_dayStartBal   = 0.0;
 int      g_winterOffset  = 2;
 datetime g_lastPrepTry   = 0;
+bool     g_targetDone    = false; // profit target reached: no more normal trading
 
 //+------------------------------------------------------------------+
 //| calendar helpers                                                 |
@@ -264,6 +274,31 @@ bool NoEntryAt(int m)
   }
 
 //+------------------------------------------------------------------+
+//| FTMO trading days: distinct NY days with an entry by this EA      |
+//+------------------------------------------------------------------+
+int TradedDays(bool &today)
+  {
+   today = false;
+   if(!HistorySelect(0, TimeTradeServer() + 86400)) return 0;
+   int keys[]; int nk = 0;
+   ArrayResize(keys, 0);
+   int n = HistoryDealsTotal();
+   for(int i = 0; i < n; i++)
+     {
+      ulong tk = HistoryDealGetTicket(i);
+      if(tk == 0) continue;
+      if(HistoryDealGetInteger(tk, DEAL_MAGIC) != InpMagic) continue;
+      if(HistoryDealGetInteger(tk, DEAL_ENTRY) != DEAL_ENTRY_IN) continue;
+      int k = DayKey(ServerToNy((datetime)HistoryDealGetInteger(tk, DEAL_TIME)));
+      if(k == g_dayKey) today = true;
+      bool seen = false;
+      for(int j = 0; j < nk; j++) if(keys[j] == k) { seen = true; break; }
+      if(!seen) { nk++; ArrayResize(keys, nk); keys[nk - 1] = k; }
+     }
+   return nk;
+  }
+
+//+------------------------------------------------------------------+
 //| this EA's net P&L on NY day `dayKey` (closed deals)              |
 //+------------------------------------------------------------------+
 double DayPnl(int dayKey)
@@ -294,7 +329,8 @@ bool PrepareDay(int key)
    MqlRates r[];
    ArraySetAsSeries(r, false);
    datetime to = TimeTradeServer();
-   int n = CopyRates(_Symbol, PERIOD_M5, to - 45 * 86400, to, r);
+   int days = (InpTrendMA > 0) ? MathMax(45, (int)MathCeil(InpTrendMA * 1.6) + 15) : 45;
+   int n = CopyRates(_Symbol, PERIOD_M5, to - days * 86400, to, r);
    if(n <= 0)
      {
       Print("[IMOM] no M5 history yet");
@@ -367,9 +403,25 @@ bool PrepareDay(int key)
       double buf = (AccountInfoDouble(ACCOUNT_BALANCE) - floorBal) / (InpInitialBalance * InpMaxLossPct / 100.0);
       bufScale = MathMax(InpMinBufferScale, MathMin(1.0, buf));
      }
+   // trend tilt: intraday momentum is stronger when the market is below its trend average
+   // (tested 2016-21 and 2022-26 separately, MA 20..200 and x1.25..x1.5 all help)
+   double tilt = 1.0;
+   if(InpTrendMA > 0 && InpBelowMAMult != 1.0)
+     {
+      if(nv >= InpTrendMA)
+        {
+         double sm = 0;
+         for(int j = nv - InpTrendMA; j < nv; j++) sm += closes[valid[j]];
+         double ma = sm / InpTrendMA;
+         if(closes[valid[nv - 1]] < ma) tilt = InpBelowMAMult;
+         PrintFormat("[IMOM] trend: close %.2f vs MA%d %.2f -> x%.2f", closes[valid[nv - 1]], InpTrendMA, ma, tilt);
+        }
+      else
+         PrintFormat("[IMOM] trend MA%d needs %d sessions, have %d: no tilt today (scroll the M5 chart back to load more)", InpTrendMA, InpTrendMA, nv);
+     }
    g_dayKey = key;
    g_dayOpen = 0;
-   g_dayDpp = InpDollarsPerPoint * volScale * bufScale;  // finalised with today's open in RefreshToday
+   g_dayDpp = InpDollarsPerPoint * volScale * bufScale * tilt;  // finalised with today's open
    g_dayLots = 0;
    g_dayBlocked = false;
    // after a big trend-day win the next day tends to chop (tested 2016-2026, both halves): sit it out
@@ -384,8 +436,8 @@ bool PrepareDay(int key)
         }
      }
    g_dayReady = true;
-   PrintFormat("[IMOM] day %d ready: prevClose=%.2f vol14=%.4f volScale=%.2f bufScale=%.2f sessions=%d",
-               key, g_prevClose, vol, volScale, bufScale, nv);
+   PrintFormat("[IMOM] day %d ready: prevClose=%.2f vol14=%.4f volScale=%.2f bufScale=%.2f tilt=%.2f sessions=%d",
+               key, g_prevClose, vol, volScale, bufScale, tilt, nv);
    return true;
   }
 
@@ -426,6 +478,24 @@ void OnCheckpoint(datetime barServer, datetime barNy)
    int slot = SlotOf(startMin);
    if(slot < 0 || g_sigma[slot] < 0) return;
 
+   if(g_targetDone)
+     {
+      if(CurrentSide() != 0)
+        {
+         CloseAll("target done");
+         LogRow("MICRO CLOSE", barNy, SymbolInfoDouble(_Symbol, SYMBOL_BID), 0, 0, 0, 0);
+         return;
+        }
+      bool today = false;
+      int td = TradedDays(today);
+      if(td < InpMinTradingDays && !today)
+        {
+         double vmin = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+         if(trade.Buy(vmin, _Symbol, 0, 0, 0, "IMOM min-days"))
+            LogRow("MICRO OPEN (min trading days)", barNy, SymbolInfoDouble(_Symbol, SYMBOL_ASK), 0, 0, 0, vmin);
+        }
+      return;
+     }
    double open, vwap, close;
    if(!TodayStats(barServer, open, vwap, close)) { Print("[IMOM] no 09:30 bar today, skipping"); return; }
    if(g_dayLots <= 0)
@@ -487,6 +557,13 @@ void Heartbeat()
      }
    double eq = AccountInfoDouble(ACCOUNT_EQUITY);
    double floorBal = InpInitialBalance * (1.0 - InpMaxLossPct / 100.0);
+   if(InpTargetPct > 0 && !g_targetDone && eq >= InpInitialBalance * (1.0 + InpTargetPct / 100.0) + 0.0005 * InpInitialBalance)
+     {
+      CloseAll("profit target");
+      g_targetDone = true;
+      PrintFormat("[IMOM] PROFIT TARGET %.1f%% REACHED: equity %.2f. Trading stopped (micro trades only until %d trading days).",
+                  InpTargetPct, eq, InpMinTradingDays);
+     }
    if(eq <= g_dayStartBal - InpDailyGuardPct / 100.0 * InpInitialBalance || eq <= floorBal + 0.005 * InpInitialBalance)
      {
       if(CurrentSide() != 0)
@@ -552,6 +629,11 @@ int OnInit()
                _Symbol, g_winterOffset, TimeToString(ny, TIME_DATE | TIME_MINUTES), MoneyPerPointPerLot(), InpMagic);
    if(MoneyPerPointPerLot() <= 0) Print("[IMOM] WARNING: tick value unavailable, cannot size trades");
    g_dayStartBal = AccountInfoDouble(ACCOUNT_BALANCE);
+   if(InpTargetPct > 0 && AccountInfoDouble(ACCOUNT_BALANCE) >= InpInitialBalance * (1.0 + InpTargetPct / 100.0))
+     {
+      g_targetDone = true;
+      PrintFormat("[IMOM] balance already at the %.1f%% target: no normal trading on this account", InpTargetPct);
+     }
    EventSetTimer(1);
    return INIT_SUCCEEDED;
   }

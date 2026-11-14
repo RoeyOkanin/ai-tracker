@@ -43,3 +43,29 @@ the EA prints live ("server winter offset=UTC+X"). Decisions are logged to `MQL5
   inconsistent between halves (not used). With skip-after-win: eval $12 single pass 56%, median 87 days, yr-1 net $7.1k,
   funded $6 $12.9k/yr, 0% breach. Caveat: skip-after-win alone raised the 2016-17 drawdown (-51k -> -65k at $12);
   with the time filter it is back to -52k.
+
+## v2.00 (2026-11-14): goal = 70% chance to pass the FTMO 2-Step in one attempt
+New challenge simulator (scripts/prop/goal70/sim.py) mirrors the EA: guards, skip-after-win, 12:00/14:00 block,
+cost 5 pts x vol-scale per trade, optional intraday target stop. Start on every 2nd trading day 2016-2025.
+"12m" = passed both phases within 252 trading days; "24m" = eventual pass (FTMO has no time limit).
+
+| config | 12m pass | 24m pass | 2016-21 / 2022-26 (12m) | median days |
+|---|---|---|---|---|
+| v1 EA ($12, vol cap 2, no target stop) | 55.6% | 60.3% | 46.0 / 70.3 | 75 |
+| **v2 Balanced** ($10, cap 1, x1.5 below MA50, target stop) | **75.8%** | **84.8%** | 69.4 / 85.6 | 101 |
+| v2 Safe ($8, cap 1, x1.25 below MA50, target stop) | 73.2% | 94.1% | 69.9 / 78.1 | 158 |
+
+- Cross-validated (pick the config on one half, score it on the other): **73.8%** within 12 months.
+- Cost stress: at 6 pts/trade Balanced 72.7% / 83.4%; at 7 pts 65.6% / 76.7%.
+- Kept: vol cap 1.0 (Sharpe 2016-21 0.79 -> 0.92, 2022-26 1.31 -> 1.32, lower DD in both); trend tilt
+  (x1.25-1.5 below MA20..200 all help 2016-21, neutral 2022-26); target stop (+2-5 pts, ~20% faster).
+- Rejected: max entries/day, cushion (distance-to-floor) sizing in the challenge, phase-specific sizes
+  (flat plateau), equity-curve filters, adding SPY/DIA/IWM/GLD streams (all lower Sharpe), start-date timing
+  (pass rate does not depend on the regime at the start).
+- Funded with v2: $8/pt + InpBufferScaling, target 0 -> ~$15.5k/yr avg per 100K, 0% breach (2016-2026 starts).
+- Strategy Tester full-year runs: set InpTargetPct = 0, otherwise the EA stops at +10%.
+  Python expectations (v2 Balanced, target off): 2024 +$32.7k (DD -8.1k), 2025 +$25.1k (DD -15.0k),
+  2025-11..2026-11 +$20.9k (DD -11.6k, lowest -8.5k vs start).
+
+Inputs per account: phase 1 `InpTargetPct=10`, phase 2 `InpTargetPct=5` (both $10), funded `InpTargetPct=0`,
+`InpDollarsPerPoint=8`, `InpBufferScaling=true`.
