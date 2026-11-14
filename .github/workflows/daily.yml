@@ -62,8 +62,11 @@ jobs:
             echo "nothing new"
           else
             git commit -m "data: $(date -u +%F)"
-            git pull --rebase origin main
-            git push
+            for i in 1 2 3; do
+              git pull --rebase --autostash origin main && git push && exit 0
+              sleep $((i * 5))
+            done
+            exit 1
           fi
 
       - name: Notify (GitHub issue = email + app notification)
@@ -73,3 +76,11 @@ jobs:
           if [ -s /tmp/notify.md ]; then
             gh issue create --repo "$GITHUB_REPOSITORY" --title "AI Tracker · $(date -u +%d.%m.%Y)" --body-file /tmp/notify.md
           fi
+
+      - name: Alert if this run failed (GitHub issue = email + app notification)
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "⚠️ daily-update נכשל · $(date -u +%d.%m.%Y)" \
+            --body "הריצה נכשלה: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

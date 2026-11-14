@@ -50,6 +50,7 @@ jobs:
 
       - name: Account snapshot for the dashboard (read-only)
         if: always()
+        continue-on-error: true
         env:
           ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
@@ -59,14 +60,18 @@ jobs:
         run: |
           git config user.name "ai-tracker-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/execution_log.csv 2>/dev/null || true
-          git add docs/data/account.json 2>/dev/null || true
+          for f in data/execution_log.csv docs/data/account.json; do
+            [ -e "$f" ] && git add "$f"
+          done
           if git diff --cached --quiet; then
             echo "nothing new"
           else
             git commit -m "trade: $(date -u +%F)"
-            git pull --rebase origin main
-            git push
+            for i in 1 2 3; do
+              git pull --rebase --autostash origin main && git push && exit 0
+              sleep $((i * 5))
+            done
+            exit 1
           fi
 
       - name: Notify
@@ -77,3 +82,11 @@ jobs:
           if [ -s /tmp/trade.md ]; then
             gh issue create --repo "$GITHUB_REPOSITORY" --title "AI Tracker · ביצוע · $(date -u +%d.%m.%Y)" --body-file /tmp/trade.md
           fi
+
+      - name: Alert if this run failed (GitHub issue = email + app notification)
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "⚠️ trade נכשל · $(date -u +%d.%m.%Y)" \
+            --body "הריצה נכשלה: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

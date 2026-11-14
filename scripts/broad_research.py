@@ -117,7 +117,8 @@ def download(tickers: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
         f.index = pd.to_datetime([x.date() for x in f.index])
     close = close.loc[:, ~close.columns.duplicated()]
     vol = vol.loc[:, ~vol.columns.duplicated()]
-    return close, vol
+    from engine import drop_partial_session
+    return drop_partial_session(close), drop_partial_session(vol)
 
 
 # ---------------------------------------------------------------- variants

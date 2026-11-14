@@ -134,7 +134,7 @@ def session_check(broker: Broker, signal_date: str, now_ny: datetime, cutoff: st
     if not after or after[0] != today:
         if today not in days:
             return f"market closed today ({today})"
-        return f"stale book: written for {after[0] if after else '?'}, today is {today}"
+        return f"stale book: it was made for {after[0] if after else signal_date} (a newer close exists), today is {today}"
     if order_type == "moc":
         h, m = map(int, cutoff.split(":"))
         if (now_ny.hour, now_ny.minute) >= (h, m):
@@ -249,6 +249,12 @@ def main(argv=None) -> int:
         why = session_check(b, book["signal_date"], now_ny, cfg.get("moc_cutoff_et", "15:45"), order_type)
         if why:
             print(f"not trading: {why}")
+            if notify_path and "market closed" not in why:
+                with open(notify_path, "a", encoding="utf-8") as f:
+                    f.write(f"### ⚠️ לא נשלחו פקודות היום ({now_ny.date()})\n{why}.\n"
+                            f"הספר האחרון: {book['signal_date']} ({book.get('mode')}). "
+                            "כנראה שהריצה הלילית (daily-update או switch-strategy) נכשלה או לא עלתה לריפו. "
+                            "בדוק בלשונית Actions.\n")
             return 0
         exec_date = now_ny.date().isoformat()
         alloc = cfg.get("allocation_usd")
