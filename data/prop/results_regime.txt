@@ -1,0 +1,52 @@
+disc ALL       n=1496 sum=  129,666 per-day=    87 sharpe= 0.82 maxDD=  -36,685
+valid ALL       n=1221 sum=  142,811 per-day=   117 sharpe= 1.19 maxDD=  -29,766
+
+(1) pause N days after a day with pnl > X
+  X=2000 N=1 disc: skipped 132 days worth  -30,243 -> n=1364 sum=  159,909 per-day=   117 sharpe= 1.11 maxDD=  -51,370
+  X=2000 N=1 valid: skipped 106 days worth  -27,365 -> n=1115 sum=  170,176 per-day=   153 sharpe= 1.53 maxDD=  -27,142
+  X=2000 N=3 disc: skipped 364 days worth   -5,607 -> n=1132 sum=  135,273 per-day=   119 sharpe= 1.13 maxDD=  -43,783
+  X=2000 N=3 valid: skipped 295 days worth   45,186 -> n= 926 sum=   97,626 per-day=   105 sharpe= 1.18 maxDD=  -43,628
+  X=2000 N=5 disc: skipped 545 days worth   48,339 -> n= 951 sum=   81,327 per-day=    86 sharpe= 0.80 maxDD=  -38,720
+  X=2000 N=5 valid: skipped 449 days worth   55,897 -> n= 772 sum=   86,915 per-day=   113 sharpe= 1.24 maxDD=  -41,763
+  X=4000 N=1 disc: skipped  47 days worth  -22,366 -> n=1449 sum=  152,032 per-day=   105 sharpe= 1.01 maxDD=  -44,770
+  X=4000 N=1 valid: skipped  25 days worth   -8,436 -> n=1196 sum=  151,247 per-day=   126 sharpe= 1.28 maxDD=  -29,766
+  X=4000 N=3 disc: skipped 136 days worth  -14,420 -> n=1360 sum=  144,086 per-day=   106 sharpe= 1.02 maxDD=  -41,444
+  X=4000 N=3 valid: skipped  75 days worth   -7,771 -> n=1146 sum=  150,582 per-day=   131 sharpe= 1.32 maxDD=  -29,766
+  X=4000 N=5 disc: skipped 219 days worth    2,351 -> n=1277 sum=  127,315 per-day=   100 sharpe= 0.97 maxDD=  -41,007
+  X=4000 N=5 valid: skipped 121 days worth  -16,488 -> n=1100 sum=  159,299 per-day=   145 sharpe= 1.44 maxDD=  -29,766
+  X=6000 N=1 disc: skipped  18 days worth  -22,960 -> n=1478 sum=  152,626 per-day=   103 sharpe= 0.99 maxDD=  -44,770
+  X=6000 N=1 valid: skipped   7 days worth   -2,486 -> n=1214 sum=  145,297 per-day=   120 sharpe= 1.21 maxDD=  -29,766
+  X=6000 N=3 disc: skipped  52 days worth  -17,055 -> n=1444 sum=  146,721 per-day=   102 sharpe= 0.98 maxDD=  -46,652
+  X=6000 N=3 valid: skipped  21 days worth   -6,860 -> n=1200 sum=  149,671 per-day=   125 sharpe= 1.26 maxDD=  -29,766
+  X=6000 N=5 disc: skipped  84 days worth  -15,083 -> n=1412 sum=  144,749 per-day=   103 sharpe= 0.99 maxDD=  -47,021
+  X=6000 N=5 valid: skipped  35 days worth  -10,189 -> n=1186 sum=  153,001 per-day=   129 sharpe= 1.31 maxDD=  -29,766
+
+(2) quintiles of features: avg daily pnl per quintile (disc | valid)
+  gap        disc [  -65   -83   196   185   201] | valid [  204   159    29    31   161]
+  vol14      disc [   88    98    11    49   187] | valid [  245   110   126    26    77]
+  vol_ratio  disc [  143     8   -46   128   200] | valid [   77    20   210   262    15]
+  prev_range disc [    9    76   106   109   133] | valid [   44   121   152   235    34]
+  trend20    disc [  322    41   -78    79    60] | valid [   68    99   206   108   104]
+  prev_pnl   disc [  222   121  -174   -99] | valid [  213   150   317  -137]
+  prev5_pnl  disc [  336  -100    69   110    13] | valid [  371   -23   137   161   -64]
+  dow        disc [  128    44    64    18   185] | valid [  -46    78   155   177   210]
+(3) robustness of 'skip the day after a big win' (N=1), by threshold, and by year for X=2000
+  X=1000: disc skipped 225 worth  -21,212 | valid skipped 196 worth  -42,705
+  X=1500: disc skipped 171 worth  -36,472 | valid skipped 154 worth  -27,100
+  X=2000: disc skipped 132 worth  -30,243 | valid skipped 106 worth  -27,365
+  X=2500: disc skipped  93 worth  -17,891 | valid skipped  80 worth  -28,921
+  X=3000: disc skipped  75 worth  -25,616 | valid skipped  54 worth  -28,082
+  per year, pnl on skipped days: {2016: 7579, 2017: -1069, 2018: -12336, 2019: -179, 2020: -14030, 2021: -10206, 2022: -11623, 2023: 2729, 2024: -8480, 2025: -11295, 2026: 1304}
+
+(4) market-based version: skip the day after |QQQ return| > k * vol14 (strategy-independent)
+  k=1.5: disc skipped 238 worth    1,876 | valid skipped 193 worth  -55,239
+  k=2.0: disc skipped 107 worth  -17,394 | valid skipped  83 worth  -15,673
+  k=2.5: disc skipped  56 worth   -6,693 | valid skipped  40 worth   -8,750
+
+(5) skip after a big LOSS day (control)
+  X=1000: disc skipped 221 worth   60,802 | valid skipped 180 worth   42,564
+  X=2000: disc skipped  72 worth   41,690 | valid skipped  61 worth   18,845
+skip>None: eval$12 single pass 43% | funded<12m 89% median day 114 | yr1 net $4,021 P(loss) 35% | funded $6 yr $9,513 breach 0%
+skip>125: eval$12 single pass 54% | funded<12m 89% median day 90 | yr1 net $6,520 P(loss) 21% | funded $6 yr $12,192 breach 3%
+skip>167: eval$12 single pass 54% | funded<12m 87% median day 84 | yr1 net $6,272 P(loss) 22% | funded $6 yr $11,897 breach 5%
+skip>250: eval$12 single pass 52% | funded<12m 91% median day 92 | yr1 net $5,951 P(loss) 22% | funded $6 yr $11,499 breach 1%

@@ -34,3 +34,7 @@ the EA prints live ("server winter offset=UTC+X"). Decisions are logged to `MQL5
 - Tester 2024: +$52.8k (python cost-5: +$41.8k), min equity -$2.2k. Tester 2025: +$8.1k, DD -$31.6k (python Jan-Oct +$9.4k, DD -$29.8k).
 - Funded sizing changed to **$6/pt + InpBufferScaling=true** (cost 5: $9.5k/yr avg, 0% breach; $8/pt breaches 8%,
   incl. a funded account started Apr 2025).
+- 2026-11-14: added `InpSkipAfterWinPts = 167` (skip the next day after a day that made > 167 pts x $/pt, i.e. $2,000 at $12).
+  Tested in scripts/prop/regime_test.py: skipped days lose money at every threshold 1,000-3,000 in both 2016-21 and
+  2022-26, 8 of 11 years. FTMO sim (cost 5): eval $12 single pass 43% -> 54%, median 114 -> 84 days, funded $6 $9.5k -> $11.9k/yr.
+  Python per period with skip: 2024 +50.3k, 2025 +22.1k, 2025-11..2026-11 +16.6k.

@@ -27,7 +27,7 @@
 #include <Trade\Trade.mqh>
 
 //--- sizing
-input double InpDollarsPerPoint = 12.0;   // $ per index point at full size (challenge 12, funded 8)
+input double InpDollarsPerPoint = 12.0;   // $ per index point at full size (challenge 12, funded 6)
 input double InpVolTarget       = 0.012;  // daily vol target (1.2%)
 input double InpVolCap          = 2.0;    // max vol multiplier
 input bool   InpBufferScaling   = false;  // funded mode: shrink size as balance nears the max-loss floor
@@ -41,6 +41,7 @@ input double InpEmergencySLPct  = 4.5;    // server-side stop distance, as % of 
 input int    InpLookback        = 14;     // noise lookback (sessions)
 input double InpBandMult        = 1.0;    // band width multiplier
 input int    InpExitHHMM        = 1559;   // NY time to flatten (HHMM)
+input double InpSkipAfterWinPts = 167;    // skip the next day after a win > this many points at full size (167 x $12 = $2,000); 0 = off
 //--- time zone (server -> New York)
 input bool   InpAutoServerOffset   = true; // live: detect server UTC offset; tester: uses the manual values below
 input int    InpServerWinterOffset = 2;    // server UTC offset in winter (FTMO MT5 is usually 2)
@@ -244,6 +245,28 @@ bool OpenPos(int side, double lots, string why)
   }
 
 //+------------------------------------------------------------------+
+//| this EA's net P&L on NY day `dayKey` (closed deals)              |
+//+------------------------------------------------------------------+
+double DayPnl(int dayKey)
+  {
+   datetime now = TimeTradeServer();
+   if(!HistorySelect(now - 6 * 86400, now)) return 0;
+   double sum = 0;
+   int n = HistoryDealsTotal();
+   for(int i = 0; i < n; i++)
+     {
+      ulong tk = HistoryDealGetTicket(i);
+      if(tk == 0) continue;
+      if(HistoryDealGetInteger(tk, DEAL_MAGIC) != InpMagic) continue;
+      if(HistoryDealGetString(tk, DEAL_SYMBOL) != _Symbol) continue;
+      datetime t = (datetime)HistoryDealGetInteger(tk, DEAL_TIME);
+      if(DayKey(ServerToNy(t)) != dayKey) continue;
+      sum += HistoryDealGetDouble(tk, DEAL_PROFIT) + HistoryDealGetDouble(tk, DEAL_COMMISSION) + HistoryDealGetDouble(tk, DEAL_SWAP);
+     }
+   return sum;
+  }
+
+//+------------------------------------------------------------------+
 //| build noise band, prev close, vol and size for NY day `key`      |
 //+------------------------------------------------------------------+
 bool PrepareDay(int key)
@@ -330,6 +353,17 @@ bool PrepareDay(int key)
    g_dayDpp = InpDollarsPerPoint * volScale * bufScale;  // finalised with today's open in RefreshToday
    g_dayLots = 0;
    g_dayBlocked = false;
+   // after a big trend-day win the next day tends to chop (tested 2016-2026, both halves): sit it out
+   if(InpSkipAfterWinPts > 0)
+     {
+      double yPnl = DayPnl(keys[valid[nv - 1]]);
+      double th = InpSkipAfterWinPts * InpDollarsPerPoint * bufScale;
+      if(yPnl > th)
+        {
+         g_dayBlocked = true;
+         PrintFormat("[IMOM] yesterday won $%.2f > $%.2f: no new trades today", yPnl, th);
+        }
+     }
    g_dayReady = true;
    PrintFormat("[IMOM] day %d ready: prevClose=%.2f vol14=%.4f volScale=%.2f bufScale=%.2f sessions=%d",
                key, g_prevClose, vol, volScale, bufScale, nv);
