@@ -1,0 +1,23 @@
+{
+ "date": "2026-11-14",
+ "items": [
+  {
+   "name": "Cerebras",
+   "ticker": "CBRS",
+   "action": "keep_watching",
+   "layer": "compute",
+   "status": "watch",
+   "verdict": "לא עוברת: פחות מ-200 ימי מסחר",
+   "why": "הנפקה במאי 2026; דוח רבעון 3 שיא והעלאת תחזית"
+  },
+  {
+   "name": "Comfort Systems",
+   "ticker": "FIX",
+   "action": "keep_watching",
+   "layer": "power_equipment",
+   "status": "watch",
+   "verdict": "חסר נתון מאומת על שיעור דאטה-סנטרים מההכנסות",
+   "why": "הכנסות רבעון 3 +54% ל-3.8 מיליארד דולר, backlog של 17.8 מיליארד"
+  }
+ ]
+}
