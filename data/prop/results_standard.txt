@@ -1,0 +1,29 @@
+
+#### base (Swing): per MNQ $26.3/day, Sharpe 1.54, years>0 11/11
+   $/yr per MNQ: {2016: 1860, 2017: 4950, 2018: 16200, 2019: 2070, 2020: 6250, 2021: 4570, 2022: 6900, 2023: 10570, 2024: 9360, 2025: 4160, 2026: 4580}
+   funded 2-Step @$5/pt: avg paid $13,163/yr, breach 10%
+   funded 2-Step @$8/pt: avg paid $17,722/yr, breach 46%
+
+#### Std: skip 10:00+14:00: per MNQ $21.3/day, Sharpe 1.28, years>0 10/11
+   $/yr per MNQ: {2016: 2740, 2017: 3830, 2018: 14840, 2019: -520, 2020: 6860, 2021: 940, 2022: 5950, 2023: 9140, 2024: 8050, 2025: 1510, 2026: 4650}
+   funded 2-Step @$5/pt: avg paid $11,027/yr, breach 12%
+   funded 2-Step @$8/pt: avg paid $15,458/yr, breach 52%
+
+#### Std: skip 10:00+14:00+14:30: per MNQ $21.2/day, Sharpe 1.27, years>0 10/11
+   $/yr per MNQ: {2016: 2500, 2017: 3520, 2018: 15420, 2019: -350, 2020: 7390, 2021: 890, 2022: 5450, 2023: 9500, 2024: 8440, 2025: 610, 2026: 4280}
+   funded 2-Step @$5/pt: avg paid $11,205/yr, breach 15%
+   funded 2-Step @$8/pt: avg paid $15,219/yr, breach 56%
+
+#### Speed vs pass rate (evaluation, no news rule)
+   2-Step @$8/pt: {'timeout': 9.6, 'fail': 23.5, 'pass': 66.9, 'avg_days_pass': np.float64(126.8)} median days 120
+   2-Step @$10/pt: {'timeout': 0.6, 'fail': 36.5, 'pass': 62.9, 'avg_days_pass': np.float64(105.8)} median days 97
+   2-Step @$12/pt: {'fail': 46.1, 'pass': 53.9, 'avg_days_pass': np.float64(81.2)} median days 75
+   2-Step @$15/pt: {'fail': 57.7, 'pass': 42.3, 'avg_days_pass': np.float64(64.0)} median days 57
+   1-Step @$5/pt: {'timeout': 13.4, 'fail': 18.0, 'pass': 68.6, 'avg_days_pass': np.float64(125.7)} median days 117
+   1-Step @$6/pt: {'timeout': 5.5, 'fail': 28.6, 'pass': 65.8, 'avg_days_pass': np.float64(112.9)} median days 104
+   1-Step @$8/pt: {'fail': 51.4, 'pass': 48.6, 'avg_days_pass': np.float64(78.6)} median days 73
+   1-Step @$10/pt: {'fail': 59.1, 'pass': 40.9, 'avg_days_pass': np.float64(58.5)} median days 51
+eval $8/pt: funded within 12m 78% (median day 135) | net 12m avg $4,274, median $3,077, P(loss) 29% | fees avg $752
+eval $10/pt: funded within 12m 87% (median day 114) | net 12m avg $4,932, median $4,351, P(loss) 21% | fees avg $944
+eval $12/pt: funded within 12m 91% (median day 97) | net 12m avg $5,448, median $4,514, P(loss) 17% | fees avg $1,140
+eval $15/pt: funded within 12m 91% (median day 80) | net 12m avg $6,049, median $5,602, P(loss) 19% | fees avg $1,697
