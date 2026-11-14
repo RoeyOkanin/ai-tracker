@@ -1,10 +1,18 @@
 {
- "signal_date": "2026-11-12",
- "generated_utc": "2026-11-13T19:34:11+00:00",
+ "signal_date": "2026-11-13",
+ "generated_utc": "2026-11-14T02:38:57+00:00",
  "regime": "red",
  "rebalance_band": 0.05,
- "mode": "none",
- "targets": {},
+ "mode": "initial",
+ "targets": {
+  "PLTR": 0.075,
+  "META": 0.047045,
+  "MSFT": 0.075
+ },
  "exits": [],
- "layer_of": {}
+ "layer_of": {
+  "PLTR": "software",
+  "META": "hyperscalers",
+  "MSFT": "hyperscalers"
+ }
 }
