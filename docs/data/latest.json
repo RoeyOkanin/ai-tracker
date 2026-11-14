@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-13",
- "generated_utc": "2026-11-14T02:38:57+00:00",
+ "generated_utc": "2026-11-14T12:51:53+00:00",
  "regime": {
   "status": "red",
   "breadth": 0.2222,
@@ -42,13 +42,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 294,
-    "tight7": 24,
+    "items7": 318,
+    "tight7": 27,
     "ease7": 3,
     "friction7": 10,
-    "net7": 21,
+    "net7": 24,
     "net_prev7": 12,
-    "trend": 9
+    "trend": 12
    },
    "news_label": "early",
    "news_label_he": "מועמד מוקדם: החדשות מקדימות את המחיר",
@@ -78,7 +78,7 @@
    ],
    "monitor_only": true,
    "news": {
-    "items7": 80,
+    "items7": 82,
     "tight7": 2,
     "ease7": 2,
     "friction7": 3,
@@ -117,7 +117,7 @@
    ],
    "monitor_only": true,
    "news": {
-    "items7": 136,
+    "items7": 138,
     "tight7": 10,
     "ease7": 1,
     "friction7": 1,
@@ -153,7 +153,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 61,
+    "items7": 62,
     "tight7": 0,
     "ease7": 1,
     "friction7": 3,
@@ -194,7 +194,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 111,
+    "items7": 113,
     "tight7": 2,
     "ease7": 0,
     "friction7": 1,
@@ -229,7 +229,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 39,
+    "items7": 41,
     "tight7": 0,
     "ease7": 1,
     "friction7": 0,
@@ -267,13 +267,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 186,
-    "tight7": 8,
-    "ease7": 2,
-    "friction7": 7,
-    "net7": 6,
+    "items7": 200,
+    "tight7": 10,
+    "ease7": 3,
+    "friction7": 8,
+    "net7": 7,
     "net_prev7": 1,
-    "trend": 5
+    "trend": 6
    },
    "news_label": null,
    "news_label_he": null,
@@ -289,13 +289,13 @@
    "rank_1m_ago": 11,
    "rank_3m_ago": 5,
    "score": 0.556,
-   "r1w": 0.1104,
-   "r1m": -0.1145,
-   "r3m": -0.2816,
-   "r6m": -0.1543,
-   "r12m": 0.45,
+   "r1w": 0.1082,
+   "r1m": -0.1162,
+   "r3m": -0.283,
+   "r6m": -0.1559,
+   "r12m": 0.4472,
    "above_ma200": false,
-   "dist_ma200": -0.1476,
+   "dist_ma200": -0.1493,
    "members": [
     "ASML",
     "AMAT",
@@ -313,7 +313,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 176,
+    "items7": 182,
     "tight7": 4,
     "ease7": 4,
     "friction7": 1,
@@ -352,7 +352,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 116,
+    "items7": 117,
     "tight7": 4,
     "ease7": 2,
     "friction7": 0,
@@ -392,13 +392,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 165,
-    "tight7": 24,
+    "items7": 172,
+    "tight7": 27,
     "ease7": 5,
     "friction7": 1,
-    "net7": 19,
+    "net7": 22,
     "net_prev7": 14,
-    "trend": 5
+    "trend": 8
    },
    "news_label": "early",
    "news_label_he": "מועמד מוקדם: החדשות מקדימות את המחיר",
@@ -429,10 +429,10 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 244,
+    "items7": 258,
     "tight7": 1,
     "ease7": 1,
-    "friction7": 113,
+    "friction7": 117,
     "net7": 0,
     "net_prev7": 0,
     "trend": 0
@@ -472,7 +472,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 139,
+    "items7": 144,
     "tight7": 3,
     "ease7": 1,
     "friction7": 2,
@@ -494,13 +494,13 @@
    "rank_1m_ago": 12,
    "rank_3m_ago": 8,
    "score": 0.4,
-   "r1w": 0.1122,
-   "r1m": -0.0813,
-   "r3m": -0.2198,
-   "r6m": -0.248,
-   "r12m": 0.2784,
+   "r1w": 0.1109,
+   "r1m": -0.0825,
+   "r3m": -0.2207,
+   "r6m": -0.2489,
+   "r12m": 0.2768,
    "above_ma200": false,
-   "dist_ma200": -0.1313,
+   "dist_ma200": -0.1324,
    "members": [
     "VRT",
     "ETN",
@@ -517,13 +517,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 286,
-    "tight7": 26,
+    "items7": 299,
+    "tight7": 28,
     "ease7": 2,
     "friction7": 3,
-    "net7": 24,
+    "net7": 26,
     "net_prev7": 4,
-    "trend": 20
+    "trend": 22
    },
    "news_label": "early",
    "news_label_he": "מועמד מוקדם: החדשות מקדימות את המחיר",
@@ -557,13 +557,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 205,
-    "tight7": 7,
-    "ease7": 0,
+    "items7": 217,
+    "tight7": 9,
+    "ease7": 1,
     "friction7": 4,
-    "net7": 7,
+    "net7": 8,
     "net_prev7": 0,
-    "trend": 7
+    "trend": 8
    },
    "news_label": null,
    "news_label_he": null,
@@ -593,13 +593,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 208,
-    "tight7": 10,
+    "items7": 219,
+    "tight7": 11,
     "ease7": 3,
-    "friction7": 8,
-    "net7": 7,
+    "friction7": 9,
+    "net7": 8,
     "net_prev7": 0,
-    "trend": 7
+    "trend": 8
    },
    "news_label": null,
    "news_label_he": null,
@@ -630,7 +630,7 @@
    "why": "המונופול היחיד במכונות ליתוגרפיה EUV, שבלעדיהן אין שבבי AI מתקדמים",
    "company": "ASML",
    "news7": {
-    "items": 21,
+    "items": 22,
     "tight": 0,
     "ease": 0,
     "friction": 1
@@ -683,7 +683,7 @@
    "above_ma200": false,
    "vol": 0.7058,
    "from_52w_high": -0.4781,
-   "score_in_layer": 0.513,
+   "score_in_layer": 0.538,
    "smh_weight": 5.48,
    "status": "active",
    "exposure": "driver",
@@ -957,18 +957,18 @@
    "layer": "equipment",
    "layer_name": "ציוד וחומרים לייצור שבבים",
    "tradable": false,
-   "price": 158.05,
-   "r1w": 0.1022,
-   "r1m": -0.0327,
-   "r3m": -0.3354,
-   "r6m": -0.3963,
-   "r12m": 0.1751,
-   "dist_ma50": -0.0837,
-   "dist_ma200": -0.2533,
+   "price": 154.1,
+   "r1w": 0.0746,
+   "r1m": -0.0569,
+   "r3m": -0.352,
+   "r6m": -0.4114,
+   "r12m": 0.1457,
+   "dist_ma50": -0.1062,
+   "dist_ma200": -0.2719,
    "above_ma200": false,
-   "vol": 0.5859,
-   "from_52w_high": -0.5066,
-   "score_in_layer": 0.231,
+   "vol": 0.5871,
+   "from_52w_high": -0.5189,
+   "score_in_layer": 0.205,
    "smh_weight": null,
    "status": "signal",
    "exposure": "driver",
@@ -1030,7 +1030,7 @@
    "why": "השנייה בדואופול ה-EDA",
    "company": "Cadence Design",
    "news7": {
-    "items": 10,
+    "items": 11,
     "tight": 0,
     "ease": 1,
     "friction": 0
@@ -1090,7 +1090,7 @@
    "why": "מייצרת כמעט את כל שבבי ה-AI המתקדמים, כולל אריזת CoWoS",
    "company": "TSMC",
    "news7": {
-    "items": 31,
+    "items": 32,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1265,7 +1265,7 @@
    "why": "אחת משלוש יצרניות ה-HBM בעולם",
    "company": "Micron",
    "news7": {
-    "items": 49,
+    "items": 51,
     "tight": 2,
     "ease": 1,
     "friction": 0
@@ -1385,7 +1385,7 @@
    "why": "מובילת ה-HBM העולמית (קשה לקנות מישראל)",
    "company": "SK Hynix",
    "news7": {
-    "items": 2,
+    "items": 3,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1465,8 +1465,8 @@
    "why": "המעבדים הגרפיים ששולטים באימון והרצה של מודלים",
    "company": "Nvidia",
    "news7": {
-    "items": 85,
-    "tight": 9,
+    "items": 96,
+    "tight": 10,
     "ease": 1,
     "friction": 2
    },
@@ -1555,7 +1555,7 @@
    "why": "שבבים מותאמים ושבבי תקשורת אופטית לדאטה-סנטרים",
    "company": "Marvell",
    "news7": {
-    "items": 28,
+    "items": 30,
     "tight": 0,
     "ease": 0,
     "friction": 2
@@ -1615,7 +1615,7 @@
    "why": "משדרים אופטיים ורכיבי לייזר לדאטה-סנטרים",
    "company": "Coherent Corp",
    "news7": {
-    "items": 19,
+    "items": 21,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1645,7 +1645,7 @@
    "why": "לייזרים ומשדרים אופטיים לרשתות AI",
    "company": "Lumentum",
    "news7": {
-    "items": 20,
+    "items": 21,
     "tight": 1,
     "ease": 0,
     "friction": 1
@@ -1705,7 +1705,7 @@
    "why": "שבבי קישוריות (PCIe/CXL) בתוך שרתי AI",
    "company": "Astera Labs",
    "news7": {
-    "items": 9,
+    "items": 10,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -1735,7 +1735,7 @@
    "why": "מייצרת משדרים אופטיים עבור חברות השבבים והרשת",
    "company": "Fabrinet",
    "news7": {
-    "items": 7,
+    "items": 8,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1765,7 +1765,7 @@
    "why": "תקשורת אופטית בין דאטה-סנטרים",
    "company": "Ciena",
    "news7": {
-    "items": 22,
+    "items": 23,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -2260,7 +2260,7 @@
    "why": "מערכות קירור לדאטה-סנטרים",
    "company": "Modine",
    "news7": {
-    "items": 19,
+    "items": 20,
     "tight": 2,
     "ease": 0,
     "friction": 0
@@ -2290,7 +2290,7 @@
    "why": "תאי דלק לייצור חשמל באתר הדאטה-סנטר",
    "company": "Bloom Energy",
    "news7": {
-    "items": 13,
+    "items": 15,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -2392,17 +2392,17 @@
    "layer": "power_equipment",
    "layer_name": "ציוד חשמל וקירור",
    "tradable": false,
-   "price": 244.8,
-   "r1w": 0.0706,
-   "r1m": -0.0512,
-   "r3m": -0.2071,
-   "r6m": -0.0718,
-   "r12m": 0.0399,
-   "dist_ma50": -0.0733,
-   "dist_ma200": -0.0819,
+   "price": 243.45,
+   "r1w": 0.0647,
+   "r1m": -0.0564,
+   "r3m": -0.2115,
+   "r6m": -0.077,
+   "r12m": 0.0341,
+   "dist_ma50": -0.0783,
+   "dist_ma200": -0.087,
    "above_ma200": false,
    "vol": 0.4049,
-   "from_52w_high": -0.2129,
+   "from_52w_high": -0.2172,
    "score_in_layer": 0.611,
    "smh_weight": null,
    "status": "signal",
@@ -2417,17 +2417,17 @@
    "layer": "power_equipment",
    "layer_name": "ציוד חשמל וקירור",
    "tradable": false,
-   "price": 132.52,
-   "r1w": 0.1221,
-   "r1m": 0.0012,
-   "r3m": -0.186,
-   "r6m": -0.2184,
-   "r12m": 0.2397,
-   "dist_ma50": -0.0258,
-   "dist_ma200": -0.1348,
+   "price": 131.28,
+   "r1w": 0.1116,
+   "r1m": -0.0082,
+   "r3m": -0.1936,
+   "r6m": -0.2257,
+   "r12m": 0.2281,
+   "dist_ma50": -0.0348,
+   "dist_ma200": -0.1429,
    "above_ma200": false,
-   "vol": 0.5452,
-   "from_52w_high": -0.2937,
+   "vol": 0.5454,
+   "from_52w_high": -0.3003,
    "score_in_layer": 0.556,
    "smh_weight": null,
    "status": "signal",
@@ -2435,7 +2435,7 @@
    "why": "טורבינות וציוד לרשת החשמל",
    "company": "Siemens Energy",
    "news7": {
-    "items": 11,
+    "items": 12,
     "tight": 5,
     "ease": 0,
     "friction": 0
@@ -2495,7 +2495,7 @@
    "why": "ייצור חשמל עם חוזים לדאטה-סנטרים",
    "company": "Vistra",
    "news7": {
-    "items": 13,
+    "items": 14,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -2585,9 +2585,9 @@
    "why": "כורים גרעיניים קטנים לדאטה-סנטרים, עוד בלי הכנסות משמעותיות",
    "company": "Oklo",
    "news7": {
-    "items": 7,
-    "tight": 0,
-    "ease": 0,
+    "items": 10,
+    "tight": 2,
+    "ease": 1,
     "friction": 0
    },
    "stretched": false
@@ -2790,7 +2790,7 @@
    "why": "Azure, ומהמשקיעות הגדולות בתשתיות AI",
    "company": "Microsoft data center",
    "news7": {
-    "items": 44,
+    "items": 46,
     "tight": 1,
     "ease": 0,
     "friction": 2
@@ -2820,7 +2820,7 @@
    "why": "AWS ושבבי Trainium",
    "company": "AWS data center",
    "news7": {
-    "items": 49,
+    "items": 52,
     "tight": 4,
     "ease": 1,
     "friction": 1
@@ -2850,10 +2850,10 @@
    "why": "Google Cloud, שבבי TPU ומודלי Gemini",
    "company": "Google data center",
    "news7": {
-    "items": 49,
+    "items": 55,
     "tight": 1,
     "ease": 1,
-    "friction": 2
+    "friction": 3
    },
    "stretched": false
   },
@@ -2880,9 +2880,9 @@
    "why": "מהמשקיעות הגדולות בדאטה-סנטרים למודלים שלה",
    "company": "Meta data center",
    "news7": {
-    "items": 39,
-    "tight": 2,
-    "ease": 0,
+    "items": 42,
+    "tight": 4,
+    "ease": 1,
     "friction": 1
    },
    "stretched": false
@@ -2910,7 +2910,7 @@
    "why": "ענן AI שגדל מהר, ממומן בחלקו בחוב",
    "company": "Oracle data center",
    "news7": {
-    "items": 35,
+    "items": 36,
     "tight": 4,
     "ease": 0,
     "friction": 0
@@ -2940,8 +2940,8 @@
    "why": "ענן GPU ייעודי ל-AI",
    "company": "CoreWeave",
    "news7": {
-    "items": 55,
-    "tight": 3,
+    "items": 58,
+    "tight": 4,
     "ease": 0,
     "friction": 0
    },
@@ -2970,8 +2970,8 @@
    "why": "ענן GPU ייעודי ל-AI",
    "company": "Nebius",
    "news7": {
-    "items": 48,
-    "tight": 3,
+    "items": 50,
+    "tight": 4,
     "ease": 2,
     "friction": 0
    },
@@ -3030,7 +3030,7 @@
    "why": "פלטפורמת AI לארגונים ולממשלות",
    "company": "Palantir",
    "news7": {
-    "items": 23,
+    "items": 24,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -3060,7 +3060,7 @@
    "why": "סוכני AI לארגונים, עוד חלק קטן מההכנסות",
    "company": "ServiceNow",
    "news7": {
-    "items": 17,
+    "items": 18,
     "tight": 0,
     "ease": 1,
     "friction": 0
@@ -3270,7 +3270,7 @@
    "why": "שבבים לסמארטפונים ומחשבי AI; במעקב כי היא ב-SMH",
    "company": "Qualcomm",
    "news7": {
-    "items": 21,
+    "items": 22,
     "tight": 2,
     "ease": 0,
     "friction": 1
@@ -3364,12 +3364,11 @@
   "ענקיות הענן: עלתה מעל ממוצע 200 השבוע",
   "תוכנה ופלטפורמות AI: עלתה מעל ממוצע 200 השבוע",
   "שבבים אנלוגיים וחשמל (מעקב): קפצה מהמקום 10 למקום 3 בחודש האחרון",
-  "מעבדים ומכשירי קצה (מעקב): קפצה מהמקום 9 למקום 2 בחודש האחרון",
-  "שבבי AI: מועמד מוקדם: החדשות מקדימות את המחיר (חדשות 7 ימים: 24 סימני מחסור, 3 סימני הקלה; שלב מחיר: קר)"
+  "מעבדים ומכשירי קצה (מעקב): קפצה מהמקום 9 למקום 2 בחודש האחרון"
  ],
  "news_radar": {
   "as_of": "2026-11-14",
-  "generated_utc": "2026-11-14T02:35:40+00:00",
+  "generated_utc": "2026-11-14T12:48:21+00:00",
   "sources_ok": {
    "google": 165,
    "yahoo": 80

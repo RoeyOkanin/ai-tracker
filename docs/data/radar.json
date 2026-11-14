@@ -4,7 +4,7 @@
   {
    "key": "equipment",
    "name": "ציוד וחומרים לייצור שבבים",
-   "items7": 176,
+   "items7": 182,
    "tight7": 4,
    "ease7": 4,
    "friction7": 1,
@@ -73,7 +73,7 @@
   {
    "key": "design",
    "name": "תכנון שבבים ו-IP",
-   "items7": 61,
+   "items7": 62,
    "tight7": 0,
    "ease7": 1,
    "friction7": 3,
@@ -133,7 +133,7 @@
   {
    "key": "foundry",
    "name": "ייצור ואריזה מתקדמת",
-   "items7": 116,
+   "items7": 117,
    "tight7": 4,
    "ease7": 2,
    "friction7": 0,
@@ -202,16 +202,25 @@
   {
    "key": "memory",
    "name": "זיכרון ואחסון",
-   "items7": 165,
-   "tight7": 24,
+   "items7": 172,
+   "tight7": 27,
    "ease7": 5,
    "friction7": 1,
-   "net7": 19,
+   "net7": 22,
    "net_prev7": 14,
-   "trend": 5,
-   "tight30": 95,
+   "trend": 8,
+   "tight30": 98,
    "ease30": 7,
    "headlines": [
+    {
+     "title": "TeamGroup CEO Warns 2027 DRAM Shortage Could Become So Severe That Even Money Won’t Guarantee Supply",
+     "source": "Wccftech",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNOGJ1eWthRFpOcnhZNEI0MWVrTXg1SDdKdUxDeWFKTzNMdzA5TWZObGV2akIyaWhqYzJXSGNjY3BkVG91Vm5PbU1aQlVLc3JXV014QnpYUURrWHFQZHpWWXBGNHpRUkZXbVNxNGJvRVRTZnQwZ0g2NWFyVm5ZOF9hdjBjM3NIVmh5aW5SeDNESHd1TUw1RHJJWXctQzlNd2ltM1JIV192aWltV1NfUHdrUkFxS0RHd1UyV2p1ctIBwgFBVV95cUxQNHZNZ1RrZGlkOFlGXzhZdkpra3MzbzY3X3UtMU9CNzVyVTJJcDlnbmprbzJ1dUV3NlVuS3RCYUtmSExyVjRzZndiV2ZOa3czZHh2UEthWnRVUDdnYXRUYXlSYmF4bmNOU3FyS2lTT085eE1ucEtlcXRKUEZCdW1KRUFnSEFpU3BSaHpvNFBkZXlGaDRLRFBld3E1aG1ySWRRLUJPb0FROU1menA3Qnd4TkxuS0FtRmNQM1BsM2VjRmhIZw?oc=5",
+     "published": "2026-11-14T12:11+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Michael Burry vindicated as Nebius stock drops over 17% — and he's warning of a coming chip glut",
      "source": "Moneywise",
@@ -256,31 +265,40 @@
      "tight": 0,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Samsung Faces EUV Mask Blank Shortage as Hoya Rejects Supply Increase",
-     "source": "THE ELEC, Korea Electronics Industry Media",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1JWExnTC1MZWV4TUNkcm5MOVFiN3k0LXFjVmJfeTI2V3U3elAxR3l5NTRNNXkzVTVmcHktQU5sYmxwT25nY2lvOGJwTmV5T1hWM2F3VDhibnBOb0otR1JCZzRIT2REQ0k?oc=5",
-     "published": "2026-11-12T15:03+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "compute",
    "name": "שבבי AI",
-   "items7": 294,
-   "tight7": 24,
+   "items7": 318,
+   "tight7": 27,
    "ease7": 3,
    "friction7": 10,
-   "net7": 21,
+   "net7": 24,
    "net_prev7": 12,
-   "trend": 9,
-   "tight30": 54,
+   "trend": 12,
+   "tight30": 57,
    "ease30": 4,
    "headlines": [
+    {
+     "title": "Did Nvidia engineer the GPU shortage? The report on funded startups",
+     "source": "Pasquale Pillitteri",
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPakJMYk1ubDNfRi1pNDFRV2R1TnVMYjNNQm85cGlMbnJyRFBITUM3YU0xNkJDR2E4VkVTb20yVHZFbFlKV3c2eHA3bDZMWTJTT2F5eWh2U3Vzc3hmT0lURXVEUXhBcndrSEFsV3pLd2l3eHZIRnhqOUFoWi1ydms5SVk4S2Q3TlVNbVk4VUdzMA?oc=5",
+     "published": "2026-11-14T07:33+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "AMD Cuts Radeon GPU Supply in China by Up to 50%, and the Shortage Could Last Until January 2027",
+     "source": "TalkEsport",
+     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPLU1zSHJpWEdGZURVdzRSUm5rN3RJOGlXZjZENlJmMjBtR1N1eEd2X1gxS2dnbEJNMnhfZE1Ec0lHQjk4bDF2UzVYQkdqTEZLa2RDVmpKd0IwN3lmalRnQlU1R0w5X3JPTW1kWU9ERFFZUjZtWkFqRDUxNlY4YmFIMzIxQWNmUHZIdU9VQjQ3M3FiV3ltQXVxZw?oc=5",
+     "published": "2026-11-14T06:54+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "NVIDIA Allegedly Engineered Scarcity By Funding AI Startups To Buy Its GPUs",
      "source": "TechPowerUp",
@@ -316,31 +334,13 @@
      "tight": 0,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "The Deal Behind TD Cowen’s Downgrade of Marvell (MRVL)",
-     "source": "Insider Monkey",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/deal-behind-td-cowen-downgrade-213101784.html",
-     "published": "2026-11-13T21:31+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Cisco CEO on trusting Nvidia chips after Jensen Huang's exit: 'Absolutely'",
-     "source": "Yahoo Finance Video",
-     "url": "https://finance.yahoo.com/video/cisco-ceo-on-trusting-nvidia-chips-after-jensen-huangs-exit-absolutely-201049124.html",
-     "published": "2026-11-13T20:10+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "networking",
    "name": "רשתות, אופטיקה וקישוריות",
-   "items7": 139,
+   "items7": 144,
    "tight7": 3,
    "ease7": 1,
    "friction7": 2,
@@ -409,7 +409,7 @@
   {
    "key": "servers",
    "name": "שרתים ומתלים",
-   "items7": 111,
+   "items7": 113,
    "tight7": 2,
    "ease7": 0,
    "friction7": 1,
@@ -478,16 +478,34 @@
   {
    "key": "power_equipment",
    "name": "ציוד חשמל וקירור",
-   "items7": 286,
-   "tight7": 26,
+   "items7": 299,
+   "tight7": 28,
    "ease7": 2,
    "friction7": 3,
-   "net7": 24,
+   "net7": 26,
    "net_prev7": 4,
-   "trend": 20,
-   "tight30": 37,
+   "trend": 22,
+   "tight30": 39,
    "ease30": 3,
    "headlines": [
+    {
+     "title": "Inside the global transformer shortage | Transforming business",
+     "source": "Modern Ghana",
+     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE40dzlrTHBGd0xMVjVLSUNHUEdNc3hqbDk1VFd6TEQ0LVlyQUk1TFp4TjA1RDVHOUI3VS1QM3ZsOVhucGVWTVF0LUczX29oazAzcGhZaWxpME94SlllU3fSAVxBVV95cUxNX2djSUtGZHVyTnVtLXRDS3o3SFh3VVRyN0JvYUI0Wk5xYnBjS1Ixa3NoT0xiNVhSVkhpa3dQMVNtY0Jvb09hLUlObEZRajB3TktJYkxWT1U5OEZVVw?oc=5",
+     "published": "2026-11-14T11:50+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Supply chain bottlenecks challenge AI data centre expansion",
+     "source": "ET Datacenters",
+     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOVG5FNWZkQVZFUldySDd2VXlJSUNJMW11Wl9jUlZwRXR6bWNIcERvSV94NkNBU2xUYzV5am5vN2tfSlh4N1pjRXVuUkgwdG5PY2lTOUN6REV0cURDelk5S2k2djY3czdnVlNRTzBlN29FVmsyb0RSdl9fcVlNUlhKVHJoRWFPdm92ZnVWR0ZmaEZBZmdwdHJjX1RCTTE3dWZ3N2NPaEtQVFNCOGxuU0VRMzc3MEdHQmxZLUR1SE1MWEZJQXJfb2tYQWRhT096MEc5elNkR3EtYTlHeE1DN3dtbVdXaDhSTDkt0gHsAUFVX3lxTE1UX1ltZ1p5TEdxNVpaY0FkNmNKdUc4NUVPeGZjcFdBb1lzOGI1V3RDVmxmdTUzU216dllubEtsU0hsX1Z6U3lCVHdlTmZENVVWTWJjcEl5RkMwT1ZucFphTTVEcjZueGxxcDlfc1NLT3RkZkN5SXJFNDhJLU5JbEUwOExHY3FxUUoxOTRQdWM4TWVmMkJoTVFmNVoxMTBJOFpYS3FudGQ2Ty10MjlPYXl4ekl6cFdPeHNOMnVZT3pqRTlqZTJ4aWlHRTZzMEFJTE1sY1pIRkZVWDJsblFFVmxmdldnWFJlNDNwbm5u?oc=5",
+     "published": "2026-11-14T02:39+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Siemens Energy stock: record backlog supports 2027 outlook",
      "source": "ad-hoc-news.de",
@@ -523,40 +541,49 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Cisco's Q1 Earnings Beat Estimates, Strong Networking Aids Revenues",
-     "source": "Zacks",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/ciscos-q1-earnings-beat-estimates-141200789.html",
-     "published": "2026-11-13T14:12+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Siemens Energy stock enters fiscal 2027 with record backlog",
-     "source": "ad-hoc-news.de",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQS0I3RHVzTEdQVUVMOHpzLVB5Y25LbzNwY2tlalRoWHFGR3ZJWjQyM3lOU01EX0VoQWt4WTBINE1MZGlVTjBCRzJ4aGdIQl9EanZTQWhITXc2dW9BQ2IzeUl3U2o1dXVsZGJJb3RHcEJkQzJuRzVTb0FHemRWOXhUbUtNUTFGMkxiZjZSdVdnQVF5VFo2RHhzX0s1RjM0dExjWkF3MmFmSl9BZmFhcmNOdmxYMGlyalZPVm91aVJBZw?oc=5",
-     "published": "2026-11-13T10:06+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "power_generation",
    "name": "ייצור חשמל",
-   "items7": 205,
-   "tight7": 7,
-   "ease7": 0,
+   "items7": 217,
+   "tight7": 9,
+   "ease7": 1,
    "friction7": 4,
-   "net7": 7,
+   "net7": 8,
    "net_prev7": 0,
-   "trend": 7,
-   "tight30": 8,
-   "ease30": 1,
+   "trend": 8,
+   "tight30": 10,
+   "ease30": 2,
    "headlines": [
+    {
+     "title": "Centrus Energy (LEU) Lands Multiyear HALEU Deal Backed By Customer Prepayments",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/energy/articles/centrus-energy-leu-lands-multiyear-061743445.html",
+     "published": "2026-11-14T06:17+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Centrus Energy (LEU) Stock May Look Rich Despite A New Fuel Supply Deal",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/centrus-energy-leu-stock-may-042050380.html",
+     "published": "2026-11-14T04:20+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Centrus Energy (LEU) Has Fresh Attention, But What Is The Market Missing?",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/energy/articles/centrus-energy-leu-fresh-attention-031235109.html",
+     "published": "2026-11-14T03:12+00:00",
+     "tight": 1,
+     "ease": 1,
+     "friction": 0
+    },
     {
      "title": "Should Investors Buy Quanta Stock After Impressive Q3 Earnings?",
      "source": "Zacks",
@@ -583,49 +610,40 @@
      "tight": 0,
      "ease": 0,
      "friction": 1
-    },
-    {
-     "title": "US data center power demand outpaces supply by 10x and could bring the AI boom to a grinding halt by 2030",
-     "source": "TechRadar",
-     "url": "https://news.google.com/rss/articles/CBMi_AJBVV95cUxNZFNJdUU4eThzcFdwMXhSdEdIQmtkRlNCdWRlZ21mVXRhczZuUUd2WEltM0tmeTVGOUItS09MVnJmbEFBWVF6S0UwelVZR2ttV0RPRmhHbUZ0bTdJZ3duckhOSFM1TV9uTkJxYWNyZFExMTZUd3dIV3VXQ1U5WjRRbnlEWXlXeXdMY3VlOGNnc3pEbFV0N2FzaDBVdW9nVHhmQzdNTXVPRUhmdmdvWi0yS0xLbkhWYmcycncteF82OXdRcnZvR1c3QnZ5b1hERUUtajBqVktmTXluZFZNc08wRFUtSFBvb2ctZ0c4dHJySWFmVi1zZTNjQzBpRE9RZTc3TXpDeUlwNXFiZmVtcm1ObHVjYzNab3MzOEJfd3ZXcUtuTXJ1dkZ0WDFPN1NiYkNqZGplZUhFdy1RbXFyQUUzMy1fWjZ2WnNkemV0QmdsSmRPSVhOUGFtYW9rNHpuYWJ4Y09UMnFpRDVHX1VyeHdxNVR4TklNdDlvRlVaLQ?oc=5",
-     "published": "2026-11-12T14:13+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "A Utah startup has officially submitted its plans for nuclear-powered data centers. As it seeks its first permit, here’s what we know.",
-     "source": "The Salt Lake Tribune",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPazVhTE5WVGMwc0dIRzBGSzR5UF9EVHptbG44S2VNMDZSS3BsdEliWnRNdEFXalJBS3l1aTQ3X21yVENHMEZObkxFeTNyY1ktSHgwUndfYzV6Rk5OMkxVNW80WmoxZUkzRU5RRE1GY0d3a3BIaXVSaWVFMHUzWGVzdEl1M1FWN1BSQmc?oc=5",
-     "published": "2026-11-12T13:06+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "3 AI Power Stocks With Earnings Growth Over 21%",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-power-stocks-earnings-111348197.html",
-     "published": "2026-11-12T11:13+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "datacenter_reits",
    "name": "נדל\"ן ופיתוח דאטה-סנטרים",
-   "items7": 244,
+   "items7": 258,
    "tight7": 1,
    "ease7": 1,
-   "friction7": 113,
+   "friction7": 117,
    "net7": 0,
    "net_prev7": 0,
    "trend": 0,
    "tight30": 1,
    "ease30": 1,
    "headlines": [
+    {
+     "title": "Moratorium proposed for data centers",
+     "source": "AdVantageNews.com",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOQ2xVakFTVGVLTXBVQnhfR3hOU1NBOWNfdmpoMXZGa0ViNmlRUWpWS3pZYUFKTnFzSzN5NTcxU0laTjhnSHVCVlFmbmg4eWxKX1lXSUFLX2ZwQXg4NVQwME9LTDJDQ0ZMX3JNWGltQm9rU1BSeFA3M3JCWUc0WmYyRGdPVTVROVA1RXdtTFpDdklIeWZLbV8zWjcyU2RQeElqQnF1U0Z6dVE2Rk9mUFFyeG5Ga0NEMGZIWjVtazVHX2RHSDhQblE?oc=5",
+     "published": "2026-11-14T12:00+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Dalton City Council to consider moratorium on data centers Monday",
+     "source": "Local 3 News",
+     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQZF9ESnB3VDV5YVI1RlJwZFo2dGhXSlQ1X3NoQlJUREppbFZUbFE1Skd6NDNpNWNIRlYtZFNFWTBZM3ZRSlpCVHU5TDF0ZzVKelZBYWRfMkhNYmRfNVZFaTJvc3J3Uk41U2dUemJJNDRZTHFpWnBWc0ltYmdoUkZFQnFqbHowZ1N0LTdOamZOMUNqOGhZU09PRjlZd2NoVzZ0QkkxNldzdXBxUU54RzdsTXRuSl9QNm8zNW91Ujd3b25kUDU0V3NYbEc2T2RMUXlIeUFSTGtVZmdBd0IxYTNTSTZvcXNXTGQw?oc=5",
+     "published": "2026-11-14T03:06+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
     {
      "title": "Holscher: Data center moratorium doesn’t ‘mean no forever’",
      "source": "Sunflower State Journal",
@@ -661,40 +679,49 @@
      "tight": 0,
      "ease": 0,
      "friction": 1
-    },
-    {
-     "title": "Anti-data center advocates demand moratorium in Rapid City",
-     "source": "SDPB",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPR1IxQzFvdUdDSkFXTU9XWVQyTWxxT2plMmZaWGZsMjFncjJnVExWS1k2c1lNcUhKVEphRnJUOW4xemMweDhfNWE5UTkzcV9TWDhrdzE2cVh1ZkZ3WnViaENCZmxyWkd0Z3FJd3FSX0RrRkRFUkx4cTFzZHlmVWk4eTBBSGxtdGgwOURkeVpSOXlBWjc4eEZHejBkc29WUXg5?oc=5",
-     "published": "2026-11-13T21:54+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Who are Josh Hawley's allies in national data center moratorium? Inside push to halt AI",
-     "source": "Newsweek",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOX2NEMHVHWjlrTFZ2ZjNmT1ctaHhCaWJobVNCdzVHVTRnelA5Ym5OUUp0dkQ0ckdtRUg1Z1pnbFFodlRRN3NsYnRWcGJXUGt4V0tzSDlobFFYVHROYk5TVlYySWpxQ2pJODBSNkZfNzZ3bmJfOFpWcWFCeV94MHZmczgwQ2VROFMwTlA5TVlHamFJYUt0NnhRaGdqS2ZoTjRwLUpfUHBoeWpXdw?oc=5",
-     "published": "2026-11-13T21:37+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
     }
    ]
   },
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "items7": 186,
-   "tight7": 8,
-   "ease7": 2,
-   "friction7": 7,
-   "net7": 6,
+   "items7": 200,
+   "tight7": 10,
+   "ease7": 3,
+   "friction7": 8,
+   "net7": 7,
    "net_prev7": 1,
-   "trend": 5,
-   "tight30": 10,
-   "ease30": 2,
+   "trend": 6,
+   "tight30": 12,
+   "ease30": 3,
    "headlines": [
+    {
+     "title": "Centrus Energy (LEU) Lands Multiyear HALEU Deal Backed By Customer Prepayments",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/energy/articles/centrus-energy-leu-lands-multiyear-061743445.html",
+     "published": "2026-11-14T06:17+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Centrus Energy (LEU) Has Fresh Attention, But What Is The Market Missing?",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/energy/articles/centrus-energy-leu-fresh-attention-031235109.html",
+     "published": "2026-11-14T03:12+00:00",
+     "tight": 1,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "California Voters Pass Ban on Wealth Taxes",
+     "source": "The Wall Street Journal",
+     "url": "https://www.wsj.com/politics/california-voters-pass-ban-on-wealth-taxes-a045b6c1?siteid=yhoof2&yptr=yahoo",
+     "published": "2026-11-14T02:03+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
     {
      "title": "Booking Holdings vs. GameStop: Which Consumer Stock Is a Better Buy for 2027?",
      "source": "Motley Fool",
@@ -721,49 +748,31 @@
      "tight": 0,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "CBRG 2X Cerebras ETF Surges 16% as Cerebras Jumps 8% on Microsoft Deal and Raised Guidance",
-     "source": "24/7 Wall St.",
-     "url": "https://247wallst.com/investing/2026/11/13/cbrg-2x-cerebras-etf-surges-16-as-cerebras-jumps-8-on-microsoft-deal-and-raised-guidance/",
-     "published": "2026-11-13T18:03+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Is Rothschild & Co Redburn Wrong to Give Up on Broadcom? Wall Street Still Sees $533",
-     "source": "TIKR",
-     "url": "https://www.tikr.com/blog/is-rothschild-co-redburn-wrong-to-give-up-on-broadcom-wall-street-still-sees-533?ref=yahoofinance&tlnk=yf-261113-4j384xm2",
-     "published": "2026-11-13T17:10+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Qualcomm’s CEO Says Chipmakers Are in an “Extreme Shortage”",
-     "source": "24/7 Wall St.",
-     "url": "https://247wallst.com/investing/2026/11/13/qualcomms-ceo-says-chipmakers-are-in-an-extreme-shortage/",
-     "published": "2026-11-13T16:28+00:00",
-     "tight": 2,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "neoclouds",
    "name": "ענן AI עצמאי",
-   "items7": 208,
-   "tight7": 10,
+   "items7": 219,
+   "tight7": 11,
    "ease7": 3,
-   "friction7": 8,
-   "net7": 7,
+   "friction7": 9,
+   "net7": 8,
    "net_prev7": 0,
-   "trend": 7,
-   "tight30": 15,
+   "trend": 8,
+   "tight30": 16,
    "ease30": 3,
    "headlines": [
+    {
+     "title": "Nebius CEO: Customer Prepayments Now Cover “More Than 100%” of New Capacity, Up From 50%",
+     "source": "TIKR",
+     "url": "https://www.tikr.com/blog/nebius-ceo-customer-prepayments-now-cover-more-than-100-of-new-capacity-up-from-50?ref=yahoofinance&tlnk=yf-261114-8r5hpg4f",
+     "published": "2026-11-14T10:11+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Cerebras stock surges on Microsoft deal: What it means for Nvidia",
      "source": "Yahoo Finance Video",
@@ -783,6 +792,15 @@
      "friction": 0
     },
     {
+     "title": "Broadcom Target Cut 33% Over Artificial Intelligence Financing Risk",
+     "source": "TechStock²",
+     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNaHZpWmM4SGloZmZWRlNuYVROLUNHVkVBZjFuZU9xZ010R0s3WUd4bVZIY1VVa00tWlctS0ljaElxdThlRDhHVkYxODZNUzNhM0JMWUxhZnp2VmpveXJNQ3ExbWk2TEtuaW80T0c3RVpRSTBrdzhEczlZWmtpcmpPbGxaZHlaRV9xS19qZXR3?oc=5",
+     "published": "2026-11-13T16:17+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
      "title": "Nebius answers the AI financing question with customer prepayments",
      "source": "W.Media",
      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOUEpqNkRhM3h5OThnSVJaTEs2cTBoVGZjclRSOVB6UTZJNnBlQ3VDOHBTdjZxN3gzZGdkYlN2eFplYXVaUHdqWmFjM1NhOW85UE5OMTN6S0F2c1RVOVlISGNyczN2MXJ3MGpNdVMtdWU0ZEFmdVZPUDhoN0MyNU1tODNTalYtMXVrNjRv?oc=5",
@@ -799,31 +817,13 @@
      "tight": 0,
      "ease": 1,
      "friction": 0
-    },
-    {
-     "title": "'Big Short' investor Michael Burry is vindicated as AI stocks like Nebius tumble — and he's warning of a coming chip glut",
-     "source": "MoneyWise.com",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNTlFKd29ubWQ0U0lKMWV1OU43YXdiVEhiZ01Tc0Z1T2lhbnRTeHRMZkx3X2kzVFZQRmtnd2JSM05RbHBRSVF0d2FXZ2ZrVzlIQ0Q3ei1CYlZEdlZ3VGZPSGtyRTd6R0VBSXNlbDYtaDVGeWN2WHhUb2NBRUdlOHF2am5n?oc=5",
-     "published": "2026-11-13T09:45+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "AI Roundup: Nvidia CEO’s Exit Dominates Headlines — CoreWeave, Cisco Results Boost AI Sentiment",
-     "source": "Stocktwits",
-     "url": "https://stocktwits.com/news-articles/markets/equity/ai-roundup-nvidia-ceo-s-exit-dominates-headlines-core-weave-cisco-results-boost-ai-sentiment/cNbbU35R9Oz",
-     "published": "2026-11-13T09:14+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "software",
    "name": "תוכנה ופלטפורמות AI",
-   "items7": 39,
+   "items7": 41,
    "tight7": 0,
    "ease7": 1,
    "friction7": 0,
@@ -847,7 +847,7 @@
   {
    "key": "analog_power",
    "name": "שבבים אנלוגיים וחשמל (מעקב)",
-   "items7": 136,
+   "items7": 138,
    "tight7": 10,
    "ease7": 1,
    "friction7": 1,
@@ -916,7 +916,7 @@
   {
    "key": "edge_devices",
    "name": "מעבדים ומכשירי קצה (מעקב)",
-   "items7": 80,
+   "items7": 82,
    "tight7": 2,
    "ease7": 2,
    "friction7": 3,
@@ -1042,7 +1042,7 @@
    13,
    36,
    13,
-   19
+   22
   ],
   "compute": [
    0,
@@ -1054,7 +1054,7 @@
    7,
    9,
    10,
-   21
+   24
   ],
   "networking": [
    0,
@@ -1090,7 +1090,7 @@
    0,
    5,
    8,
-   20
+   22
   ],
   "power_generation": [
    0,
@@ -1102,7 +1102,7 @@
    1,
    0,
    0,
-   7
+   8
   ],
   "datacenter_reits": [
    0,
@@ -1126,7 +1126,7 @@
    1,
    0,
    1,
-   6
+   7
   ],
   "neoclouds": [
    0,
@@ -1138,7 +1138,7 @@
    3,
    2,
    0,
-   7
+   8
   ],
   "software": [
    0,
@@ -1227,7 +1227,7 @@
    [
     4,
     4,
-    176
+    182
    ]
   ],
   "design": [
@@ -1279,7 +1279,7 @@
    [
     0,
     1,
-    61
+    62
    ]
   ],
   "foundry": [
@@ -1331,7 +1331,7 @@
    [
     4,
     2,
-    113
+    114
    ]
   ],
   "memory": [
@@ -1381,9 +1381,9 @@
     28
    ],
    [
-    24,
+    27,
     5,
-    164
+    171
    ]
   ],
   "compute": [
@@ -1433,9 +1433,9 @@
     15
    ],
    [
-    24,
+    27,
     3,
-    294
+    318
    ]
   ],
   "networking": [
@@ -1487,7 +1487,7 @@
    [
     3,
     1,
-    137
+    142
    ]
   ],
   "servers": [
@@ -1539,7 +1539,7 @@
    [
     2,
     0,
-    110
+    112
    ]
   ],
   "power_equipment": [
@@ -1589,9 +1589,9 @@
     50
    ],
    [
-    22,
+    24,
     2,
-    279
+    292
    ]
   ],
   "power_generation": [
@@ -1641,9 +1641,9 @@
     18
    ],
    [
-    7,
-    0,
-    204
+    9,
+    1,
+    216
    ]
   ],
   "datacenter_reits": [
@@ -1695,7 +1695,7 @@
    [
     1,
     1,
-    242
+    256
    ]
   ],
   "hyperscalers": [
@@ -1745,9 +1745,9 @@
     13
    ],
    [
-    8,
-    2,
-    186
+    10,
+    3,
+    200
    ]
   ],
   "neoclouds": [
@@ -1797,9 +1797,9 @@
     15
    ],
    [
-    10,
+    11,
     3,
-    206
+    217
    ]
   ],
   "software": [
@@ -1851,7 +1851,7 @@
    [
     0,
     1,
-    39
+    41
    ]
   ],
   "analog_power": [
@@ -1903,7 +1903,7 @@
    [
     10,
     1,
-    136
+    138
    ]
   ],
   "edge_devices": [
@@ -1955,13 +1955,13 @@
    [
     2,
     2,
-    80
+    82
    ]
   ]
  },
  "stocks": {
   "000660.KS": {
-   "items": 2,
+   "items": 3,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -1979,7 +1979,7 @@
    "friction": 1
   },
   "ALAB": {
-   "items": 9,
+   "items": 10,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2003,7 +2003,7 @@
    "friction": 0
   },
   "AMZN": {
-   "items": 49,
+   "items": 52,
    "tight": 4,
    "ease": 1,
    "friction": 1
@@ -2033,7 +2033,7 @@
    "friction": 3
   },
   "ASML": {
-   "items": 21,
+   "items": 22,
    "tight": 0,
    "ease": 0,
    "friction": 1
@@ -2051,7 +2051,7 @@
    "friction": 3
   },
   "BE": {
-   "items": 13,
+   "items": 15,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2069,7 +2069,7 @@
    "friction": 0
   },
   "CDNS": {
-   "items": 10,
+   "items": 11,
    "tight": 0,
    "ease": 1,
    "friction": 0
@@ -2081,7 +2081,7 @@
    "friction": 1
   },
   "CIEN": {
-   "items": 22,
+   "items": 23,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2093,7 +2093,7 @@
    "friction": 0
   },
   "COHR": {
-   "items": 19,
+   "items": 21,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2105,8 +2105,8 @@
    "friction": 0
   },
   "CRWV": {
-   "items": 55,
-   "tight": 3,
+   "items": 58,
+   "tight": 4,
    "ease": 0,
    "friction": 0
   },
@@ -2123,7 +2123,7 @@
    "friction": 0
   },
   "ENR.DE": {
-   "items": 11,
+   "items": 12,
    "tight": 5,
    "ease": 0,
    "friction": 0
@@ -2147,7 +2147,7 @@
    "friction": 0
   },
   "FN": {
-   "items": 7,
+   "items": 8,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2165,10 +2165,10 @@
    "friction": 1
   },
   "GOOGL": {
-   "items": 49,
+   "items": 55,
    "tight": 1,
    "ease": 1,
-   "friction": 2
+   "friction": 3
   },
   "HPE": {
    "items": 13,
@@ -2207,7 +2207,7 @@
    "friction": 0
   },
   "LITE": {
-   "items": 20,
+   "items": 21,
    "tight": 1,
    "ease": 0,
    "friction": 1
@@ -2225,13 +2225,13 @@
    "friction": 0
   },
   "META": {
-   "items": 39,
-   "tight": 2,
-   "ease": 0,
+   "items": 42,
+   "tight": 4,
+   "ease": 1,
    "friction": 1
   },
   "MOD": {
-   "items": 19,
+   "items": 20,
    "tight": 2,
    "ease": 0,
    "friction": 0
@@ -2243,31 +2243,31 @@
    "friction": 0
   },
   "MRVL": {
-   "items": 28,
+   "items": 30,
    "tight": 0,
    "ease": 0,
    "friction": 2
   },
   "MSFT": {
-   "items": 44,
+   "items": 46,
    "tight": 1,
    "ease": 0,
    "friction": 2
   },
   "MU": {
-   "items": 49,
+   "items": 51,
    "tight": 2,
    "ease": 1,
    "friction": 0
   },
   "NBIS": {
-   "items": 48,
-   "tight": 3,
+   "items": 50,
+   "tight": 4,
    "ease": 2,
    "friction": 0
   },
   "NOW": {
-   "items": 17,
+   "items": 18,
    "tight": 0,
    "ease": 1,
    "friction": 0
@@ -2279,8 +2279,8 @@
    "friction": 0
   },
   "NVDA": {
-   "items": 85,
-   "tight": 9,
+   "items": 96,
+   "tight": 10,
    "ease": 1,
    "friction": 2
   },
@@ -2303,9 +2303,9 @@
    "friction": 0
   },
   "OKLO": {
-   "items": 7,
-   "tight": 0,
-   "ease": 0,
+   "items": 10,
+   "tight": 2,
+   "ease": 1,
    "friction": 0
   },
   "ON": {
@@ -2321,13 +2321,13 @@
    "friction": 0
   },
   "ORCL": {
-   "items": 35,
+   "items": 36,
    "tight": 4,
    "ease": 0,
    "friction": 0
   },
   "PLTR": {
-   "items": 23,
+   "items": 24,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2345,7 +2345,7 @@
    "friction": 1
   },
   "QCOM": {
-   "items": 21,
+   "items": 22,
    "tight": 2,
    "ease": 0,
    "friction": 1
@@ -2411,7 +2411,7 @@
    "friction": 0
   },
   "TSM": {
-   "items": 31,
+   "items": 32,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2429,7 +2429,7 @@
    "friction": 1
   },
   "VST": {
-   "items": 13,
+   "items": 14,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2518,21 +2518,6 @@
    }
   },
   {
-   "name": "Argan",
-   "ticker": "AGX",
-   "layer": "power_generation",
-   "mentions30": 6,
-   "tight30": 0,
-   "ease30": 0,
-   "mentions7": 2,
-   "headline": {
-    "title": "Argan (AGX) Backlog Debate Meets Strong Growth Forecasts As Fair Value Stays In View",
-    "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQYkFxcmcweEJYeFZMeTRBQW1ILUdBSUFucFpzOTB0VUI1SVR6dTVZbkswaklMTG4yYTlaaWFZWGthSC1BcXVkTlVfUWJ4aTliOW9jcDNzMTR5MkQzZGROaEpXZUVrQms1MzFZbEwtRXlQRk5wYmdZWWFzbHdVZVJQRnZRcmNWdERjLUM2MDgxcE15OFJGNDM2ZVJReVFsWEktcXVZTUcxdGMxa3BtUl9OV0RZRVhnUzdnbExNd2ZHaWZENlp20gHKAUFVX3lxTE1XOWdFLW5wMzVfYVN1bHZoM0hlbnV3Z3Jjc3VjMmpOMkN1SjVSYWktbDUtNTB4cUIxR1RfLThubXdRcFZkbU1lU1YwU1F6cy0yaGRZUVItTmNoY25makVRdFRNUEJmMmlLNTlpdHUwS0xaTFhiTDdUMFgtRDRiRzAzYXlhR0ltS1c1UERyYWsyS2w4X0hIMkMxVGR6TThkVEZuck5zZFRvVlhGMHh2WXk1MjVKNHVGYXl2Skp4VkZzNTZDZUtRWEx0VWc?oc=5",
-    "source": "Simply Wall St",
-    "published": "2026-11-14T00:45+00:00"
-   }
-  },
-  {
    "name": "Trane",
    "ticker": "TT",
    "layer": "power_equipment",
@@ -2563,6 +2548,36 @@
    }
   },
   {
+   "name": "Argan",
+   "ticker": "AGX",
+   "layer": "power_generation",
+   "mentions30": 6,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 2,
+   "headline": {
+    "title": "Argan (AGX) Backlog Debate Meets Strong Growth Forecasts As Fair Value Stays In View",
+    "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQYkFxcmcweEJYeFZMeTRBQW1ILUdBSUFucFpzOTB0VUI1SVR6dTVZbkswaklMTG4yYTlaaWFZWGthSC1BcXVkTlVfUWJ4aTliOW9jcDNzMTR5MkQzZGROaEpXZUVrQms1MzFZbEwtRXlQRk5wYmdZWWFzbHdVZVJQRnZRcmNWdERjLUM2MDgxcE15OFJGNDM2ZVJReVFsWEktcXVZTUcxdGMxa3BtUl9OV0RZRVhnUzdnbExNd2ZHaWZENlp20gHKAUFVX3lxTE1XOWdFLW5wMzVfYVN1bHZoM0hlbnV3Z3Jjc3VjMmpOMkN1SjVSYWktbDUtNTB4cUIxR1RfLThubXdRcFZkbU1lU1YwU1F6cy0yaGRZUVItTmNoY25makVRdFRNUEJmMmlLNTlpdHUwS0xaTFhiTDdUMFgtRDRiRzAzYXlhR0ltS1c1UERyYWsyS2w4X0hIMkMxVGR6TThkVEZuck5zZFRvVlhGMHh2WXk1MjVKNHVGYXl2Skp4VkZzNTZDZUtRWEx0VWc?oc=5",
+    "source": "Simply Wall St",
+    "published": "2026-11-14T00:45+00:00"
+   }
+  },
+  {
+   "name": "Centrus Energy",
+   "ticker": "LEU",
+   "layer": "power_generation",
+   "mentions30": 5,
+   "tight30": 2,
+   "ease30": 1,
+   "mentions7": 3,
+   "headline": {
+    "title": "Centrus Energy (LEU) Lands Multiyear HALEU Deal Backed By Customer Prepayments",
+    "url": "https://finance.yahoo.com/energy/articles/centrus-energy-leu-lands-multiyear-061743445.html",
+    "source": "Simply Wall St.",
+    "published": "2026-11-14T06:17+00:00"
+   }
+  },
+  {
    "name": "Sterling Infrastructure",
    "ticker": "STRL",
    "layer": "power_equipment",
@@ -2575,21 +2590,6 @@
     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPT1R6SUNZMGF1WXAtZzREWWY1V25CekpWcy11RWFYUlFEX3FtQ19sZGlQa0NpZlR6WUFvNnpKc3cybDJjUU82bXZZUDhpRmU0TmpsVXhqOGxybEF3QXJCUldULVJ2UTl6Wkw1Rm0zMGJMSXVYTzdVenJWN2hjUVZidWpGRDRjaXA5M1NPS3hjMVVzdw?oc=5",
     "source": "Simply Wall St",
     "published": "2026-11-10T08:00+00:00"
-   }
-  },
-  {
-   "name": "Nokia",
-   "ticker": "NOK",
-   "layer": "networking",
-   "mentions30": 4,
-   "tight30": 0,
-   "ease30": 0,
-   "mentions7": 2,
-   "headline": {
-    "title": "Is Nokia Attractive as AI Growth Meets Valuation and Execution Risks?",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nokia-attractive-ai-growth-meets-175700285.html",
-    "source": "Zacks",
-    "published": "2026-11-13T17:57+00:00"
    }
   },
   {
@@ -2608,6 +2608,21 @@
    }
   },
   {
+   "name": "Nokia",
+   "ticker": "NOK",
+   "layer": "networking",
+   "mentions30": 4,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 2,
+   "headline": {
+    "title": "Is Nokia Attractive as AI Growth Meets Valuation and Execution Risks?",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/nokia-attractive-ai-growth-meets-175700285.html",
+    "source": "Zacks",
+    "published": "2026-11-13T17:57+00:00"
+   }
+  },
+  {
    "name": "TE Connectivity",
    "ticker": "TEL",
    "layer": "networking",
@@ -2623,52 +2638,37 @@
    }
   },
   {
-   "name": "MYR Group",
-   "ticker": "MYRG",
-   "layer": "power_equipment",
+   "name": "Rambus",
+   "ticker": "RMBS",
+   "layer": "memory",
    "mentions30": 3,
    "tight30": 0,
    "ease30": 0,
    "mentions7": 0,
    "headline": {
-    "title": "MYR Group Q3 Earnings Call Highlights 2027 Growth & Margin Outlook",
-    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOQ0kwazh3Y2dpZUJJM01OZGdIdm43cFV5T2lBd3hUX3N6c0pUbENaWlFEWkY3bmZfcmRJaW9ZNjBjTU1kaW9mTkFBYmdLSTk0SkF1dmVsdDR4UWR0dTlTaEgxTTY4NWU0NUQxazE3c0tTTmhFaGdBT0JSZF9pNWhMeU4yNDRQOVl0Z29QMThFX2tBaGtrOFdXUUdOS1VRRVNycFhzenhfcEtQUm96YXJFVF9aMEJlaTEwU3VCeQ?oc=5",
+    "title": "Rambus Q3 Earnings Call Highlights AI Demand and Supply Pressures",
+    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQTUlhaEtwM0ZfbGIwNUk4VGNic3U1V3ppRkEycU1meHNwM3FocTBLVGdCTngwcmk1QWlYX1cwYXlVa3gxV19YRE9fenJuMEJqcG1NSnplQ25VUDlGOTV1VXNyUmtmaFFpTEdPYlU2YjhXaUVQbmtfcVByTDlGb29zNFdXRE03WmplSG10aFBZamI3NkEzNU5uOXNveWlwTGpEVEdVbnlxVWMxcTl0dHAyZWtJYnlNRFZheWRmal9n?oc=5",
     "source": "TradingView",
-    "published": "2026-11-04T19:00+00:00"
+    "published": "2026-10-27T07:00+00:00"
    }
   },
   {
-   "name": "NetApp",
-   "ticker": "NTAP",
-   "layer": "memory",
+   "name": "Galaxy Digital",
+   "ticker": "GLXY",
+   "layer": "neoclouds",
    "mentions30": 3,
-   "tight30": 1,
-   "ease30": 0,
-   "mentions7": 2,
-   "headline": {
-    "title": "Nebul Picks NetApp Novus: Why It Matters for NTAP's AI Growth",
-    "url": "https://finance.yahoo.com/technology/ai/articles/nebul-picks-netapp-novus-why-121100773.html",
-    "source": "Zacks",
-    "published": "2026-11-12T12:11+00:00"
-   }
-  },
-  {
-   "name": "Primoris",
-   "ticker": "PRIM",
-   "layer": "power_equipment",
-   "mentions30": 3,
-   "tight30": 1,
+   "tight30": 0,
    "ease30": 0,
    "mentions7": 1,
    "headline": {
-    "title": "Primoris Services (PRIM) Beats On Q3 And Posts Record Backlog, Is It 60% Undervalued?",
-    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOWUNEYWNJMEd1U3VYNmhvYlRmR3h1WXc2eE9Lc25SSlloNlZ2QmFSMTBoc2g1Qk9VVDV5eHdoM0lRNkVURzhPei1kOGgzZEw2YzNFMFc4NVRkUnVRWUFUMHM0ajJyZlZLb1VPZ196QUJlN01CZEtSaVdRS3VmRXRUTUdnSzZxTkpFLW1YS2ppODdVcG1nRWF0Q0JkZThCQldQd01KemVJQVktei11YTNFVGs5V3ZoazlBa2twMWR1VFpPVkpFeGFaRnE4bEVrWG94WXVIctIB2gFBVV95cUxNZ25ad004ZmtaX0tCZ2U5dXJib2ZjTEk2bFlTMXVaM2pNQXBRcHRWX1VXdkROS3lWV3l2dEk2Yk5zMVBhMU42LU1QNUNWNVpGc3JVODFqcmM1b0hMemtOd3VLeVREYlc4Z1RZdExjV3pMWTNmWTFMcGlMcVZkSk85QXUwcGNCN1p4RlE1SkFzZlRKWkNOWGg5bE5Qb2Y5Y09FRlRhbWpGamJoY0VsUXpZTWthc0IyaDNmNS13Y3pZaEsxYU95WkJDRTM3T19RM2pwcFB1VFhMRC1TZw?oc=5",
-    "source": "Simply Wall St",
-    "published": "2026-11-08T09:31+00:00"
+    "title": "Galaxy Digital rises 5% as CoreWeave results lift AI infrastructure stocks",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQa0tnbl93NVBzQzlsdFNFSG9hWlR3UU9Vd3FtSk9DTkNkWEJBUTk0aHVZVlZaNEd1RHk0cnplR0tVS21ldFVwcGtrYmg1eXF5dE42VTJ3dHUtMXJaZHJqZlVRRkZEbjVVaWJsM3diOEdjbmdwbk5tU0dTRXRxS3FrNDNsR2YwZG1fQmxXbWhld1ozemxEX3pnU2FTTnFiZUpEaElR?oc=5",
+    "source": "Startup Fortune",
+    "published": "2026-11-11T12:21+00:00"
    }
   }
  ],
- "generated_utc": "2026-11-14T02:35:40+00:00",
+ "generated_utc": "2026-11-14T12:48:21+00:00",
  "sources_ok": {
   "google": 165,
   "yahoo": 80
