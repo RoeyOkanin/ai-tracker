@@ -1,0 +1,38 @@
+# Funded-account lifetime (EA v2 funded: $8/pt + buffer scaling, target off), generated 2026-11-14
+## funded_life.py
+starts: 654 from 2016-01-26 to 2023-11-06 (each followed for up to 3 years)
+withdraw everything every 2 weeks (FTMO default) alive 1y 100.0% 2y 100.0% 3y 100.0% | burned within 3y:   0.0% (median  nan months) | to Roey: year-1 median $12,907 avg $15,074; 3y/lifetime median $45,493 avg $43,818; per year alive $14,606
+withdraw everything only when >= 105K      alive 1y 100.0% 2y 100.0% 3y 100.0% | burned within 3y:   0.0% (median  nan months) | to Roey: year-1 median $13,643 avg $15,191; 3y/lifetime median $48,945 avg $48,273; per year alive $16,091
+withdraw everything only when >= 108K      alive 1y 100.0% 2y 100.0% 3y 100.0% | burned within 3y:   0.0% (median  nan months) | to Roey: year-1 median $14,330 avg $15,043; 3y/lifetime median $51,616 avg $49,995; per year alive $16,665
+keep a 5K cushion, withdraw above 105K     alive 1y 100.0% 2y 100.0% 3y 100.0% | burned within 3y:   0.0% (median  nan months) | to Roey: year-1 median $13,722 avg $14,716; 3y/lifetime median $54,686 avg $53,371; per year alive $17,790
+keep an 8K cushion, withdraw above 108K    alive 1y 100.0% 2y 100.0% 3y 100.0% | burned within 3y:   0.0% (median  nan months) | to Roey: year-1 median $12,030 avg $12,953; 3y/lifetime median $53,886 avg $52,533; per year alive $17,511
+
+edge-decay stress (extra cost per trade = weaker edge), rule: withdraw everything only when >= 105K
+extra cost 0 pts: edge 100.0% of base | burned within 1y   0.0% within 3y   0.0% (median  nan months) | lowest equity: worst $90,941, 5th pct $91,079, median $93,470 | to Roey per year alive $16,091
+extra cost 2 pts: edge  80.8% of base | burned within 1y   0.5% within 3y   6.6% (median 29.9 months) | lowest equity: worst $90,470, 5th pct $90,495, median $93,015 | to Roey per year alive $12,921
+extra cost 4 pts: edge  61.5% of base | burned within 1y   1.5% within 3y  13.9% (median 29.5 months) | lowest equity: worst $90,358, 5th pct $90,393, median $92,424 | to Roey per year alive $9,790
+extra cost 6 pts: edge  42.3% of base | burned within 1y   5.4% within 3y  18.3% (median 27.5 months) | lowest equity: worst $90,313, 5th pct $90,447, median $91,677 | to Roey per year alive $7,410
+extra cost 8 pts: edge  23.0% of base | burned within 1y  10.2% within 3y  39.4% (median 26.9 months) | lowest equity: worst $90,110, 5th pct $90,172, median $90,910 | to Roey per year alive $6,434
+
+## funded_stress.py
+withdraw everything every 2 weeks (FTMO default)
+   edge-0%: burn3y  0.0% low worst $90,898 p5 $90,964 med $93,287 $/yr 14,606
+   edge-19%: burn3y 14.1% low worst $90,446 p5 $90,477 med $92,438 $/yr 11,438
+   edge-38%: burn3y 15.3% low worst $90,368 p5 $90,483 med $91,894 $/yr 9,024
+withdraw everything only when >= 105K
+   edge-0%: burn3y  0.0% low worst $90,941 p5 $91,079 med $93,470 $/yr 16,091
+   edge-19%: burn3y  6.6% low worst $90,470 p5 $90,495 med $93,015 $/yr 12,921
+   edge-38%: burn3y 13.9% low worst $90,358 p5 $90,393 med $92,424 $/yr 9,790
+withdraw everything only when >= 108K
+   edge-0%: burn3y  0.0% low worst $90,941 p5 $91,079 med $93,496 $/yr 16,665
+   edge-19%: burn3y  6.0% low worst $90,470 p5 $90,495 med $93,115 $/yr 13,530
+   edge-38%: burn3y 13.3% low worst $90,358 p5 $90,393 med $92,380 $/yr 10,285
+keep a 5K cushion, withdraw above 105K
+   edge-0%: burn3y  0.0% low worst $91,168 p5 $92,072 med $95,275 $/yr 17,790
+   edge-19%: burn3y  0.6% low worst $90,477 p5 $91,402 med $94,854 $/yr 14,633
+   edge-38%: burn3y  3.1% low worst $90,394 p5 $90,601 med $93,620 $/yr 11,378
+keep an 8K cushion, withdraw above 108K
+   edge-0%: burn3y  0.0% low worst $91,168 p5 $92,731 med $95,805 $/yr 17,511
+   edge-19%: burn3y  0.6% low worst $90,477 p5 $91,764 med $95,036 $/yr 14,517
+   edge-38%: burn3y  3.1% low worst $90,394 p5 $90,773 med $94,443 $/yr 11,600
+worst base start: 2023-02-23 low 90940.59517600514
