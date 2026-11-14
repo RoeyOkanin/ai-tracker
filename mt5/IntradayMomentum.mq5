@@ -44,7 +44,7 @@ input int    InpExitHHMM        = 1559;   // NY time to flatten (HHMM)
 //--- time zone (server -> New York)
 input bool   InpAutoServerOffset   = true; // live: detect server UTC offset; tester: uses the manual values below
 input int    InpServerWinterOffset = 2;    // server UTC offset in winter (FTMO MT5 is usually 2)
-input bool   InpServerUsesEUDST    = true; // server adds +1h during EU summer time
+input int    InpServerDstRule      = 2;    // server summer time: 2 = US dates (FTMO, verified), 1 = EU dates, 0 = none
 //--- misc
 input long   InpMagic           = 26111401;
 input bool   InpLogCsv          = true;   // write decisions to MQL5/Files/IntradayMomentum_log.csv
@@ -111,10 +111,17 @@ bool EuDst(datetime utc)
    return (utc >= start && utc < end);
   }
 
+bool ServerDst(datetime utc)
+  {
+   if(InpServerDstRule == 2) return UsDst(utc);
+   if(InpServerDstRule == 1) return EuDst(utc);
+   return false;
+  }
+
 datetime ServerToUtc(datetime t)
   {
    datetime utc = t - g_winterOffset * 3600;
-   int off = g_winterOffset + ((InpServerUsesEUDST && EuDst(utc)) ? 1 : 0);
+   int off = g_winterOffset + (ServerDst(utc) ? 1 : 0);
    return t - off * 3600;
   }
 
@@ -484,7 +491,7 @@ int OnInit()
      {
       long diff = (long)(TimeTradeServer() - TimeGMT());
       int cur = (int)MathRound(diff / 3600.0);
-      g_winterOffset = cur - ((InpServerUsesEUDST && EuDst(TimeGMT())) ? 1 : 0);
+      g_winterOffset = cur - (ServerDst(TimeGMT()) ? 1 : 0);
      }
    datetime ny = ServerToNy(TimeTradeServer());
    PrintFormat("[IMOM] start: symbol=%s server winter offset=UTC%+d, New York now=%s, $/pt/lot=%.4f, magic=%I64d",

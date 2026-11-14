@@ -18,3 +18,13 @@ Differences from the backtest (by design):
 
 Strategy Tester: the tester cannot detect the server's UTC offset; set `InpServerWinterOffset` to the value
 the EA prints live ("server winter offset=UTC+X"). Decisions are logged to `MQL5/Files/IntradayMomentum_log.csv`.
+
+## Tester vs backtest check (2025-11 .. 2026-11, Strategy Tester real ticks)
+- EA v1: +$10.4k vs python +$26.1k. 87 days with identical entries/exits differ by only -$1.7k in total.
+- Cause of most of the gap: FTMO's server moves its clock on **US** DST dates (verified by matching
+  US100.cash fills to QQQ prices), the EA assumed EU dates. In the two mismatch windows
+  (2026-03-09..27, 2026-10-26..30) the EA traded one hour off: -$66 vs python +$10.9k.
+  Fixed: `InpServerDstRule = 2` (US). Estimated full-year result after fix ~ +$21k.
+- Remaining ~-$4.7k over 139 days (~$23/trade) = spread + US100.cash vs QQQ price differences.
+- Drawdown this year is real in both: python -17.4k peak-to-trough, EA -23k. At $12/pt a challenge
+  started Nov 2025 breaches the 10% limit in Jan-Feb 2026.
