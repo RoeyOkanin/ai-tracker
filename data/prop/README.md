@@ -41,3 +41,4 @@ with immediate retries 91% are funded within 12 months and net ~$5.4k in year on
   funded @ $8/pt -> $15.7k/yr, 0% breach in 1y, vs fixed $5/pt $13.2k, 10% breach. Adopted.
 - Plan (run_plan.py): eval $12/pt fixed, funded $8/pt buffer-scaled: 91% funded within 12m,
   year-1 net avg $8.3k (vs $6.4k). Eval $15/pt: $9.2k avg, median day 80, 21% chance year-1 loss.
+- Margin cap check (run_leverage.py): no effect down to 1:7 index leverage; at 1:5 eval pass 55% but median 89 vs 75 days; funded unchanged.
