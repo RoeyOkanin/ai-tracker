@@ -164,3 +164,21 @@ def ftmo_funded(days, start, dpp, acct=100_000, cost_pts=1.5, split=0.8, horizon
             paid += split * bal
             bal = 0.0
     return paid, "alive"
+
+
+def ftmo1(days, start, dpp, acct=100_000, cost_pts=1.5, max_tdays=250):
+    """FTMO 1-Step: 10% target, 3% daily loss (equity vs day-start balance), 10% max loss trailing
+    on end-of-day balance highs, 50% consistency (best day <= 50% of total net profit)."""
+    bal, peak, best = 0.0, 0.0, 0.0
+    for k in range(max_tdays):
+        if start + k >= len(days):
+            return "end", k
+        pnl, low = ftmo_day(days[start + k], dpp, cost_pts)
+        if low <= -0.03 * acct or bal + low <= peak - 0.10 * acct:
+            return "fail", k + 1
+        bal += pnl
+        peak = max(peak, bal)
+        best = max(best, pnl)
+        if bal >= 0.10 * acct and best <= 0.5 * bal:
+            return "pass", k + 1
+    return "timeout", max_tdays

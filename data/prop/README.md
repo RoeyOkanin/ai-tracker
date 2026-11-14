@@ -21,3 +21,11 @@ Headline (noise_vwap_vt):
 - Weak years for new attempts: 2016, 2025.
 
 Repro: python fetch_intraday.py (Actions) -> run_strats.py -> normalize.py -> run_all.py
+
+## FTMO Standard (non-Swing) check (2026-11-14)
+Funded Standard accounts may not open/close US100 within 2 minutes of restricted news; evaluation
+has no news rule. Conservative fix: move the 10:00 and 14:00 ET checkpoints to 10:05 / 14:05 every day
+(`noise_momentum(shift=...)`). Cost: Sharpe 1.54 -> 1.28, 10/11 years positive (2019 slightly negative);
+funded @ $5/pt $13.2k -> $11.0k/yr, breach 10% -> 12%. Targets and payout timing are the same as Swing.
+Speed comes from evaluation size, not account type: 2-Step @ $12/pt passes 54% (median 75 trading days);
+with immediate retries 91% are funded within 12 months and net ~$5.4k in year one (run_speed.py).

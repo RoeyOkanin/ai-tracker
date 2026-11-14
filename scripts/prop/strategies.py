@@ -64,9 +64,15 @@ def orb(df, bar_minutes=5, target_r=10.0, min_body=0.0, exit_time="15:55"):
     return out
 
 
-def noise_momentum(df, lookback=14, vm=1.0, use_vwap=True, last_entry="15:30", exit_time="15:55"):
+def noise_momentum(df, lookback=14, vm=1.0, use_vwap=True, last_entry="15:30", exit_time="15:55", shift=()):
     """Concretum 'Beat the Market' intraday momentum, checks every 30 minutes.
-    Noise band from avg |move from open| at the same time of day over `lookback` days."""
+    Noise band from avg |move from open| at the same time of day over `lookback` days.
+    `shift`: checkpoint times (bar-end "HH:MM") moved 5 minutes later, e.g. ("10:00","14:00")
+    to stay out of FTMO's 2-minute news blackout around 10:00 / 14:00 ET releases."""
+    checks = set(f"{h:02d}:{m:02d}" for h in range(10, 17) for m in (0, 30))
+    for t in shift:
+        checks.discard(t)
+        checks.add((pd.Timestamp(t) + pd.Timedelta(minutes=5)).strftime("%H:%M"))
     days = sorted(df.date.unique())
     g = {d: x for d, x in df.groupby("date")}
     # move from open at each time-of-day
@@ -98,7 +104,7 @@ def noise_momentum(df, lookback=14, vm=1.0, use_vwap=True, last_entry="15:30", e
             if pos:
                 mae = min(mae, (b.low - entry) if pos == 1 else (entry - b.high))
             bar_end = (ts + pd.Timedelta(minutes=5))
-            on_half = bar_end.minute in (0, 30)
+            on_half = bar_end.strftime("%H:%M") in checks
             if pos and (on_half or ts.time() >= ex):
                 stop = max(ub, vw) if (pos == 1 and use_vwap) else (min(lb, vw) if use_vwap else (lb if pos == 1 else ub))
                 hit = (pos == 1 and b.close < stop) or (pos == -1 and b.close > stop)
