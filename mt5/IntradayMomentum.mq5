@@ -41,6 +41,7 @@ input double InpEmergencySLPct  = 4.5;    // server-side stop distance, as % of 
 input int    InpLookback        = 14;     // noise lookback (sessions)
 input double InpBandMult        = 1.0;    // band width multiplier
 input int    InpExitHHMM        = 1559;   // NY time to flatten (HHMM)
+input string InpNoEntryTimes    = "1200,1400"; // NY bar-close times with no NEW entries (lunch chop, 14:00 releases); exits still run
 input double InpSkipAfterWinPts = 167;    // skip the next day after a win > this many points at full size (167 x $12 = $2,000); 0 = off
 //--- time zone (server -> New York)
 input bool   InpAutoServerOffset   = true; // live: detect server UTC offset; tester: uses the manual values below
@@ -245,6 +246,24 @@ bool OpenPos(int side, double lots, string why)
   }
 
 //+------------------------------------------------------------------+
+//| true if NY minute-of-day `m` is listed in InpNoEntryTimes         |
+//+------------------------------------------------------------------+
+bool NoEntryAt(int m)
+  {
+   string parts[];
+   int n = StringSplit(InpNoEntryTimes, ',', parts);
+   for(int i = 0; i < n; i++)
+     {
+      string t = parts[i];
+      StringTrimLeft(t); StringTrimRight(t);
+      if(StringLen(t) == 0) continue;
+      int v = (int)StringToInteger(t);
+      if((v / 100) * 60 + v % 100 == m) return true;
+     }
+   return false;
+  }
+
+//+------------------------------------------------------------------+
 //| this EA's net P&L on NY day `dayKey` (closed deals)              |
 //+------------------------------------------------------------------+
 double DayPnl(int dayKey)
@@ -428,6 +447,7 @@ void OnCheckpoint(datetime barServer, datetime barNy)
 
    int want = 0;
    bool entryWindow = (endMin >= 600 && endMin <= 930);  // 10:00 .. 15:30 bar closes
+   if(entryWindow && NoEntryAt(endMin)) entryWindow = false;
    if(entryWindow && !g_dayBlocked)
      {
       if(close > up) want = 1;

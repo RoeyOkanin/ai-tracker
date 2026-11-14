@@ -38,3 +38,8 @@ the EA prints live ("server winter offset=UTC+X"). Decisions are logged to `MQL5
   Tested in scripts/prop/regime_test.py: skipped days lose money at every threshold 1,000-3,000 in both 2016-21 and
   2022-26, 8 of 11 years. FTMO sim (cost 5): eval $12 single pass 43% -> 54%, median 114 -> 84 days, funded $6 $9.5k -> $11.9k/yr.
   Python per period with skip: 2024 +50.3k, 2025 +22.1k, 2025-11..2026-11 +16.6k.
+- 2026-11-14: added `InpNoEntryTimes = "1200,1400"` (no new entries on the 12:00 and 14:00 NY bar closes; exits still run).
+  scripts/prop/timing_test.py: those two entry times lose in both 2016-21 and 2022-26; day-of-week, OPEX and month-end are
+  inconsistent between halves (not used). With skip-after-win: eval $12 single pass 56%, median 87 days, yr-1 net $7.1k,
+  funded $6 $12.9k/yr, 0% breach. Caveat: skip-after-win alone raised the 2016-17 drawdown (-51k -> -65k at $12);
+  with the time filter it is back to -52k.
