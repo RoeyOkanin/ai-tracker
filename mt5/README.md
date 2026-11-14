@@ -12,6 +12,7 @@ Differences from the backtest (by design):
 - VWAP uses tick volume (CFDs have no exchange volume).
 - Flattens at 15:59 NY instead of the 16:00 bar close.
 - Exit-and-re-enter on the same bar is a hold (same exposure, one spread less).
+- Margin cap: never uses more than 80% of free margin (Swing has lower leverage); size is cut if needed.
 - Safety not in the backtest: server-side stop at 4.5% of initial balance per position, and an equity guard
   that flattens and stops for the day 4.5% below the day-start balance (FTMO limit is 5%).
 

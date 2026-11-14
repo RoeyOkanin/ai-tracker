@@ -201,6 +201,20 @@ double NormalizeLots(double lots)
 
 bool OpenPos(int side, double lots, string why)
   {
+   // margin cap: Swing accounts have lower leverage; never use more than 80% of free margin
+   double px = (side > 0) ? SymbolInfoDouble(_Symbol, SYMBOL_ASK) : SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   double margin = 0;
+   if(OrderCalcMargin(side > 0 ? ORDER_TYPE_BUY : ORDER_TYPE_SELL, _Symbol, lots, px, margin) && margin > 0)
+     {
+      double freeM = AccountInfoDouble(ACCOUNT_MARGIN_FREE);
+      if(margin > 0.8 * freeM)
+        {
+         double cut = NormalizeLots(lots * 0.8 * freeM / margin);
+         PrintFormat("[IMOM] margin cap: %.2f lots need %.2f margin, free %.2f -> %.2f lots", lots, margin, freeM, cut);
+         lots = cut;
+         if(lots <= 0) return false;
+        }
+     }
    double mpp = MoneyPerPointPerLot();
    double slDist = (mpp > 0 && lots > 0) ? InpEmergencySLPct / 100.0 * InpInitialBalance / (lots * mpp) : 0;
    int digits = (int)SymbolInfoInteger(_Symbol, SYMBOL_DIGITS);
