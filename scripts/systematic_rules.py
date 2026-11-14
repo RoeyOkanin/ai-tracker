@@ -93,12 +93,13 @@ H_OVERRIDE = {"portfolio": {"layers_to_hold": 6, "stocks_per_layer": 1, "keep_if
                              "max_weight": 0.30}}
 
 
-def build_switch(px: pd.DataFrame, liquid_big: pd.DataFrame, tick: list[str], start: str = IS_START) -> dict:
+def build_switch(px: pd.DataFrame, liquid_big: pd.DataFrame, tick: list[str], start: str = IS_START,
+                 override: dict | None = None) -> dict:
     """The switch rule, shared by the research run and the live run (one source of truth).
     pick_t[d] = what to hold from the close after d: "H" (rotation, idle money in SMH), "SMH" or "CASH"."""
     _, rules = load_config()
     uni = make_uni({t: [t] for t in tick}, {})
-    sim = run_variant(px, liquid_big, uni, merge_rules(rules, H_OVERRIDE), start)
+    sim = run_variant(px, liquid_big, uni, merge_rules(merge_rules(rules, H_OVERRIDE), override or {}), start)
     h = sim["nav"]
     idx = h.index
 

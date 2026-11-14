@@ -112,6 +112,7 @@ def indicators(px: pd.DataFrame) -> dict[str, pd.DataFrame]:
         "r12_1": px.shift(21) / px.shift(252) - 1,   # 12 months, skipping the last one
         "vol": r.rolling(63, min_periods=40).std() * math.sqrt(252),
         "high52": px.rolling(252, min_periods=20).max(),
+        "dd52": px / px.rolling(252, min_periods=20).max() - 1,   # distance below the 52-week high
     }
 
 
@@ -221,7 +222,8 @@ def pick_targets(d, px, ind, lidx, lind, uni, rules, held=None, exclude=None) ->
     layers = [L for L in active_layers(uni) if L in lidx.columns]
     score = composite_score(lind, d, layers)
     lp, lm = lidx.loc[d, layers], lind["ma200"].loc[d, layers]
-    eligible = score.notna() & lp.notna() & lm.notna() & (lp > lm)
+    above = P.get("entry_above_ma200", True)          # research switch; the live rule keeps it on
+    eligible = score.notna() & lp.notna() & lm.notna() & ((lp > lm) if above else True)
     rank = score.rank(ascending=False, method="min")
     order = score[eligible].sort_values(ascending=False).index.tolist()
 
@@ -231,7 +233,7 @@ def pick_targets(d, px, ind, lidx, lind, uni, rules, held=None, exclude=None) ->
             if t not in px.columns or not is_tradable(uni, t) or t in exclude:
                 continue
             p, m = px.at[d, t], ind["ma200"].at[d, t]
-            if pd.notna(p) and pd.notna(m) and p > m:
+            if pd.notna(p) and pd.notna(m) and (p > m or not above):
                 ok.append(t)
         if not ok:
             return []

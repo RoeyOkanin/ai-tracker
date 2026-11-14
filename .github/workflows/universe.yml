@@ -1,0 +1,48 @@
+name: universe-refresh
+
+# Quarterly: re-apply the list rule to today's US listings (new IPOs and reclassified
+# companies in, delisted and sub-$50M names out). The switch picks it up the same night.
+on:
+  schedule:
+    - cron: "0 12 2 1,4,7,10 *"      # the 2nd of Jan / Apr / Jul / Oct, 12:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: universe-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Rebuild the stock list
+        working-directory: scripts
+        env:
+          NOTIFY_PATH: /tmp/notify.md
+        run: python refresh_universe.py
+      - name: Save
+        run: |
+          git config user.name "ai-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/research/broad_universe.csv data/research/universe_changes.csv
+          git commit -m "universe: quarterly refresh $(date -u +%F)" || exit 0
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Notify (GitHub issue)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s /tmp/notify.md ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "רשימת המניות · רענון $(date -u +%d.%m.%Y)" --body-file /tmp/notify.md
+          fi
