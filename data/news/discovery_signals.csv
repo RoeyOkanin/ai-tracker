@@ -78,6 +78,7 @@ date,name,items,tight,ease,friction
 2026-11-11,Galaxy Digital,1,0,0,0
 2026-11-11,Hut 8,2,0,0,1
 2026-11-11,NetApp,1,0,0,0
+2026-11-11,Sanmina,1,0,0,0
 2026-11-12,Caterpillar,1,0,0,0
 2026-11-12,Cerebras,3,1,0,0
 2026-11-12,Cisco,2,0,0,0
@@ -91,4 +92,5 @@ date,name,items,tight,ease,friction
 2026-11-13,TeraWulf,1,0,0,1
 2026-11-14,Argan,1,0,0,0
 2026-11-14,Centrus Energy,3,2,1,0
+2026-11-14,Core Scientific,1,0,0,0
 2026-11-14,Flex Ltd,1,0,0,0
