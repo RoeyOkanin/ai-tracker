@@ -13,6 +13,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import yaml
+from datetime import datetime, time as dtime
+from zoneinfo import ZoneInfo
+
 from pandas.tseries.offsets import BDay
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -83,6 +86,16 @@ def merge_rules(base: dict, override: dict | None) -> dict:
 
 
 # ---------------------------------------------------------------- data
+def drop_partial_session(df, now: datetime | None = None):
+    """Remove today's bar while the US session is still open (or the data is not final yet).
+    A mid-session download carries a half-finished candle; a decision made on it is not a
+    decision on a close, and the executor would refuse (or worse, act on) the book."""
+    ny = (now or datetime.now(ZoneInfo("America/New_York"))).astimezone(ZoneInfo("America/New_York"))
+    if ny.weekday() < 5 and ny.time() < dtime(16, 20):
+        return df[pd.to_datetime(df.index).date < ny.date()]
+    return df
+
+
 def load_prices(uni, path: Path | None = None) -> pd.DataFrame:
     """Adjusted closes on the US trading calendar. Foreign closes are carried
     forward onto US days (max 5 days, so dead tickers don't look alive)."""

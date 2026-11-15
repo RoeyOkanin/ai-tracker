@@ -45,6 +45,8 @@ def load_prices():
         close, vol = download(u["ticker"].tolist() + BENCH)
         close.to_pickle(RAW / "close.pkl")
         vol.to_pickle(RAW / "vol.pkl")
+    from engine import drop_partial_session
+    close, vol = drop_partial_session(close), drop_partial_session(vol)
     tick = [t for t in u["ticker"] if t in close.columns and close[t].notna().sum() > 260]
     cal = close["SPY"].dropna().index
     px = close.reindex(cal).ffill(limit=5)

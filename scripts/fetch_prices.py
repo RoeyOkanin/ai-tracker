@@ -14,7 +14,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 import yfinance as yf
 
-from engine import DATA, all_tickers, load_config
+from engine import DATA, all_tickers, drop_partial_session, load_config
 
 START = "2017-06-01"
 
@@ -84,9 +84,7 @@ def main() -> int:
                 close = close.drop(columns=[t], errors="ignore").join(prev[t], how="outer")
 
     # never store a half-finished US session
-    ny = datetime.now(ZoneInfo("America/New_York"))
-    if ny.weekday() < 5 and ny.time() < dtime(16, 20):
-        close = close[close.index.date < ny.date()]
+    close = drop_partial_session(close)
 
     close = close.reindex(columns=[t for t in tickers if t in close.columns]).sort_index()
     close = close.dropna(how="all")

@@ -98,3 +98,16 @@ def test_switch_to_cash_sells_managed_only():
                  "OTHER": {"qty": 5, "price": 10.0, "value": 50}}
     orders, _ = plan_orders(book, 100_000, positions, PXS.get, M | {"SMH"}, GS, "2026-12-01", cash=0)
     assert [(o.ticker, o.side, o.qty) for o in orders] == [("SMH", "sell", 400)]
+
+
+# ---- partial session: a mid-day download must never become "today's close"
+def test_drop_partial_session():
+    import pandas as pd
+    from engine import drop_partial_session
+    df = pd.DataFrame({"X": [1.0, 2.0, 3.0]}, index=pd.to_datetime(["2026-11-12", "2026-11-13", "2026-11-16"]))
+    mid = datetime(2026, 11, 16, 14, 30, tzinfo=NY)          # Monday, session open
+    assert list(drop_partial_session(df, mid).index.date.astype(str)) == ["2026-11-12", "2026-11-13"]
+    after = datetime(2026, 11, 16, 16, 30, tzinfo=NY)        # final
+    assert len(drop_partial_session(df, after)) == 3
+    sat = datetime(2026, 11, 14, 11, 0, tzinfo=NY)           # weekend: Friday's bar is final
+    assert len(drop_partial_session(df.iloc[:2], sat)) == 2
