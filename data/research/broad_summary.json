@@ -1,6 +1,6 @@
 {
- "asof": "2026-11-12",
- "universe_size": 807,
+ "asof": "2026-11-13",
+ "universe_size": 803,
  "liquid_today": 460,
  "rules": {
   "min_price": 5.0,
@@ -9,167 +9,167 @@
  "results": {
   "E: שרשרת פיזית, 3 ענפים x 2": {
    "5y": {
-    "total_return": 1.596844582655529,
-    "cagr": 0.2103209204973615,
-    "vol": 0.3461670505068604,
-    "sharpe": 0.7273741190344948,
-    "max_drawdown": -0.3470715293501476,
-    "calmar": 0.6059872467533242,
-    "worst_month": -0.238584488531996,
-    "pct_positive_months": 0.5833333333333334,
-    "trades": 374
+    "total_return": 1.459053508883306,
+    "cagr": 0.19707541915820292,
+    "vol": 0.34536035848048163,
+    "sharpe": 0.696029447103202,
+    "max_drawdown": -0.34707143824828735,
+    "calmar": 0.567823789110585,
+    "worst_month": -0.2350768630058574,
+    "pct_positive_months": 0.6,
+    "trades": 369
    },
    "7y": {
-    "total_return": 4.4878303473897,
-    "cagr": 0.24184361735789617,
-    "vol": 0.32786059694615194,
-    "sharpe": 0.8259370302308309,
-    "max_drawdown": -0.36875184013873397,
-    "calmar": 0.6558438251234444,
-    "worst_month": -0.238584488531996,
+    "total_return": 4.11758488302991,
+    "cagr": 0.23076797652633374,
+    "vol": 0.32758076812113873,
+    "sharpe": 0.7987928717859474,
+    "max_drawdown": -0.3687518788649957,
+    "calmar": 0.6258082731310517,
+    "worst_month": -0.2350768630058574,
     "pct_positive_months": 0.5957446808510638,
-    "trades": 567
+    "trades": 564
    }
   },
   "F: שרשרת פיזית, 6 החזקות": {
    "5y": {
-    "total_return": 2.9355869411152438,
-    "cagr": 0.3152799350074542,
-    "vol": 0.4089293448579138,
-    "sharpe": 0.8770644631233218,
-    "max_drawdown": -0.39535507684036253,
-    "calmar": 0.797460190791375,
-    "worst_month": -0.26356291091262896,
+    "total_return": 2.8904480627983142,
+    "cagr": 0.312053319482414,
+    "vol": 0.40815939648873845,
+    "sharpe": 0.8717178229965943,
+    "max_drawdown": -0.3953550768006904,
+    "calmar": 0.7892988804080259,
+    "worst_month": -0.2635629022471456,
     "pct_positive_months": 0.5666666666666667,
-    "trades": 440
+    "trades": 438
    },
    "7y": {
-    "total_return": 7.617189199556334,
-    "cagr": 0.3152177604095614,
-    "vol": 0.3896448346406976,
-    "sharpe": 0.8991837059239132,
-    "max_drawdown": -0.521976056156449,
-    "calmar": 0.603893141633077,
-    "worst_month": -0.25177371752124256,
+    "total_return": 7.826711947596747,
+    "cagr": 0.3191163449735692,
+    "vol": 0.38858433033908213,
+    "sharpe": 0.9080961905355834,
+    "max_drawdown": -0.5237638483703917,
+    "calmar": 0.609275241058445,
+    "worst_month": -0.25166546967642844,
     "pct_positive_months": 0.5957446808510638,
     "trades": 689
    }
   },
   "G: שרשרת פיזית, 3x2, רק מניות עם 100M$ ביום": {
    "5y": {
-    "total_return": 1.6522846858410114,
-    "cagr": 0.2154458838604425,
-    "vol": 0.30670384902910625,
-    "sharpe": 0.7931535904670107,
-    "max_drawdown": -0.3382432069756508,
-    "calmar": 0.6369555379598558,
-    "worst_month": -0.22008936150814318,
+    "total_return": 1.4237708764799173,
+    "cagr": 0.1936218084120298,
+    "vol": 0.3057016664746476,
+    "sharpe": 0.7349872362494699,
+    "max_drawdown": -0.3382431124835543,
+    "calmar": 0.5724338538347735,
+    "worst_month": -0.22008937461947298,
     "pct_positive_months": 0.6166666666666667,
-    "trades": 308
+    "trades": 293
    },
    "7y": {
-    "total_return": 4.375749394084474,
-    "cagr": 0.2385878131651984,
-    "vol": 0.2865407232670137,
-    "sharpe": 0.8922420668847034,
-    "max_drawdown": -0.36129633116647364,
-    "calmar": 0.6603660003822869,
-    "worst_month": -0.22114661153093118,
-    "pct_positive_months": 0.648936170212766,
-    "trades": 477
+    "total_return": 3.908149012155164,
+    "cagr": 0.2242448378830395,
+    "vol": 0.28582990799489644,
+    "sharpe": 0.8527562966742214,
+    "max_drawdown": -0.36129639512490375,
+    "calmar": 0.6206672441487158,
+    "worst_month": -0.2211466086310282,
+    "pct_positive_months": 0.6382978723404256,
+    "trades": 461
    }
   },
   "H: שרשרת פיזית, 6 החזקות, 100M$ ביום": {
    "5y": {
-    "total_return": 3.3841805233310467,
-    "cagr": 0.34398760066468004,
-    "vol": 0.3890044950629039,
-    "sharpe": 0.9583427348662273,
-    "max_drawdown": -0.3802614320274773,
-    "calmar": 0.9046081766184056,
-    "worst_month": -0.24493849702692694,
+    "total_return": 3.3615599848046642,
+    "cagr": 0.3423811781977064,
+    "vol": 0.3889304364805763,
+    "sharpe": 0.9551706902249473,
+    "max_drawdown": -0.3802613790186513,
+    "calmar": 0.9003837809700708,
+    "worst_month": -0.24493850666931016,
     "pct_positive_months": 0.55,
     "trades": 440
    },
    "7y": {
-    "total_return": 6.653137647329446,
-    "cagr": 0.29551512932203083,
-    "vol": 0.3584490467900387,
-    "sharpe": 0.9032017349609789,
-    "max_drawdown": -0.5424707199261808,
-    "calmar": 0.5447577509109514,
-    "worst_month": -0.22407408560587305,
+    "total_return": 6.577148544908351,
+    "cagr": 0.2937554476164659,
+    "vol": 0.35854178945154025,
+    "sharpe": 0.8991477996348988,
+    "max_drawdown": -0.5424706738109617,
+    "calmar": 0.5415139689538918,
+    "worst_month": -0.22407408528390138,
     "pct_positive_months": 0.5531914893617021,
     "trades": 675
    }
   },
   "A: 10 ענפים, 3 ענפים x 2 מניות (החוקים הנוכחיים)": {
    "5y": {
-    "total_return": 0.1552474862022939,
-    "cagr": 0.02928755693603402,
-    "vol": 0.2919801223959899,
-    "sharpe": 0.2460905566970376,
-    "max_drawdown": -0.4542608707182453,
-    "calmar": 0.06447299079431297,
-    "worst_month": -0.18195024353171108,
+    "total_return": 0.22569730505581687,
+    "cagr": 0.041524258778412815,
+    "vol": 0.2937703808268091,
+    "sharpe": 0.2865402571878824,
+    "max_drawdown": -0.45788986434925794,
+    "calmar": 0.09068612784741609,
+    "worst_month": -0.18195025273985044,
     "pct_positive_months": 0.5666666666666667,
-    "trades": 376
+    "trades": 381
    },
    "7y": {
-    "total_return": 1.9092821090301713,
-    "cagr": 0.1455210047720621,
-    "vol": 0.313593121697145,
-    "sharpe": 0.5912285098569611,
-    "max_drawdown": -0.5594667045503945,
-    "calmar": 0.26010664010650547,
-    "worst_month": -0.1854218727527014,
-    "pct_positive_months": 0.5638297872340425,
-    "trades": 577
+    "total_return": 2.2036877462059663,
+    "cagr": 0.15959587095170114,
+    "vol": 0.3181520563611684,
+    "sharpe": 0.6257486035918269,
+    "max_drawdown": -0.5448522671608316,
+    "calmar": 0.29291586099721784,
+    "worst_month": -0.18542187275760513,
+    "pct_positive_months": 0.5425531914893617,
+    "trades": 575
    }
   },
   "B: תעשיות מפורטות, 3 x 2": {
    "5y": {
-    "total_return": 0.5483727881716634,
-    "cagr": 0.09139084205625969,
-    "vol": 0.26754636413555993,
-    "sharpe": 0.46210479229985174,
-    "max_drawdown": -0.42842079825923784,
-    "calmar": 0.2133202739633546,
-    "worst_month": -0.211666887094481,
-    "pct_positive_months": 0.55,
-    "trades": 400
+    "total_return": 0.6851437744811868,
+    "cagr": 0.1099637224945531,
+    "vol": 0.2689576087149031,
+    "sharpe": 0.5240011009641447,
+    "max_drawdown": -0.42842078054923993,
+    "calmar": 0.256672242540566,
+    "worst_month": -0.21166687067846168,
+    "pct_positive_months": 0.5666666666666667,
+    "trades": 398
    },
    "7y": {
-    "total_return": 3.541667526924596,
-    "cagr": 0.2123031992645379,
-    "vol": 0.28922163657724625,
-    "sharpe": 0.8110871734333283,
-    "max_drawdown": -0.4284207982592376,
-    "calmar": 0.4955483023400585,
-    "worst_month": -0.21166688709448134,
+    "total_return": 4.892854072665132,
+    "cagr": 0.25304619234729486,
+    "vol": 0.300609389182302,
+    "sharpe": 0.9014269441701399,
+    "max_drawdown": -0.42842078054923993,
+    "calmar": 0.5906487356259587,
+    "worst_month": -0.21166687067846168,
     "pct_positive_months": 0.5531914893617021,
     "trades": 594
    }
   },
   "C: 6 המניות החזקות ביותר": {
    "5y": {
-    "total_return": 0.9045634058966512,
-    "cagr": 0.13754018751957475,
-    "vol": 0.3739717748612882,
-    "sharpe": 0.5325475187058284,
-    "max_drawdown": -0.4129590879270345,
-    "calmar": 0.33306008159306244,
-    "worst_month": -0.2319331806027919,
+    "total_return": 0.7717769800936736,
+    "cagr": 0.12114404921136734,
+    "vol": 0.37748252670256727,
+    "sharpe": 0.4925843924403399,
+    "max_drawdown": -0.4129590972374404,
+    "calmar": 0.2933560491142607,
+    "worst_month": -0.23193318064087887,
     "pct_positive_months": 0.5333333333333333,
-    "trades": 485
+    "trades": 487
    },
    "7y": {
-    "total_return": 3.9686549449835153,
-    "cagr": 0.22624101888499437,
-    "vol": 0.39313284021466116,
-    "sharpe": 0.7156707067685254,
-    "max_drawdown": -0.644883406298986,
-    "calmar": 0.3508246865637332,
+    "total_return": 3.8920260731151997,
+    "cagr": 0.223732656282978,
+    "vol": 0.3930777374709455,
+    "sharpe": 0.7104105593055007,
+    "max_drawdown": -0.6448833768233392,
+    "calmar": 0.34693506504241595,
     "worst_month": -0.2612866562020293,
     "pct_positive_months": 0.5425531914893617,
     "trades": 744
@@ -177,91 +177,91 @@
   },
   "D: 10 המניות החזקות ביותר": {
    "5y": {
-    "total_return": 0.8679476544090414,
-    "cagr": 0.13313165196246368,
-    "vol": 0.332443188121432,
-    "sharpe": 0.5446226191104395,
-    "max_drawdown": -0.39477523685477867,
-    "calmar": 0.33723404999548456,
-    "worst_month": -0.17318797645940698,
-    "pct_positive_months": 0.55,
+    "total_return": 0.8304490022980993,
+    "cagr": 0.12846987598774784,
+    "vol": 0.3369402084330931,
+    "sharpe": 0.5295362202886772,
+    "max_drawdown": -0.42338146568559754,
+    "calmar": 0.30343764760630637,
+    "worst_month": -0.17152164242962653,
+    "pct_positive_months": 0.5333333333333333,
     "trades": 717
    },
    "7y": {
-    "total_return": 2.9994992187625984,
-    "cagr": 0.19285441927881153,
-    "vol": 0.3430757799755368,
-    "sharpe": 0.6870984979725141,
-    "max_drawdown": -0.5998541670727213,
-    "calmar": 0.32150217480348264,
-    "worst_month": -0.1942936640873253,
+    "total_return": 3.0418490599837273,
+    "cagr": 0.19438005142476222,
+    "vol": 0.34386521834466416,
+    "sharpe": 0.6899650439407025,
+    "max_drawdown": -0.5998541353145193,
+    "calmar": 0.32404553037355266,
+    "worst_month": -0.19429366460709985,
     "pct_positive_months": 0.5638297872340425,
-    "trades": 1072
+    "trades": 1069
    }
   },
   "קנה והחזק SPY": {
    "5y": {
-    "total_return": 0.7323862690907343,
-    "cagr": 0.1161831991380895,
-    "vol": 0.1733352802896787,
-    "sharpe": 0.723640109306066,
-    "max_drawdown": -0.24496371769512237,
-    "calmar": 0.47428737705021734,
-    "worst_month": -0.09244552814693163,
-    "pct_positive_months": 0.6333333333333333
+    "total_return": 0.7260941624766906,
+    "cagr": 0.11530444569898601,
+    "vol": 0.1732760921816749,
+    "sharpe": 0.7191016395906403,
+    "max_drawdown": -0.24496376908509876,
+    "calmar": 0.470699998328855,
+    "worst_month": -0.09244566883630334,
+    "pct_positive_months": 0.6166666666666667
    },
    "7y": {
-    "total_return": 2.3913308549454118,
-    "cagr": 0.16808365486560506,
-    "vol": 0.19228022768197128,
-    "sharpe": 0.9061951657558656,
-    "max_drawdown": -0.33717268745960116,
-    "calmar": 0.49850910562186107,
-    "worst_month": -0.12487123275442213,
-    "pct_positive_months": 0.6595744680851063
+    "total_return": 2.3790129133889266,
+    "cagr": 0.16748006970194207,
+    "vol": 0.19223780948495764,
+    "sharpe": 0.9035297533813357,
+    "max_drawdown": -0.3371725559557691,
+    "calmar": 0.49671916276576317,
+    "worst_month": -0.1248714593326613,
+    "pct_positive_months": 0.648936170212766
    }
   },
   "קנה והחזק SMH": {
    "5y": {
-    "total_return": 2.434777735425187,
-    "cagr": 0.2799541179572993,
-    "vol": 0.3765166781562056,
-    "sharpe": 0.8469800504064365,
-    "max_drawdown": -0.4530263070509237,
-    "calmar": 0.6179643733709933,
-    "worst_month": -0.1758831248763506,
+    "total_return": 2.332226200277988,
+    "cagr": 0.2720494001753486,
+    "vol": 0.37662475833725034,
+    "sharpe": 0.8301441372436942,
+    "max_drawdown": -0.45302620357971923,
+    "calmar": 0.6005158156982324,
+    "worst_month": -0.1758831248763505,
     "pct_positive_months": 0.6166666666666667
    },
    "7y": {
-    "total_return": 11.02281203726294,
-    "cagr": 0.3721414687847562,
-    "vol": 0.36483635377655127,
-    "sharpe": 1.0520655853488656,
-    "max_drawdown": -0.4530263070509237,
-    "calmar": 0.821456641684441,
+    "total_return": 10.663849273615716,
+    "cagr": 0.36671160295009697,
+    "vol": 0.36491592206862883,
+    "sharpe": 1.0408805676425568,
+    "max_drawdown": -0.45302620357971923,
+    "calmar": 0.8094710638201893,
     "worst_month": -0.1758831248763505,
     "pct_positive_months": 0.6702127659574468
    }
   },
   "קנה והחזק QQQ": {
    "5y": {
-    "total_return": 0.7964240334143518,
-    "cagr": 0.1243168970717281,
-    "vol": 0.23358580714157268,
-    "sharpe": 0.6206665158709235,
-    "max_drawdown": -0.35118731568587624,
-    "calmar": 0.3539902824478002,
-    "worst_month": -0.13595766033100043,
+    "total_return": 0.7748098435323301,
+    "cagr": 0.12152745591623537,
+    "vol": 0.23356089052957105,
+    "sharpe": 0.609894065320749,
+    "max_drawdown": -0.3511872883525313,
+    "calmar": 0.34604742240625413,
+    "worst_month": -0.1359575738175779,
     "pct_positive_months": 0.5833333333333334
    },
    "7y": {
-    "total_return": 3.6584726272857937,
-    "cagr": 0.21622594965715258,
-    "vol": 0.24003345597423964,
-    "sharpe": 0.9376275412679256,
-    "max_drawdown": -0.35118731568587624,
-    "calmar": 0.6156997704625485,
-    "worst_month": -0.13595766033100043,
+    "total_return": 3.602421563210683,
+    "cagr": 0.2142722769560097,
+    "vol": 0.24001698875941643,
+    "sharpe": 0.9308310700739655,
+    "max_drawdown": -0.3511872883525312,
+    "calmar": 0.6101367676523571,
+    "worst_month": -0.13595757381757767,
     "pct_positive_months": 0.6382978723404256
    }
   }
@@ -272,14 +272,14 @@
     {
      "ticker": "VLTO",
      "group": "electrical",
-     "weight": 0.189,
-     "pnl": 0.015
+     "weight": 0.191,
+     "pnl": 0.022
     },
     {
      "ticker": "QMCO",
      "group": "hardware",
-     "weight": 0.1,
-     "pnl": -0.006
+     "weight": 0.093,
+     "pnl": -0.083
     }
    ],
    "next_plan": null
@@ -289,14 +289,14 @@
     {
      "ticker": "QMCO",
      "group": "QMCO",
-     "weight": 0.105,
-     "pnl": -0.006
+     "weight": 0.098,
+     "pnl": -0.083
     },
     {
      "ticker": "NTAP",
      "group": "NTAP",
-     "weight": 0.106,
-     "pnl": 0.004
+     "weight": 0.104,
+     "pnl": -0.021
     }
    ],
    "next_plan": null
@@ -306,14 +306,14 @@
     {
      "ticker": "VLTO",
      "group": "electrical",
-     "weight": 0.188,
-     "pnl": 0.015
+     "weight": 0.189,
+     "pnl": 0.022
     },
     {
      "ticker": "P",
      "group": "hardware",
-     "weight": 0.153,
-     "pnl": -0.032
+     "weight": 0.15,
+     "pnl": -0.051
     }
    ],
    "next_plan": null
@@ -323,8 +323,8 @@
     {
      "ticker": "NTAP",
      "group": "NTAP",
-     "weight": 0.105,
-     "pnl": 0.004
+     "weight": 0.103,
+     "pnl": -0.021
     }
    ],
    "next_plan": null
@@ -334,32 +334,32 @@
     {
      "ticker": "VLTO",
      "group": "electrical",
-     "weight": 0.171,
-     "pnl": 0.015
+     "weight": 0.173,
+     "pnl": 0.022
     },
     {
      "ticker": "OKTA",
      "group": "software",
-     "weight": 0.093,
-     "pnl": -0.013
+     "weight": 0.094,
+     "pnl": -0.011
     },
     {
      "ticker": "RBRK",
      "group": "software",
      "weight": 0.103,
-     "pnl": -0.037
+     "pnl": -0.042
     },
     {
      "ticker": "QMCO",
      "group": "hardware",
-     "weight": 0.063,
-     "pnl": -0.006
+     "weight": 0.058,
+     "pnl": -0.083
     },
     {
      "ticker": "P",
      "group": "hardware",
-     "weight": 0.134,
-     "pnl": -0.032
+     "weight": 0.132,
+     "pnl": -0.051
     }
    ],
    "next_plan": null
@@ -369,32 +369,32 @@
     {
      "ticker": "QMCO",
      "group": "Technology|Electronic Components",
-     "weight": 0.045,
-     "pnl": -0.006
+     "weight": 0.041,
+     "pnl": -0.083
     },
     {
      "ticker": "NTAP",
      "group": "Technology|Electronic Components",
-     "weight": 0.156,
-     "pnl": 0.004
+     "weight": 0.151,
+     "pnl": -0.021
     },
     {
      "ticker": "VLTO",
      "group": "Industrials|Electrical Products",
-     "weight": 0.17,
-     "pnl": 0.015
+     "weight": 0.169,
+     "pnl": 0.022
     },
     {
-     "ticker": "OKTA",
-     "group": "Technology|Computer Software: Prepackaged Software",
-     "weight": 0.093,
-     "pnl": -0.013
+     "ticker": "AAPL",
+     "group": "Technology|Computer Manufacturing",
+     "weight": 0.156,
+     "pnl": 0.054
     },
     {
-     "ticker": "RBRK",
-     "group": "Technology|Computer Software: Prepackaged Software",
-     "weight": 0.103,
-     "pnl": -0.037
+     "ticker": "HPQ",
+     "group": "Technology|Computer Manufacturing",
+     "weight": 0.053,
+     "pnl": 0.033
     }
    ],
    "next_plan": null
@@ -404,32 +404,32 @@
     {
      "ticker": "RNG",
      "group": "RNG",
-     "weight": 0.122,
-     "pnl": 0.074
+     "weight": 0.123,
+     "pnl": 0.067
     },
     {
      "ticker": "CRWD",
      "group": "CRWD",
      "weight": 0.1,
-     "pnl": -0.136
+     "pnl": -0.148
     },
     {
      "ticker": "QMCO",
      "group": "QMCO",
-     "weight": 0.101,
-     "pnl": -0.006
+     "weight": 0.095,
+     "pnl": -0.083
     },
     {
      "ticker": "HNGE",
      "group": "HNGE",
-     "weight": 0.106,
-     "pnl": 0.048
+     "weight": 0.103,
+     "pnl": -0.001
     },
     {
      "ticker": "RBRK",
      "group": "RBRK",
-     "weight": 0.098,
-     "pnl": -0.037
+     "weight": 0.099,
+     "pnl": -0.042
     }
    ],
    "next_plan": null
@@ -440,55 +440,55 @@
      "ticker": "RNG",
      "group": "RNG",
      "weight": 0.067,
-     "pnl": 0.074
+     "pnl": 0.067
     },
     {
      "ticker": "CRWD",
      "group": "CRWD",
-     "weight": 0.067,
-     "pnl": 0.069
+     "weight": 0.066,
+     "pnl": 0.054
     },
     {
      "ticker": "HNGE",
      "group": "HNGE",
-     "weight": 0.084,
-     "pnl": 0.344
+     "weight": 0.081,
+     "pnl": 0.282
     },
     {
      "ticker": "QMCO",
      "group": "QMCO",
-     "weight": 0.059,
-     "pnl": -0.006
+     "weight": 0.055,
+     "pnl": -0.083
     },
     {
      "ticker": "RBRK",
      "group": "RBRK",
      "weight": 0.057,
-     "pnl": -0.037
+     "pnl": -0.042
     },
     {
      "ticker": "AMPL",
      "group": "AMPL",
-     "weight": 0.061,
-     "pnl": 0.032
+     "weight": 0.062,
+     "pnl": 0.033
     },
     {
      "ticker": "ZETA",
      "group": "ZETA",
      "weight": 0.072,
-     "pnl": 0.221
+     "pnl": 0.201
     },
     {
      "ticker": "QLYS",
      "group": "QLYS",
-     "weight": 0.049,
-     "pnl": -0.166
+     "weight": 0.05,
+     "pnl": -0.167
     },
     {
      "ticker": "FROG",
      "group": "FROG",
-     "weight": 0.077,
-     "pnl": 0.299
+     "weight": 0.08,
+     "pnl": 0.335
     }
    ],
    "next_plan": null
@@ -500,20 +500,20 @@
    "name": "Hinge Health Inc. Class A Common Stock",
    "bucket": "cloud_services",
    "industry": "EDP Services",
-   "score": 0.965,
-   "r3m": 0.367,
-   "r6m": 1.246,
+   "score": 0.958,
+   "r3m": 0.313,
+   "r6m": 1.117,
    "above_ma200": true,
-   "mcap_b": 9.9
+   "mcap_b": 9.8
   },
   {
    "ticker": "OKTA",
    "name": "Okta Inc. Class A Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.954,
-   "r3m": 0.238,
-   "r6m": 1.252,
+   "score": 0.957,
+   "r3m": 0.277,
+   "r6m": 1.209,
    "above_ma200": true,
    "mcap_b": 31.9
   },
@@ -522,31 +522,31 @@
    "name": "RingCentral Inc. Class A Common Stock",
    "bucket": "cloud_services",
    "industry": "EDP Services",
-   "score": 0.935,
+   "score": 0.931,
    "r3m": 0.179,
-   "r6m": 0.939,
+   "r6m": 0.846,
    "above_ma200": true,
-   "mcap_b": 6.3
+   "mcap_b": 6.4
   },
   {
-   "ticker": "ZETA",
-   "name": "Zeta Global Holdings Corp. Class A Commo",
+   "ticker": "PRCH",
+   "name": "Porch Group Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.913,
-   "r3m": 0.283,
-   "r6m": 1.248,
+   "score": 0.917,
+   "r3m": 0.256,
+   "r6m": 1.139,
    "above_ma200": true,
-   "mcap_b": 9.6
+   "mcap_b": 2.8
   },
   {
    "ticker": "BMBL",
    "name": "Bumble Inc. Class A Common Stock",
    "bucket": "cloud_services",
    "industry": "Computer Software: Programming Data Processing",
-   "score": 0.906,
-   "r3m": 1.218,
-   "r6m": 0.844,
+   "score": 0.917,
+   "r3m": 1.304,
+   "r6m": 0.908,
    "above_ma200": true,
    "mcap_b": 0.9
   },
@@ -555,174 +555,174 @@
    "name": "Magnite Inc. Common Stock",
    "bucket": "cloud_services",
    "industry": "Computer Software: Programming Data Processing",
-   "score": 0.896,
-   "r3m": 0.186,
-   "r6m": 1.362,
+   "score": 0.911,
+   "r3m": 0.211,
+   "r6m": 1.285,
    "above_ma200": true,
    "mcap_b": 4.2
+  },
+  {
+   "ticker": "ZETA",
+   "name": "Zeta Global Holdings Corp. Class A Commo",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.911,
+   "r3m": 0.271,
+   "r6m": 1.132,
+   "above_ma200": true,
+   "mcap_b": 9.5
   },
   {
    "ticker": "AMPL",
    "name": "Amplitude Inc. Class A Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.896,
-   "r3m": 0.33,
-   "r6m": 1.827,
+   "score": 0.908,
+   "r3m": 0.375,
+   "r6m": 1.861,
    "above_ma200": true,
    "mcap_b": 2.2
-  },
-  {
-   "ticker": "PRCH",
-   "name": "Porch Group Inc. Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.896,
-   "r3m": 0.226,
-   "r6m": 1.043,
-   "above_ma200": true,
-   "mcap_b": 2.9
-  },
-  {
-   "ticker": "AZTA",
-   "name": "Azenta Inc.",
-   "bucket": "tech_equipment",
-   "industry": "Industrial Machinery/Components",
-   "score": 0.864,
-   "r3m": 0.314,
-   "r6m": 1.611,
-   "above_ma200": true,
-   "mcap_b": 2.1
-  },
-  {
-   "ticker": "MANH",
-   "name": "Manhattan Associates Inc. Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.86,
-   "r3m": 0.299,
-   "r6m": 0.987,
-   "above_ma200": true,
-   "mcap_b": 15.0
-  },
-  {
-   "ticker": "SAIC",
-   "name": "Science Applications International Corpo",
-   "bucket": "cloud_services",
-   "industry": "EDP Services",
-   "score": 0.855,
-   "r3m": 0.197,
-   "r6m": 0.642,
-   "above_ma200": true,
-   "mcap_b": 6.4
-  },
-  {
-   "ticker": "AMD",
-   "name": "Advanced Micro Devices Inc. Common Stock",
-   "bucket": "semis",
-   "industry": "Semiconductors",
-   "score": 0.852,
-   "r3m": 0.138,
-   "r6m": 0.302,
-   "above_ma200": true,
-   "mcap_b": 906.8
-  },
-  {
-   "ticker": "PAYC",
-   "name": "Paycom Software Inc. Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.851,
-   "r3m": 0.143,
-   "r6m": 0.871,
-   "above_ma200": true,
-   "mcap_b": 10.9
   },
   {
    "ticker": "FROG",
    "name": "JFrog Ltd. Ordinary Shares",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.847,
-   "r3m": 0.15,
-   "r6m": 0.699,
+   "score": 0.87,
+   "r3m": 0.2,
+   "r6m": 0.717,
    "above_ma200": true,
-   "mcap_b": 13.6
+   "mcap_b": 13.8
   },
   {
-   "ticker": "BOX",
-   "name": "Box Inc. Class A Common Stock",
+   "ticker": "MANH",
+   "name": "Manhattan Associates Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.84,
-   "r3m": 0.336,
-   "r6m": 0.813,
+   "score": 0.864,
+   "r3m": 0.309,
+   "r6m": 0.958,
    "above_ma200": true,
-   "mcap_b": 6.0
+   "mcap_b": 14.9
   },
   {
-   "ticker": "NIQ",
-   "name": "NIQ Global Intelligence plc Ordinary Sha",
-   "bucket": "cloud_services",
-   "industry": "Computer Software: Programming Data Processing",
-   "score": 0.835,
-   "r3m": 0.101,
-   "r6m": 1.344,
+   "ticker": "PAYC",
+   "name": "Paycom Software Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.864,
+   "r3m": 0.164,
+   "r6m": 0.835,
    "above_ma200": true,
-   "mcap_b": 6.2
+   "mcap_b": 11.2
+  },
+  {
+   "ticker": "SAIC",
+   "name": "Science Applications International Corpo",
+   "bucket": "cloud_services",
+   "industry": "EDP Services",
+   "score": 0.858,
+   "r3m": 0.212,
+   "r6m": 0.627,
+   "above_ma200": true,
+   "mcap_b": 6.3
+  },
+  {
+   "ticker": "AZTA",
+   "name": "Azenta Inc.",
+   "bucket": "tech_equipment",
+   "industry": "Industrial Machinery/Components",
+   "score": 0.857,
+   "r3m": 0.359,
+   "r6m": 1.85,
+   "above_ma200": true,
+   "mcap_b": 1.9
   },
   {
    "ticker": "CERT",
    "name": "Certara Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.834,
-   "r3m": 0.487,
-   "r6m": 1.581,
+   "score": 0.856,
+   "r3m": 0.446,
+   "r6m": 1.583,
    "above_ma200": true,
    "mcap_b": 1.8
   },
   {
-   "ticker": "CRWD",
-   "name": "CrowdStrike Holdings Inc. Class A Common",
+   "ticker": "BOX",
+   "name": "Box Inc. Class A Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.833,
-   "r3m": 0.06,
-   "r6m": 0.585,
+   "score": 0.849,
+   "r3m": 0.351,
+   "r6m": 0.769,
    "above_ma200": true,
-   "mcap_b": 234.5
-  },
-  {
-   "ticker": "RBRK",
-   "name": "Rubrik Inc. Class A Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.825,
-   "r3m": 0.08,
-   "r6m": 0.758,
-   "above_ma200": true,
-   "mcap_b": 22.7
+   "mcap_b": 6.0
   },
   {
    "ticker": "TENB",
    "name": "Tenable Holdings Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.814,
-   "r3m": 0.071,
-   "r6m": 1.007,
+   "score": 0.848,
+   "r3m": 0.155,
+   "r6m": 0.897,
    "above_ma200": true,
-   "mcap_b": 4.5
+   "mcap_b": 4.3
+  },
+  {
+   "ticker": "RBRK",
+   "name": "Rubrik Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.833,
+   "r3m": 0.088,
+   "r6m": 0.723,
+   "above_ma200": true,
+   "mcap_b": 22.9
+  },
+  {
+   "ticker": "NIQ",
+   "name": "NIQ Global Intelligence plc Ordinary Sha",
+   "bucket": "cloud_services",
+   "industry": "Computer Software: Programming Data Processing",
+   "score": 0.832,
+   "r3m": 0.122,
+   "r6m": 1.361,
+   "above_ma200": true,
+   "mcap_b": 5.7
+  },
+  {
+   "ticker": "CRWD",
+   "name": "CrowdStrike Holdings Inc. Class A Common",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.824,
+   "r3m": 0.059,
+   "r6m": 0.526,
+   "above_ma200": true,
+   "mcap_b": 235.4
+  },
+  {
+   "ticker": "GTLB",
+   "name": "GitLab Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.82,
+   "r3m": 0.178,
+   "r6m": 1.017,
+   "above_ma200": true,
+   "mcap_b": 7.9
   },
   {
    "ticker": "VRNS",
    "name": "Varonis Systems Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.804,
-   "r3m": 0.091,
-   "r6m": 0.803,
+   "score": 0.818,
+   "r3m": 0.134,
+   "r6m": 0.737,
    "above_ma200": true,
    "mcap_b": 5.7
   },
@@ -731,251 +731,251 @@
    "name": "PagerDuty Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.801,
-   "r3m": 0.321,
-   "r6m": 1.336,
+   "score": 0.815,
+   "r3m": 0.363,
+   "r6m": 1.356,
    "above_ma200": true,
    "mcap_b": 1.2
-  },
-  {
-   "ticker": "DOCU",
-   "name": "DocuSign Inc. Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.799,
-   "r3m": 0.292,
-   "r6m": 0.762,
-   "above_ma200": true,
-   "mcap_b": 15.0
   },
   {
    "ticker": "JOYY",
    "name": "JOYY Inc. American Depositary Shares",
    "bucket": "cloud_services",
    "industry": "EDP Services",
-   "score": 0.797,
-   "r3m": 0.099,
-   "r6m": 0.432,
+   "score": 0.812,
+   "r3m": 0.117,
+   "r6m": 0.493,
    "above_ma200": true,
    "mcap_b": 3.9
-  },
-  {
-   "ticker": "BB",
-   "name": "BlackBerry Limited Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.796,
-   "r3m": 0.025,
-   "r6m": 0.476,
-   "above_ma200": true,
-   "mcap_b": 5.5
   },
   {
    "ticker": "BRZE",
    "name": "Braze Inc. Class A Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.793,
-   "r3m": 0.611,
-   "r6m": 1.346,
+   "score": 0.805,
+   "r3m": 0.669,
+   "r6m": 1.235,
    "above_ma200": true,
    "mcap_b": 5.3
   },
   {
-   "ticker": "CVLT",
-   "name": "Commvault Systems Inc. Common Stock",
+   "ticker": "DOCU",
+   "name": "DocuSign Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.79,
-   "r3m": 0.13,
-   "r6m": 0.628,
+   "score": 0.803,
+   "r3m": 0.35,
+   "r6m": 0.693,
    "above_ma200": true,
-   "mcap_b": 6.8
+   "mcap_b": 15.0
   },
   {
-   "ticker": "GTLB",
-   "name": "GitLab Inc. Class A Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.789,
-   "r3m": 0.109,
-   "r6m": 1.092,
+   "ticker": "AMD",
+   "name": "Advanced Micro Devices Inc. Common Stock",
+   "bucket": "semis",
+   "industry": "Semiconductors",
+   "score": 0.8,
+   "r3m": 0.055,
+   "r6m": 0.259,
    "above_ma200": true,
-   "mcap_b": 7.9
+   "mcap_b": 959.9
   },
   {
    "ticker": "TMO",
    "name": "Thermo Fisher Scientific Inc Common Stoc",
    "bucket": "industrial_equipment",
    "industry": "Industrial Machinery/Components",
-   "score": 0.788,
-   "r3m": 0.19,
-   "r6m": 0.563,
+   "score": 0.798,
+   "r3m": 0.197,
+   "r6m": 0.6,
    "above_ma200": true,
-   "mcap_b": 266.0
+   "mcap_b": 259.2
   },
   {
-   "ticker": "ALRM",
-   "name": "Alarm.com Holdings Inc. Common Stock",
+   "ticker": "BB",
+   "name": "BlackBerry Limited Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.778,
-   "r3m": 0.195,
-   "r6m": 0.568,
+   "score": 0.793,
+   "r3m": 0.019,
+   "r6m": 0.438,
    "above_ma200": true,
-   "mcap_b": 3.3
+   "mcap_b": 5.4
   },
   {
    "ticker": "AVPT",
    "name": "AvePoint Inc. Class A Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.777,
-   "r3m": 0.215,
-   "r6m": 0.673,
+   "score": 0.79,
+   "r3m": 0.249,
+   "r6m": 0.667,
    "above_ma200": true,
-   "mcap_b": 3.5
+   "mcap_b": 3.4
   },
   {
    "ticker": "PCTY",
    "name": "Paylocity Holding Corporation Common Sto",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.775,
-   "r3m": 0.207,
-   "r6m": 0.722,
+   "score": 0.784,
+   "r3m": 0.225,
+   "r6m": 0.664,
    "above_ma200": true,
-   "mcap_b": 9.4
+   "mcap_b": 9.3
   },
   {
-   "ticker": "SWKS",
-   "name": "Skyworks Solutions Inc. Common Stock",
-   "bucket": "semis",
-   "industry": "Semiconductors",
-   "score": 0.775,
-   "r3m": 0.293,
-   "r6m": 0.354,
-   "above_ma200": true,
-   "mcap_b": 20.6
-  },
-  {
-   "ticker": "FDS",
-   "name": "FactSet Research Systems Inc. Common Sto",
+   "ticker": "FA",
+   "name": "First Advantage Corporation Common Stock",
    "bucket": "cloud_services",
-   "industry": "Computer Software: Programming Data Processing",
-   "score": 0.769,
-   "r3m": 0.175,
-   "r6m": 0.674,
+   "industry": "EDP Services",
+   "score": 0.783,
+   "r3m": 0.058,
+   "r6m": 0.445,
    "above_ma200": true,
-   "mcap_b": 11.8
+   "mcap_b": 3.7
   },
   {
    "ticker": "VEEV",
    "name": "Veeva Systems Inc. Class A Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
-   "score": 0.764,
-   "r3m": 0.241,
-   "r6m": 0.935,
+   "score": 0.78,
+   "r3m": 0.265,
+   "r6m": 0.898,
    "above_ma200": true,
-   "mcap_b": 49.3
+   "mcap_b": 49.0
   },
   {
-   "ticker": "PTC",
-   "name": "PTC Inc. Common Stock",
+   "ticker": "FDS",
+   "name": "FactSet Research Systems Inc. Common Sto",
+   "bucket": "cloud_services",
+   "industry": "Computer Software: Programming Data Processing",
+   "score": 0.779,
+   "r3m": 0.207,
+   "r6m": 0.579,
+   "above_ma200": true,
+   "mcap_b": 11.7
+  },
+  {
+   "ticker": "SWKS",
+   "name": "Skyworks Solutions Inc. Common Stock",
+   "bucket": "semis",
+   "industry": "Semiconductors",
+   "score": 0.778,
+   "r3m": 0.328,
+   "r6m": 0.324,
+   "above_ma200": true,
+   "mcap_b": 21.1
+  },
+  {
+   "ticker": "APPN",
+   "name": "Appian Corporation Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.775,
+   "r3m": 0.561,
+   "r6m": 1.791,
+   "above_ma200": true,
+   "mcap_b": 3.9
+  },
+  {
+   "ticker": "ALRM",
+   "name": "Alarm.com Holdings Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.775,
+   "r3m": 0.188,
+   "r6m": 0.537,
+   "above_ma200": true,
+   "mcap_b": 3.3
+  },
+  {
+   "ticker": "NTSK",
+   "name": "Netskope Inc. Class A Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.771,
+   "r3m": 0.426,
+   "r6m": 0.939,
+   "above_ma200": true,
+   "mcap_b": 9.1
+  },
+  {
+   "ticker": "U",
+   "name": "Unity Software Inc. Common Stock",
+   "bucket": "software",
+   "industry": "Computer Software: Prepackaged Software",
+   "score": 0.768,
+   "r3m": 0.162,
+   "r6m": 0.944,
+   "above_ma200": true,
+   "mcap_b": 22.3
+  },
+  {
+   "ticker": "ADP",
+   "name": "Automatic Data Processing Inc. Common St",
+   "bucket": "cloud_services",
+   "industry": "EDP Services",
+   "score": 0.763,
+   "r3m": 0.172,
+   "r6m": 0.465,
+   "above_ma200": true,
+   "mcap_b": 121.6
+  },
+  {
+   "ticker": "INTA",
+   "name": "Intapp Inc. Common Stock",
    "bucket": "software",
    "industry": "Computer Software: Prepackaged Software",
    "score": 0.762,
-   "r3m": 0.311,
-   "r6m": 0.403,
+   "r3m": 0.199,
+   "r6m": 1.199,
    "above_ma200": true,
-   "mcap_b": 21.3
-  },
-  {
-   "ticker": "ATEX",
-   "name": "Anterix Inc. Common Stock",
-   "bucket": "networking",
-   "industry": "Telecommunications Equipment",
-   "score": 0.759,
-   "r3m": -0.097,
-   "r6m": 0.46,
-   "above_ma200": true,
-   "mcap_b": 1.5
-  },
-  {
-   "ticker": "TXN",
-   "name": "Texas Instruments Incorporated Common St",
-   "bucket": "semis",
-   "industry": "Semiconductors",
-   "score": 0.757,
-   "r3m": 0.123,
-   "r6m": 0.024,
-   "above_ma200": true,
-   "mcap_b": 283.1
-  },
-  {
-   "ticker": "ANET",
-   "name": "Arista Networks Inc. Common Stock",
-   "bucket": "networking",
-   "industry": "Computer Communications Equipment",
-   "score": 0.756,
-   "r3m": 0.039,
-   "r6m": 0.398,
-   "above_ma200": true,
-   "mcap_b": 248.5
-  },
-  {
-   "ticker": "NET",
-   "name": "Cloudflare Inc. Class A Common Stock",
-   "bucket": "software",
-   "industry": "Computer Software: Prepackaged Software",
-   "score": 0.756,
-   "r3m": 0.009,
-   "r6m": 0.594,
-   "above_ma200": true,
-   "mcap_b": 112.9
+   "mcap_b": 3.5
   }
  ],
  "first_liquid": {
   "HNGE": "2025-07-21",
   "OKTA": "2017-10-20",
   "RNG": "2017-07-27",
-  "ZETA": "2024-05-07",
+  "PRCH": "2021-02-10",
   "BMBL": "2021-04-09",
   "MGNI": "2020-11-10",
+  "ZETA": "2024-05-07",
   "AMPL": "2021-11-22",
-  "PRCH": "2021-02-10",
-  "AZTA": "2017-11-10",
-  "MANH": "2017-07-27",
-  "SAIC": "2017-07-27",
-  "AMD": "2017-07-27",
-  "PAYC": "2017-07-27",
   "FROG": "2020-11-10",
-  "BOX": "2017-07-27",
-  "NIQ": "2025-09-17",
+  "MANH": "2017-07-27",
+  "PAYC": "2017-07-27",
+  "SAIC": "2017-07-27",
+  "AZTA": "2017-11-10",
   "CERT": "2021-02-09",
-  "CRWD": "2019-08-07",
-  "RBRK": "2024-06-21",
+  "BOX": "2017-07-27",
   "TENB": "2018-09-20",
+  "RBRK": "2024-06-21",
+  "NIQ": "2025-09-17",
+  "CRWD": "2019-08-07",
+  "GTLB": "2021-12-09",
   "VRNS": "2018-05-02",
   "PD": "2019-06-07",
-  "DOCU": "2018-06-22",
   "JOYY": "2017-07-27",
-  "BB": "2017-07-27",
   "BRZE": "2022-01-13",
-  "CVLT": "2017-10-25",
-  "GTLB": "2021-12-09",
+  "DOCU": "2018-06-22",
+  "AMD": "2017-07-27",
   "TMO": "2017-07-27",
-  "ALRM": "2017-10-06",
+  "BB": "2017-07-27",
   "AVPT": "2020-11-30",
   "PCTY": "2018-09-17",
-  "SWKS": "2017-07-27",
-  "FDS": "2017-07-27",
+  "FA": "2025-05-09",
   "VEEV": "2017-07-27",
-  "PTC": "2017-07-27",
-  "ATEX": "2026-06-12",
-  "TXN": "2017-07-27",
-  "ANET": "2017-07-27",
-  "NET": "2019-11-07"
+  "FDS": "2017-07-27",
+  "SWKS": "2017-07-27",
+  "APPN": "2018-08-13",
+  "ALRM": "2017-10-06",
+  "NTSK": "2025-11-12",
+  "U": "2020-11-12",
+  "ADP": "2017-07-27",
+  "INTA": "2023-06-23"
  }
 }
