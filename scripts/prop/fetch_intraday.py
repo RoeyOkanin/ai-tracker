@@ -34,6 +34,21 @@ def alpaca(sym, tf="5Min", start="2016-01-01", feed="sip"):
     return df[["ts", "open", "high", "low", "close", "volume", "vwap"]]
 
 
+# incremental update of QQQ (live EA checks): append bars after the last stored one
+qf = OUT / "QQQ_5m.csv.gz"
+if qf.exists():
+    old = pd.read_csv(qf)
+    last = pd.to_datetime(old.ts.iloc[-1], utc=True)
+    try:
+        new = alpaca("QQQ", start=(last - pd.Timedelta(days=1)).strftime("%Y-%m-%d"))
+    except Exception as e:
+        print("sip update failed, trying iex", e)
+        new = alpaca("QQQ", start=(last - pd.Timedelta(days=1)).strftime("%Y-%m-%d"), feed="iex")
+    new["ts"] = new.ts.astype(str)
+    allq = pd.concat([old, new]).drop_duplicates("ts", keep="last").sort_values("ts")
+    allq.to_csv(qf, index=False)
+    print("QQQ updated to", allq.ts.iloc[-1])
+
 for sym in ["QQQ", "SPY", "IWM", "DIA", "GLD", "USO"]:
     if (OUT / f"{sym}_5m.csv.gz").exists():
         continue
