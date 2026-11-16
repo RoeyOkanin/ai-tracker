@@ -1,10 +1,13 @@
 name: trade
 
 # Sends the orders decided at the previous close as market-on-close orders.
-# 19:05 UTC = 14:05 New York in winter, 15:05 in summer: always before the 15:50 MOC cutoff.
+# Cron is off the busy :00/:05 marks (GitHub delays or drops runs there). Two slots, 18:17 and 19:23 UTC
+# (13:17/14:23 New York in winter, 14:17/15:23 in summer; the MOC cutoff is 15:50). The second one is a
+# backup: client_order_id is fixed per day and ticker, so a second run never doubles an order.
 on:
   schedule:
-    - cron: "5 19 * * 1-5"
+    - cron: "17 18 * * 1-5"
+    - cron: "23 19 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
