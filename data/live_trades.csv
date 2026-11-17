@@ -1,0 +1,4 @@
+date,ticker,layer,action,price,value,reason
+2026-11-16,PLTR,software,buy,160.390000,0.074887,rebalance_in
+2026-11-16,META,hyperscalers,buy,626.410000,0.046974,rebalance_in
+2026-11-16,MSFT,hyperscalers,buy,517.990000,0.074887,rebalance_in
