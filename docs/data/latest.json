@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-16",
- "generated_utc": "2026-11-17T04:47:40+00:00",
+ "generated_utc": "2026-11-17T06:25:32+00:00",
  "regime": {
   "status": "red",
   "breadth": 0.1481,
@@ -42,13 +42,13 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 451,
-    "tight7": 31,
+    "items7": 465,
+    "tight7": 32,
     "ease7": 2,
     "friction7": 13,
-    "net7": 29,
+    "net7": 30,
     "net_prev7": 11,
-    "trend": 18
+    "trend": 19
    },
    "news_label": "early",
    "news_label_he": "מועמד מוקדם: החדשות מקדימות את המחיר",
@@ -80,7 +80,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 313,
+    "items7": 315,
     "tight7": 11,
     "ease7": 3,
     "friction7": 9,
@@ -116,7 +116,7 @@
    ],
    "monitor_only": true,
    "news": {
-    "items7": 111,
+    "items7": 113,
     "tight7": 4,
     "ease7": 1,
     "friction7": 2,
@@ -155,7 +155,7 @@
    ],
    "monitor_only": true,
    "news": {
-    "items7": 145,
+    "items7": 146,
     "tight7": 14,
     "ease7": 1,
     "friction7": 1,
@@ -267,7 +267,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 178,
+    "items7": 179,
     "tight7": 1,
     "ease7": 0,
     "friction7": 2,
@@ -313,7 +313,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 228,
+    "items7": 231,
     "tight7": 5,
     "ease7": 5,
     "friction7": 1,
@@ -352,7 +352,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 173,
+    "items7": 176,
     "tight7": 10,
     "ease7": 4,
     "friction7": 0,
@@ -397,7 +397,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 345,
+    "items7": 352,
     "tight7": 23,
     "ease7": 2,
     "friction7": 4,
@@ -434,10 +434,10 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 347,
+    "items7": 357,
     "tight7": 2,
     "ease7": 1,
-    "friction7": 160,
+    "friction7": 166,
     "net7": 1,
     "net_prev7": 0,
     "trend": 1
@@ -474,7 +474,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 257,
+    "items7": 261,
     "tight7": 36,
     "ease7": 7,
     "friction7": 2,
@@ -557,7 +557,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 244,
+    "items7": 248,
     "tight7": 9,
     "ease7": 1,
     "friction7": 6,
@@ -593,7 +593,7 @@
    ],
    "monitor_only": false,
    "news": {
-    "items7": 310,
+    "items7": 314,
     "tight7": 12,
     "ease7": 2,
     "friction7": 8,
@@ -1295,7 +1295,7 @@
    "why": "זיכרון NAND ו-SSD לאחסון בדאטה-סנטרים",
    "company": "SanDisk",
    "news7": {
-    "items": 42,
+    "items": 44,
     "tight": 2,
     "ease": 0,
     "friction": 1
@@ -1385,7 +1385,7 @@
    "why": "מובילת ה-HBM העולמית (קשה לקנות מישראל)",
    "company": "SK Hynix",
    "news7": {
-    "items": 2,
+    "items": 3,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -1465,7 +1465,7 @@
    "why": "המעבדים הגרפיים ששולטים באימון והרצה של מודלים",
    "company": "Nvidia",
    "news7": {
-    "items": 137,
+    "items": 144,
     "tight": 12,
     "ease": 1,
     "friction": 4
@@ -1495,7 +1495,7 @@
    "why": "המתחרה העיקרית לאנבידיה במאיצי AI, ומעבדי שרתים",
    "company": "AMD",
    "news7": {
-    "items": 67,
+    "items": 68,
     "tight": 1,
     "ease": 1,
     "friction": 5
@@ -2260,7 +2260,7 @@
    "why": "מערכות קירור לדאטה-סנטרים",
    "company": "Modine",
    "news7": {
-    "items": 20,
+    "items": 22,
     "tight": 2,
     "ease": 0,
     "friction": 0
@@ -2290,7 +2290,7 @@
    "why": "תאי דלק לייצור חשמל באתר הדאטה-סנטר",
    "company": "Bloom Energy",
    "news7": {
-    "items": 21,
+    "items": 22,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -2645,7 +2645,7 @@
    "why": "אורניום לתחנות גרעיניות, חשיפה עקיפה",
    "company": "Cameco",
    "news7": {
-    "items": 12,
+    "items": 13,
     "tight": 1,
     "ease": 0,
     "friction": 0
@@ -2790,7 +2790,7 @@
    "why": "Azure, ומהמשקיעות הגדולות בתשתיות AI",
    "company": "Microsoft data center",
    "news7": {
-    "items": 68,
+    "items": 69,
     "tight": 1,
     "ease": 0,
     "friction": 2
@@ -2820,7 +2820,7 @@
    "why": "AWS ושבבי Trainium",
    "company": "AWS data center",
    "news7": {
-    "items": 80,
+    "items": 81,
     "tight": 4,
     "ease": 1,
     "friction": 1
@@ -2940,7 +2940,7 @@
    "why": "ענן GPU ייעודי ל-AI",
    "company": "CoreWeave",
    "news7": {
-    "items": 80,
+    "items": 81,
     "tight": 5,
     "ease": 0,
     "friction": 0
@@ -2970,7 +2970,7 @@
    "why": "ענן GPU ייעודי ל-AI",
    "company": "Nebius",
    "news7": {
-    "items": 63,
+    "items": 64,
     "tight": 4,
     "ease": 2,
     "friction": 0
@@ -3000,7 +3000,7 @@
    "why": "עוברת מכריית ביטקוין לענן AI",
    "company": "IREN",
    "news7": {
-    "items": 33,
+    "items": 34,
     "tight": 0,
     "ease": 0,
     "friction": 0
@@ -3427,9 +3427,9 @@
  ],
  "news_radar": {
   "as_of": "2026-11-17",
-  "generated_utc": "2026-11-17T04:41:16+00:00",
+  "generated_utc": "2026-11-17T06:19:13+00:00",
   "sources_ok": {
-   "google": 161,
+   "google": 162,
    "yahoo": 80
   }
  },

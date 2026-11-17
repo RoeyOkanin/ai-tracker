@@ -4,7 +4,7 @@
   {
    "key": "equipment",
    "name": "ציוד וחומרים לייצור שבבים",
-   "items7": 228,
+   "items7": 231,
    "tight7": 5,
    "ease7": 5,
    "friction7": 1,
@@ -133,7 +133,7 @@
   {
    "key": "foundry",
    "name": "ייצור ואריזה מתקדמת",
-   "items7": 173,
+   "items7": 176,
    "tight7": 10,
    "ease7": 4,
    "friction7": 0,
@@ -202,7 +202,7 @@
   {
    "key": "memory",
    "name": "זיכרון ואחסון",
-   "items7": 257,
+   "items7": 261,
    "tight7": 36,
    "ease7": 7,
    "friction7": 2,
@@ -271,16 +271,25 @@
   {
    "key": "compute",
    "name": "שבבי AI",
-   "items7": 451,
-   "tight7": 31,
+   "items7": 465,
+   "tight7": 32,
    "ease7": 2,
    "friction7": 13,
-   "net7": 29,
+   "net7": 30,
    "net_prev7": 11,
-   "trend": 18,
-   "tight30": 64,
+   "trend": 19,
+   "tight30": 65,
    "ease30": 4,
    "headlines": [
+    {
+     "title": "AI Chip Power Supply Becomes Bottleneck as Four Overseas Giants Spend Over $1.8 Billion to Snap Up Cutting-Edge Technology",
+     "source": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1hdW1fU2pLYkNoRGJzZDZtUlZNaERsYXFDaVNaenhPbElYUHFEUmx6RE84U1pFcEl6Si1tek9vUzFzS3ZhXzUyQkkyOTVhbkZFdWJ3Y1ZZTzA4Q2FadGRqWnVXdHRfeGsxcWR3cXNiREhTV2lXRlE?oc=5",
+     "published": "2026-11-17T04:55+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Nvidia GPU Shortage Seen Lasting Through FY2028, Boosting Korean Memory Makers",
      "source": "Businesskorea",
@@ -325,15 +334,6 @@
      "tight": 0,
      "ease": 0,
      "friction": 1
-    },
-    {
-     "title": "TeamGroup warns memory shortage may get so bad that even money won't guarantee supply",
-     "source": "VideoCardz.com",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNQkY2T0R4N3VsRkdqZlJuWVFzWEdxU05feXVxUUlJMnNoRldwX3B4Q0kxMjJac2U3aEZOX1VxTHNNTXhycVRqZHJ1QWUtamJkSnlmYW1LWHVmdzl2MTZDMzVBaVdhcld6dUNVMkxYVjJrRnBqemNWajEyRHNzZFhrQ3IybmlIck1jdDE2bkhIUkdabHNxWWpjRzNRNkhUbmxjbG1qbFRONVFZdEpwbHZCMXVn?oc=5",
-     "published": "2026-11-16T20:18+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
@@ -409,7 +409,7 @@
   {
    "key": "servers",
    "name": "שרתים ומתלים",
-   "items7": 178,
+   "items7": 179,
    "tight7": 1,
    "ease7": 0,
    "friction7": 2,
@@ -478,7 +478,7 @@
   {
    "key": "power_equipment",
    "name": "ציוד חשמל וקירור",
-   "items7": 345,
+   "items7": 352,
    "tight7": 23,
    "ease7": 2,
    "friction7": 4,
@@ -547,7 +547,7 @@
   {
    "key": "power_generation",
    "name": "ייצור חשמל",
-   "items7": 244,
+   "items7": 248,
    "tight7": 9,
    "ease7": 1,
    "friction7": 6,
@@ -563,6 +563,15 @@
      "url": "https://www.tikr.com/blog/metas-prepayment-is-buying-oklos-nuclear-fuel-for-up-to-five-reactors?ref=yahoofinance&tlnk=yf-261116-2vpq4v59",
      "published": "2026-11-16T17:24+00:00",
      "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Oklo Signs HALEU Fuel Deal with Centrus Energy for 1.2 GW Ohio Nuclear Project",
+     "source": "CarbonCredits.com",
+     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNc3lzS1VvckdWRXduT1czb2VjMFRsYm1OSFk5U3JmeGk2aGdzRWFaRk9iVVZCVVl2a2pyaFN6bEY2bDZBdEtJb2V4OS1xSGF0aDFvMXVhUVVPVzVoRzBzVUZJWTlIMEM3Nzlib1RkNWhEY0ItMHRyMm15aEQ1RXdSdVZlZmFneWduNjl0cFVyYVBNcGUyZXE1LWh5dl9tSDRsR3k5MjBxUms?oc=5",
+     "published": "2026-11-16T17:20+00:00",
+     "tight": 0,
      "ease": 0,
      "friction": 0
     },
@@ -601,31 +610,58 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Centrus Energy (LEU) Stock May Look Rich Despite A New Fuel Supply Deal",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/centrus-energy-leu-stock-may-042050380.html",
-     "published": "2026-11-14T04:20+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "datacenter_reits",
    "name": "נדל\"ן ופיתוח דאטה-סנטרים",
-   "items7": 347,
+   "items7": 357,
    "tight7": 2,
    "ease7": 1,
-   "friction7": 160,
+   "friction7": 166,
    "net7": 1,
    "net_prev7": 0,
    "trend": 1,
    "tight30": 2,
    "ease30": 1,
    "headlines": [
+    {
+     "title": "Commission recommends extending data center moratorium in Bloomington",
+     "source": "WEEK | 25 News Now",
+     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPelh3d1A1MjVNNkhCRFprNkdBQ1oxeTJ3UWpFZVptT0tkZFlmQjFEYy1fWDBLYjVxeGxINHZOckNQblFabjIxTUFEOFlJSW5GSi1TWENsNjIwSjlnUWlMWVdVZWNQTHZURjY4ZTFCd2ZSTHZJV29RSjBZWGc4T080aGtWTWJ4bVdocks0T1owTm1XZDZ5aWJXOERzUDhqSDc5YXZZWTRHTl9ualVtaXFz?oc=5",
+     "published": "2026-11-17T05:18+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Moratorium? Tax break? Colorado cities face data center policy choices",
+     "source": "CBS News",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxONXFraTMwWWdFc0s4OWdiZHF5SkpUWlVkazVqOXljNk5HaFI4T0FnY3Uxc1dUQ3B3cWdodnBaYzA5U1dua1QtbUJQaV83cnNwM3pQUU1IU1VGc3ZPQVBlY2UyWVpnQVB0YTFEWUM2Qk5qQWtBZm9fOXFMaU4xYXQ3LTJuZ0M5N1MzMV9tNEw1NHdMNVp6OTVENG1sOExuZU9JcHB0NQ?oc=5",
+     "published": "2026-11-17T05:09+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "St. Cloud moves closer to data center moratorium",
+     "source": "5 EYEWITNESS NEWS",
+     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQeWhlNVZyVndnZElaTkkzcUFBZDVFdV9VbGdOU0IwSjNzbmtFaDBWa214c0RjZThGTXJveGdIVEQ5bjVqN0NFajNGVlZCVzc2R3ZkRk9nQ2htUlBIVDVWVjl1Uk1HbVNSNVFxeEVMN3VpMWRfdUpUQkpjRzVrOE1JTmpMVThTSHZ6cUZiWQ?oc=5",
+     "published": "2026-11-17T05:01+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Pitt County commissioners holds public hearing on proposed data center moratorium",
+     "source": "WCTI",
+     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQR3ZOUjJDRFFYcTV5QkJSYmdycVJzREZPaE8wMU9teV85WVZKRVV2dlZIX0ZwVnltYU50ZFdIV0R6RVdlSUFXelRfT05SVFhndzdCc2xjbjZ2M0ZJd3h3SVVWNDNUVm96Y3ZZNmF6aXNPUVlCa2FkYzJtblRyLWZWbmVKRzZRUkpET0RGcl9BbkstckhQNHBrWDU1Q1NfdDRuY2ctWGsyTjBhZDVWX1hRbXZyaVE?oc=5",
+     "published": "2026-11-17T05:01+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
     {
      "title": "Rochester becomes latest Minnesota city to adopt a data center moratorium",
      "source": "Post Bulletin",
@@ -636,46 +672,10 @@
      "friction": 1
     },
     {
-     "title": "Broken Arrow City Council extends data center moratorium through June 2027",
-     "source": "News On 6",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNemVhbEx3YzFOMUh5enM1OTZ3eVNEenJqUmxoUlQzMEpnXzVoMFRlcldtdGJMeXJPcXZYaXVVWjNja0VBdkpuTWpyREdVSzEtVUIyaG1iVWotLUJlTTRhd2dKcTVlZllqN1BHcFhKUk9DSjJuMlhFaEp5MkdZWVpwMHN0SzVhUlhDTENtdzZVUTFoODFKeHo0cnB1TFZWWDh6TFlqdFVXVWo1LWdoMkNNMlpNaEYzd2R5V3BJUjBpUms?oc=5",
-     "published": "2026-11-17T03:43+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Delano City Council votes down 45-day data center moratorium, approves additional report highlighting potential impacts",
-     "source": "KGET.com",
-     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPZnE3R21vbkt2Q2Y4OXJCMTNKRHByUXpURS1nZHVxaHJ6bWUyUmFrcUZnM210Qy1NcE4zdnhTRjFvYWVOam0xMWt4Y2hzS2VBTEtTZWRHdkFCcTRmSmdTay1mdmVJSmtrSlljWFd3ZzZXQmMwV2lBbGc2VlpOUkY2bE9NUVQteWhzX2VNcE9JNGxuNHk0dUxubkh6SDhaeXZUNy1uN193OFlGNFdPRDFJMUh5dkgwcjdHaFFKbUV1RDZQNDZIUXZQemRXVi11UE9sbDlhbUpOeU1zUHhHUFHSAeMBQVVfeXFMTklWaG8wVUVReEt3NGloYWhmdVRBX1dKT0I5REFmanRxRGxadDUxTGp2WTJWdnF2MEtObV96cW1nQmh0LUp0UllBSE9pdmxCcmhsVEc2bFItcmdHeGlnSThtTmZtVXJzNUJ4Q296c093ZDZVMUVnZmdFZ1ZockQ0T01KeFh5NlZhS1lHNDRlSlB6NjJucnZNbGJ3VnhhUFlKRTJQSldDUllqUFdBVjlfbmg3Nkk1TW5KSjVUUTJ3djgtTW03RGR4WTh1amVSZnZwbVRaVW1sRHVZLWJlcURkcFFWREE?oc=5",
-     "published": "2026-11-17T03:43+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Moratorium extension recommended",
-     "source": "WEEK | 25 News Now",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5Rc0tVek9BZzAwdkFqa0x5bHV5ZVVNN3pIRUtzdGpncWdqcVdZMHBoX1Z5SEdsVFVIejNRRzlrb1R6MG1CT0FvUVg3T3pMem5qRUpzbHE2ZTlTOWExeHdFMHlPdkotNkhzMFBaTFNnOWMwcWxhM2JxcDFR0gGOAUFVX3lxTE9PTWJxYWlQa2FNVkV1ZmNHelJhejY0VTRXdXYwdHFyLTBNbmZyWTJfN2sydnNHWmlkN2l5eUdYZDJGNVNzMC1TblRXT0ZndzNvbmpoN2FwSzNNVWFtZGRwZU9mcnBPeWFod3ExZVE3TGVXSWpIMWV1R1Z2UzBjeFJUUkVnc2UwVVM2a2tEX1E?oc=5",
-     "published": "2026-11-17T03:41+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Springfield City Council extends data center moratorium",
-     "source": "KY3",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQb3JaeVNlM1NqZGhqQXFnY0VVeE50NjhocjVBdFJ2Zy14RF90cEthRkF4NG8xcy1WclYtYXRXMTNweHRldUdPUlZQX1Z3ZEZweVFzaW5oYlR1X3FaVkctb0dMME5SVFZsS1B6UGJfakk5UHE3eVEwUkRNMmUyZzlIY05Gb29sY1ZXVG5icjVZd1TSAaQBQVVfeXFMTXFWekdfRk9Da2tjaHJTdEFrdTVUUGRuSFlHM3R6RDNWTXhfd0xpcmJVYXZJNVdkNTFvM2JHZkV3OHUzY3dPNmlZTkNkU2JIRHpPemd1QmdleVJyUFZFY2FUZ3M4YnVBRXVFaDFaTE9meGRXbHBGTlZhLVktay1Fel8zdHo0NThuQ0NxQ2dSam9JZW9XQ0dNSWpfQnl5NU8wdklYa18?oc=5",
-     "published": "2026-11-17T03:35+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Aurora mayor proposes data center moratorium through 2027",
-     "source": "KDVR",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOelhLMkdqZnJRVW5PMkFqcVdNMF96NnI5ay1KamhlY2R0MFh6YnpqNlNmSTlrLU5mNlVDTXZiZmxXYm5CY0U3M2ltYWtBbTdrUFNrS0RmZmwxVm5OWl9UdFZaaE1xaEg4NG54U0RvMVFiRHd0bnNfNFcxcS1lLTl2TVpzaWxrOWFsSmNfR2UtTdIBlAFBVV95cUxPdXdxeElQbEk4cENJRFJnZG1OYkUzMm5TbTY0WmVCdHJfYVo2ZHlKLTVmalFCZGo5OGwtb2hpd3hYTHNLcm5WUkN6R3pqbi1yUTl0Y212Q1JkUnlaSnQyWGQzNUI2M29DWHVCNmZlY1QzU1lyY1NMSi1veWR6cXdBbVZFZUlpRGFWRXVPM2xuSFZ5cmlM?oc=5",
-     "published": "2026-11-17T00:55+00:00",
+     "title": "Pitt County commissioners move forward with moratorium on data centers",
+     "source": "WNCT",
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQYll5SWZ6dHJMRkp0LTY5c1BVM1JwamYtT3RzcDlFLTVQTlM5OUNlS2dHTzhCYlFqVXRrS0xWOUZ3cU56WGlQdWY3a19FTDFHRHZhdlV6bENHUUtZenB4QjhIdWpSWkpVSmZlLUtBMktxTDFVYzJhdWIzZXE3SUY3TlJIOWVta1BZVE9HYzVHd05jejh1MzhJN2JYYXhZNGNyT1R4SVpfWFBLN0E?oc=5",
+     "published": "2026-11-17T04:13+00:00",
      "tight": 0,
      "ease": 0,
      "friction": 1
@@ -685,7 +685,7 @@
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "items7": 313,
+   "items7": 315,
    "tight7": 11,
    "ease7": 3,
    "friction7": 9,
@@ -754,7 +754,7 @@
   {
    "key": "neoclouds",
    "name": "ענן AI עצמאי",
-   "items7": 310,
+   "items7": 314,
    "tight7": 12,
    "ease7": 2,
    "friction7": 8,
@@ -847,7 +847,7 @@
   {
    "key": "analog_power",
    "name": "שבבים אנלוגיים וחשמל (מעקב)",
-   "items7": 145,
+   "items7": 146,
    "tight7": 14,
    "ease7": 1,
    "friction7": 1,
@@ -916,7 +916,7 @@
   {
    "key": "edge_devices",
    "name": "מעבדים ומכשירי קצה (מעקב)",
-   "items7": 111,
+   "items7": 113,
    "tight7": 4,
    "ease7": 1,
    "friction7": 2,
@@ -1054,7 +1054,7 @@
    9,
    10,
    27,
-   7
+   8
   ],
   "networking": [
    0,
@@ -1227,7 +1227,7 @@
    [
     1,
     0,
-    50
+    53
    ]
   ],
   "design": [
@@ -1331,7 +1331,7 @@
    [
     4,
     1,
-    53
+    56
    ]
   ],
   "memory": [
@@ -1383,7 +1383,7 @@
    [
     9,
     3,
-    58
+    62
    ]
   ],
   "compute": [
@@ -1430,12 +1430,12 @@
    [
     30,
     3,
-    403
+    404
    ],
    [
-    7,
+    8,
     0,
-    83
+    96
    ]
   ],
   "networking": [
@@ -1539,7 +1539,7 @@
    [
     0,
     0,
-    44
+    45
    ]
   ],
   "power_equipment": [
@@ -1586,12 +1586,12 @@
    [
     24,
     2,
-    320
+    321
    ],
    [
     2,
     0,
-    75
+    81
    ]
   ],
   "power_generation": [
@@ -1643,7 +1643,7 @@
    [
     3,
     0,
-    43
+    47
    ]
   ],
   "datacenter_reits": [
@@ -1695,7 +1695,7 @@
    [
     1,
     0,
-    82
+    92
    ]
   ],
   "hyperscalers": [
@@ -1747,7 +1747,7 @@
    [
     1,
     0,
-    57
+    59
    ]
   ],
   "neoclouds": [
@@ -1799,7 +1799,7 @@
    [
     1,
     0,
-    63
+    67
    ]
   ],
   "software": [
@@ -1903,7 +1903,7 @@
    [
     3,
     0,
-    21
+    22
    ]
   ],
   "edge_devices": [
@@ -1950,18 +1950,18 @@
    [
     3,
     2,
-    104
+    105
    ],
    [
     1,
     0,
-    21
+    22
    ]
   ]
  },
  "stocks": {
   "000660.KS": {
-   "items": 2,
+   "items": 3,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -1991,7 +1991,7 @@
    "friction": 1
   },
   "AMD": {
-   "items": 67,
+   "items": 68,
    "tight": 1,
    "ease": 1,
    "friction": 5
@@ -2003,7 +2003,7 @@
    "friction": 0
   },
   "AMZN": {
-   "items": 80,
+   "items": 81,
    "tight": 4,
    "ease": 1,
    "friction": 1
@@ -2051,7 +2051,7 @@
    "friction": 4
   },
   "BE": {
-   "items": 21,
+   "items": 22,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2063,7 +2063,7 @@
    "friction": 0
   },
   "CCJ": {
-   "items": 12,
+   "items": 13,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2105,7 +2105,7 @@
    "friction": 0
   },
   "CRWV": {
-   "items": 80,
+   "items": 81,
    "tight": 5,
    "ease": 0,
    "friction": 0
@@ -2189,7 +2189,7 @@
    "friction": 0
   },
   "IREN": {
-   "items": 33,
+   "items": 34,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2231,7 +2231,7 @@
    "friction": 2
   },
   "MOD": {
-   "items": 20,
+   "items": 22,
    "tight": 2,
    "ease": 0,
    "friction": 0
@@ -2249,7 +2249,7 @@
    "friction": 2
   },
   "MSFT": {
-   "items": 68,
+   "items": 69,
    "tight": 1,
    "ease": 0,
    "friction": 2
@@ -2261,7 +2261,7 @@
    "friction": 0
   },
   "NBIS": {
-   "items": 63,
+   "items": 64,
    "tight": 4,
    "ease": 2,
    "friction": 0
@@ -2279,7 +2279,7 @@
    "friction": 0
   },
   "NVDA": {
-   "items": 137,
+   "items": 144,
    "tight": 12,
    "ease": 1,
    "friction": 4
@@ -2369,7 +2369,7 @@
    "friction": 0
   },
   "SNDK": {
-   "items": 42,
+   "items": 44,
    "tight": 2,
    "ease": 0,
    "friction": 1
@@ -2539,21 +2539,6 @@
    }
   },
   {
-   "name": "Trane",
-   "ticker": "TT",
-   "layer": "power_equipment",
-   "mentions30": 6,
-   "tight30": 3,
-   "ease30": 0,
-   "mentions7": 0,
-   "headline": {
-    "title": "Trane Americas Commercial Backlog Surges 80% in Q3",
-    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPcC0xRkt1VThpYWxoT2xpSE5nUGE4SUItcDJxTVc5QkFmaVNjMzl5bm5rZzJZdVI3THVFbXBzdExlNTZfNll2b1JjM2QyMXVteWJfcGFaZjE1OVlmYzFaUUpSLXJXWVFWTU16Um5qZnE3T0xQb0FxV0NhNFQxX25KaEJWRWlpSlBWb09kUVMzbENvS0hT?oc=5",
-    "source": "ACHR News",
-    "published": "2026-11-06T12:00+00:00"
-   }
-  },
-  {
    "name": "Sterling Infrastructure",
    "ticker": "STRL",
    "layer": "power_equipment",
@@ -2566,6 +2551,21 @@
     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNUUQyUEsyLWdTWjlXYXZFTkNpa3I4Ulprc1A5c0E2MldhODlGcVlaUjVNQ3FBbDVkaEpwcGNueFBRTTNfR3pLU1R4NGhrSXFrVjBoVDh6dFJjM2dRMWdmWVZSSVdYemxfMXNIbWI5bHdfcDYyYU9LR2lOUWlwMU00YlJDckw1cVZNZXp2bUNSazhPX1hTdTlpTl9JcWZWa0JhaXJkR3d4eEtQY25fXy1renUtU2RtZnVwdUtIMjJfYXlTVVk?oc=5",
     "source": "Seeking Alpha",
     "published": "2026-11-17T00:51+00:00"
+   }
+  },
+  {
+   "name": "Centrus Energy",
+   "ticker": "LEU",
+   "layer": "power_generation",
+   "mentions30": 6,
+   "tight30": 2,
+   "ease30": 1,
+   "mentions7": 4,
+   "headline": {
+    "title": "Oklo Signs HALEU Fuel Deal with Centrus Energy for 1.2 GW Ohio Nuclear Project",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNc3lzS1VvckdWRXduT1czb2VjMFRsYm1OSFk5U3JmeGk2aGdzRWFaRk9iVVZCVVl2a2pyaFN6bEY2bDZBdEtJb2V4OS1xSGF0aDFvMXVhUVVPVzVoRzBzVUZJWTlIMEM3Nzlib1RkNWhEY0ItMHRyMm15aEQ1RXdSdVZlZmFneWduNjl0cFVyYVBNcGUyZXE1LWh5dl9tSDRsR3k5MjBxUms?oc=5",
+    "source": "CarbonCredits.com",
+    "published": "2026-11-16T17:20+00:00"
    }
   },
   {
@@ -2584,18 +2584,18 @@
    }
   },
   {
-   "name": "Centrus Energy",
-   "ticker": "LEU",
-   "layer": "power_generation",
-   "mentions30": 5,
-   "tight30": 2,
-   "ease30": 1,
-   "mentions7": 3,
+   "name": "Trane",
+   "ticker": "TT",
+   "layer": "power_equipment",
+   "mentions30": 6,
+   "tight30": 3,
+   "ease30": 0,
+   "mentions7": 0,
    "headline": {
-    "title": "Centrus Energy (LEU) Lands Multiyear HALEU Deal Backed By Customer Prepayments",
-    "url": "https://finance.yahoo.com/energy/articles/centrus-energy-leu-lands-multiyear-061743445.html",
-    "source": "Simply Wall St.",
-    "published": "2026-11-14T06:17+00:00"
+    "title": "Trane Americas Commercial Backlog Surges 80% in Q3",
+    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPcC0xRkt1VThpYWxoT2xpSE5nUGE4SUItcDJxTVc5QkFmaVNjMzl5bm5rZzJZdVI3THVFbXBzdExlNTZfNll2b1JjM2QyMXVteWJfcGFaZjE1OVlmYzFaUUpSLXJXWVFWTU16Um5qZnE3T0xQb0FxV0NhNFQxX25KaEJWRWlpSlBWb09kUVMzbENvS0hT?oc=5",
+    "source": "ACHR News",
+    "published": "2026-11-06T12:00+00:00"
    }
   },
   {
@@ -2674,13 +2674,13 @@
    }
   }
  ],
- "generated_utc": "2026-11-17T04:41:16+00:00",
+ "generated_utc": "2026-11-17T06:19:13+00:00",
  "sources_ok": {
-  "google": 161,
+  "google": 162,
   "yahoo": 80
  },
  "sources_failed": {
-  "google": 4,
+  "google": 3,
   "yahoo": 0
  }
 }
