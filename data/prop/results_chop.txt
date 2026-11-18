@@ -1,0 +1,9 @@
+base (EA v2)                               2016-21 $  20,057/yr   2022-26 $  28,486/yr   maxDD $  -22,924
+stop for the day after 1 loss              2016-21 $  16,225/yr   2022-26 $  19,513/yr   maxDD $  -16,104
+stop for the day after 2 losses            2016-21 $  16,875/yr   2022-26 $  22,718/yr   maxDD $  -19,943
+base + fade every failed breakout to close 2016-21 $  13,178/yr   2022-26 $  -3,959/yr   maxDD $ -103,424
+fade alone                                 2016-21 $  -6,879/yr   2022-26 $ -32,445/yr   maxDD $ -229,320
+gap quintile P&L/day 2016-21: [-34, -45, 117, 206, 158]  2022-26: [119, 178, 124, 4, 140]
+vol quintile P&L/day 2016-21: [32, 50, -2, 64, 258]  2022-26: [24, 139, 155, 33, 181]
+after 2 losing days: next-day avg 2016-21 $274 (n 190), 2022-26 $60 (n 129); all days avg $95
+after 3 losing days: next-day avg 2016-21 $256 (n 69), 2022-26 $368 (n 48); all days avg $95
