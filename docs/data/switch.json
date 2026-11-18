@@ -1,14 +1,14 @@
 {
- "as_of": "2026-11-16",
- "next_execution": "2026-11-17",
+ "as_of": "2026-11-17",
+ "next_execution": "2026-11-18",
  "next_monthly_decision": "2026-11-30",
  "hold_now": "CASH",
  "hold_next": "CASH",
  "hold_next_he": "מזומן (T-bills)",
  "changed": false,
- "why": "הרוטציה לא מובילה, ו-SMH נמצא 11.9% מתחת לממוצע 200: יושבים במזומן עד ש-SMH ייסגר מעל הממוצע.",
- "rotation_vs_smh_6m": -0.1452,
- "smh_vs_ma200": -0.1188,
+ "why": "הרוטציה לא מובילה, ו-SMH נמצא 12.3% מתחת לממוצע 200: יושבים במזומן עד ש-SMH ייסגר מעל הממוצע.",
+ "rotation_vs_smh_6m": -0.1653,
+ "smh_vs_ma200": -0.1227,
  "targets": {},
  "exits": [],
  "rotation_positions": [],
@@ -16,7 +16,7 @@
   "start": "2026-11-16",
   "status": "live",
   "return": 0.0,
-  "smh_return": -0.0511,
+  "smh_return": -0.0548,
   "max_drawdown": 0.0
  },
  "history": {
