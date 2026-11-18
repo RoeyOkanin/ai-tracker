@@ -8,6 +8,8 @@ on:
   schedule:
     - cron: "17 18 * * 1-5"
     - cron: "23 19 * * 1-5"
+  # The reliable trigger is external (docs/external-trigger.md): GitHub's own cron runs hours late on this repo.
+  # It calls this dispatch with dry_run=false at 14:15 New York time. By hand the default stays a dry run.
   workflow_dispatch:
     inputs:
       dry_run:
