@@ -1,0 +1,14 @@
+gap_share  last12m +0.4720 | 2016-23 12m windows p5 +0.3719 med +0.4320 p95 +0.4839 | pct rank 88%
+trendf     last12m +0.1825 | 2016-23 12m windows p5 +0.1667 med +0.2262 p95 +0.3135 | pct rank 14%
+vr         last12m +1.0112 | 2016-23 12m windows p5 +0.9390 med +1.1315 p95 +1.3638 | pct rank 11%
+eff        last12m +0.4710 | 2016-23 12m windows p5 +0.4425 med +0.4805 p95 +0.5393 | pct rank 37%
+ac30       last12m -0.0910 | 2016-23 12m windows p5 -0.0987 med -0.0762 p95 -0.0537 | pct rank 14%
+late_x     last12m -0.0002 | 2016-23 12m windows p5 -0.0004 med +0.0001 p95 +0.0007 | pct rank 14%
+rv         last12m +0.0090 | 2016-23 12m windows p5 +0.0052 med +0.0093 p95 +0.0140 | pct rank 42%
+
+filter: half size when trailing-60d feature is in its worst IS tercile (by IS P&L)
+gap_share  IS $/day by tercile [107, 101, 88] OS [169, 113, 35] | worst=2 OS sharpe base 1.48 -> 1.56, OS $/yr 30,230 -> 29,121
+trendf     IS $/day by tercile [25, 111, 158] OS [146, 76, 149] | worst=0 OS sharpe base 1.48 -> 1.45, OS $/yr 30,230 -> 27,873
+vr         IS $/day by tercile [50, 83, 163] OS [40, 107, 159] | worst=0 OS sharpe base 1.48 -> 1.53, OS $/yr 30,230 -> 29,216
+eff        IS $/day by tercile [72, 106, 118] OS [59, 102, 147] | worst=0 OS sharpe base 1.48 -> 1.48, OS $/yr 30,230 -> 29,141
+late_x     IS $/day by tercile [43, 19, 234] OS [68, 156, 198] | worst=1 OS sharpe base 1.48 -> 1.36, OS $/yr 30,230 -> 25,875
