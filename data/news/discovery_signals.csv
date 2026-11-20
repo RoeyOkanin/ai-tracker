@@ -100,12 +100,14 @@ date,name,items,tight,ease,friction
 2026-11-16,Caterpillar,3,0,0,0
 2026-11-16,Centrus Energy,1,0,0,0
 2026-11-16,Cerebras,1,0,0,0
+2026-11-16,Dycom,1,0,0,0
 2026-11-16,EMCOR,1,1,0,0
 2026-11-16,Rambus,1,0,0,0
 2026-11-16,TeraWulf,2,0,0,0
 2026-11-17,Argan,1,0,0,0
 2026-11-17,Caterpillar,1,0,0,0
 2026-11-17,Cisco,4,0,0,1
+2026-11-17,NetApp,1,1,0,0
 2026-11-17,Nokia,1,0,0,0
 2026-11-17,Sterling Infrastructure,1,0,0,1
 2026-11-17,TeraWulf,1,0,0,0
@@ -119,3 +121,12 @@ date,name,items,tight,ease,friction
 2026-11-18,InnoLight,1,0,0,0
 2026-11-18,Sterling Infrastructure,2,0,0,0
 2026-11-18,TeraWulf,1,0,0,0
+2026-11-19,Argan,1,0,0,0
+2026-11-19,Cerebras,2,0,0,0
+2026-11-19,Comfort Systems,1,0,0,0
+2026-11-19,Generac,1,0,0,0
+2026-11-19,Hut 8,1,0,0,0
+2026-11-19,NetApp,1,0,0,0
+2026-11-19,Primoris,2,1,0,0
+2026-11-19,TeraWulf,1,0,0,0
+2026-11-19,Unimicron,1,0,0,0
