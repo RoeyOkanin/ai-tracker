@@ -10,6 +10,7 @@ string _Symbol = "US100.cash";
 bool g_timerOn = false;
 #include "ea_v200.h"
 #include "ea_v201.h"
+#include "ea_v202.h"
 
 static datetime parseNy(const string& s)
   {
@@ -20,6 +21,7 @@ static datetime parseNy(const string& s)
   }
 static std::vector<string> splitc(const string& s) { std::vector<string> o; size_t a = 0; while(true) { size_t b = s.find(',', a); if(b == string::npos) { o.push_back(s.substr(a)); break; } o.push_back(s.substr(a, b - a)); a = b + 1; } return o; }
 struct Win { datetime a, b; };
+struct Reinit { datetime t; std::vector<std::pair<string, string>> in; };
 
 struct Cfg
   {
@@ -28,14 +30,17 @@ struct Cfg
    std::vector<datetime> restarts;
    std::vector<Win> algooff, disc, t1s, dead;
    std::vector<datetime> probes;
+   std::vector<Reinit> reinits;
+   std::vector<int> restartDaily;   // NY minutes
+   std::vector<int> holeDaily;      // fromMin, toMin, prevFromMin
    string get(const string& k, const string& d) const { auto it = kv.find(k); return it == kv.end() ? d : it->second; }
   };
 
 template<class EA> void probe(EA* e)
   {
    char b[512];
-   if constexpr(std::is_same_v<EA, EA_v201>)
-      snprintf(b, sizeof(b), "PROBE v201: balance=%.2f equity=%.2f anchor=%.2f anchorDay=%d guardDay=%d dayBlocked=%d targetDone=%d targetClosing=%d closePending=%d reqCount=%d positions=%d",
+   if constexpr(std::is_same_v<EA, EA_v201> || std::is_same_v<EA, EA_v202>)
+      snprintf(b, sizeof(b), "PROBE v201+: balance=%.2f equity=%.2f anchor=%.2f anchorDay=%d guardDay=%d dayBlocked=%d targetDone=%d targetClosing=%d closePending=%d reqCount=%d positions=%d",
                S->balance, S->equity(), e->g_anchor, e->g_anchorDay, e->g_guardDay, (int)e->g_dayBlocked, (int)e->g_targetDone, (int)e->g_targetClosing, (int)e->g_closePending, e->g_reqCount, (int)S->pos.size());
    else
       snprintf(b, sizeof(b), "PROBE v200: balance=%.2f equity=%.2f dayStartBal=%.2f dayBlocked=%d targetDone=%d positions=%d",
@@ -68,11 +73,24 @@ template<class EA> int run(Cfg& c)
       if(kv.first.rfind("fault", 0) == 0)
         {
          auto p = splitc(kv.second);
-         SimFault x; x.closes = p[0] == "closes" || p[0] == "both"; x.opens = p[0] == "opens" || p[0] == "both";
+         SimFault x; x.closes = p[0] == "closes" || p[0] == "both"; x.opens = p[0] == "opens" || p[0] == "both"; x.partial = p[0] == "partial";
          x.a = parseNy(p[1]); x.b = parseNy(p[2]); x.rc = atoi(p[3].c_str()); S->faults.push_back(x);
         }
    datetime t0 = parseNy(c.get("from", "2016-03-01")), t1 = parseNy(c.get("to", "2026-11-20")) + 86400;
    int tstep = atoi(c.get("tstep", "60").c_str());
+   if(!c.restartDaily.empty() || !c.holeDaily.empty())
+     {
+      std::vector<datetime> days;      // NY midnight (server encoding) of every day with a 09:30 bar
+      for(auto& x : S->bars) { datetime m = (x.t - 7 * 3600) % 86400; if(m == 570 * 60) days.push_back(x.t - 570 * 60); }
+      for(size_t i = 0; i < days.size(); i++)
+        {
+         if(days[i] < t0 - 86400 || days[i] >= t1) continue;
+         for(int m : c.restartDaily) c.restarts.push_back(days[i] + m * 60);
+         if(!c.holeDaily.empty() && i > 0)
+            S->hides.push_back(SimHide{days[i] + c.holeDaily[0] * 60, days[i] + c.holeDaily[1] * 60, days[i - 1] + c.holeDaily[2] * 60, days[i] + c.holeDaily[0] * 60});
+        }
+      std::sort(S->hides.begin(), S->hides.end(), [](const SimHide& a, const SimHide& b) { return a.a < b.a; });
+     }
    long nb = (long)S->bars.size();
    long bi = std::lower_bound(S->bars.begin(), S->bars.end(), t0, [](const SimBar& x, datetime t) { return x.t < t; }) - S->bars.begin();
    if(bi < 1) { fprintf(stderr, "need history before from\n"); return 2; }
@@ -109,7 +127,8 @@ template<class EA> int run(Cfg& c)
       return n;
      };
    datetime nt = nextTimer(t0 - 1);
-   size_t ri = 0, pi = 0;
+   size_t ri = 0, pi = 0, qi = 0;
+   std::sort(c.reinits.begin(), c.reinits.end(), [](const Reinit& a, const Reinit& b) { return a.t < b.t; });
    std::sort(c.probes.begin(), c.probes.end());
    std::sort(c.restarts.begin(), c.restarts.end());
    double minEq = 1e18; datetime minEqT = 0;
@@ -142,7 +161,8 @@ template<class EA> int run(Cfg& c)
       datetime tm = nt < t1 ? nt : LLONG_MAX;
       datetime tr = ri < c.restarts.size() ? c.restarts[ri] : LLONG_MAX;
       datetime tp = pi < c.probes.size() ? c.probes[pi] : LLONG_MAX;
-      datetime t = std::min(std::min(tt, tp), std::min(tm, tr));
+      datetime tq = qi < c.reinits.size() ? c.reinits[qi].t : LLONG_MAX;
+      datetime t = std::min(std::min(std::min(tt, tp), std::min(tm, tr)), tq);
       if(t == LLONG_MAX) break;
       if(stopFtmo && result != "TIMEOUT") break;
       if(stopFtmo && ea->g_targetDone && S->pos.empty() && S->balance >= initBal * (1 + atof(c.get("in.InpTargetPct", "10").c_str()) / 100.0) - 1e-6 && tradingDays() >= passDays)
@@ -151,6 +171,17 @@ template<class EA> int run(Cfg& c)
       S->algo = !inWin(c.algooff, t);
       S->connected = !inWin(c.disc, t);
       if(t == tp && tp <= tt && tp <= tm && tp <= tr) { S->now = tp; probe(ea); pi++; continue; }
+      if(t == tq && tq <= tt && tq <= tm && tq <= tr)
+        {
+         S->open = (t >= S->bars[S->cur].t && t < S->bars[S->cur].t + 300);
+         mql_log("=== INPUTS CHANGED: OnDeinit(REASON_PARAMETERS) + OnInit, EA stays loaded (MT5 keeps globals) ===");
+         ea->OnDeinit(5);
+         for(auto& kv : c.reinits[qi].in) { ea->SetInput(kv.first, kv.second); c.inputs.push_back(kv); }
+         g_timerOn = false;
+         int r = ea->OnInit(); if(r != INIT_SUCCEEDED) printf("OnInit returned %d\n", r);
+         qi++;
+         continue;
+        }
       if(t == tr && tr <= tt && tr <= tm)
         {
          S->open = (t >= S->bars[S->cur].t && t < S->bars[S->cur].t + 300);
@@ -230,11 +261,30 @@ int main(int argc, char** argv)
       else if(k == "disconnect") { auto p = splitc(v); c.disc.push_back({parseNy(p[0]), parseNy(p[1])}); }
       else if(k == "eadead") { auto p = splitc(v); c.dead.push_back({parseNy(p[0]), parseNy(p[1])}); }
       else if(k == "probe") c.probes.push_back(parseNy(v));
+      else if(k == "reinit")   // reinit=YYYY-MM-DDTHH:MM:SS;Name=Value;Name=Value
+        {
+         Reinit q; size_t a = 0; bool first = true;
+         while(true)
+           {
+            size_t b = v.find(';', a); string part = v.substr(a, b == string::npos ? string::npos : b - a);
+            if(first) { q.t = parseNy(part); first = false; }
+            else { size_t e2 = part.find('='); if(e2 != string::npos) q.in.push_back({part.substr(0, e2), part.substr(e2 + 1)}); }
+            if(b == string::npos) break;
+            a = b + 1;
+           }
+         c.reinits.push_back(q);
+        }
+      else if(k == "restart_daily") { for(auto& x : splitc(v)) { int hm = atoi(x.c_str()); c.restartDaily.push_back(hm / 100 * 60 + hm % 100); } }
+      else if(k == "restart_every")  // restart_every=MIN : every MIN minutes from 09:20 to 16:10 NY on every session day
+        { int st = atoi(v.c_str()); for(int m = 560; m <= 970; m += st) c.restartDaily.push_back(m); }
+      else if(k == "hole_daily")     // hole_daily=HHMMfrom,HHMMto,PREVHHMM : terminal history misses bars from the previous session's PREVHHMM until HHMMfrom
+        { for(auto& x : splitc(v)) { int hm = atoi(x.c_str()); c.holeDaily.push_back(hm / 100 * 60 + hm % 100); } }
       else if(k == "timer1s") { auto p = splitc(v); c.t1s.push_back({parseNy(p[0]), parseNy(p[1])}); }
       else if(k == "fault") c.kv["fault" + std::to_string(i)] = v;
       else c.kv[k] = v;
      }
    string ver = c.get("ver", "v201");
    if(ver == "v200") return run<EA_v200>(c);
+   if(ver == "v202") return run<EA_v202>(c);
    return run<EA_v201>(c);
   }

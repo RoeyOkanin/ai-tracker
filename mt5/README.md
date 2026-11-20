@@ -3,7 +3,7 @@
 Same rules as `scripts/prop/strategies.py::noise_momentum` (vol-targeted, constant notional), see the
 header of `IntradayMomentum.mq5`. Research results: `data/prop/README.md`.
 
-Inputs to change per phase (v2.01, everything else at its default):
+Inputs to change per phase (v2.02, everything else at its default):
 - Phase 1: `InpTargetPct=10`. Phase 2: `InpTargetPct=5`. Both at `InpDollarsPerPoint=10`.
 - Funded: `InpTargetPct=0`, `InpDollarsPerPoint=8`, `InpBufferScaling=true`.
 - `InpInitialBalance` = the account's starting balance.
@@ -97,6 +97,38 @@ not traded): phase 1 83%, both phases 74%, **both within 12 months 72%**, median
 The 75.8% / 84.8% above included phantom post-market P&L on half-days in the research data.
 
 Check after installing (Experts tab):
-- `[IMOM] v2.01 start: ... server winter offset=UTC+2 ...`
+- `[IMOM] v2.02 start: ... server winter offset=UTC+2 ...`
 - `[IMOM] FTMO day YYYYMMDD: start balance ...`
 - `[IMOM] no-trade days in the next 45 days: 20261126=holiday 20261127=early-close 20261224=early-close 20261225=holiday 20270101=holiday`
+
+## v2.02 (2026-11-20): second bug hunt, trading rules unchanged
+Same harness, new scenarios (`scripts/prop/mt5_harness`, see its README). Each bug was reproduced with the real v2.01 code.
+
+| # | v2.01 bug (reproduced with the real code) | v2.02 fix |
+|---|---|---|
+| 9 | MT5 does not reload an EA when its inputs or the chart change (OnDeinit + OnInit only, globals keep their values; MQL5 book, "program life cycle"). Changing `InpDollarsPerPoint` 10 -> 8 at 10:15 still traded 14.94 lots at 12:30 instead of 11.95; the new size applied only the next day. | `ResetState()` at the start of OnInit: the day is prepared again with the new inputs at once (11.95 lots). Guard day and FTMO anchor are restored from the global variables, the target state from the closed balance. |
+| 10 | After a restart the terminal may still be downloading M5 history. The day was prepared once with whatever was there: with yesterday's afternoon missing, prevClose, sigma and vol were wrong for the whole day. Restart at 09:29 with history back at 09:45, every day of 2025: trades differed on 91 of 123 days. Restart at 11:07, history back at 11:12: 57 days differed, -$16.0k. | The day is prepared only when yesterday's NYSE session is in the history and complete (its 15:55 bar, 12:55 on early-close days). Waits until 09:55 or 10 min after a restart; if still incomplete: exits only, no new entries, prepared again every minute. Both scenarios: 0 differences. |
+| 11 | A close that is only partly filled (`OrderSend` true, retcode 10010) counted as done: at a reversal it opened the short while half of the long was still open; the hidden long hit its server stop (-$2,252). | An exit counts only if no position is left; otherwise it is retried and the reversal is taken within 60 s once flat. `OpenPos` refuses to open while any EA position exists. Same scenario: one position at a time, same result as a clean exit. |
+| 12 | Funded buffer scaling used the balance at the moment the day was prepared, so a restart after a closed trade changed the size for the rest of the day (restarts every 30 min, funded $8, 2016-2026: 185 days with a different size). | Uses the balance before today's trades (balance - today's closed P&L of the EA): 0 days different. |
+
+Also: the "previous session" check knows only scheduled NYSE holidays. On the day after an unscheduled closure
+(national mourning: 2018-12-05, 2025-01-09) it trades exits only, unless the date is in `InpExtraClosedDays`.
+In 2016-2026 this skipped one trade (2025-01-10, +$253).
+
+Checks that found nothing:
+- NYSE calendar (real EA code) vs the official XNYS calendar (`exchange_calendars`) 2016-2035: 0 differences
+  except the 2 unscheduled closures above; 42 early closes match.
+- Restart every 15 min (09:20-16:10 NY) on every day of 2025, challenge settings: 0 differences in 3,200 restarts.
+- Extended-hours bars (pre-market from 04:00, post-market to 20:00 NY) were already in every test: no effect.
+- All earlier scenarios (rejected exit at a reversal, target slip, requote, VPS down, restart after the guard,
+  EOD close rejected 40 min, restart during a micro trade, Thanksgiving): same results as v2.01.
+
+Regression: research equivalence (calendar off, guards off, 2016-04..2026-11) 2,001 of 2,002 trades identical
+(the other is 2025-01-10 above; 2,002 of 2,002 with `InpExtraClosedDays=20181205,20250109`). CFD bars with the
+calendar on, 10 years: v2.01 and v2.02 identical except 2025-01-10. Challenge Monte Carlo with the real v2.02
+(116 monthly starts, dense ticks): phase 1 83%, both phases 74%, both within 12 months 72%, 0 FTMO breaches,
+at most 8 requests per day: unchanged.
+
+Known limits (not fixed): a 5-minute bar with no ticks at all just before a decision time skips that decision;
+two terminals or two charts running the EA on the same account would both trade (keep the home MT5 closed).
+

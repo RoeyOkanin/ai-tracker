@@ -18,13 +18,25 @@ so EA bugs can be found and fixed before they cost a challenge.
 - `mc.py`: challenge Monte Carlo with the real code. It starts on the first trading day of each month from
   2016-04 to 2025-11 and runs phase 1 (10%) and then phase 2 (5%). Costs scale with the index level
   (1.2 bp spread + 0.8 bp exit slippage, about 5 pts at 25,000).
-- `scen.sh`: runs one scenario on v2.00 and on v2.01 and prints the key log lines and trades.
+- `scen.sh`: runs one scenario on v2.00, v2.01 and v2.02 (or `VERS="v201 v202"`) and prints the key log lines and trades.
+- `cmp_trades.py A.csv B.csv`: day-by-day comparison of two trade files (side, entry, exit, volume, P&L).
+- `cal_check.py`: the EA's NYSE calendar (real code, `build/cal_check`) against the official XNYS calendar 2016-2035
+  (`pip install exchange_calendars`).
+
+Driver options added for the second bug hunt (v2.02):
+- `reinit=YYYY-MM-DDTHH:MM:SS;Name=Value;...` changes inputs on the running EA object like MT5 does
+  (OnDeinit(REASON_PARAMETERS) + OnInit, the program stays loaded and keeps its global variables).
+- `restart_daily=HHMM[,HHMM...]` / `restart_every=MIN`: restarts at these NY times on every session day.
+- `hole_daily=HHMMfrom,HHMMto,PREVHHMM`: between HHMMfrom and HHMMto NY the terminal history misses the bars from the
+  previous session's PREVHHMM until HHMMfrom (history still downloading after a restart).
+- `fault=partial,NYfrom,NYto,0`: closes are accepted (OrderSend true, retcode 10010) but only half the volume is closed.
 
 ```
 ./build.sh                                   # needs g++ (C++17), python3, pandas; writes build/
 cd build
-./driver ver=v201 bars=bars_cfd.csv from=2025-11-24 to=2025-12-02 tstep=60 log=x.log trades=x.csv
-python3 ../mc.py v201 dense=10               # about 2.5 minutes on 4 cores
+./driver ver=v202 bars=bars_cfd.csv from=2025-11-24 to=2025-12-02 tstep=60 log=x.log trades=x.csv
+python3 ../mc.py v202 dense=10               # about 2.5 minutes on 4 cores
+python3 ../cal_check.py
 ../scen.sh NAME from=... to=... [fault=closes,NYfrom,NYto,rc] [restart=NYtime] [eadead=NYfrom,NYto] [slip=pts]
 ```
 
@@ -54,3 +66,27 @@ python3 ../mc.py v201 dense=10               # about 2.5 minutes on 4 cores
   **both within 12 months 72%**, median 5.1 months, **0 FTMO breaches**, at most 8 requests per day.
   With coarse ticks (5 per bar) 6 runs breached, but these were 2 events where price jumped through the
   guard between two ticks. With a guard of 4.0% or 3.5% the pass rate does not get better.
+
+## Second bug hunt (2026-11-20, v2.02)
+
+Four more bugs, each reproduced with the real v2.01 code, fixed in v2.02 (details in `mt5/README.md`):
+- Input change at 10:15 ($10 -> $8, `reinit=`): v2.01 kept 14.94 lots for the rest of the day, v2.02 11.95.
+- History still downloading after a restart (`hole_daily=`, every day of 2025, target off):
+  restart 09:29 / history back 09:45: v2.01 91 of 123 days differ, v2.02 0;
+  restart 11:07 / back 11:12: v2.01 57 days differ (-$16.0k), v2.02 0.
+  History back only at 10:10 (after the wait): v2.02 trades exits only until then (no entries on stale data).
+- Partly filled close at a reversal (`fault=partial`, 2024-03-08): v2.01 long and short open together, hidden long
+  stopped out (-$2,252); v2.02 one position at a time, same balance as a clean exit (100,420.96).
+- Funded size after restarts (`restart_every=30`, $8 + buffer scaling, 2016-2026): v2.01 185 days with a different
+  size, v2.02 0.
+
+No bug found:
+- Restart every 15 min on every day of 2025 (3,200 restarts), challenge settings: 0 differences.
+- Calendar vs XNYS 2016-2035: identical except the unscheduled closures 2018-12-05 and 2025-01-09.
+
+Regression with v2.02: research equivalence 2,002 of 2,002 trades with `in.InpExtraClosedDays=20181205,20250109`
+(2,001 without: 2025-01-10 is traded exits-only because the previous session is missing from the data).
+All round-1 scenarios give the same results as v2.01. 10 years on CFD bars (calendar on): v2.01 and v2.02 identical
+except 2025-01-10. Challenge Monte Carlo (real v2.02, dense ticks, 116 starts): phase 1 83%, both phases 74%,
+**both within 12 months 72%**, median 5.1 months, 0 FTMO breaches, at most 8 requests per day (same as v2.01).
+

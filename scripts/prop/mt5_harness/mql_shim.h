@@ -165,7 +165,8 @@ inline void Print(const string& s) { mql_log(s.c_str()); }
 struct SimBar { datetime t; double o, h, l, c; long long v; };
 struct SimPos { ulong ticket; int type; double vol, price, sl; long long magic; string sym, comment; datetime t; };
 struct SimDeal { ulong ticket; datetime t; int type, entry; long long magic; string sym, comment; double vol, price, profit, sl; ulong pos; };
-struct SimFault { datetime a, b; int rc; bool closes, opens; };
+struct SimFault { datetime a, b; int rc; bool closes, opens, partial = false; };
+struct SimHide { datetime a, b, h0, h1; };   // while a <= now < b, bars with h0 <= t < h1 are not in the terminal's history yet
 
 struct Sim
   {
@@ -185,6 +186,7 @@ struct Sim
    bool connected = true, algo = true, tester = false;
    long long login = 1515290765;
    std::vector<SimFault> faults;
+   std::vector<SimHide> hides;                      // sorted by a, non-overlapping
    std::map<int, int> reqAllByDay, reqSrvByDay;    // NY day -> requests (all / reaching the server)
    long long reqAll = 0, reqSrv = 0, slHits = 0;
    FILE* logf = stdout;
@@ -312,9 +314,19 @@ inline datetime iTime(const string&, ENUM_TIMEFRAMES, int shift)
    if(S->cur < 0 || i < 0) return 0;
    return S->bars[i].t;
   }
+inline const SimHide* sim_active_hide()
+  {
+   auto& h = S->hides;
+   if(h.empty()) return nullptr;
+   auto it = std::upper_bound(h.begin(), h.end(), S->now, [](datetime t, const SimHide& x) { return t < x.a; });
+   if(it == h.begin()) return nullptr;
+   --it;
+   return (S->now >= it->a && S->now < it->b) ? &*it : nullptr;
+  }
 inline int CopyRates(const string&, ENUM_TIMEFRAMES, datetime start, datetime stop, MqlArray<MqlRates>& out)
   {
    out.v.clear();
+   const SimHide* hide = sim_active_hide();
    if(S->cur < 0) return -1;
    long b = sim_bar_index_at_or_before(stop);
    if(b < 0) return 0;
@@ -323,6 +335,7 @@ inline int CopyRates(const string&, ENUM_TIMEFRAMES, datetime start, datetime st
    if(S->bars[a].t < start) return 0;
    for(long i = a; i <= b; i++)
      {
+      if(hide && S->bars[i].t >= hide->h0 && S->bars[i].t < hide->h1) continue;
       const SimBar& x = (i == S->cur) ? S->part : S->bars[i];
       MqlRates r; r.time = S->bars[i].t; r.open = x.o; r.high = x.h; r.low = x.l; r.close = x.c; r.tick_volume = x.v; r.spread = 0; r.real_volume = 0;
       out.v.push_back(r);
@@ -418,13 +431,24 @@ public:
       if(i == S->pos.size()) return false;                       // like CTrade: retcode cleared, false
       m_rc = S->gate(true);
       if(m_rc != 10009) return false;
+      for(auto& f : S->faults)
+         if(f.partial && S->now >= f.a && S->now < f.b && S->pos[i].vol >= 0.02)
+           {
+            SimPos& p = S->pos[i];
+            double half = std::floor(p.vol / 2 * 100 + 1e-9) / 100, px = p.type == 0 ? S->bid() - S->slp() : S->ask() + S->slp();
+            double pr = (p.type == 0 ? (px - p.price) : (p.price - px)) * half;
+            S->balance += pr; p.vol = std::round((p.vol - half) * 100) / 100;
+            S->addDeal(p.type == 0 ? 1 : 0, 1, p.magic, p.sym, half, px, pr, p.ticket, "ea close (partial)");
+            m_rc = 10010;
+            return true;                                                // OrderSend true, DONE_PARTIAL
+           }
       S->closeAt(i, S->pos[i].type == 0 ? S->bid() - S->slp() : S->ask() + S->slp(), "ea close");
       return true;
      }
    uint ResultRetcode() const { return m_rc; }
    string ResultRetcodeDescription() const
      {
-      switch(m_rc) { case 10009: return "done"; case 10018: return "market closed"; case 10027: return "autotrading disabled by client";
+      switch(m_rc) { case 10009: return "done"; case 10010: return "done partially"; case 10018: return "market closed"; case 10027: return "autotrading disabled by client";
          case 10031: return "no connection"; case 10004: return "requote"; case 10006: return "request rejected"; case 10016: return "invalid stops"; case 10019: return "no money"; }
       return "retcode " + std::to_string(m_rc);
      }

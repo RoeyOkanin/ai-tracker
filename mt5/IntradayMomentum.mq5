@@ -46,9 +46,21 @@
 //|    FTMO's daily and max-loss limits (backstop if VPS is down).   |
 //|  * Waits for enough M5 history (MA50) before trading.            |
 //|  * Refuses to run on a non-US100 chart.                          |
+//| v2.02 (2026-11-20): robustness fixes, trading rules unchanged.   |
+//|  * Inputs or chart changed: MT5 keeps the EA loaded (OnDeinit +  |
+//|    OnInit only, globals keep their values). OnInit now resets    |
+//|    all state, so new inputs apply at once, not the next day.     |
+//|  * After a restart the M5 history may still be downloading: the  |
+//|    day is prepared only once yesterday's session is complete     |
+//|    (waits until 09:55, or 10 min after a restart; if it is still |
+//|    missing then: exits only, no new entries, until it is there). |
+//|  * A close that is only partly filled counts as failed: no       |
+//|    reversal and no new entry while any position is still open.   |
+//|  * Funded buffer scaling uses the balance before today's trades, |
+//|    so a restart during the day does not change the size.         |
 //+------------------------------------------------------------------+
 #property copyright "ai-tracker"
-#property version   "2.01"
+#property version   "2.02"
 
 #include <Trade\Trade.mqh>
 
@@ -138,6 +150,9 @@ datetime g_pendUntil     = 0;
 datetime g_lastOpenTry   = 0;
 int      g_extraDays[];
 int      g_noTradeLogDay = 0;
+int      g_prepTryDay    = 0;     // NY day of the first PrepareDay attempt below
+datetime g_prepFirstTry  = 0;     // first attempt to prepare that day (history wait limit)
+bool     g_dayStale      = false; // day prepared with incomplete history: exits only, prepare again every minute
 
 //+------------------------------------------------------------------+
 //| calendar helpers                                                 |
@@ -304,6 +319,18 @@ int DayType(int key)
    return 1;
   }
 int NextDayKey(int key) { return DayKey(KeyToTime(key) + 86400); }
+// previous NYSE session day (not a weekend, NYSE holiday or extra closed day)
+int PrevSessionKey(int key)
+  {
+   int k = key;
+   for(int i = 0; i < 14; i++)
+     {
+      k = DayKey(KeyToTime(k) - 86400);
+      int w = DowOf(KeyToTime(k));
+      if(w != 0 && w != 6 && !IsNyseHoliday(k) && !IsExtraClosed(k)) return k;
+     }
+   return 0;
+  }
 
 //+------------------------------------------------------------------+
 //| logging                                                          |
@@ -429,6 +456,11 @@ double NormalizeLots(double lots)
 // 1 = opened, 0 = transient failure (retry), -1 = do not retry
 int OpenPos(int side, double lots, string why)
   {
+   if(CurrentSide() != 0)                                 // never two positions (a partly filled close leaves one open)
+     {
+      Print("[IMOM] a position is still open: no new entry");
+      return -1;
+     }
    if(!ReqBudget()) return -1;
    // margin cap: Swing accounts have lower leverage; never use more than 80% of free margin
    double px = (side > 0) ? SymbolInfoDouble(_Symbol, SYMBOL_ASK) : SymbolInfoDouble(_Symbol, SYMBOL_BID);
@@ -485,7 +517,7 @@ int OpenPos(int side, double lots, string why)
   }
 
 //+------------------------------------------------------------------+
-//| true if NY minute-of-day `m` is listed in InpNoEntryTimes         |
+//| true if NY minute-of-day `m` is listed in InpNoEntryTimes        |
 //+------------------------------------------------------------------+
 bool NoEntryAt(int m)
   {
@@ -505,7 +537,7 @@ bool NoEntryAt(int m)
 // may a NEW position be opened on NY day `key` at bar-close minute `endMin`?
 bool EntriesAllowed(int key, int endMin)
   {
-   if(g_dayBlocked || g_guardDay == key || g_targetClosing || g_closePending) return false;
+   if(g_dayBlocked || g_guardDay == key || g_targetClosing || g_closePending || g_dayStale) return false;
    if(DayType(key) != 1) return false;
    if(InpPreCloseLastEntry > 0 && IsFullClosure(NextDayKey(key)))
      {
@@ -516,7 +548,7 @@ bool EntriesAllowed(int key, int endMin)
   }
 
 //+------------------------------------------------------------------+
-//| FTMO trading days: distinct NY days with an entry by this EA      |
+//| FTMO trading days: distinct NY days with an entry by this EA     |
 //+------------------------------------------------------------------+
 int TradedDays(bool &today)
   {
@@ -546,7 +578,7 @@ int TradedDays(bool &today)
 double DayPnl(int dayKey)
   {
    datetime now = TimeTradeServer();
-   if(!HistorySelect(now - 6 * 86400, now)) return 0;
+   if(!HistorySelect(now - 10 * 86400, now + 60)) return 0;
    double sum = 0;
    int n = HistoryDealsTotal();
    for(int i = 0; i < n; i++)
@@ -631,6 +663,7 @@ void DetectOffset()
 //+------------------------------------------------------------------+
 bool PrepareDay(int key, int nowMin)
   {
+   bool redo = (g_dayKey == key && g_dayStale);   // preparing today again because the history was incomplete
    g_dayReady = false;
    MqlRates r[];
    ArraySetAsSeries(r, false);
@@ -678,6 +711,25 @@ bool PrepareDay(int key, int nowMin)
       PrintFormat("[IMOM] need %d sessions of M5 history, have %d. Scroll the M5 chart back to load more.", InpLookback + 1, nv);
       return false;
      }
+   // after a restart the terminal may still be downloading history: yesterday's session must be
+   // there and complete (up to its last bar), otherwise wait until 09:55 or 10 min after a restart
+   int lastD = valid[nv - 1];
+   int expPrev = PrevSessionKey(key);
+   int lastSlot = IsEarlyClose(keys[lastD]) ? 41 : 77;            // early close: last NYSE bar 12:55
+   bool complete = (keys[lastD] == expPrev && slotClose[lastD][lastSlot] > 0);
+   if(!complete)
+     {
+      if(nowMin < 595 || TimeTradeServer() - g_prepFirstTry < 600)
+        {
+         PrintFormat("[IMOM] waiting for M5 history: last session %d (complete=%s), expected %d (retry every minute)",
+                     keys[lastD], slotClose[lastD][lastSlot] > 0 ? "yes" : "no", expPrev);
+         return false;
+        }
+      if(!redo)
+         PrintFormat("[IMOM] WARNING: M5 history still incomplete (last session %d, expected %d): exits only, no new entries until it is complete (checked every minute)",
+                     keys[lastD], expPrev);
+     }
+   bool talk = (!redo || complete);                // no repeated log lines while preparing again
    if(InpTrendMA > 0 && InpBelowMAMult != 1.0 && nv < InpTrendMA && nowMin < 595)
      {
       PrintFormat("[IMOM] waiting for M5 history: %d sessions, MA%d needs %d (retry every minute until 09:55)", nv, InpTrendMA, InpTrendMA);
@@ -713,7 +765,8 @@ bool PrepareDay(int key, int nowMin)
    if(InpBufferScaling)
      {
       double floorBal = InpInitialBalance * (1.0 - InpMaxLossPct / 100.0);
-      double buf = (AccountInfoDouble(ACCOUNT_BALANCE) - floorBal) / (InpInitialBalance * InpMaxLossPct / 100.0);
+      double bal0 = AccountInfoDouble(ACCOUNT_BALANCE) - DayPnl(key);   // balance before today's trades: same after a restart
+      double buf = (bal0 - floorBal) / (InpInitialBalance * InpMaxLossPct / 100.0);
       bufScale = MathMax(InpMinBufferScale, MathMin(1.0, buf));
      }
    // trend tilt: intraday momentum is stronger when the market is below its trend average
@@ -727,7 +780,7 @@ bool PrepareDay(int key, int nowMin)
          for(int j = nv - InpTrendMA; j < nv; j++) sm += closes[valid[j]];
          double ma = sm / InpTrendMA;
          if(closes[valid[nv - 1]] < ma) tilt = InpBelowMAMult;
-         PrintFormat("[IMOM] trend: close %.2f vs MA%d %.2f -> x%.2f", closes[valid[nv - 1]], InpTrendMA, ma, tilt);
+         if(talk) PrintFormat("[IMOM] trend: close %.2f vs MA%d %.2f -> x%.2f", closes[valid[nv - 1]], InpTrendMA, ma, tilt);
         }
       else
          PrintFormat("[IMOM] WARNING: trend MA%d needs %d sessions, have %d: no tilt today (scroll the M5 chart back to load more)", InpTrendMA, InpTrendMA, nv);
@@ -746,11 +799,12 @@ bool PrepareDay(int key, int nowMin)
       if(yPnl > th)
         {
          g_dayBlocked = true;
-         PrintFormat("[IMOM] yesterday won $%.2f > $%.2f: no new trades today", yPnl, th);
+         if(talk) PrintFormat("[IMOM] yesterday won $%.2f > $%.2f: no new trades today", yPnl, th);
         }
      }
+   g_dayStale = !complete;
    g_dayReady = true;
-   PrintFormat("[IMOM] day %d ready: prevClose=%.2f vol14=%.4f volScale=%.2f bufScale=%.2f tilt=%.2f sessions=%d",
+   if(talk) PrintFormat("[IMOM] day %d ready: prevClose=%.2f vol14=%.4f volScale=%.2f bufScale=%.2f tilt=%.2f sessions=%d",
                key, g_prevClose, vol, volScale, bufScale, tilt, nv);
    return true;
   }
@@ -847,12 +901,12 @@ void OnCheckpoint(datetime barServer, datetime barNy)
          LogRow("HOLD(exit+reenter)", barNy, close, up, lo, vwap, g_dayLots);
          return;                                       // backtest exits and re-enters on the same bar; holding is equivalent minus the spread
         }
-      if(!CloseAllSafe("trail stop"))
+      if(!CloseAllSafe("trail stop") || CurrentSide() != 0)   // rejected, or only partly filled
         {
          g_closePending = true;                        // retried with backoff; nothing new opens until it is flat
          if(want != 0 && want != side)                 // reversal: take the new side only if flat within 60 s
            { g_pendSide = want; g_pendEndMin = endMin; g_pendUntil = TimeTradeServer() + 60; }
-         LogRow("EXIT FAILED, retrying", barNy, close, up, lo, vwap, g_dayLots);
+         LogRow("EXIT PENDING, retrying", barNy, close, up, lo, vwap, g_dayLots);
          return;
         }
       LogRow(side > 0 ? "EXIT LONG" : "EXIT SHORT", barNy, close, up, lo, vwap, g_dayLots);
@@ -949,8 +1003,14 @@ void Heartbeat()
      {
       if(srv - g_lastPrepTry < 60) return;
       g_lastPrepTry = srv;
+      if(g_prepTryDay != key) { g_prepTryDay = key; g_prepFirstTry = srv; }
       if(InpAutoServerOffset && !(bool)MQLInfoInteger(MQL_TESTER)) DetectOffset();
       if(!PrepareDay(key, nowMin)) return;
+     }
+   else if(g_dayStale && srv - g_lastPrepTry >= 60)
+     {
+      g_lastPrepTry = srv;
+      if(!PrepareDay(key, nowMin)) g_dayReady = true;   // keep trading on the current day state if it fails
      }
    if(!g_dayReady) return;
 
@@ -986,6 +1046,24 @@ void Heartbeat()
   }
 
 //+------------------------------------------------------------------+
+//| MT5 does not reload an EA when its inputs or the chart change:   |
+//| OnDeinit + OnInit run and global variables keep their values.    |
+//| Start every OnInit from a clean state, as after a fresh load.    |
+//+------------------------------------------------------------------+
+void ResetState()
+  {
+   g_dayKey = 0; g_dayReady = false; g_prevClose = 0; g_dayOpen = 0; g_dayLots = 0; g_dayDpp = 0; g_dayBlocked = false;
+   for(int k = 0; k < 78; k++) g_sigma[k] = -1;
+   g_lastBar = 0; g_offsetOk = false; g_lastPrepTry = 0; g_prepTryDay = 0; g_prepFirstTry = 0; g_dayStale = false;
+   g_targetDone = false; g_targetClosing = false;               // restored from the closed balance
+   g_anchorDay = 0; g_anchor = 0; g_guardDay = 0;               // restored from terminal global variables
+   g_closePending = false; g_closeFailAt = 0; g_closeFails = 0; g_waitTick = false; g_inTick = false;
+   g_pendSide = 0; g_pendEndMin = 0; g_pendUntil = 0; g_lastOpenTry = 0;
+   g_noTradeLogDay = 0;
+   // g_reqDay / g_reqCount are kept: requests already sent today still count
+  }
+
+//+------------------------------------------------------------------+
 int OnInit()
   {
    if(InpCheckSymbol && StringFind(_Symbol, "US100") < 0)
@@ -993,6 +1071,7 @@ int OnInit()
       PrintFormat("[IMOM] wrong chart: %s. Attach this EA to the US100.cash chart.", _Symbol);
       return INIT_FAILED;
      }
+   ResetState();
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetTypeFillingBySymbol(_Symbol);
    trade.SetDeviationInPoints(50);
@@ -1014,14 +1093,13 @@ int OnInit()
      }
    // state that must survive a restart
    if(GlobalVariableCheck(GvName("guardday"))) g_guardDay = (int)GlobalVariableGet(GvName("guardday"));
-   g_anchorDay = 0;
    UpdateAnchor();
    // warm up the M5 history (MA50 needs ~75 calendar days)
    MqlRates warm[];
    CopyRates(_Symbol, PERIOD_M5, TimeTradeServer() - 120 * 86400, TimeTradeServer(), warm);
 
    datetime ny = ServerToNy(TimeTradeServer());
-   PrintFormat("[IMOM] v2.01 start: symbol=%s server winter offset=UTC%+d%s, New York now=%s, $/pt/lot=%.4f, magic=%I64d",
+   PrintFormat("[IMOM] v2.02 start: symbol=%s server winter offset=UTC%+d%s, New York now=%s, $/pt/lot=%.4f, magic=%I64d",
                _Symbol, g_winterOffset, (g_offsetOk || tester || !InpAutoServerOffset) ? "" : " (not connected yet, will re-detect)",
                TimeToString(ny, TIME_DATE | TIME_MINUTES), MoneyPerPointPerLot(), InpMagic);
    if(MoneyPerPointPerLot() <= 0) Print("[IMOM] WARNING: tick value unavailable, cannot size trades");
