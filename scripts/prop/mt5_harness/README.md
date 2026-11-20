@@ -37,6 +37,14 @@ Driver option added for the third bug hunt (v2.03):
   start: ACCOUNT_LOGIN 0, balance/equity/free margin 0, no positions visible, TERMINAL_CONNECTED false, requests fail
   with 10031. The timer fires every second for 30 s after every start (EventSetTimer(1)).
 
+Driver options added for the fourth bug hunt (round 4, no EA bug found):
+- `view=1`: the EA sees the trade state as of the start of each event. Its own OrderSend results (positions, balance,
+  free margin, deal history) show up from the next tick or timer event on, as MT5 updates the trade environment
+  asynchronously. While disconnected no ticks reach the terminal and prices, bars, account and positions stay frozen;
+  the server keeps running (stops, FTMO checks). `view=0` (default) gives exactly the earlier results.
+- `disconnect_daily=HHMMSS,HHMMSS` / `algooff_daily=HHMMSS,HHMMSS`: a disconnect or Algo Trading off at these NY times
+  on every session day. `leverage=N` (default 30) for the margin cap path.
+
 ```
 ./build.sh                                   # needs g++ (C++17), python3, pandas; writes build/
 cd build
@@ -116,3 +124,18 @@ Regression with v2.03 (same commands as above):
   72%, median 5.1 months, 0 FTMO breaches, at most 8 requests per day (same as v2.02).
 - Same Monte Carlo with a restart every night (`restart_daily=2200 sync=5`): v2.02 32 of 116 challenges fail on the
   daily-loss limit (both within 12 months 53%); v2.03 0 failures, 72% (identical to no restarts).
+
+## Round 4 (2026-11-20): no bug found in v2.03
+
+- `view=0` reproduces every earlier scenario exactly (all `regress.sh` outputs byte-identical to round 3).
+- `view=1`, v2.03: 10 years 2016-2026 on the research bars, 3 of 1,990 trades re-enter 1 s later (a close is only
+  visible on the next event, so the reversal waits one event; $28 in total). 2025 with costs (`spread_bp=1.2
+  slip_bp=0.8`), with nightly restarts or restarts every 15 min: identical trades to `view=0`.
+- 2025, `view=1`: disconnect every day 10:28:30-10:33, 11:55-12:40, 13:00-15:00 or 15:57-16:04; Algo Trading off every
+  day 15:50-16:10; leverage 1:3 (margin cap fired 42 times); volume cap 5 lots: 0 FTMO breaches, no position left
+  open at the end, no runtime error, at most 9 requests per day.
+- Challenge Monte Carlo `mc.py v203 dense=10 view=1`: phase 1 83%, both 74%, both within 12 months 72%, 0 breaches.
+  Adding `restart_daily=2200 sync=5 disconnect_daily=102830,103300` (every 10:30 decision lost): 83% / 72% / 71%, 0 breaches.
+- Worst FTMO day in 2025 with costs: $4,896 with the default 5 ticks per bar (the guard closes at the next tick, up to
+  75 s after crossing $4,500), $4,647 with `dense=10`, $4,536 with `dense=1`. The research-bar 10-year run shows one
+  daily breach (2022-01-28, $5,016, 23.7 lots) only with 5 ticks per bar: a price jump between two ticks 75 s apart.

@@ -2,6 +2,9 @@
 // usage: driver ver=v201 bars=file from=YYYY-MM-DD to=YYYY-MM-DD [tstep=60] [spread=0] [in.Name=value ...]
 //        [restart=NYdatetime] [fault=closes|opens|both,NYfrom,NYto,rc] [algooff=NYfrom,NYto] [timer1s=NYfrom,NYto]
 //        [trades=out.csv] [log=out.log] [quiet=1] [balance=100000] [tester=0]
+//        [view=1: the EA sees the trade state as of the start of each event (MT5 updates positions/balance/history
+//                 asynchronously after OrderSend); while disconnected no ticks arrive and its view is frozen] [leverage=30]
+//        [disconnect=NYfrom,NYto (repeatable)] [disconnect_daily=HHMMSS,HHMMSS] [algooff_daily=HHMMSS,HHMMSS] (NY, every session day)
 //        [sync=SECONDS: after each restart the terminal is not logged in yet for SECONDS: login 0, balance/equity 0, no positions, requests fail 10031]
 #include "mql_shim.h"
 #include <climits>
@@ -35,6 +38,7 @@ struct Cfg
    std::vector<Reinit> reinits;
    std::vector<int> restartDaily;   // NY minutes
    std::vector<int> holeDaily;      // fromMin, toMin, prevFromMin
+   std::vector<int> discDaily, algoDaily;   // NY seconds of day: from, to (every session day)
    int sync = 0;                    // seconds after a terminal restart before the account is loaded (login 0, balance 0, not connected)
    string get(const string& k, const string& d) const { auto it = kv.find(k); return it == kv.end() ? d : it->second; }
   };
@@ -59,6 +63,8 @@ template<class EA> int run(Cfg& c)
    S->balance = atof(c.get("balance", "100000").c_str());
    S->tester = atoi(c.get("tester", "0").c_str());
    S->volMax = atof(c.get("volmax", "100").c_str());
+   S->leverage = atof(c.get("leverage", "30").c_str());
+   S->viewMode = atoi(c.get("view", "0").c_str());
    S->slip = atof(c.get("slip", "0").c_str());
    S->spreadBp = atof(c.get("spread_bp", "0").c_str());
    S->slipBp = atof(c.get("slip_bp", "0").c_str());
@@ -81,7 +87,7 @@ template<class EA> int run(Cfg& c)
         }
    datetime t0 = parseNy(c.get("from", "2016-03-01")), t1 = parseNy(c.get("to", "2026-11-20")) + 86400;
    int tstep = atoi(c.get("tstep", "60").c_str());
-   if(!c.restartDaily.empty() || !c.holeDaily.empty())
+   if(!c.restartDaily.empty() || !c.holeDaily.empty() || !c.discDaily.empty() || !c.algoDaily.empty())
      {
       std::vector<datetime> days;      // NY midnight (server encoding) of every day with a 09:30 bar
       for(auto& x : S->bars) { datetime m = (x.t - 7 * 3600) % 86400; if(m == 570 * 60) days.push_back(x.t - 570 * 60); }
@@ -89,6 +95,8 @@ template<class EA> int run(Cfg& c)
         {
          if(days[i] < t0 - 86400 || days[i] >= t1) continue;
          for(int m : c.restartDaily) c.restarts.push_back(days[i] + m * 60);
+         if(c.discDaily.size() == 2) c.disc.push_back({days[i] + c.discDaily[0], days[i] + c.discDaily[1]});
+         if(c.algoDaily.size() == 2) c.algooff.push_back({days[i] + c.algoDaily[0], days[i] + c.algoDaily[1]});
          if(!c.holeDaily.empty() && i > 0)
             S->hides.push_back(SimHide{days[i] + c.holeDaily[0] * 60, days[i] + c.holeDaily[1] * 60, days[i - 1] + c.holeDaily[2] * 60, days[i] + c.holeDaily[0] * 60});
         }
@@ -99,7 +107,8 @@ template<class EA> int run(Cfg& c)
    if(bi < 1) { fprintf(stderr, "need history before from\n"); return 2; }
    S->cur = bi - 1; S->part = S->bars[bi - 1]; S->mid = S->bars[bi - 1].c; S->now = t0; S->open = false; S->lastTick = S->bars[bi - 1].t;
    auto inWin = [](const std::vector<Win>& w, datetime t) { for(auto& x : w) if(t >= x.a && t < x.b) return true; return false; };
-   auto mk = [&]() { EA* e = new EA(); for(auto& kv : c.inputs) e->SetInput(kv.first, kv.second); g_timerOn = false; int r = e->OnInit();
+   auto snapView = [&]() { if(S->viewMode && S->connected && !S->unsynced()) S->snap(); };
+   auto mk = [&]() { snapView(); EA* e = new EA(); for(auto& kv : c.inputs) e->SetInput(kv.first, kv.second); g_timerOn = false; int r = e->OnInit();
                      if(r != INIT_SUCCEEDED) { printf("OnInit returned %d\n", r); } return e; };
    EA* ea = mk();
    int dense = atoi(c.get("dense", "0").c_str());
@@ -184,6 +193,7 @@ template<class EA> int run(Cfg& c)
          ea->OnDeinit(5);
          for(auto& kv : c.reinits[qi].in) { ea->SetInput(kv.first, kv.second); c.inputs.push_back(kv); }
          g_timerOn = false;
+         snapView();
          int r = ea->OnInit(); if(r != INIT_SUCCEEDED) printf("OnInit returned %d\n", r);
          qi++;
          t1sUntil = t + 30; nt = nextTimer(t);
@@ -209,7 +219,7 @@ template<class EA> int run(Cfg& c)
          if(tk[k].first == 1) S->part.o = x.o;   // bar open as in the data
          S->mid = p; S->lastTick = t; S->open = true;
          S->checkStops();
-         if(!inWin(c.dead, t)) { ea->OnTick(); ticks++; }
+         if(!inWin(c.dead, t) && !(S->viewMode && !S->connected)) { snapView(); ea->OnTick(); ticks++; }   // view=1: no ticks reach a disconnected terminal
          double eq = S->equity(); if(eq < minEq) { minEq = eq; minEqT = t; }
          ftmoCheck();
          if(++k == tk.size()) { k = 0; bi++; }
@@ -217,7 +227,7 @@ template<class EA> int run(Cfg& c)
       else
         {
          S->open = (S->cur >= 0 && t >= S->bars[S->cur].t && t < S->bars[S->cur].t + 300);
-         if(g_timerOn && !inWin(c.dead, t)) { ea->OnTimer(); timers++; }
+         if(g_timerOn && !inWin(c.dead, t)) { snapView(); ea->OnTimer(); timers++; }
          ftmoCheck();
          nt = nextTimer(t);
         }
@@ -291,6 +301,9 @@ int main(int argc, char** argv)
       else if(k == "hole_daily")     // hole_daily=HHMMfrom,HHMMto,PREVHHMM : terminal history misses bars from the previous session's PREVHHMM until HHMMfrom
         { for(auto& x : splitc(v)) { int hm = atoi(x.c_str()); c.holeDaily.push_back(hm / 100 * 60 + hm % 100); } }
       else if(k == "sync") c.sync = atoi(v.c_str());
+      else if(k == "disconnect_daily" || k == "algooff_daily")   // =HHMMSS,HHMMSS : every session day (NY)
+        { auto p = splitc(v); auto& d = (k == "disconnect_daily") ? c.discDaily : c.algoDaily;
+          for(auto& x : p) { int t = atoi(x.c_str()); d.push_back(t / 10000 * 3600 + t / 100 % 100 * 60 + t % 100); } }
       else if(k == "timer1s") { auto p = splitc(v); c.t1s.push_back({parseNy(p[0]), parseNy(p[1])}); }
       else if(k == "fault") c.kv["fault" + std::to_string(i)] = v;
       else c.kv[k] = v;

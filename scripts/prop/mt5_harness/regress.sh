@@ -1,5 +1,5 @@
 #!/bin/bash
-# Runs every bug-hunt scenario (rounds 1-3) on two EA versions and says whether trades and FTMO/request
+# Runs every bug-hunt scenario (rounds 1-4) on two EA versions and says whether trades and FTMO/request
 # summaries are identical. usage: ./regress.sh [VA] [VB]   (default v202 v203; run ./build.sh first)
 VA=${1:-v202}; VB=${2:-v203}
 cd "$(dirname "$0")/build" || exit 1
@@ -38,3 +38,13 @@ run M5   $C3 restart_daily=0900 sync=5
 run E5   $C3 restart_every=15 sync=5
 run S8s  bars=bars_cfd.csv from=2026-06-10 to=2026-06-11 in.InpTargetPct=0 in.InpDailyGuardPct=1.2 restart=2026-06-11T12:00 sync=5
 run S10s bars=bars_cfd.csv from=2025-11-20 to=2025-11-26 in.InpTargetPct=4.5 in.InpTargetBufferPct=5 restart=2025-11-25T10:15 sync=5
+# round 4: terminal view lags OrderSend and freezes while disconnected (view=1)
+run V1   $C3 view=1
+run VE15 $C3 view=1 restart_every=15 sync=5
+run DC1  $C3 view=1 disconnect_daily=102830,103300
+run DC3  $C3 view=1 disconnect_daily=115500,124000
+run DC4  $C3 view=1 disconnect_daily=130000,150000
+run DCE  $C3 view=1 disconnect_daily=155700,160400
+run AO   $C3 view=1 algooff_daily=155000,161000
+run LEV  $C3 view=1 leverage=3
+run VM   $C3 view=1 volmax=5

@@ -158,3 +158,23 @@ with no ticks at all just before a decision time skips that decision; two termin
 the same account would both trade (keep the home MT5 closed, or remove the EA from its chart there). Funded only:
 on a payout day the saved day start does not include the withdrawal, so the guard sees the payout as a loss and the
 EA sits out that day (to fix before the first payout).
+
+### Round 4 (2026-11-20): no bug found in v2.03
+
+Round 4 looked for faults the harness still could not show, and found no bug in v2.03:
+- MQL5 runtime errors that stop an EA ("zero divide", "array out of range"): every division has a guarded
+  divisor, and every array access is bounds-checked in the harness; none fired in any run.
+- Daylight saving time while the EA runs for weeks: server, New York and Prague times come from fixed DST rules
+  (server on US dates, verified 14.11), not from a one-time detection, so a DST weekend needs no restart.
+- MT5 updates positions, balance and deal history a moment after OrderSend returns, and while disconnected no ticks
+  arrive and the terminal's view is frozen. The harness now models both (`view=1`). Results with v2.03: 10 years
+  2016-2026, 3 of 1,990 trades re-enter 1 s later ($28 in total); 2025 with costs, nightly restarts or restarts
+  every 15 min: identical trades. 2025 with a disconnect every day around 10:30, around 12:00-12:40, from 13:00 to
+  15:00 or over the 15:59 exit, Algo Trading off every day 15:50-16:10, leverage 1:3, or a 5-lot volume cap:
+  0 FTMO breaches, no position left open, at most 9 requests per day.
+- Challenge Monte Carlo with `view=1` (116 starts): phase 1 83%, both phases 74%, both within 12 months 72%,
+  0 breaches (unchanged). With a restart every night and the 10:30 decision lost to a disconnect every day: 71%, 0 breaches.
+
+Still unverified, only possible in MT5 itself: MetaEditor compile, Strategy Tester run, live days on the Free Trial.
+After the first live session, check the `day ... ready: ... sessions=N` line: N must be at least 50 (MA50). If the
+log says `trend MA50 needs 50 sessions`, raise Tools > Options > Charts > Max bars in chart (100000 is enough).

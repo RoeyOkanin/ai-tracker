@@ -195,6 +195,14 @@ struct Sim
    long long logLines = 0;
    std::map<string, long long> tagCount;            // counts of "[IMOM] <first word>" lines
 
+   // view=1: the EA sees the terminal's copy of the trade state, taken at the start of each event. Its own
+   // OrderSend results (positions, balance, deals) show up from the next event on (MT5 updates the trade
+   // environment asynchronously), and while disconnected nothing new arrives (no ticks, prices/bars/account frozen).
+   int viewMode = 0;
+   struct View { std::vector<SimPos> pos; double balance = 0, equity = 0, freeMargin = 0, profit = 0, bid = 0, ask = 0; long cur = -1; SimBar part{}; datetime lastTick = 0; size_t ndeals = 0; } v;
+   void snap() { v.pos = pos; v.balance = balance; v.equity = equity(); v.freeMargin = equity() - marginUsed(); v.profit = floating();
+                 v.bid = bid(); v.ask = ask(); v.cur = cur; v.part = part; v.lastTick = lastTick; v.ndeals = deals.size(); }
+   const std::vector<SimPos>& vpos() const { return viewMode ? v.pos : pos; }
    bool unsynced() const { return now < syncUntil; }
    double spr() const { return spread + mid * spreadBp / 10000.0; }
    double bid() const { return mid - spr() / 2; }
@@ -269,7 +277,7 @@ inline void mql_log(const char* line)
 
 // ---------------------------------------------------------------- terminal / account / symbol
 inline datetime TimeTradeServer() { return S->now; }
-inline datetime TimeCurrent() { return S->lastTick; }
+inline datetime TimeCurrent() { return S->viewMode ? S->v.lastTick : S->lastTick; }
 inline datetime TimeGMT() { return S->gmt(); }
 inline datetime TimeLocal() { return S->gmt(); }   // VPS in London (winter)
 inline long long TerminalInfoInteger(ENUM_TERMINAL_INFO_INTEGER p) { return p == TERMINAL_CONNECTED ? (S->connected && !S->unsynced()) : S->algo; }
@@ -277,6 +285,14 @@ inline int MQLInfoInteger(ENUM_MQL_INFO_INTEGER p) { return p == MQL_TESTER ? S-
 inline double AccountInfoDouble(ENUM_ACCOUNT_INFO_DOUBLE p)
   {
    if(S->unsynced()) return 0;                      // before the login completes (MQL5 forum: account info valid only after the first tick)
+   if(S->viewMode)
+      switch(p)
+        {
+         case ACCOUNT_BALANCE: return S->v.balance;
+         case ACCOUNT_EQUITY: return S->v.equity;
+         case ACCOUNT_MARGIN_FREE: return S->v.freeMargin;
+         case ACCOUNT_PROFIT: return S->v.profit;
+        }
    switch(p)
      {
       case ACCOUNT_BALANCE: return S->balance;
@@ -291,8 +307,8 @@ inline double SymbolInfoDouble(const string&, ENUM_SYMBOL_INFO_DOUBLE p)
   {
    switch(p)
      {
-      case SYMBOL_BID: return S->bid();
-      case SYMBOL_ASK: return S->ask();
+      case SYMBOL_BID: return S->viewMode ? S->v.bid : S->bid();
+      case SYMBOL_ASK: return S->viewMode ? S->v.ask : S->ask();
       case SYMBOL_TRADE_TICK_VALUE: return 0.01;
       case SYMBOL_TRADE_TICK_SIZE: return 0.01;
       case SYMBOL_VOLUME_STEP: return 0.01;
@@ -303,19 +319,21 @@ inline double SymbolInfoDouble(const string&, ENUM_SYMBOL_INFO_DOUBLE p)
   }
 inline long long SymbolInfoInteger(const string&, ENUM_SYMBOL_INFO_INTEGER) { return 2; }
 inline bool OrderCalcMargin(ENUM_ORDER_TYPE, const string&, double vol, double px, double& margin) { margin = vol * px / S->leverage; return true; }
+// (CTrade below always acts on the live server state: prices, positions and margin at the moment of the request)
 
 // ---------------------------------------------------------------- bars
 inline long sim_bar_index_at_or_before(datetime t)
   {
    // last bar index with time <= t, limited to bars that exist already (<= cur)
-   long lo = 0, hi = S->cur, ans = -1;
+   long lo = 0, hi = S->viewMode ? S->v.cur : S->cur, ans = -1;
    while(lo <= hi) { long m = (lo + hi) / 2; if(S->bars[m].t <= t) { ans = m; lo = m + 1; } else hi = m - 1; }
    return ans;
   }
 inline datetime iTime(const string&, ENUM_TIMEFRAMES, int shift)
   {
-   long i = S->cur - shift;
-   if(S->cur < 0 || i < 0) return 0;
+   long cur = S->viewMode ? S->v.cur : S->cur;
+   long i = cur - shift;
+   if(cur < 0 || i < 0) return 0;
    return S->bars[i].t;
   }
 inline const SimHide* sim_active_hide()
@@ -331,7 +349,9 @@ inline int CopyRates(const string&, ENUM_TIMEFRAMES, datetime start, datetime st
   {
    out.v.clear();
    const SimHide* hide = sim_active_hide();
-   if(S->cur < 0) return -1;
+   long cur = S->viewMode ? S->v.cur : S->cur;
+   const SimBar& part = S->viewMode ? S->v.part : S->part;
+   if(cur < 0) return -1;
    long b = sim_bar_index_at_or_before(stop);
    if(b < 0) return 0;
    long a = b;
@@ -340,7 +360,7 @@ inline int CopyRates(const string&, ENUM_TIMEFRAMES, datetime start, datetime st
    for(long i = a; i <= b; i++)
      {
       if(hide && S->bars[i].t >= hide->h0 && S->bars[i].t < hide->h1) continue;
-      const SimBar& x = (i == S->cur) ? S->part : S->bars[i];
+      const SimBar& x = (i == cur) ? part : S->bars[i];
       MqlRates r; r.time = S->bars[i].t; r.open = x.o; r.high = x.h; r.low = x.l; r.close = x.c; r.tick_volume = x.v; r.spread = 0; r.real_volume = 0;
       out.v.push_back(r);
      }
@@ -348,28 +368,30 @@ inline int CopyRates(const string&, ENUM_TIMEFRAMES, datetime start, datetime st
   }
 
 // ---------------------------------------------------------------- positions / history
-inline int PositionsTotal() { return S->unsynced() ? 0 : (int)S->pos.size(); }
-inline ulong PositionGetTicket(int i) { if(i < 0 || i >= (int)S->pos.size()) { S->psel = -1; return 0; } S->psel = i; return S->pos[i].ticket; }
+inline int PositionsTotal() { return S->unsynced() ? 0 : (int)S->vpos().size(); }
+inline ulong PositionGetTicket(int i) { if(i < 0 || i >= (int)S->vpos().size()) { S->psel = -1; return 0; } S->psel = i; return S->vpos()[i].ticket; }
 inline long long PositionGetInteger(ENUM_POSITION_PROPERTY_INTEGER p)
   {
-   if(S->psel < 0) return 0;
-   auto& x = S->pos[S->psel];
+   if(S->psel < 0 || S->psel >= (int)S->vpos().size()) return 0;
+   auto& x = S->vpos()[S->psel];
    switch(p) { case POSITION_TICKET: case POSITION_IDENTIFIER: return (long long)x.ticket; case POSITION_TIME: return x.t; case POSITION_TYPE: return x.type; case POSITION_MAGIC: return x.magic; }
    return 0;
   }
 inline double PositionGetDouble(ENUM_POSITION_PROPERTY_DOUBLE p)
   {
-   if(S->psel < 0) return 0;
-   auto& x = S->pos[S->psel];
+   if(S->psel < 0 || S->psel >= (int)S->vpos().size()) return 0;
+   auto& x = S->vpos()[S->psel];
+   double bid = S->viewMode ? S->v.bid : S->bid(), ask = S->viewMode ? S->v.ask : S->ask();
    switch(p) { case POSITION_VOLUME: return x.vol; case POSITION_PRICE_OPEN: return x.price; case POSITION_SL: return x.sl; case POSITION_TP: return 0;
-      case POSITION_PROFIT: return (x.type == 0 ? (S->bid() - x.price) : (x.price - S->ask())) * x.vol; }
+      case POSITION_PROFIT: return (x.type == 0 ? (bid - x.price) : (x.price - ask)) * x.vol; }
    return 0;
   }
-inline string PositionGetString(ENUM_POSITION_PROPERTY_STRING p) { if(S->psel < 0) return ""; return p == POSITION_SYMBOL ? S->pos[S->psel].sym : S->pos[S->psel].comment; }
+inline string PositionGetString(ENUM_POSITION_PROPERTY_STRING p) { if(S->psel < 0 || S->psel >= (int)S->vpos().size()) return ""; return p == POSITION_SYMBOL ? S->vpos()[S->psel].sym : S->vpos()[S->psel].comment; }
 inline bool HistorySelect(datetime from, datetime to)
   {
    S->sel.clear();
-   for(int i = 0; i < (int)S->deals.size(); i++) if(S->deals[i].t >= from && S->deals[i].t <= to) S->sel.push_back(i);
+   int nd = S->viewMode ? (int)S->v.ndeals : (int)S->deals.size();
+   for(int i = 0; i < nd; i++) if(S->deals[i].t >= from && S->deals[i].t <= to) S->sel.push_back(i);
    return true;
   }
 inline int HistoryDealsTotal() { return (int)S->sel.size(); }
