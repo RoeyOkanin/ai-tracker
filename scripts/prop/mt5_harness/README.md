@@ -45,6 +45,28 @@ Driver options added for the fourth bug hunt (round 4, no EA bug found):
 - `disconnect_daily=HHMMSS,HHMMSS` / `algooff_daily=HHMMSS,HHMMSS`: a disconnect or Algo Trading off at these NY times
   on every session day. `leverage=N` (default 30) for the margin cap path.
 
+Driver options added for the fifth bug hunt (v2.04):
+- `fault=late,NYfrom,NYto,rc,SEC`: entry orders report failure `rc` (10012 = timeout) and the server executes them SEC
+  seconds later. `fault=ghost,NYfrom,NYto,rc`: orders (entries and exits) are executed but OrderSend reports `rc`.
+- `tradelag=SEC` / `ballag=SEC`: positions and deals reach the terminal SEC seconds after the server changed them, the
+  balance another `ballag` seconds later; prices stay live. A close sent for a position that is already gone on the
+  server counts as a request and returns 10036.
+- `relogin=NYfrom,NYto` / `relogin_daily=HHMMSS,HHMMSS`: the terminal logs in again without restarting the EA; meanwhile
+  the account reads like right after a start (login, balance, equity 0, no positions, requests fail with 10031).
+  `eqzero=...` / `eqzero_daily=...`: only ACCOUNT_EQUITY reads 0.
+- Every run prints an `INVARIANTS` line: most positions at once and the longest time with two, the longest time a
+  position stayed open outside the trading window while the terminal was healthy, entries on a wrong day or at a wrong
+  time, entries after the equity guard or after the target, sizes above the day's maximum, server stops that allow
+  more than the room to FTMO's limits, closes sent for positions that were already gone.
+- `fuzz.py VER N [SEED] [OUTDIR]`: N random 10-25 day scenarios (restarts with and without a login delay, disconnects,
+  re-logins, Algo Trading off, VPS downtime, rejected / partly filled / late / ghost orders, trade-state lag, input
+  changes, volume and margin limits, balances near the target and near the floor), each checked against the
+  invariants and FTMO's limits. A breach seen with 5 ticks per bar is re-run with 1-second ticks before it counts.
+- The FTMO max-loss check now measures from `InpInitialBalance` (FTMO's rule), not from the scenario's starting
+  balance; before, scenarios that start below 100,000 were checked too loosely and those above too strictly.
+- The EA's timer runs every second in MT5 but every `tstep` (60 s) here, except around restarts and inside `timer1s`
+  windows. Paths that depend on it (the 10-second entry retry) need `dense=N` ticks or a `timer1s` window.
+
 ```
 ./build.sh                                   # needs g++ (C++17), python3, pandas; writes build/
 cd build
@@ -139,3 +161,35 @@ Regression with v2.03 (same commands as above):
 - Worst FTMO day in 2025 with costs: $4,896 with the default 5 ticks per bar (the guard closes at the next tick, up to
   75 s after crossing $4,500), $4,647 with `dense=10`, $4,536 with `dense=1`. The research-bar 10-year run shows one
   daily breach (2022-01-28, $5,016, 23.7 lots) only with 5 ticks per bar: a price jump between two ticks 75 s apart.
+
+## Round 5 (2026-11-20): two bugs in v2.03, fixed in v2.04
+
+- Bug 14, retry after a timeout. `fault=late,...,10012,15` on every entry of 2025 (`view=1 dense=5`, costs):
+  v2.03 holds 2 positions at once and ends at 90,457 (max-loss guard); with 45 s it holds up to 5 and ends at 90,258.
+  v2.04: 1 position, 119,246 / 119,927. `fault=ghost,...,10012` with `tradelag=15`: v2.03 2 positions, 90,133; v2.04
+  1 position, 119,572. Same with `fault=ghost,...,10031` (executed, but reported as "no connection" by a connected
+  terminal): v2.04 does not retry either. When the terminal is really offline the entry is not sent and is tried again
+  for 60 s (`disconnect_daily=102950,103020`, `view=0` and `view=1`: same trades as v2.03, 48 entries taken late).
+- `mc.py VER dense=10 view=1 fault=late,2016-01-01T00:00:00,2026-12-31T00:00:00,10012,15`: v2.03 69% / 53% / 53% with
+  2 FTMO daily-loss failures, v2.04 83% / 74% / 72% with none. With 45 s: v2.03 59% / 41% / 41% with 20 FTMO failures
+  (daily and max loss), v2.04 84% / 75% / 72% with none.
+- Bug 15, account data empty while the EA runs. 2025 with costs: `relogin_daily=095000,095005` -> v2.03 0 trades;
+  `relogin_daily=110000,110005` -> 160 deals instead of 358; `relogin_daily=180000,180010` -> day start saved as 0,
+  one FTMO daily-loss breach; `eqzero_daily=095000,095003` -> 0 trades. v2.04: 358 deals and no breach in all four.
+- Stop of a reversal entry when the balance arrives after the position list (`tradelag=1 ballag=1`, found by `fuzz.py`,
+  2022-12-01 10:30): v2.03 sets a stop that allows a day loss of $5,972; v2.04 uses the day's closed deals and stays
+  inside FTMO's limit (`bad_sl=0`), same trades.
+- `./regress.sh v203 v204`: the 28 rows of rounds 1-4 and TL3 (`tradelag=3 ballag=5`) are identical; the round-5 rows
+  LT15, LT45, GH12, GH31, RL09, RL11, RL18 and EQ0 differ by design.
+- 10 years 2016-2026, v2.04 vs v2.03: identical trades on the research bars (guards off), the CFD bars, the CFD bars
+  with `view=1`, and funded ($8, buffer scaling) with `restart_every=30 sync=5`.
+- `mc.py v204 dense=10` and with `view=1`: phase 1 83%, both phases 74%, both within 12 months 72%, median 5.1 months,
+  0 FTMO breaches, at most 8 requests per day (same as v2.03).
+- `fuzz.py v204 400 SEED` for seeds 41-45 (final v2.04): 2,000 scenarios, 32,097 deals, 1 flag: a position still open
+  at the end of the window because the EA was down from Friday 12:58 until Saturday (nothing can be closed on a
+  weekend). 7 breach flags seen with 5 ticks per bar were gone with 1-second ticks. `fuzz.py v203 400 41`: 10 flags
+  (two positions at once in 4 scenarios, entries after the equity guard in 6). Earlier seeds on v2.03 before the new
+  fault types (1,560 scenarios) had found nothing; the timeout and re-login faults are what exposed bugs 14 and 15.
+- Flags that are not EA bugs: a daily-loss breach when the VPS is down overnight or over a weekend with a position
+  open and the first bar gaps through the server stop (the bars have no overnight session; the stop is 4.5%, FTMO's
+  limit 5%).

@@ -3,7 +3,7 @@
 Same rules as `scripts/prop/strategies.py::noise_momentum` (vol-targeted, constant notional), see the
 header of `IntradayMomentum.mq5`. Research results: `data/prop/README.md`.
 
-Inputs to change per phase (v2.03, everything else at its default):
+Inputs to change per phase (v2.04, everything else at its default):
 - Phase 1: `InpTargetPct=10`. Phase 2: `InpTargetPct=5`. Both at `InpDollarsPerPoint=10`.
 - Funded: `InpTargetPct=0`, `InpDollarsPerPoint=8`, `InpBufferScaling=true`.
 - `InpInitialBalance` = the account's starting balance.
@@ -97,7 +97,7 @@ not traded): phase 1 83%, both phases 74%, **both within 12 months 72%**, median
 The 75.8% / 84.8% above included phantom post-market P&L on half-days in the research data.
 
 Check after installing (Experts tab):
-- `[IMOM] v2.03 start: symbol=US100.cash magic=26111401, waiting for the account to load`
+- `[IMOM] v2.04 start: symbol=US100.cash magic=26111401, waiting for the account to load`
 - `[IMOM] no-trade days in the next 45 days: 20261126=holiday 20261127=early-close 20261224=early-close 20261225=holiday 20270101=holiday`
 - about 5 s later: `[IMOM] account <login> loaded: balance ..., FTMO day start ..., server UTC+2 (winter), New York now <NY time>, $/pt/lot=1.0000, lots min/step/max=...`
 
@@ -178,3 +178,40 @@ Round 4 looked for faults the harness still could not show, and found no bug in 
 Still unverified, only possible in MT5 itself: MetaEditor compile, Strategy Tester run, live days on the Free Trial.
 After the first live session, check the `day ... ready: ... sessions=N` line: N must be at least 50 (MA50). If the
 log says `trend MA50 needs 50 sessions`, raise Tools > Options > Charts > Max bars in chart (100000 is enough).
+
+## v2.04 (2026-11-20): fifth bug hunt, trading rules unchanged
+Round 5 checked the whole system again (FTMO's current rules, the research code and data, MT5's documented
+behaviour) and ran the real v2.03 code through randomised fault scenarios with an invariant checker (never two
+positions, nothing open outside the trading window, entries only at decision times, size and server stop within
+their limits). Two bugs, both in how the EA reacts to an answer from MT5 that is not what it seems:
+
+| # | v2.03 bug (reproduced with the real code) | v2.04 fix |
+|---|---|---|
+| 14 | A failed entry was retried after 10 s (for up to 60 s) for every return code except a few clear rejections. After a timeout (10012) the outcome is unknown: MQL5 forum threads report orders executed 15-20 s after the timeout, and a double trade from the retry. 2025 with costs, every entry order timing out and filled 15 s later: two positions of full size at once, account down to the max-loss guard (balance 90,457). Filled 45 s later: up to **5 positions at once**, balance 90,258. Challenge Monte Carlo in that state (116 starts): filled 15 s later -> 69% / 53% / 53% with 2 FTMO daily-loss failures; 45 s later -> 59% / 41% / 41% with **20 FTMO failures**. | An entry is retried only when the answer says the order was certainly not executed (requote, reject, invalid price, price changed, no quotes), or when the terminal was offline and nothing was sent. After a timeout, a connection lost while the order was on its way (10031 from a connected terminal) or any unknown answer nothing more is sent and a warning is logged; if the order is executed later, the position is managed as usual. Second line of defence: the EA never holds more than one position. If a second one appears anyway, the oldest is kept and the rest are closed at once (`DUPLICATE POSITION` in the log). Same scenarios: one position, balance 119,246 / 119,927; Monte Carlo 83% / 74% / 72% and 84% / 75% / 72%, 0 FTMO failures. |
+| 15 | v2.03 waits for the account only at start. If the account data reads empty while the EA is already running (the terminal logging in again without a restart; one MQL5 forum user reports equity 0 in a running EA), v2.03 acted on it: equity 0 fired the equity guard, which blocks entries for the rest of the New York day, and at the FTMO day change it saved a day start of 0 (daily guard off). 2025 with costs, account empty for 5 s every day: at 09:50 NY -> **0 trades in the whole year**; at 11:00 -> no entries after 11:00 (160 deals instead of 358); at 18:00 NY -> day start 0 and one FTMO daily-loss breach. Only equity reading 0 for 3 s at 09:50: 0 trades. | While login, balance or equity read 0 the EA does nothing and keeps its state; it continues when the data is back. All four scenarios: same 358 deals as the undisturbed run, 0 breaches. |
+
+Smaller changes: an entry whose server-side stop cannot be computed (tick value unavailable) is not sent. The stop of
+a new entry is computed from the day-start balance plus the day's closed deals when that is lower than the equity the
+terminal shows: if the terminal still shows the balance from before an exit (not confirmed for MT5, modelled with
+`tradelag=1 ballag=1`), the stop of a reversal entry in v2.03 allowed a day loss of $5,972; in v2.04 it stays inside the limit.
+
+Regression with v2.04: all 28 scenarios of rounds 1-4 give exactly the same trades as v2.03 (`regress.sh v203 v204`).
+10 years 2016-2026: identical trades to v2.03 on the research bars, on the CFD bars, with `view=1`, and funded with a
+restart every 30 min. Challenge Monte Carlo (116 starts, dense ticks, also with `view=1`): phase 1 83%, both phases 74%,
+**both within 12 months 72%**, median 5.1 months, 0 FTMO breaches, at most 8 requests per day: unchanged.
+Random fault scenarios on the final v2.04 (`fuzz.py v204 400`, seeds 41-45): 2,000 scenarios, 32,097 deals, no
+invariant violation and no FTMO breach; one scenario ends with a position open because the VPS was down across the
+Friday close (operational risk below). The same generator on v2.03 (seed 41, 400 scenarios) flags 10: two positions
+at once in 4, entries after the equity guard in 6.
+
+What round 5 checked without finding a bug: FTMO's rules as published now (daily loss from the balance at midnight
+CE(S)T including floating P&L, 10% static max loss, 4 trading days, 2,000 requests per day) match the EA; the research
+backtest has no look-ahead and the bar timestamps are bar starts; MQL5 documents `CopyRates` returning -1 when more
+than "Max bars in chart" is requested (hence the `sessions=N` check below).
+
+Known limits (not fixed): as before. Operational risks that no code removes: the guards sit $500 inside FTMO's limits,
+so a real price gap can pass them; a VPS that is down (or Algo Trading off) across a Friday close leaves the position
+to the server stop over the weekend; after the max-loss guard (equity 90,500) the EA no longer trades that account.
+
+Still unverified, only possible in MT5 itself: MetaEditor compile of v2.04, Strategy Tester run, live days on the Free Trial.
+After the first live session, check the `day ... ready: ... sessions=N` line: N must be at least 50 (MA50).

@@ -11,6 +11,7 @@
 #include <vector>
 #include <map>
 #include <array>
+#include <deque>
 #include <algorithm>
 
 typedef long long datetime;
@@ -165,7 +166,9 @@ inline void Print(const string& s) { mql_log(s.c_str()); }
 struct SimBar { datetime t; double o, h, l, c; long long v; };
 struct SimPos { ulong ticket; int type; double vol, price, sl; long long magic; string sym, comment; datetime t; };
 struct SimDeal { ulong ticket; datetime t; int type, entry; long long magic; string sym, comment; double vol, price, profit, sl; ulong pos; };
-struct SimFault { datetime a, b; int rc; bool closes, opens, partial = false; };
+struct SimFault { datetime a, b; int rc; bool closes, opens, partial = false, ghost = false; int late = 0; };
+// ghost: the order is executed on the server but OrderSend reports failure rc (reply lost). late: an open is reported as failed (rc) and executed `late` seconds afterwards.
+struct SimLate { datetime t; int type; double vol, sl; long long magic; string sym, cm; };
 struct SimHide { datetime a, b, h0, h1; };   // while a <= now < b, bars with h0 <= t < h1 are not in the terminal's history yet
 
 struct Sim
@@ -185,6 +188,7 @@ struct Sim
    std::map<string, double> gv;
    bool connected = true, algo = true, tester = false;
    datetime syncUntil = 0;                          // terminal just started: not logged in yet, account/positions not loaded
+   datetime eqZeroUntil = 0;                        // only ACCOUNT_EQUITY reads 0 (user reports of a running EA seeing equity 0)
    long long login = 1515290765;
    std::vector<SimFault> faults;
    std::vector<SimHide> hides;                      // sorted by a, non-overlapping
@@ -194,14 +198,42 @@ struct Sim
    bool quiet = false;
    long long logLines = 0;
    std::map<string, long long> tagCount;            // counts of "[IMOM] <first word>" lines
+   std::map<int, datetime> guardAt;                 // NY day -> first time the EA logged EQUITY GUARD (invariant check)
+   datetime targetDoneAt = 0;                       // first "PROFIT TARGET DONE" (invariant check)
 
    // view=1: the EA sees the terminal's copy of the trade state, taken at the start of each event. Its own
    // OrderSend results (positions, balance, deals) show up from the next event on (MT5 updates the trade
    // environment asynchronously), and while disconnected nothing new arrives (no ticks, prices/bars/account frozen).
    int viewMode = 0;
    struct View { std::vector<SimPos> pos; double balance = 0, equity = 0, freeMargin = 0, profit = 0, bid = 0, ask = 0; long cur = -1; SimBar part{}; datetime lastTick = 0; size_t ndeals = 0; } v;
-   void snap() { v.pos = pos; v.balance = balance; v.equity = equity(); v.freeMargin = equity() - marginUsed(); v.profit = floating();
-                 v.bid = bid(); v.ask = ask(); v.cur = cur; v.part = part; v.lastTick = lastTick; v.ndeals = deals.size(); }
+   // tradelag=N (round 5): positions / deals reach the terminal N seconds after the server changed them (prices stay live);
+   // ballag=M: the account balance arrives another M seconds later (positions and balance are not updated together).
+   int tradeLag = 0, balLag = 0;
+   struct TSnap { datetime t; std::vector<SimPos> pos; size_t ndeals; double balance; };
+   std::deque<TSnap> lagQ; std::deque<std::pair<datetime, double>> balQ;
+   std::vector<SimPos> visPos; size_t visDeals = 0; double visBal = 0; bool visInit = false;
+   std::vector<SimLate> lateQ;
+   long long staleCloseReq = 0;                     // closes sent for a position that was already gone on the server (10036)
+   void tradeChanged()
+     {
+      if(tradeLag > 0 || balLag > 0) { lagQ.push_back({now + tradeLag, pos, deals.size(), balance}); balQ.push_back({now + tradeLag + balLag, balance}); }
+     }
+   void resetLag() { lagQ.clear(); balQ.clear(); visInit = false; }   // terminal restart: full sync from the server
+   void snap()
+     {
+      if(tradeLag > 0 || balLag > 0)
+        {
+         if(!visInit) { visPos = pos; visDeals = deals.size(); visBal = balance; visInit = true; }
+         while(!lagQ.empty() && lagQ.front().t <= now) { visPos = lagQ.front().pos; visDeals = lagQ.front().ndeals; lagQ.pop_front(); }
+         while(!balQ.empty() && balQ.front().first <= now) { visBal = balQ.front().second; balQ.pop_front(); }
+         v.pos = visPos; v.ndeals = visDeals; v.balance = visBal;
+         double f = 0, m = 0;
+         for(auto& p : v.pos) { f += (p.type == 0 ? (bid() - p.price) : (p.price - ask())) * p.vol; m += p.vol * p.price / leverage; }
+         v.profit = f; v.equity = v.balance + f; v.freeMargin = v.equity - m;
+        }
+      else { v.pos = pos; v.balance = balance; v.equity = equity(); v.freeMargin = equity() - marginUsed(); v.profit = floating(); v.ndeals = deals.size(); }
+      v.bid = bid(); v.ask = ask(); v.cur = cur; v.part = part; v.lastTick = lastTick;
+     }
    const std::vector<SimPos>& vpos() const { return viewMode ? v.pos : pos; }
    bool unsynced() const { return now < syncUntil; }
    double spr() const { return spread + mid * spreadBp / 10000.0; }
@@ -250,6 +282,22 @@ struct Sim
       balance += pr;
       addDeal(p.type == 0 ? 1 : 0, 1, p.magic, p.sym, p.vol, px, pr, p.ticket, why);
       pos.erase(pos.begin() + i);
+      tradeChanged();
+     }
+   void runLate()                                   // orders the terminal gave up on (timeout) that the server executes afterwards
+     {
+      for(size_t i = 0; i < lateQ.size();)
+        {
+         if(lateQ[i].t > now) { i++; continue; }
+         SimLate q = lateQ[i]; lateQ.erase(lateQ.begin() + i);
+         double px = q.type == 0 ? ask() : bid();
+         if(!open || (q.sl > 0 && ((q.type == 0 && q.sl >= bid()) || (q.type == 1 && q.sl <= ask())))) continue;
+         SimPos p; p.ticket = nextTicket++; p.type = q.type; p.vol = q.vol; p.price = px; p.sl = q.sl; p.magic = q.magic; p.sym = q.sym; p.comment = q.cm; p.t = now;
+         pos.push_back(p);
+         addDeal(q.type, 0, q.magic, q.sym, q.vol, px, 0, p.ticket, q.cm);
+         deals.back().sl = q.sl;
+         tradeChanged();
+        }
      }
    void checkStops()
      {
@@ -269,6 +317,8 @@ inline void mql_log(const char* line)
   {
    S->logLines++;
    const char* p = strstr(line, "[IMOM] ");
+   if(strstr(line, "EQUITY GUARD:") && !S->guardAt.count(Sim::nyKey(S->now))) S->guardAt[Sim::nyKey(S->now)] = S->now;
+   if(strstr(line, "PROFIT TARGET DONE") && !S->targetDoneAt) S->targetDoneAt = S->now;
    if(p) { p += 7; const char* e = p; while(*e && *e != ' ' && *e != ':' && *e != '(') e++; S->tagCount[string(p, e - p)]++; }
    if(S->quiet) return;
    fprintf(S->logf, "%s NY %s | %s\n", TimeToString(S->now, TIME_DATE | TIME_SECONDS).c_str(),
@@ -285,6 +335,7 @@ inline int MQLInfoInteger(ENUM_MQL_INFO_INTEGER p) { return p == MQL_TESTER ? S-
 inline double AccountInfoDouble(ENUM_ACCOUNT_INFO_DOUBLE p)
   {
    if(S->unsynced()) return 0;                      // before the login completes (MQL5 forum: account info valid only after the first tick)
+   if(p == ACCOUNT_EQUITY && S->now < S->eqZeroUntil) return 0;
    if(S->viewMode)
       switch(p)
         {
@@ -437,10 +488,15 @@ class CTrade
       double px = type == 0 ? S->ask() : S->bid();
       if(sl > 0 && ((type == 0 && sl >= S->bid()) || (type == 1 && sl <= S->ask()))) { m_rc = 10016; return false; }
       if(vol * px / S->leverage > S->equity() - S->marginUsed()) { m_rc = 10019; return false; }
+      const SimFault* gf = nullptr;
+      for(auto& f : S->faults) if(S->now >= f.a && S->now < f.b && (f.ghost || f.late > 0)) gf = &f;
+      if(gf && gf->late > 0) { S->lateQ.push_back(SimLate{S->now + gf->late, type, vol, sl, m_magic, sym, cm}); m_rc = (uint)gf->rc; return false; }
       SimPos p; p.ticket = S->nextTicket++; p.type = type; p.vol = vol; p.price = px; p.sl = sl; p.magic = m_magic; p.sym = sym; p.comment = cm; p.t = S->now;
       S->pos.push_back(p);
       S->addDeal(type, 0, m_magic, sym, vol, px, 0, p.ticket, cm);
       S->deals.back().sl = sl;
+      S->tradeChanged();
+      if(gf) { m_rc = (uint)gf->rc; return false; }               // executed, but the reply never reached the terminal
       return true;
      }
 public:
@@ -454,7 +510,17 @@ public:
       m_rc = 0;
       size_t i = 0;
       for(; i < S->pos.size(); i++) if(S->pos[i].ticket == ticket) break;
-      if(i == S->pos.size()) return false;                       // like CTrade: retcode cleared, false
+      if(i == S->pos.size())
+        {
+         // CTrade selects the position in the terminal's (possibly stale) list first; if it is still listed there the
+         // request goes to the server, which answers 10036 "position already closed"
+         bool listed = false;
+         if(S->viewMode) for(auto& p : S->v.pos) if(p.ticket == ticket) listed = true;
+         if(!listed) return false;                                // like CTrade: retcode cleared, false
+         m_rc = S->gate(true);
+         if(m_rc == 10009) { m_rc = 10036; S->staleCloseReq++; }
+         return false;
+        }
       m_rc = S->gate(true);
       if(m_rc != 10009) return false;
       for(auto& f : S->faults)
@@ -465,17 +531,19 @@ public:
             double pr = (p.type == 0 ? (px - p.price) : (p.price - px)) * half;
             S->balance += pr; p.vol = std::round((p.vol - half) * 100) / 100;
             S->addDeal(p.type == 0 ? 1 : 0, 1, p.magic, p.sym, half, px, pr, p.ticket, "ea close (partial)");
+            S->tradeChanged();
             m_rc = 10010;
             return true;                                                // OrderSend true, DONE_PARTIAL
            }
       S->closeAt(i, S->pos[i].type == 0 ? S->bid() - S->slp() : S->ask() + S->slp(), "ea close");
+      for(auto& f : S->faults) if(f.ghost && S->now >= f.a && S->now < f.b) { m_rc = (uint)f.rc; return false; }   // closed, reply lost
       return true;
      }
    uint ResultRetcode() const { return m_rc; }
    string ResultRetcodeDescription() const
      {
       switch(m_rc) { case 10009: return "done"; case 10010: return "done partially"; case 10018: return "market closed"; case 10027: return "autotrading disabled by client";
-         case 10031: return "no connection"; case 10004: return "requote"; case 10006: return "request rejected"; case 10016: return "invalid stops"; case 10019: return "no money"; }
+         case 10031: return "no connection"; case 10004: return "requote"; case 10006: return "request rejected"; case 10016: return "invalid stops"; case 10019: return "no money"; case 10012: return "request canceled by timeout"; case 10036: return "position already closed"; }
       return "retcode " + std::to_string(m_rc);
      }
   };

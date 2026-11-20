@@ -68,9 +68,27 @@
 //|    valid for 5 s; then the saved day state is restored.          |
 //|  * The restored day start is never below what the deal history   |
 //|    shows, and malformed InpExtraClosedDays entries are reported. |
+//| v2.04 (2026-11-20): order handling fix, trading rules unchanged. |
+//|  * A failed entry was retried after 10 s for every answer except |
+//|    a few clear rejections. After a timeout the broker can still  |
+//|    execute the order later, so the retry opened a second (third, |
+//|    ...) position of full size. Now an entry is retried only when |
+//|    the answer says the order was certainly not executed (requote,|
+//|    reject, price changed, no quotes) or the terminal was offline |
+//|    and nothing was sent; after a timeout, a lost connection or   |
+//|    any unknown answer nothing more is sent.                      |
+//|  * Never more than one position: if a second one shows up anyway |
+//|    (an order executed late), the oldest is kept and the rest are |
+//|    closed at once.                                               |
+//|  * If the account data reads empty while the EA is running (the  |
+//|    terminal logging in again), the EA waits instead of acting on |
+//|    a balance of 0; no entry without its server-side stop.        |
+//|  * The server-side stop of a new entry uses the day's closed     |
+//|    deals, not only the balance the terminal shows: right after   |
+//|    an exit that balance can still be the one from before it.     |
 //+------------------------------------------------------------------+
 #property copyright "ai-tracker"
-#property version   "2.03"
+#property version   "2.04"
 
 #include <Trade\Trade.mqh>
 
@@ -112,14 +130,20 @@ input long   InpMagic           = 26111401;
 input bool   InpLogCsv          = true;   // write decisions to MQL5/Files/IntradayMomentum_log.csv
 
 // trade server return codes used below (numeric, see ENUM_TRADE_RETURN_CODES)
+#define RC_REQUOTE         10004
+#define RC_REJECT          10006
 #define RC_PLACED          10008
 #define RC_DONE            10009
 #define RC_DONE_PARTIAL    10010
+#define RC_TIMEOUT         10012
 #define RC_INVALID_VOLUME  10014
+#define RC_INVALID_PRICE   10015
 #define RC_INVALID_STOPS   10016
 #define RC_TRADE_DISABLED  10017
 #define RC_MARKET_CLOSED   10018
 #define RC_NO_MONEY        10019
+#define RC_PRICE_CHANGED   10020
+#define RC_PRICE_OFF       10021
 #define RC_CLIENT_NO_ALGO  10027
 #define RC_NO_CONNECTION   10031
 #define RC_LIMIT_VOLUME    10034
@@ -158,6 +182,7 @@ int      g_pendSide      = 0;     // entry to retry after a transient failure
 int      g_pendEndMin    = 0;
 datetime g_pendUntil     = 0;
 datetime g_lastOpenTry   = 0;
+datetime g_dupLogAt      = 0;     // last "duplicate position" log line
 int      g_extraDays[];
 int      g_noTradeLogDay = 0;
 int      g_prepTryDay    = 0;     // NY day of the first PrepareDay attempt below
@@ -415,9 +440,28 @@ int CloseRetryDelay()
    return MathMin(d, 60);
   }
 
-// close every position of this EA; true only if all closes went through.
+// number of this EA's positions; `oldest` = ticket of the one opened first
+int OwnPositions(ulong &oldest)
+  {
+   int n = 0;
+   datetime ot = 0;
+   oldest = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+     {
+      ulong tk = PositionGetTicket(i);
+      if(tk == 0) continue;
+      if(PositionGetString(POSITION_SYMBOL) != _Symbol) continue;
+      if(PositionGetInteger(POSITION_MAGIC) != InpMagic) continue;
+      datetime t = (datetime)PositionGetInteger(POSITION_TIME);
+      n++;
+      if(oldest == 0 || t < ot || (t == ot && tk < oldest)) { oldest = tk; ot = t; }
+     }
+   return n;
+  }
+
+// close every position of this EA (except ticket `keep`, if given); true only if all closes went through.
 // Failed closes back off (5 s .. 60 s), and after "market closed" wait for the next tick.
-bool CloseAllSafe(string why)
+bool CloseAllSafe(string why, ulong keep = 0)
   {
    datetime now = TimeTradeServer();
    if(g_waitTick && !g_inTick) return false;
@@ -429,6 +473,7 @@ bool CloseAllSafe(string why)
       if(tk == 0) continue;
       if(PositionGetString(POSITION_SYMBOL) != _Symbol) continue;
       if(PositionGetInteger(POSITION_MAGIC) != InpMagic) continue;
+      if(keep != 0 && tk == keep) continue;
       if(!ReqBudget()) { ok = false; break; }
       g_reqCount++;
       if(!trade.PositionClose(tk))
@@ -444,6 +489,22 @@ bool CloseAllSafe(string why)
    if(ok) { g_waitTick = false; g_closeFails = 0; g_closeFailAt = 0; }
    else { g_closeFails++; g_closeFailAt = now; }
    return ok;
+  }
+
+// The EA holds one position at most. A second one can only come from an order the terminal had given up on
+// (timeout, reply lost) and the server executed anyway: keep the oldest, close the rest.
+void CloseDuplicates()
+  {
+   ulong keep = 0;
+   int n = OwnPositions(keep);
+   if(n < 2) return;
+   datetime now = TimeTradeServer();
+   if(now - g_dupLogAt >= 60)
+     {
+      g_dupLogAt = now;
+      PrintFormat("[IMOM] DUPLICATE POSITION: %d positions open (an order was executed late). Keeping the oldest, closing the rest.", n);
+     }
+   CloseAllSafe("duplicate position", keep);
   }
 
 double MoneyPerPointPerLot()
@@ -496,6 +557,10 @@ int OpenPos(int side, double lots, string why)
    // server-side stop: 4.5% of initial at this size, but never more than the room left to FTMO's
    // daily limit (guard + 0.25%) or the max-loss floor (+0.25%). Only matters if the EA is not running.
    double eq = AccountInfoDouble(ACCOUNT_EQUITY);
+   // Right after an exit the terminal can still show the balance from before it. This runs only when flat, so the
+   // equity is the day-start balance plus today's closed deals: never use more than that.
+   double eqHist = g_anchor + ClosedSincePragueMidnight(TimeTradeServer());
+   if(g_anchor > 0 && eqHist < eq) eq = eqHist;
    double floorBal = InpInitialBalance * (1.0 - InpMaxLossPct / 100.0);
    double room = InpEmergencySLPct / 100.0 * InpInitialBalance;
    room = MathMin(room, eq - (g_anchor - (InpDailyGuardPct + 0.25) / 100.0 * InpInitialBalance));
@@ -507,9 +572,20 @@ int OpenPos(int side, double lots, string why)
      }
    double mpp = MoneyPerPointPerLot();
    double slDist = (mpp > 0 && lots > 0) ? room / (lots * mpp) : 0;
+   if(slDist <= 0)                                        // never open a position without its server-side stop
+     {
+      Print("[IMOM] tick value unavailable, the server stop cannot be computed: no entry");
+      return -1;
+     }
    int digits = (int)SymbolInfoInteger(_Symbol, SYMBOL_DIGITS);
    bool ok;
    g_lastOpenTry = TimeTradeServer();
+   // terminal offline: the order cannot reach the server, so nothing is sent; try again when it is back
+   if(!(bool)MQLInfoInteger(MQL_TESTER) && !TerminalInfoInteger(TERMINAL_CONNECTED))
+     {
+      Print("[IMOM] terminal offline: entry not sent, trying again for up to 60 s");
+      return 0;
+     }
    g_reqCount++;
    if(side > 0)
      {
@@ -527,10 +603,15 @@ int OpenPos(int side, double lots, string why)
    if(ok && (rc == RC_DONE || rc == RC_PLACED || rc == RC_DONE_PARTIAL)) return 1;
    if(ClientSideReject(rc)) g_reqCount--;
    PrintFormat("[IMOM] open failed: %u %s", rc, trade.ResultRetcodeDescription());
-   if(rc == RC_NO_MONEY || rc == RC_INVALID_VOLUME || rc == RC_INVALID_STOPS || rc == RC_TRADE_DISABLED ||
-      rc == RC_MARKET_CLOSED || rc == RC_LIMIT_VOLUME || rc == RC_CLIENT_NO_ALGO)
-      return -1;
-   return 0;
+   // retry only when the answer says the order was certainly NOT executed
+   if(rc == RC_REQUOTE || rc == RC_REJECT || rc == RC_INVALID_PRICE || rc == RC_PRICE_CHANGED || rc == RC_PRICE_OFF)
+      return 0;
+   // a timeout, a connection lost while the order was on its way, or an unknown answer: the server may still execute
+   // this order later, a second one would double the position
+   if(rc != RC_NO_MONEY && rc != RC_INVALID_VOLUME && rc != RC_INVALID_STOPS && rc != RC_TRADE_DISABLED &&
+      rc != RC_MARKET_CLOSED && rc != RC_LIMIT_VOLUME && rc != RC_CLIENT_NO_ALGO)
+      PrintFormat("[IMOM] WARNING: outcome of the entry order is unknown (%u). No retry: if it is executed later, the position is managed as usual.", rc);
+   return -1;
   }
 
 //+------------------------------------------------------------------+
@@ -615,7 +696,8 @@ double DayPnl(int dayKey)
 //| FTMO day-start balance: saved at the Prague day change, restored |
 //| after a restart; first run of a day rebuilds it from history     |
 //+------------------------------------------------------------------+
-double BalanceAtPragueMidnight(datetime srv)
+// closed P&L of the whole account (all deals, with commission and swap) since 00:00 Prague time
+double ClosedSincePragueMidnight(datetime srv)
   {
    datetime utc = ServerToUtc(srv);
    int off = EuDst(utc) ? 2 : 1;
@@ -636,7 +718,12 @@ double BalanceAtPragueMidnight(datetime srv)
          sum += HistoryDealGetDouble(tk, DEAL_PROFIT) + HistoryDealGetDouble(tk, DEAL_COMMISSION) + HistoryDealGetDouble(tk, DEAL_SWAP);
         }
      }
-   return AccountInfoDouble(ACCOUNT_BALANCE) - sum;
+   return sum;
+  }
+
+double BalanceAtPragueMidnight(datetime srv)
+  {
+   return AccountInfoDouble(ACCOUNT_BALANCE) - ClosedSincePragueMidnight(srv);
   }
 
 void UpdateAnchor()
@@ -957,7 +1044,7 @@ void ResetState()
    g_targetDone = false; g_targetClosing = false;               // restored from the closed balance
    g_anchorDay = 0; g_anchor = 0; g_guardDay = 0;               // restored from terminal global variables
    g_closePending = false; g_closeFailAt = 0; g_closeFails = 0; g_waitTick = false; g_inTick = false;
-   g_pendSide = 0; g_pendEndMin = 0; g_pendUntil = 0; g_lastOpenTry = 0;
+   g_pendSide = 0; g_pendEndMin = 0; g_pendUntil = 0; g_lastOpenTry = 0; g_dupLogAt = 0;
    g_noTradeLogDay = 0;
    g_ready = false; g_readySince = 0; g_login = 0;               // wait for the account again
    // g_reqDay / g_reqCount are kept: requests already sent today still count
@@ -975,7 +1062,8 @@ bool AccountReady()
    long login = AccountInfoInteger(ACCOUNT_LOGIN);
    if(g_ready)
      {
-      if(login <= 0 || login == g_login) return true;
+      if(login == g_login && AccountInfoDouble(ACCOUNT_BALANCE) > 0 && AccountInfoDouble(ACCOUNT_EQUITY) > 0) return true;
+      if(login <= 0 || login == g_login) return false;   // account data not available right now (terminal logging in again): wait
       PrintFormat("[IMOM] account changed %I64d -> %I64d: state reset, waiting for the new account", g_login, login);
       ResetState();
      }
@@ -1018,6 +1106,7 @@ void Heartbeat()
    double eq = AccountInfoDouble(ACCOUNT_EQUITY);
    int side = CurrentSide();
    if(side == 0) { g_waitTick = false; g_closeFails = 0; }
+   else CloseDuplicates();                          // never more than one position
 
    // profit target: FTMO counts the balance with all positions closed
    if(InpTargetPct > 0 && !g_targetDone)
@@ -1162,7 +1251,7 @@ int OnInit()
    CopyRates(_Symbol, PERIOD_M5, TimeTradeServer() - 120 * 86400, TimeTradeServer(), warm);
 
    datetime ny = ServerToNy(TimeTradeServer());
-   PrintFormat("[IMOM] v2.03 start: symbol=%s magic=%I64d, waiting for the account to load", _Symbol, InpMagic);
+   PrintFormat("[IMOM] v2.04 start: symbol=%s magic=%I64d, waiting for the account to load", _Symbol, InpMagic);
    if(!tester && !TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) Print("[IMOM] WARNING: Algo Trading is OFF in the terminal");
    // next no-trade days, so the calendar can be checked in the log
    string cal = "";

@@ -1,15 +1,16 @@
 #!/bin/bash
-# Runs every bug-hunt scenario (rounds 1-4) on two EA versions and says whether trades and FTMO/request
-# summaries are identical. usage: ./regress.sh [VA] [VB]   (default v202 v203; run ./build.sh first)
-VA=${1:-v202}; VB=${2:-v203}
+# Runs every bug-hunt scenario (rounds 1-5) on two EA versions and says whether trades and FTMO/request
+# summaries are identical. usage: ./regress.sh [VA] [VB]   (default v203 v204; run ./build.sh first)
+VA=${1:-v203}; VB=${2:-v204}
 cd "$(dirname "$0")/build" || exit 1
 [ -f bars_cfd_hol.csv ] || python3 ../export_bars.py cfd bars_cfd_hol.csv hol=2025-11-27:2025-11-06 > /dev/null
 mkdir -p regress
 run() {
   name=$1; shift
+  [ -n "$ONLY" ] && [[ ! " $ONLY " =~ " $name " ]] && return     # ONLY="S3 LT15" ./regress.sh runs just these rows
   for v in $VA $VB; do ./driver ver=$v tstep=60 in.InpLogCsv=false trades=regress/${name}_$v.csv log=regress/${name}_$v.log "$@" > regress/${name}_$v.out 2>&1 & done; wait
   sum() { grep -E 'SUMMARY|FTMO d|REQUESTS' regress/${name}_$1.out | sed 's/ver=v[0-9]* //; s/ticks=[0-9]* timers=[0-9]* //'; }
-  res() { echo "$(grep SUMMARY regress/${name}_$1.out | grep -o 'balance=[0-9.]*') $(grep -o 'daily_breach_ticks=[0-9]*' regress/${name}_$1.out)"; }
+  res() { echo "$(grep SUMMARY regress/${name}_$1.out | grep -o 'balance=[0-9.]*') $(grep -o 'deals=[0-9]*' regress/${name}_$1.out) $(grep -o 'daily_breach_ticks=[0-9]*' regress/${name}_$1.out) $(grep -o 'max_positions=[0-9]*' regress/${name}_$1.out)"; }
   a=$(tail -n +2 regress/${name}_$VA.csv | md5sum); b=$(tail -n +2 regress/${name}_$VB.csv | md5sum)
   printf "%-5s trades %-4s | summary %-4s | %s: %s | %s: %s\n" $name $([ "$a" == "$b" ] && echo same || echo DIFF) \
     $([ "$(sum $VA)" == "$(sum $VB)" ] && echo same || echo DIFF) \
@@ -48,3 +49,16 @@ run DCE  $C3 view=1 disconnect_daily=155700,160400
 run AO   $C3 view=1 algooff_daily=155000,161000
 run LEV  $C3 view=1 leverage=3
 run VM   $C3 view=1 volmax=5
+# round 5: entry orders that time out and are executed later, orders executed although OrderSend failed,
+# trade state reaching the terminal late, account data reading 0 while the EA runs (rows LT.., GH12, RL.., EQ0 differ by design).
+# The retry runs on the EA's 1-second timer, so these rows need dense ticks (dense=5).
+Y="2025-01-01T00:00:00,2025-12-31T23:59:59"
+run LT15 $C3 view=1 dense=5 fault=late,$Y,10012,15
+run LT45 $C3 view=1 dense=5 fault=late,$Y,10012,45
+run GH12 $C3 dense=5 tradelag=15 fault=ghost,$Y,10012
+run GH31 $C3 dense=5 tradelag=15 fault=ghost,$Y,10031
+run TL3  $C3 dense=5 tradelag=3 ballag=5
+run RL09 $C3 view=1 relogin_daily=095000,095005
+run RL11 $C3 view=1 relogin_daily=110000,110005
+run RL18 $C3 view=1 relogin_daily=180000,180010
+run EQ0  $C3 view=1 eqzero_daily=095000,095003
