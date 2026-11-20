@@ -1,0 +1,14 @@
+#!/bin/bash
+# Build the harness: converts both EA versions to C++, compiles the driver, exports bar files.
+# v2.00 = the version that ran live until 2026-11-20 (commit 86af481), v2.01 = mt5/IntradayMomentum.mq5.
+set -e
+cd "$(dirname "$0")"
+mkdir -p build
+git show 86af481:mt5/IntradayMomentum.mq5 > build/v200.mq5
+cp ../../../mt5/IntradayMomentum.mq5 build/v201.mq5
+python3 prep_mq5.py build/v200.mq5 build/ea_v200.h EA_v200
+python3 prep_mq5.py build/v201.mq5 build/ea_v201.h EA_v201
+g++ -std=c++17 -O2 -Wall -Wno-unused-parameter -Wno-unused-variable -Wno-sign-compare -Ibuild -o build/driver driver.cpp
+[ -f build/bars_research.csv ] || python3 export_bars.py research build/bars_research.csv
+[ -f build/bars_cfd.csv ] || python3 export_bars.py cfd build/bars_cfd.csv
+echo "built: build/driver"

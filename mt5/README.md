@@ -3,10 +3,11 @@
 Same rules as `scripts/prop/strategies.py::noise_momentum` (vol-targeted, constant notional), see the
 header of `IntradayMomentum.mq5`. Research results: `data/prop/README.md`.
 
-Inputs to change per phase:
-- Challenge / verification: `InpDollarsPerPoint=12`, `InpBufferScaling=false`.
-- Funded: `InpDollarsPerPoint=8`, `InpBufferScaling=true`.
+Inputs to change per phase (v2.01, everything else at its default):
+- Phase 1: `InpTargetPct=10`. Phase 2: `InpTargetPct=5`. Both at `InpDollarsPerPoint=10`.
+- Funded: `InpTargetPct=0`, `InpDollarsPerPoint=8`, `InpBufferScaling=true`.
 - `InpInitialBalance` = the account's starting balance.
+- After replacing the file and compiling, press **Reset** in the EA's Inputs tab so new inputs get their defaults.
 
 Differences from the backtest (by design):
 - VWAP uses tick volume (CFDs have no exchange volume).
@@ -69,3 +70,33 @@ cost 5 pts x vol-scale per trade, optional intraday target stop. Start on every 
 
 Inputs per account: phase 1 `InpTargetPct=10`, phase 2 `InpTargetPct=5` (both $10), funded `InpTargetPct=0`,
 `InpDollarsPerPoint=8`, `InpBufferScaling=true`.
+
+## v2.01 (2026-11-20): bug fixes before buying the challenge, trading rules unchanged
+Found by running the EA source itself in `scripts/prop/mt5_harness` (g++ shim with a simulated FTMO broker).
+With the calendar off, v2.00 and v2.01 make the same 2,002 trades as the research on all 2,676 days (2016-04..2026-11).
+
+| # | v2.00 bug (reproduced with the real code) | v2.01 fix |
+|---|---|---|
+| 1 | No US holiday calendar. It trades the futures-only holiday mornings (US100.cash closes 13:00 NY) and the half-days (day after Thanksgiving, Dec 24, Jul 3: CFD stops 13:15 NY). Positions get stuck through the closure (8 held 45-96 h in 2016-26; example Thanksgiving short -$3,461). Holiday bars also enter the band/vol/MA history. Holding through a closure can count as FTMO "gap trading". | NYSE calendar (holidays, half-days, `InpExtraClosedDays`). No trading on those days. Holiday sessions are left out of the history. Anything open outside 09:30-15:59 NY on a trading day is closed at the first tick. |
+| 2 | The EOD close is retried every second while the market is closed: 28,861 requests in one day (FTMO: more than 2,000 server requests per day is forbidden). | Backoff 5, 10, 20, 40, then 60 s. After "market closed" it retries on the next tick only. Cap `InpMaxRequestsPerDay=1000`, and terminal-side rejections are not counted. |
+| 3 | A rejected exit is logged as done and the opposite side is opened anyway: long and short open together, the hidden long hit its stop (-$4,505 vs -$2,545). | Nothing new opens while an exit is pending. The reversal is taken only if flat within 60 s. Transient entry failures are retried for 60 s. |
+| 4 | A restart resets the daily-loss reference to the current balance and clears the guard. After a guard hit, the EA traded again the same day. | Daily reference = balance at 00:00 Prague time (FTMO's reset), stored in a terminal global variable. The guard day is stored too. |
+| 5 | The server-side stop is always 4.5% of initial and ignores the day's earlier losses. With the VPS down after a morning loss, 2025-11-18 breached FTMO's daily limit. | The stop never allows more than the room left to the daily limit (guard + 0.25%) and to the max-loss floor. |
+| 6 | Profit target: marked done even if the close slipped below the target, so it stops trading for good below the target. A failed close was never retried. | Closes are retried until flat. Done only when the closed balance is at or above the target. It also handles a restart with a micro trade open. |
+| 7 | With less than 50 sessions of M5 history the MA50 tilt was silently skipped. | It retries every minute until 09:55, then trades with a WARNING in the log. |
+| 8 | No symbol check. | Refuses to start unless the chart symbol contains US100. |
+
+Also found and fixed during testing of v2.01 itself: the first request cap (300) plus 5 s retries locked the
+end-of-day close after 25 minutes of rejections, so the position stayed overnight. That is why the backoff above exists.
+
+Optional, off by default: `InpPreCloseLastEntry` (HHMM), no new entries after that time when the market then
+closes for more than 2 h (Fridays, before Good Friday, Christmas or New Year). 14:30 cost about 1 point of pass rate.
+
+Honest pass rate (real v2.01 code, 116 monthly starts 2016-04..2025-11, costs ~5 pts at 25,000, half-days
+not traded): phase 1 83%, both phases 74%, **both within 12 months 72%**, median 5.1 months, 0 FTMO breaches.
+The 75.8% / 84.8% above included phantom post-market P&L on half-days in the research data.
+
+Check after installing (Experts tab):
+- `[IMOM] v2.01 start: ... server winter offset=UTC+2 ...`
+- `[IMOM] FTMO day YYYYMMDD: start balance ...`
+- `[IMOM] no-trade days in the next 45 days: 20261126=holiday 20261127=early-close 20261224=early-close 20261225=holiday 20270101=holiday`

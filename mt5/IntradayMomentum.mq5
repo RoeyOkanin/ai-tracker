@@ -24,9 +24,31 @@
 //|    then one micro trade per day until the minimum trading days.  |
 //|  Safety (not in the backtest, rarely binds): server-side         |
 //|  emergency stop and an equity guard below FTMO's daily loss.     |
+//|                                                                  |
+//| v2.01 (2026-11-20): safety fixes only, trading rules unchanged.  |
+//|  * NYSE calendar: no trading on US holidays (US100.cash still    |
+//|    trades a futures-only morning until 13:00 NY) or early-close  |
+//|    days (day after Thanksgiving, Dec 24, Jul 3: CFD stops 13:15  |
+//|    NY). Holiday sessions are left out of the band/vol/MA history |
+//|    (the backtest never had them).                                |
+//|  * Anything still open outside the trading window is closed at   |
+//|    the first tick (weekend, holiday, before 09:30, after 15:59). |
+//|  * Failed closes back off (5 s .. 60 s), wait for the next tick  |
+//|    after "market closed", and all requests are capped per day    |
+//|    (FTMO forbids more than 2,000 server requests per day).       |
+//|  * Daily-loss anchor = balance at 00:00 Prague time, saved in a  |
+//|    terminal global variable: a restart cannot loosen the guard.  |
+//|  * Profit target: closes are retried until flat, and the target  |
+//|    only counts once the CLOSED balance is at/above it (FTMO).    |
+//|  * A failed exit never opens the opposite side while the old     |
+//|    position is still open (reversal taken if flat within 60 s).  |
+//|  * Server-side stop never allows more than the room left to      |
+//|    FTMO's daily and max-loss limits (backstop if VPS is down).   |
+//|  * Waits for enough M5 history (MA50) before trading.            |
+//|  * Refuses to run on a non-US100 chart.                          |
 //+------------------------------------------------------------------+
 #property copyright "ai-tracker"
-#property version   "2.00"
+#property version   "2.01"
 
 #include <Trade\Trade.mqh>
 
@@ -39,7 +61,7 @@ input double InpMinBufferScale  = 0.25;   // smallest buffer multiplier
 //--- account / FTMO limits
 input double InpInitialBalance  = 100000; // account starting balance
 input double InpMaxLossPct      = 10.0;   // FTMO max loss % of initial (floor)
-input double InpDailyGuardPct   = 4.5;    // close all + stop for the day if equity falls this % of initial below day-start balance
+input double InpDailyGuardPct   = 4.5;    // close all + stop for the day if equity falls this % of initial below the FTMO day-start balance
 input double InpEmergencySLPct  = 4.5;    // server-side stop distance, as % of initial balance at this position size
 //--- strategy
 input int    InpLookback        = 14;     // noise lookback (sessions)
@@ -52,6 +74,13 @@ input double InpBelowMAMult     = 1.5;    // size multiplier when yesterday clos
 //--- challenge
 input double InpTargetPct       = 10.0;   // profit target % of initial: phase 1 = 10, phase 2 = 5, funded = 0 (off). At target: flat and stop
 input int    InpMinTradingDays  = 4;      // FTMO minimum trading days: after the target, one micro trade per day until reached
+input double InpTargetBufferPct = 0.10;   // close at target + this % of initial (slippage buffer: FTMO needs the CLOSED balance >= target)
+//--- calendar / safety (v2.01)
+input bool   InpUseUsCalendar     = true; // no trading on NYSE holidays and early-close days (day after Thanksgiving, Dec 24, Jul 3)
+input string InpExtraClosedDays   = "";   // extra no-trade NY dates yyyymmdd, comma separated (unscheduled market closures)
+input int    InpPreCloseLastEntry = 0;    // HHMM, 0 = off: no new entries after this NY time when the market then closes for > 2h (Fri, before Good Friday/Christmas/New Year)
+input int    InpMaxRequestsPerDay = 1000; // hard cap on trade requests per NY day (FTMO forbids > 2,000 server requests per day)
+input bool   InpCheckSymbol       = true; // refuse to run unless the chart symbol contains "US100"
 //--- time zone (server -> New York)
 input bool   InpAutoServerOffset   = true; // live: detect server UTC offset; tester: uses the manual values below
 input int    InpServerWinterOffset = 2;    // server UTC offset in winter (FTMO MT5 is usually 2)
@@ -59,6 +88,19 @@ input int    InpServerDstRule      = 2;    // server summer time: 2 = US dates (
 //--- misc
 input long   InpMagic           = 26111401;
 input bool   InpLogCsv          = true;   // write decisions to MQL5/Files/IntradayMomentum_log.csv
+
+// trade server return codes used below (numeric, see ENUM_TRADE_RETURN_CODES)
+#define RC_PLACED          10008
+#define RC_DONE            10009
+#define RC_DONE_PARTIAL    10010
+#define RC_INVALID_VOLUME  10014
+#define RC_INVALID_STOPS   10016
+#define RC_TRADE_DISABLED  10017
+#define RC_MARKET_CLOSED   10018
+#define RC_NO_MONEY        10019
+#define RC_CLIENT_NO_ALGO  10027
+#define RC_NO_CONNECTION   10031
+#define RC_LIMIT_VOLUME    10034
 
 CTrade trade;
 
@@ -70,13 +112,32 @@ double   g_prevClose     = 0.0;
 double   g_dayOpen       = 0.0;
 double   g_dayLots       = 0.0;
 double   g_dayDpp        = 0.0;
-bool     g_dayBlocked    = false; // daily guard hit
+bool     g_dayBlocked    = false; // skip-after-win day
 datetime g_lastBar       = 0;
-int      g_serverDay     = -1;
-double   g_dayStartBal   = 0.0;
 int      g_winterOffset  = 2;
+bool     g_offsetOk      = false; // server offset detected while connected
 datetime g_lastPrepTry   = 0;
-bool     g_targetDone    = false; // profit target reached: no more normal trading
+bool     g_targetDone    = false; // profit target reached (closed balance): no more normal trading
+bool     g_targetClosing = false; // target hit, closing positions
+//--- FTMO daily-loss anchor and guard (restart-proof)
+int      g_anchorDay     = 0;     // Prague yyyymmdd of g_anchor
+double   g_anchor        = 0.0;   // balance at 00:00 Prague time (FTMO: 00:00 CE(S)T)
+int      g_guardDay      = 0;     // NY day on which the equity guard fired: no new entries that day
+//--- order handling
+bool     g_closePending  = false; // an exit failed: keep retrying, never open anything meanwhile
+datetime g_closeFailAt   = 0;     // time of the last failed close (backoff)
+int      g_closeFails    = 0;     // failed closes in a row
+bool     g_waitTick      = false; // last close failed because the market is closed: retry on the next tick only
+bool     g_inTick        = false;
+int      g_reqDay        = 0;     // NY day of the request counter
+int      g_reqCount      = 0;     // trade requests sent today
+bool     g_reqWarned     = false;
+int      g_pendSide      = 0;     // entry to retry after a transient failure
+int      g_pendEndMin    = 0;
+datetime g_pendUntil     = 0;
+datetime g_lastOpenTry   = 0;
+int      g_extraDays[];
+int      g_noTradeLogDay = 0;
 
 //+------------------------------------------------------------------+
 //| calendar helpers                                                 |
@@ -137,6 +198,8 @@ datetime ServerToUtc(datetime t)
    return t - off * 3600;
   }
 
+datetime UtcToServer(datetime utc) { return utc + (g_winterOffset + (ServerDst(utc) ? 1 : 0)) * 3600; }
+
 datetime ServerToNy(datetime t)
   {
    datetime utc = ServerToUtc(t);
@@ -146,6 +209,101 @@ datetime ServerToNy(datetime t)
 int DayKey(datetime ny) { MqlDateTime s; TimeToStruct(ny, s); return s.year * 10000 + s.mon * 100 + s.day; }
 int MinOfDay(datetime ny) { MqlDateTime s; TimeToStruct(ny, s); return s.hour * 60 + s.min; }
 int SlotOf(int minuteOfDay) { if(minuteOfDay < 570 || minuteOfDay >= 960) return -1; return (minuteOfDay - 570) / 5; }
+
+// FTMO resets the daily loss at 00:00 CE(S)T (Prague: UTC+1, UTC+2 in EU summer time)
+int PragueDayKey(datetime srv)
+  {
+   datetime utc = ServerToUtc(srv);
+   return DayKey(utc + (EuDst(utc) ? 2 : 1) * 3600);
+  }
+
+//+------------------------------------------------------------------+
+//| NYSE calendar (rules checked against 2016-2026 QQQ sessions)     |
+//+------------------------------------------------------------------+
+datetime KeyToTime(int key) { return MakeTime(key / 10000, (key / 100) % 100, key % 100); }
+int DowYmd(int y, int mo, int d) { return DowOf(MakeTime(y, mo, d)); }
+int DaysInMonth(int y, int mo)
+  {
+   datetime a = MakeTime(y, mo, 1);
+   datetime b = (mo == 12) ? MakeTime(y + 1, 1, 1) : MakeTime(y, mo + 1, 1);
+   return (int)((b - a) / 86400);
+  }
+// day of month of the n-th weekday wd (0 = Sunday .. 6 = Saturday)
+int NthWeekday(int y, int mo, int wd, int n) { return 1 + (wd - DowYmd(y, mo, 1) + 7) % 7 + 7 * (n - 1); }
+int LastWeekday(int y, int mo, int wd) { int last = DaysInMonth(y, mo); return last - (DowYmd(y, mo, last) - wd + 7) % 7; }
+// fixed-date holiday moved to Friday (Saturday) or Monday (Sunday)
+int ObservedKey(int y, int mo, int d)
+  {
+   datetime t = MakeTime(y, mo, d);
+   int w = DowOf(t);
+   if(w == 6) t -= 86400;
+   else if(w == 0) t += 86400;
+   return DayKey(t);
+  }
+int GoodFridayKey(int y)
+  {
+   int a = y % 19, b = y / 100, c = y % 100, d = b / 4, e = b % 4, f = (b + 8) / 25, g = (b - f + 1) / 3;
+   int h = (19 * a + b - d - g + 15) % 30, i = c / 4, k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+   int m = (a + 11 * h + 22 * l) / 451;
+   int mo = (h + l - 7 * m + 114) / 31, da = ((h + l - 7 * m + 114) % 31) + 1;
+   return DayKey(MakeTime(y, mo, da) - 2 * 86400);
+  }
+bool IsNyseHoliday(int key)
+  {
+   int y = key / 10000;
+   int w1 = DowYmd(y, 1, 1);
+   if(w1 != 6 && key == (w1 == 0 ? y * 10000 + 102 : y * 10000 + 101)) return true; // New Year (no holiday when Jan 1 is a Saturday)
+   if(key == y * 10000 + 100 + NthWeekday(y, 1, 1, 3)) return true;               // Martin Luther King Jr. Day
+   if(key == y * 10000 + 200 + NthWeekday(y, 2, 1, 3)) return true;               // Washington's Birthday
+   if(key == GoodFridayKey(y)) return true;                                       // Good Friday
+   if(key == y * 10000 + 500 + LastWeekday(y, 5, 1)) return true;                 // Memorial Day
+   if(y >= 2022 && key == ObservedKey(y, 6, 19)) return true;                     // Juneteenth
+   if(key == ObservedKey(y, 7, 4)) return true;                                   // Independence Day
+   if(key == y * 10000 + 900 + NthWeekday(y, 9, 1, 1)) return true;               // Labor Day
+   if(key == y * 10000 + 1100 + NthWeekday(y, 11, 4, 4)) return true;             // Thanksgiving
+   if(key == ObservedKey(y, 12, 25)) return true;                                 // Christmas
+   return false;
+  }
+// NYSE closes 13:00 NY (US100.cash 13:15): day after Thanksgiving, Dec 24 and Jul 3 when Mon-Thu
+bool IsEarlyClose(int key)
+  {
+   int y = key / 10000;
+   if(key == y * 10000 + 1100 + NthWeekday(y, 11, 4, 4) + 1) return true;
+   int w = DowYmd(y, 12, 24);
+   if(key == y * 10000 + 1224 && w >= 1 && w <= 4) return true;
+   w = DowYmd(y, 7, 3);
+   if(key == y * 10000 + 703 && w >= 1 && w <= 4) return true;
+   return false;
+  }
+bool IsExtraClosed(int key)
+  {
+   for(int i = 0; i < ArraySize(g_extraDays); i++)
+      if(g_extraDays[i] == key) return true;
+   return false;
+  }
+// no trading at all that day (CME closed too): weekend, New Year, Good Friday, Christmas
+bool IsFullClosure(int key)
+  {
+   int y = key / 10000;
+   int w = DowOf(KeyToTime(key));
+   if(w == 0 || w == 6) return true;
+   if(key == y * 10000 + 101 || (DowYmd(y, 1, 1) == 0 && key == y * 10000 + 102)) return true;
+   if(key == GoodFridayKey(y)) return true;
+   if(key == ObservedKey(y, 12, 25)) return true;
+   return false;
+  }
+// 0 = no trading (weekend, holiday, extra closed day), 1 = regular session, 2 = early close
+int DayType(int key)
+  {
+   int w = DowOf(KeyToTime(key));
+   if(w == 0 || w == 6) return 0;
+   if(IsExtraClosed(key)) return 0;
+   if(!InpUseUsCalendar) return 1;
+   if(IsNyseHoliday(key)) return 0;
+   if(IsEarlyClose(key)) return 2;
+   return 1;
+  }
+int NextDayKey(int key) { return DayKey(KeyToTime(key) + 86400); }
 
 //+------------------------------------------------------------------+
 //| logging                                                          |
@@ -165,6 +323,20 @@ void LogRow(string what, datetime ny, double price, double up, double lo, double
   }
 
 //+------------------------------------------------------------------+
+//| terminal global variables (survive restarts), per account        |
+//+------------------------------------------------------------------+
+string GvName(string what)
+  {
+   return "IMOM_" + IntegerToString(AccountInfoInteger(ACCOUNT_LOGIN)) + "_" + IntegerToString(InpMagic) + "_" + what;
+  }
+
+void GvSave(string what, double v)
+  {
+   GlobalVariableSet(GvName(what), v);
+   GlobalVariablesFlush();
+  }
+
+//+------------------------------------------------------------------+
 //| position helpers                                                 |
 //+------------------------------------------------------------------+
 int CurrentSide()
@@ -180,8 +352,36 @@ int CurrentSide()
    return 0;
   }
 
-bool CloseAll(string why)
+// FTMO forbids > 2,000 server requests per day: every trade request goes through this budget
+bool ReqBudget()
   {
+   if(g_reqCount < InpMaxRequestsPerDay) return true;
+   if(!g_reqWarned)
+     {
+      PrintFormat("[IMOM] STOP: %d trade requests today (cap %d). No more requests until the next NY day.", g_reqCount, InpMaxRequestsPerDay);
+      g_reqWarned = true;
+     }
+   return false;
+  }
+
+// rejected by the terminal itself (Algo Trading off / offline): never reaches the server
+bool ClientSideReject(uint rc) { return rc == RC_CLIENT_NO_ALGO || rc == RC_NO_CONNECTION; }
+
+// wait after the n-th failed close in a row: 5, 10, 20, 40, then 60 s
+int CloseRetryDelay()
+  {
+   int d = 5;
+   for(int i = 1; i < g_closeFails && d < 60; i++) d *= 2;
+   return MathMin(d, 60);
+  }
+
+// close every position of this EA; true only if all closes went through.
+// Failed closes back off (5 s .. 60 s), and after "market closed" wait for the next tick.
+bool CloseAllSafe(string why)
+  {
+   datetime now = TimeTradeServer();
+   if(g_waitTick && !g_inTick) return false;
+   if(g_closeFails > 0 && now - g_closeFailAt < CloseRetryDelay()) return false;
    bool ok = true;
    for(int i = PositionsTotal() - 1; i >= 0; i--)
      {
@@ -189,12 +389,20 @@ bool CloseAll(string why)
       if(tk == 0) continue;
       if(PositionGetString(POSITION_SYMBOL) != _Symbol) continue;
       if(PositionGetInteger(POSITION_MAGIC) != InpMagic) continue;
+      if(!ReqBudget()) { ok = false; break; }
+      g_reqCount++;
       if(!trade.PositionClose(tk))
         {
-         PrintFormat("[IMOM] close failed (%s): %d %s", why, trade.ResultRetcode(), trade.ResultRetcodeDescription());
+         uint rc = trade.ResultRetcode();
+         if(ClientSideReject(rc)) g_reqCount--;
+         PrintFormat("[IMOM] close failed (%s): %u %s", why, rc, trade.ResultRetcodeDescription());
+         if(rc == RC_MARKET_CLOSED || rc == RC_TRADE_DISABLED || rc == RC_NO_CONNECTION || rc == RC_CLIENT_NO_ALGO)
+            g_waitTick = true;
          ok = false;
         }
      }
+   if(ok) { g_waitTick = false; g_closeFails = 0; g_closeFailAt = 0; }
+   else { g_closeFails++; g_closeFailAt = now; }
    return ok;
   }
 
@@ -212,14 +420,16 @@ double NormalizeLots(double lots)
    double vmin = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
    double vmax = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
    if(step <= 0) step = 0.01;
-   lots = MathFloor(lots / step) * step;
+   lots = MathFloor(lots / step + 1e-9) * step;
    if(lots < vmin) return 0.0;
    if(lots > vmax) lots = vmax;
    return NormalizeDouble(lots, 2);
   }
 
-bool OpenPos(int side, double lots, string why)
+// 1 = opened, 0 = transient failure (retry), -1 = do not retry
+int OpenPos(int side, double lots, string why)
   {
+   if(!ReqBudget()) return -1;
    // margin cap: Swing accounts have lower leverage; never use more than 80% of free margin
    double px = (side > 0) ? SymbolInfoDouble(_Symbol, SYMBOL_ASK) : SymbolInfoDouble(_Symbol, SYMBOL_BID);
    double margin = 0;
@@ -231,13 +441,27 @@ bool OpenPos(int side, double lots, string why)
          double cut = NormalizeLots(lots * 0.8 * freeM / margin);
          PrintFormat("[IMOM] margin cap: %.2f lots need %.2f margin, free %.2f -> %.2f lots", lots, margin, freeM, cut);
          lots = cut;
-         if(lots <= 0) return false;
+         if(lots <= 0) return -1;
         }
      }
+   // server-side stop: 4.5% of initial at this size, but never more than the room left to FTMO's
+   // daily limit (guard + 0.25%) or the max-loss floor (+0.25%). Only matters if the EA is not running.
+   double eq = AccountInfoDouble(ACCOUNT_EQUITY);
+   double floorBal = InpInitialBalance * (1.0 - InpMaxLossPct / 100.0);
+   double room = InpEmergencySLPct / 100.0 * InpInitialBalance;
+   room = MathMin(room, eq - (g_anchor - (InpDailyGuardPct + 0.25) / 100.0 * InpInitialBalance));
+   room = MathMin(room, eq - (floorBal + 0.0025 * InpInitialBalance));
+   if(room <= 0)
+     {
+      PrintFormat("[IMOM] no room left to FTMO limits (equity %.2f, day start %.2f): no entry", eq, g_anchor);
+      return -1;
+     }
    double mpp = MoneyPerPointPerLot();
-   double slDist = (mpp > 0 && lots > 0) ? InpEmergencySLPct / 100.0 * InpInitialBalance / (lots * mpp) : 0;
+   double slDist = (mpp > 0 && lots > 0) ? room / (lots * mpp) : 0;
    int digits = (int)SymbolInfoInteger(_Symbol, SYMBOL_DIGITS);
    bool ok;
+   g_lastOpenTry = TimeTradeServer();
+   g_reqCount++;
    if(side > 0)
      {
       double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
@@ -250,9 +474,14 @@ bool OpenPos(int side, double lots, string why)
       double sl = slDist > 0 ? NormalizeDouble(bid + slDist, digits) : 0;
       ok = trade.Sell(lots, _Symbol, 0, sl, 0, why);
      }
-   if(!ok)
-      PrintFormat("[IMOM] open failed: %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
-   return ok;
+   uint rc = trade.ResultRetcode();
+   if(ok && (rc == RC_DONE || rc == RC_PLACED || rc == RC_DONE_PARTIAL)) return 1;
+   if(ClientSideReject(rc)) g_reqCount--;
+   PrintFormat("[IMOM] open failed: %u %s", rc, trade.ResultRetcodeDescription());
+   if(rc == RC_NO_MONEY || rc == RC_INVALID_VOLUME || rc == RC_INVALID_STOPS || rc == RC_TRADE_DISABLED ||
+      rc == RC_MARKET_CLOSED || rc == RC_LIMIT_VOLUME || rc == RC_CLIENT_NO_ALGO)
+      return -1;
+   return 0;
   }
 
 //+------------------------------------------------------------------+
@@ -271,6 +500,19 @@ bool NoEntryAt(int m)
       if((v / 100) * 60 + v % 100 == m) return true;
      }
    return false;
+  }
+
+// may a NEW position be opened on NY day `key` at bar-close minute `endMin`?
+bool EntriesAllowed(int key, int endMin)
+  {
+   if(g_dayBlocked || g_guardDay == key || g_targetClosing || g_closePending) return false;
+   if(DayType(key) != 1) return false;
+   if(InpPreCloseLastEntry > 0 && IsFullClosure(NextDayKey(key)))
+     {
+      int cut = (InpPreCloseLastEntry / 100) * 60 + InpPreCloseLastEntry % 100;
+      if(endMin > cut) return false;
+     }
+   return true;
   }
 
 //+------------------------------------------------------------------+
@@ -321,9 +563,73 @@ double DayPnl(int dayKey)
   }
 
 //+------------------------------------------------------------------+
+//| FTMO day-start balance: saved at the Prague day change, restored |
+//| after a restart; first run of a day rebuilds it from history     |
+//+------------------------------------------------------------------+
+double BalanceAtPragueMidnight(datetime srv)
+  {
+   datetime utc = ServerToUtc(srv);
+   int off = EuDst(utc) ? 2 : 1;
+   long loc = (long)utc + off * 3600;
+   datetime midUtc = (datetime)(loc - loc % 86400 - off * 3600);
+   datetime from = UtcToServer(midUtc);
+   double sum = 0;
+   if(HistorySelect(from, srv + 3600))
+     {
+      int n = HistoryDealsTotal();
+      for(int i = 0; i < n; i++)
+        {
+         ulong tk = HistoryDealGetTicket(i);
+         if(tk == 0) continue;
+         long type = HistoryDealGetInteger(tk, DEAL_TYPE);
+         if(type != DEAL_TYPE_BUY && type != DEAL_TYPE_SELL) continue;
+         if((datetime)HistoryDealGetInteger(tk, DEAL_TIME) < from) continue;
+         sum += HistoryDealGetDouble(tk, DEAL_PROFIT) + HistoryDealGetDouble(tk, DEAL_COMMISSION) + HistoryDealGetDouble(tk, DEAL_SWAP);
+        }
+     }
+   return AccountInfoDouble(ACCOUNT_BALANCE) - sum;
+  }
+
+void UpdateAnchor()
+  {
+   int pk = PragueDayKey(TimeTradeServer());
+   if(pk == g_anchorDay) return;
+   string nd = GvName("anchorday"), nv = GvName("anchor");
+   if(GlobalVariableCheck(nd) && GlobalVariableCheck(nv) && (int)GlobalVariableGet(nd) == pk)
+     {
+      g_anchor = GlobalVariableGet(nv);
+      PrintFormat("[IMOM] FTMO day %d: start balance %.2f (restored after restart)", pk, g_anchor);
+     }
+   else
+     {
+      g_anchor = BalanceAtPragueMidnight(TimeTradeServer());
+      GvSave("anchor", g_anchor);
+      GvSave("anchorday", pk);
+      PrintFormat("[IMOM] FTMO day %d: start balance %.2f", pk, g_anchor);
+     }
+   g_anchorDay = pk;
+  }
+
+//+------------------------------------------------------------------+
+//| server UTC offset (only trusted while connected)                 |
+//+------------------------------------------------------------------+
+void DetectOffset()
+  {
+   if(!TerminalInfoInteger(TERMINAL_CONNECTED)) return;
+   long diff = (long)(TimeTradeServer() - TimeGMT());
+   int cur = (int)MathRound(diff / 3600.0);
+   int w = cur - (ServerDst(TimeGMT()) ? 1 : 0);
+   if(w < -12 || w > 14) return;
+   if(w != InpServerWinterOffset)
+      PrintFormat("[IMOM] WARNING: server winter offset detected UTC%+d, expected UTC%+d. Check the New York time printed below.", w, InpServerWinterOffset);
+   g_winterOffset = w;
+   g_offsetOk = true;
+  }
+
+//+------------------------------------------------------------------+
 //| build noise band, prev close, vol and size for NY day `key`      |
 //+------------------------------------------------------------------+
-bool PrepareDay(int key)
+bool PrepareDay(int key, int nowMin)
   {
    g_dayReady = false;
    MqlRates r[];
@@ -349,6 +655,8 @@ bool PrepareDay(int key)
       if(slot < 0) continue;
       int dk = DayKey(ny);
       if(dk >= key) continue;                       // only completed sessions before today
+      if(IsExtraClosed(dk)) continue;
+      if(InpUseUsCalendar && IsNyseHoliday(dk)) continue; // futures-only holiday morning: not a session in the backtest
       if(nd == 0 || keys[nd - 1] != dk)
         {
          nd++;
@@ -368,6 +676,11 @@ bool PrepareDay(int key)
    if(nv < InpLookback + 1)
      {
       PrintFormat("[IMOM] need %d sessions of M5 history, have %d. Scroll the M5 chart back to load more.", InpLookback + 1, nv);
+      return false;
+     }
+   if(InpTrendMA > 0 && InpBelowMAMult != 1.0 && nv < InpTrendMA && nowMin < 595)
+     {
+      PrintFormat("[IMOM] waiting for M5 history: %d sessions, MA%d needs %d (retry every minute until 09:55)", nv, InpTrendMA, InpTrendMA);
       return false;
      }
    // sigma per slot over the last InpLookback sessions
@@ -417,13 +730,14 @@ bool PrepareDay(int key)
          PrintFormat("[IMOM] trend: close %.2f vs MA%d %.2f -> x%.2f", closes[valid[nv - 1]], InpTrendMA, ma, tilt);
         }
       else
-         PrintFormat("[IMOM] trend MA%d needs %d sessions, have %d: no tilt today (scroll the M5 chart back to load more)", InpTrendMA, InpTrendMA, nv);
+         PrintFormat("[IMOM] WARNING: trend MA%d needs %d sessions, have %d: no tilt today (scroll the M5 chart back to load more)", InpTrendMA, InpTrendMA, nv);
      }
    g_dayKey = key;
    g_dayOpen = 0;
    g_dayDpp = InpDollarsPerPoint * volScale * bufScale * tilt;  // finalised with today's open
    g_dayLots = 0;
    g_dayBlocked = false;
+   g_pendSide = 0;
    // after a big trend-day win the next day tends to chop (tested 2016-2026, both halves): sit it out
    if(InpSkipAfterWinPts > 0)
      {
@@ -477,20 +791,22 @@ void OnCheckpoint(datetime barServer, datetime barNy)
    int endMin = startMin + 5;
    int slot = SlotOf(startMin);
    if(slot < 0 || g_sigma[slot] < 0) return;
+   if(g_targetClosing) return;
 
    if(g_targetDone)
      {
       if(CurrentSide() != 0)
         {
-         CloseAll("target done");
-         LogRow("MICRO CLOSE", barNy, SymbolInfoDouble(_Symbol, SYMBOL_BID), 0, 0, 0, 0);
+         if(CloseAllSafe("target done"))
+            LogRow("MICRO CLOSE", barNy, SymbolInfoDouble(_Symbol, SYMBOL_BID), 0, 0, 0, 0);
          return;
         }
       bool today = false;
       int td = TradedDays(today);
-      if(td < InpMinTradingDays && !today)
+      if(td < InpMinTradingDays && !today && DayType(g_dayKey) == 1 && ReqBudget())
         {
          double vmin = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+         g_reqCount++;
          if(trade.Buy(vmin, _Symbol, 0, 0, 0, "IMOM min-days"))
             LogRow("MICRO OPEN (min trading days)", barNy, SymbolInfoDouble(_Symbol, SYMBOL_ASK), 0, 0, 0, vmin);
         }
@@ -518,7 +834,7 @@ void OnCheckpoint(datetime barServer, datetime barNy)
    int want = 0;
    bool entryWindow = (endMin >= 600 && endMin <= 930);  // 10:00 .. 15:30 bar closes
    if(entryWindow && NoEntryAt(endMin)) entryWindow = false;
-   if(entryWindow && !g_dayBlocked)
+   if(entryWindow && EntriesAllowed(g_dayKey, endMin))
      {
       if(close > up) want = 1;
       else if(close < lo) want = -1;
@@ -531,14 +847,26 @@ void OnCheckpoint(datetime barServer, datetime barNy)
          LogRow("HOLD(exit+reenter)", barNy, close, up, lo, vwap, g_dayLots);
          return;                                       // backtest exits and re-enters on the same bar; holding is equivalent minus the spread
         }
-      CloseAll("trail stop");
+      if(!CloseAllSafe("trail stop"))
+        {
+         g_closePending = true;                        // retried with backoff; nothing new opens until it is flat
+         if(want != 0 && want != side)                 // reversal: take the new side only if flat within 60 s
+           { g_pendSide = want; g_pendEndMin = endMin; g_pendUntil = TimeTradeServer() + 60; }
+         LogRow("EXIT FAILED, retrying", barNy, close, up, lo, vwap, g_dayLots);
+         return;
+        }
       LogRow(side > 0 ? "EXIT LONG" : "EXIT SHORT", barNy, close, up, lo, vwap, g_dayLots);
       side = 0;
      }
    if(side == 0 && want != 0 && g_dayLots > 0)
      {
-      if(OpenPos(want, g_dayLots, want > 0 ? "IMOM long" : "IMOM short"))
+      int rc = OpenPos(want, g_dayLots, want > 0 ? "IMOM long" : "IMOM short");
+      if(rc == 1)
          LogRow(want > 0 ? "BUY" : "SELL", barNy, close, up, lo, vwap, g_dayLots);
+      else if(rc == 0)
+        {
+         g_pendSide = want; g_pendEndMin = endMin; g_pendUntil = TimeTradeServer() + 60;   // transient: retry for 60 s
+        }
      }
    else if(side == 0)
       LogRow("FLAT", barNy, close, up, lo, vwap, g_dayLots);
@@ -547,56 +875,103 @@ void OnCheckpoint(datetime barServer, datetime barNy)
 //+------------------------------------------------------------------+
 void Heartbeat()
   {
+   if(InpAutoServerOffset && !g_offsetOk && !(bool)MQLInfoInteger(MQL_TESTER)) DetectOffset();
    datetime srv = TimeTradeServer();
-   // FTMO daily loss is measured from the balance at server midnight
-   MqlDateTime sd; TimeToStruct(srv, sd);
-   if(sd.day_of_year != g_serverDay)
-     {
-      g_serverDay = sd.day_of_year;
-      g_dayStartBal = AccountInfoDouble(ACCOUNT_BALANCE);
-     }
-   double eq = AccountInfoDouble(ACCOUNT_EQUITY);
-   double floorBal = InpInitialBalance * (1.0 - InpMaxLossPct / 100.0);
-   if(InpTargetPct > 0 && !g_targetDone && eq >= InpInitialBalance * (1.0 + InpTargetPct / 100.0) + 0.0005 * InpInitialBalance)
-     {
-      CloseAll("profit target");
-      g_targetDone = true;
-      PrintFormat("[IMOM] PROFIT TARGET %.1f%% REACHED: equity %.2f. Trading stopped (micro trades only until %d trading days).",
-                  InpTargetPct, eq, InpMinTradingDays);
-     }
-   if(eq <= g_dayStartBal - InpDailyGuardPct / 100.0 * InpInitialBalance || eq <= floorBal + 0.005 * InpInitialBalance)
-     {
-      if(CurrentSide() != 0)
-        {
-         CloseAll("equity guard");
-         PrintFormat("[IMOM] EQUITY GUARD: equity %.2f, day start %.2f. Flat and done for today.", eq, g_dayStartBal);
-        }
-      g_dayBlocked = true;
-     }
-
    datetime nyNow = ServerToNy(srv);
-   int dow = DowOf(nyNow);
-   if(dow == 0 || dow == 6) return;
    int key = DayKey(nyNow);
    int nowMin = MinOfDay(nyNow);
+   if(key != g_reqDay) { g_reqDay = key; g_reqCount = 0; g_reqWarned = false; }
+   UpdateAnchor();
 
-   if(key != g_dayKey && nowMin >= 570 && srv - g_lastPrepTry >= 60)
-     {
-      g_lastPrepTry = srv;
-      PrepareDay(key);
-     }
-   if(!g_dayReady || g_dayKey != key) return;
+   double eq = AccountInfoDouble(ACCOUNT_EQUITY);
+   int side = CurrentSide();
+   if(side == 0) { g_waitTick = false; g_closeFails = 0; }
 
-   // end of day
-   int exitMin = (InpExitHHMM / 100) * 60 + InpExitHHMM % 100;
-   if(nowMin >= exitMin)
+   // profit target: FTMO counts the balance with all positions closed
+   if(InpTargetPct > 0 && !g_targetDone)
      {
-      if(CurrentSide() != 0)
+      double tgt = InpInitialBalance * (1.0 + InpTargetPct / 100.0);
+      double bal = AccountInfoDouble(ACCOUNT_BALANCE);
+      // closed balance already at target with a position open only happens after a restart (micro trade)
+      if(!g_targetClosing && side != 0 && (eq >= tgt + InpTargetBufferPct / 100.0 * InpInitialBalance || bal >= tgt))
         {
-         CloseAll("end of day");
-         LogRow("EOD EXIT", nyNow, SymbolInfoDouble(_Symbol, SYMBOL_BID), 0, 0, 0, g_dayLots);
+         g_targetClosing = true;
+         PrintFormat("[IMOM] PROFIT TARGET %.1f%% hit: equity %.2f, balance %.2f, closing all", InpTargetPct, eq, bal);
         }
+      if(g_targetClosing && side != 0) CloseAllSafe("profit target");
+      side = CurrentSide();
+      bal = AccountInfoDouble(ACCOUNT_BALANCE);
+      if(side == 0 && (g_targetClosing || bal >= tgt))
+        {
+         g_targetClosing = false;
+         if(bal >= tgt)
+           {
+            g_targetDone = true;
+            PrintFormat("[IMOM] PROFIT TARGET DONE: closed balance %.2f >= %.2f. Normal trading stopped (micro trades only until %d trading days).",
+                        bal, tgt, InpMinTradingDays);
+           }
+         else
+            PrintFormat("[IMOM] target close slipped: balance %.2f < %.2f, normal trading continues", bal, tgt);
+        }
+     }
+
+   // equity guard: FTMO daily limit (day-start balance - 5%) and max-loss floor
+   double floorBal = InpInitialBalance * (1.0 - InpMaxLossPct / 100.0);
+   if(eq <= g_anchor - InpDailyGuardPct / 100.0 * InpInitialBalance || eq <= floorBal + 0.005 * InpInitialBalance)
+     {
+      if(g_guardDay != key)
+        {
+         PrintFormat("[IMOM] EQUITY GUARD: equity %.2f, FTMO day start %.2f. Flat and no new entries today.", eq, g_anchor);
+         g_guardDay = key;
+         GvSave("guardday", key);
+        }
+      if(side != 0) CloseAllSafe("equity guard");
+     }
+
+   // outside the trading window nothing may stay open (weekend, holiday, before 09:30, after the exit time)
+   int dtype = DayType(key);
+   int exitMin = (InpExitHHMM / 100) * 60 + InpExitHHMM % 100;
+   int closeMin = (dtype == 2) ? 12 * 60 + 45 : exitMin;   // early-close day: CFD stops 13:15 NY
+   if(dtype == 0 || nowMin < 570 || nowMin >= closeMin)
+     {
+      if(CurrentSide() != 0 && CloseAllSafe(dtype == 0 ? "market closed day" : "end of day"))
+         LogRow("EOD EXIT", nyNow, SymbolInfoDouble(_Symbol, SYMBOL_BID), 0, 0, 0, g_dayLots);
+      if(CurrentSide() == 0) { g_closePending = false; g_pendSide = 0; }
       return;
+     }
+   if(dtype == 2 && g_noTradeLogDay != key)
+     {
+      g_noTradeLogDay = key;
+      PrintFormat("[IMOM] %d is a US early-close day (13:00): no trading today", key);
+     }
+
+   if(key != g_dayKey)
+     {
+      if(srv - g_lastPrepTry < 60) return;
+      g_lastPrepTry = srv;
+      if(InpAutoServerOffset && !(bool)MQLInfoInteger(MQL_TESTER)) DetectOffset();
+      if(!PrepareDay(key, nowMin)) return;
+     }
+   if(!g_dayReady) return;
+
+   // a failed exit is retried before anything else
+   if(g_closePending)
+     {
+      if(CurrentSide() != 0) CloseAllSafe("exit retry");
+      if(CurrentSide() != 0) return;
+      g_closePending = false;
+      LogRow("EXIT (retry ok)", nyNow, SymbolInfoDouble(_Symbol, SYMBOL_BID), 0, 0, 0, g_dayLots);
+     }
+   // an entry that failed for a transient reason is retried for up to 60 s
+   if(g_pendSide != 0)
+     {
+      if(srv > g_pendUntil || CurrentSide() != 0 || !EntriesAllowed(key, g_pendEndMin)) g_pendSide = 0;
+      else if(srv - g_lastOpenTry >= 10)
+        {
+         int rc = OpenPos(g_pendSide, g_dayLots, g_pendSide > 0 ? "IMOM long retry" : "IMOM short retry");
+         if(rc == 1) LogRow(g_pendSide > 0 ? "BUY (retry)" : "SELL (retry)", nyNow, SymbolInfoDouble(_Symbol, SYMBOL_BID), 0, 0, 0, g_dayLots);
+         if(rc != 0) g_pendSide = 0;
+        }
      }
 
    // newest closed M5 bar
@@ -613,32 +988,61 @@ void Heartbeat()
 //+------------------------------------------------------------------+
 int OnInit()
   {
+   if(InpCheckSymbol && StringFind(_Symbol, "US100") < 0)
+     {
+      PrintFormat("[IMOM] wrong chart: %s. Attach this EA to the US100.cash chart.", _Symbol);
+      return INIT_FAILED;
+     }
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetTypeFillingBySymbol(_Symbol);
    trade.SetDeviationInPoints(50);
    g_winterOffset = InpServerWinterOffset;
    bool tester = (bool)MQLInfoInteger(MQL_TESTER);
-   if(InpAutoServerOffset && !tester)
+   if(InpAutoServerOffset && !tester) DetectOffset();
+   // extra closed days
+   string parts[];
+   int n = StringSplit(InpExtraClosedDays, ',', parts);
+   ArrayResize(g_extraDays, 0);
+   for(int i = 0; i < n; i++)
      {
-      long diff = (long)(TimeTradeServer() - TimeGMT());
-      int cur = (int)MathRound(diff / 3600.0);
-      g_winterOffset = cur - (ServerDst(TimeGMT()) ? 1 : 0);
+      string t = parts[i];
+      StringTrimLeft(t); StringTrimRight(t);
+      if(StringLen(t) != 8) continue;
+      int k = ArraySize(g_extraDays);
+      ArrayResize(g_extraDays, k + 1);
+      g_extraDays[k] = (int)StringToInteger(t);
      }
+   // state that must survive a restart
+   if(GlobalVariableCheck(GvName("guardday"))) g_guardDay = (int)GlobalVariableGet(GvName("guardday"));
+   g_anchorDay = 0;
+   UpdateAnchor();
+   // warm up the M5 history (MA50 needs ~75 calendar days)
+   MqlRates warm[];
+   CopyRates(_Symbol, PERIOD_M5, TimeTradeServer() - 120 * 86400, TimeTradeServer(), warm);
+
    datetime ny = ServerToNy(TimeTradeServer());
-   PrintFormat("[IMOM] start: symbol=%s server winter offset=UTC%+d, New York now=%s, $/pt/lot=%.4f, magic=%I64d",
-               _Symbol, g_winterOffset, TimeToString(ny, TIME_DATE | TIME_MINUTES), MoneyPerPointPerLot(), InpMagic);
+   PrintFormat("[IMOM] v2.01 start: symbol=%s server winter offset=UTC%+d%s, New York now=%s, $/pt/lot=%.4f, magic=%I64d",
+               _Symbol, g_winterOffset, (g_offsetOk || tester || !InpAutoServerOffset) ? "" : " (not connected yet, will re-detect)",
+               TimeToString(ny, TIME_DATE | TIME_MINUTES), MoneyPerPointPerLot(), InpMagic);
    if(MoneyPerPointPerLot() <= 0) Print("[IMOM] WARNING: tick value unavailable, cannot size trades");
-   g_dayStartBal = AccountInfoDouble(ACCOUNT_BALANCE);
-   if(InpTargetPct > 0 && AccountInfoDouble(ACCOUNT_BALANCE) >= InpInitialBalance * (1.0 + InpTargetPct / 100.0))
+   if(!tester && !TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) Print("[IMOM] WARNING: Algo Trading is OFF in the terminal");
+   // next no-trade days, so the calendar can be checked in the log
+   string cal = "";
+   int k0 = DayKey(ny);
+   for(int i = 0; i < 45; i++)
      {
-      g_targetDone = true;
-      PrintFormat("[IMOM] balance already at the %.1f%% target: no normal trading on this account", InpTargetPct);
+      int k = DayKey(KeyToTime(k0) + i * 86400);
+      int t = DayType(k);
+      int w = DowOf(KeyToTime(k));
+      if(w == 0 || w == 6 || t == 1) continue;
+      cal += StringFormat(" %d=%s", k, t == 0 ? "holiday" : "early-close");
      }
+   PrintFormat("[IMOM] no-trade days in the next 45 days:%s", cal == "" ? " none" : cal);
    EventSetTimer(1);
    return INIT_SUCCEEDED;
   }
 
 void OnDeinit(const int reason) { EventKillTimer(); }
 void OnTimer() { Heartbeat(); }
-void OnTick()  { Heartbeat(); }
+void OnTick()  { g_inTick = true; Heartbeat(); g_inTick = false; }
 //+------------------------------------------------------------------+
