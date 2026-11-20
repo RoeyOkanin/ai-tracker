@@ -184,6 +184,7 @@ struct Sim
    ulong nextTicket = 1000;
    std::map<string, double> gv;
    bool connected = true, algo = true, tester = false;
+   datetime syncUntil = 0;                          // terminal just started: not logged in yet, account/positions not loaded
    long long login = 1515290765;
    std::vector<SimFault> faults;
    std::vector<SimHide> hides;                      // sorted by a, non-overlapping
@@ -194,6 +195,7 @@ struct Sim
    long long logLines = 0;
    std::map<string, long long> tagCount;            // counts of "[IMOM] <first word>" lines
 
+   bool unsynced() const { return now < syncUntil; }
    double spr() const { return spread + mid * spreadBp / 10000.0; }
    double bid() const { return mid - spr() / 2; }
    double ask() const { return mid + spr() / 2; }
@@ -221,7 +223,7 @@ struct Sim
      {
       reqAll++; reqAllByDay[nyKey(now)]++;
       if(!algo) return 10027;
-      if(!connected) return 10031;
+      if(!connected || unsynced()) return 10031;
       reqSrv++; reqSrvByDay[nyKey(now)]++;
       for(auto& f : faults) if(now >= f.a && now < f.b && (isClose ? f.closes : f.opens)) return (uint)f.rc;
       if(!open) return 10018;
@@ -269,10 +271,12 @@ inline void mql_log(const char* line)
 inline datetime TimeTradeServer() { return S->now; }
 inline datetime TimeCurrent() { return S->lastTick; }
 inline datetime TimeGMT() { return S->gmt(); }
-inline long long TerminalInfoInteger(ENUM_TERMINAL_INFO_INTEGER p) { return p == TERMINAL_CONNECTED ? S->connected : S->algo; }
+inline datetime TimeLocal() { return S->gmt(); }   // VPS in London (winter)
+inline long long TerminalInfoInteger(ENUM_TERMINAL_INFO_INTEGER p) { return p == TERMINAL_CONNECTED ? (S->connected && !S->unsynced()) : S->algo; }
 inline int MQLInfoInteger(ENUM_MQL_INFO_INTEGER p) { return p == MQL_TESTER ? S->tester : 0; }
 inline double AccountInfoDouble(ENUM_ACCOUNT_INFO_DOUBLE p)
   {
+   if(S->unsynced()) return 0;                      // before the login completes (MQL5 forum: account info valid only after the first tick)
    switch(p)
      {
       case ACCOUNT_BALANCE: return S->balance;
@@ -282,7 +286,7 @@ inline double AccountInfoDouble(ENUM_ACCOUNT_INFO_DOUBLE p)
      }
    return 0;
   }
-inline long long AccountInfoInteger(ENUM_ACCOUNT_INFO_INTEGER p) { return p == ACCOUNT_LOGIN ? S->login : (long long)S->leverage; }
+inline long long AccountInfoInteger(ENUM_ACCOUNT_INFO_INTEGER p) { if(S->unsynced()) return 0; return p == ACCOUNT_LOGIN ? S->login : (long long)S->leverage; }
 inline double SymbolInfoDouble(const string&, ENUM_SYMBOL_INFO_DOUBLE p)
   {
    switch(p)
@@ -344,7 +348,7 @@ inline int CopyRates(const string&, ENUM_TIMEFRAMES, datetime start, datetime st
   }
 
 // ---------------------------------------------------------------- positions / history
-inline int PositionsTotal() { return (int)S->pos.size(); }
+inline int PositionsTotal() { return S->unsynced() ? 0 : (int)S->pos.size(); }
 inline ulong PositionGetTicket(int i) { if(i < 0 || i >= (int)S->pos.size()) { S->psel = -1; return 0; } S->psel = i; return S->pos[i].ticket; }
 inline long long PositionGetInteger(ENUM_POSITION_PROPERTY_INTEGER p)
   {

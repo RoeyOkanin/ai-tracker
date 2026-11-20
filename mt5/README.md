@@ -3,7 +3,7 @@
 Same rules as `scripts/prop/strategies.py::noise_momentum` (vol-targeted, constant notional), see the
 header of `IntradayMomentum.mq5`. Research results: `data/prop/README.md`.
 
-Inputs to change per phase (v2.02, everything else at its default):
+Inputs to change per phase (v2.03, everything else at its default):
 - Phase 1: `InpTargetPct=10`. Phase 2: `InpTargetPct=5`. Both at `InpDollarsPerPoint=10`.
 - Funded: `InpTargetPct=0`, `InpDollarsPerPoint=8`, `InpBufferScaling=true`.
 - `InpInitialBalance` = the account's starting balance.
@@ -18,7 +18,7 @@ Differences from the backtest (by design):
   that flattens and stops for the day 4.5% below the day-start balance (FTMO limit is 5%).
 
 Strategy Tester: the tester cannot detect the server's UTC offset; set `InpServerWinterOffset` to the value
-the EA prints live ("server winter offset=UTC+X"). Decisions are logged to `MQL5/Files/IntradayMomentum_log.csv`.
+the EA prints live ("server UTC+X (winter)" in the "account loaded" line). Decisions are logged to `MQL5/Files/IntradayMomentum_log.csv`.
 
 ## Tester vs backtest check (2025-11 .. 2026-11, Strategy Tester real ticks)
 - EA v1: +$10.4k vs python +$26.1k. 87 days with identical entries/exits differ by only -$1.7k in total.
@@ -97,9 +97,9 @@ not traded): phase 1 83%, both phases 74%, **both within 12 months 72%**, median
 The 75.8% / 84.8% above included phantom post-market P&L on half-days in the research data.
 
 Check after installing (Experts tab):
-- `[IMOM] v2.02 start: ... server winter offset=UTC+2 ...`
-- `[IMOM] FTMO day YYYYMMDD: start balance ...`
+- `[IMOM] v2.03 start: symbol=US100.cash magic=26111401, waiting for the account to load`
 - `[IMOM] no-trade days in the next 45 days: 20261126=holiday 20261127=early-close 20261224=early-close 20261225=holiday 20270101=holiday`
+- about 5 s later: `[IMOM] account <login> loaded: balance ..., FTMO day start ..., server UTC+2 (winter), New York now <NY time>, $/pt/lot=1.0000, lots min/step/max=...`
 
 ## v2.02 (2026-11-20): second bug hunt, trading rules unchanged
 Same harness, new scenarios (`scripts/prop/mt5_harness`, see its README). Each bug was reproduced with the real v2.01 code.
@@ -132,3 +132,29 @@ at most 8 requests per day: unchanged.
 Known limits (not fixed): a 5-minute bar with no ticks at all just before a decision time skips that decision;
 two terminals or two charts running the EA on the same account would both trade (keep the home MT5 closed).
 
+## v2.03 (2026-11-20): third bug hunt, trading rules unchanged
+Round 3 looked for what the harness could not see: MT5 runtime behaviour around a terminal or VPS start. The
+harness now has `sync=SECONDS`: after each restart the terminal is not logged in yet for that long (login 0,
+balance and equity 0, no positions, requests fail with 10031). The MQL5 forum documents this state: ACCOUNT_LOGIN
+reads 0 for about 5 s after a terminal start, and account data is only valid once the terminal has connected.
+
+| # | v2.02 bug (reproduced with the real code) | v2.03 fix |
+|---|---|---|
+| 13 | After a terminal/VPS restart MT5 runs OnInit and the first OnTimer calls before the account is logged in. v2.02 (a) looked for the saved FTMO day start under login 0, did not find it, and saved a day start of 0 for the whole FTMO day: the daily equity guard was off and the server stop ignored the day's losses; (b) read equity 0 and fired the equity guard, which blocks entries for the rest of the New York day. 2025, $10/pt, target off, login 5 s after each restart: restart every night at 22:00 NY -> **FTMO daily-loss breach on 2025-11-18** (equity 120,889 < 125,952 - 5,000); restart at 09:00 NY -> **0 trades in the whole year**; restart every 15 min -> 0 trades. | Nothing that uses the account (guard, target, day start, sizing, orders) runs until the terminal is connected and login, balance and price have been valid for 5 s. Then the guard day and the day start are restored from the global variables of that account. The restored day start is never below what the deal history shows, and an account change without a reload starts over. Night, morning and every-15-min restarts, with a 5 s or a 60 s login: same trades as without restarts. |
+
+Smaller changes: malformed `InpExtraClosedDays` entries print a warning instead of being dropped silently; the
+"account loaded" line shows the symbol's volume limits, and a size capped by the maximum volume prints a warning.
+
+Regression with v2.03: research equivalence 2,001 of 2,002 trades (2,002 of 2,002 with the two extra closed days),
+same as v2.02. CFD bars, calendar on, 2016-2026: identical to v2.02. All scenarios of rounds 1 and 2 give the same
+trades as v2.02, except the restart during a micro trade, which now closes 5 s later ($0.04).
+Challenge Monte Carlo with the real v2.03 (116 monthly starts, dense ticks): phase 1 83%, both phases 74%,
+**both within 12 months 72%**, median 5.1 months, 0 FTMO breaches, at most 8 requests per day: unchanged.
+With a VPS restart every night at 22:00 NY and a 5 s login, the same Monte Carlo gives: v2.02 fails 32 of 116
+challenges on FTMO's daily-loss limit (both phases within 12 months 53%); v2.03 0 failures, 72%, same as without restarts.
+
+Known limits (not fixed): after a restart nothing happens for about 5 s once the account is loaded; a 5-minute bar
+with no ticks at all just before a decision time skips that decision; two terminals or two charts running the EA on
+the same account would both trade (keep the home MT5 closed, or remove the EA from its chart there). Funded only:
+on a payout day the saved day start does not include the withdrawal, so the guard sees the payout as a loss and the
+EA sits out that day (to fix before the first payout).

@@ -18,8 +18,9 @@ so EA bugs can be found and fixed before they cost a challenge.
 - `mc.py`: challenge Monte Carlo with the real code. It starts on the first trading day of each month from
   2016-04 to 2025-11 and runs phase 1 (10%) and then phase 2 (5%). Costs scale with the index level
   (1.2 bp spread + 0.8 bp exit slippage, about 5 pts at 25,000).
-- `scen.sh`: runs one scenario on v2.00, v2.01 and v2.02 (or `VERS="v201 v202"`) and prints the key log lines and trades.
+- `scen.sh`: runs one scenario on v2.00, v2.01 and v2.02 (or `VERS="v202 v203"`) and prints the key log lines and trades.
 - `cmp_trades.py A.csv B.csv`: day-by-day comparison of two trade files (side, entry, exit, volume, P&L).
+- `regress.sh [VA] [VB]`: every bug-hunt scenario on two versions, same/DIFF per scenario.
 - `cal_check.py`: the EA's NYSE calendar (real code, `build/cal_check`) against the official XNYS calendar 2016-2035
   (`pip install exchange_calendars`).
 
@@ -30,6 +31,11 @@ Driver options added for the second bug hunt (v2.02):
 - `hole_daily=HHMMfrom,HHMMto,PREVHHMM`: between HHMMfrom and HHMMto NY the terminal history misses the bars from the
   previous session's PREVHHMM until HHMMfrom (history still downloading after a restart).
 - `fault=partial,NYfrom,NYto,0`: closes are accepted (OrderSend true, retcode 10010) but only half the volume is closed.
+
+Driver option added for the third bug hunt (v2.03):
+- `sync=SECONDS`: after each restart the terminal is not logged in yet for SECONDS, as after a real terminal or VPS
+  start: ACCOUNT_LOGIN 0, balance/equity/free margin 0, no positions visible, TERMINAL_CONNECTED false, requests fail
+  with 10031. The timer fires every second for 30 s after every start (EventSetTimer(1)).
 
 ```
 ./build.sh                                   # needs g++ (C++17), python3, pandas; writes build/
@@ -90,3 +96,23 @@ All round-1 scenarios give the same results as v2.01. 10 years on CFD bars (cale
 except 2025-01-10. Challenge Monte Carlo (real v2.02, dense ticks, 116 starts): phase 1 83%, both phases 74%,
 **both within 12 months 72%**, median 5.1 months, 0 FTMO breaches, at most 8 requests per day (same as v2.01).
 
+## Third bug hunt (2026-11-20, v2.03)
+
+One more bug, reproduced with the real v2.02 code and fixed in v2.03 (details in `mt5/README.md`):
+- Restart before the account is logged in (`sync=5`, 2025, $10/pt, target off). Earlier restart tests had the
+  account loaded at once, so they could not show it. v2.02 saved an FTMO day start of 0 (daily guard off) or fired
+  the guard on equity 0 (no entries that day):
+  `restart_daily=2200` -> FTMO daily-loss breach on 2025-11-18; `restart_daily=0900` -> 0 trades in 2025;
+  `restart_every=15` -> 0 trades. v2.03: all three, and `restart_every=15 sync=60`, give the same 179 trades as
+  the run without restarts.
+
+Regression with v2.03 (same commands as above):
+- Research equivalence: 2,001 of 2,002 trades (2,002 of 2,002 with the extra closed days), same as v2.02.
+- CFD bars, calendar on, 2016-2026: identical to v2.02 (2,004 trades).
+- Funded ($8, buffer scaling), restart every 30 min with a 5 s login, 2016-2026: identical to the run without restarts.
+- All scenarios of rounds 1-2 (`./regress.sh v202 v203`): same trades as v2.02, except the restart during a micro
+  trade, which closes 5 s later ($0.04). The round-3 rows (N5, M5, E5) show the bug in v2.02 and none in v2.03.
+- Challenge Monte Carlo (real v2.03, dense ticks, 116 starts): phase 1 83%, both phases 74%, both within 12 months
+  72%, median 5.1 months, 0 FTMO breaches, at most 8 requests per day (same as v2.02).
+- Same Monte Carlo with a restart every night (`restart_daily=2200 sync=5`): v2.02 32 of 116 challenges fail on the
+  daily-loss limit (both within 12 months 53%); v2.03 0 failures, 72% (identical to no restarts).

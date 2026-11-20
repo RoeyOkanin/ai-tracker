@@ -58,9 +58,19 @@
 //|    reversal and no new entry while any position is still open.   |
 //|  * Funded buffer scaling uses the balance before today's trades, |
 //|    so a restart during the day does not change the size.         |
+//| v2.03 (2026-11-20): startup fix, trading rules unchanged.        |
+//|  * After a terminal/VPS restart MT5 runs OnInit and OnTimer      |
+//|    before the account is logged in: login, balance and equity    |
+//|    read 0 for a few seconds. v2.02 then saved a day start of 0   |
+//|    (daily guard off for the whole day) or fired the equity guard |
+//|    on equity 0 (no trading that day). Now nothing that uses the  |
+//|    account runs until connection, login and balance have looked  |
+//|    valid for 5 s; then the saved day state is restored.          |
+//|  * The restored day start is never below what the deal history   |
+//|    shows, and malformed InpExtraClosedDays entries are reported. |
 //+------------------------------------------------------------------+
 #property copyright "ai-tracker"
-#property version   "2.02"
+#property version   "2.03"
 
 #include <Trade\Trade.mqh>
 
@@ -153,6 +163,9 @@ int      g_noTradeLogDay = 0;
 int      g_prepTryDay    = 0;     // NY day of the first PrepareDay attempt below
 datetime g_prepFirstTry  = 0;     // first attempt to prepare that day (history wait limit)
 bool     g_dayStale      = false; // day prepared with incomplete history: exits only, prepare again every minute
+bool     g_ready         = false; // account loaded after a (re)start, see AccountReady()
+datetime g_readySince    = 0;     // local time since when connection, login and balance look valid
+long     g_login         = 0;     // account the current state belongs to
 
 //+------------------------------------------------------------------+
 //| calendar helpers                                                 |
@@ -449,7 +462,11 @@ double NormalizeLots(double lots)
    if(step <= 0) step = 0.01;
    lots = MathFloor(lots / step + 1e-9) * step;
    if(lots < vmin) return 0.0;
-   if(lots > vmax) lots = vmax;
+   if(vmax > 0 && lots > vmax)
+     {
+      PrintFormat("[IMOM] WARNING: %.2f lots capped at the symbol's maximum volume %.2f", lots, vmax);
+      lots = vmax;
+     }
    return NormalizeDouble(lots, 2);
   }
 
@@ -627,14 +644,15 @@ void UpdateAnchor()
    int pk = PragueDayKey(TimeTradeServer());
    if(pk == g_anchorDay) return;
    string nd = GvName("anchorday"), nv = GvName("anchor");
-   if(GlobalVariableCheck(nd) && GlobalVariableCheck(nv) && (int)GlobalVariableGet(nd) == pk)
+   double hist = BalanceAtPragueMidnight(TimeTradeServer());
+   if(GlobalVariableCheck(nd) && GlobalVariableCheck(nv) && (int)GlobalVariableGet(nd) == pk && GlobalVariableGet(nv) > 0)
      {
-      g_anchor = GlobalVariableGet(nv);
+      g_anchor = MathMax(GlobalVariableGet(nv), hist);         // never looser than the deal history
       PrintFormat("[IMOM] FTMO day %d: start balance %.2f (restored after restart)", pk, g_anchor);
      }
    else
      {
-      g_anchor = BalanceAtPragueMidnight(TimeTradeServer());
+      g_anchor = hist;
       GvSave("anchor", g_anchor);
       GvSave("anchorday", pk);
       PrintFormat("[IMOM] FTMO day %d: start balance %.2f", pk, g_anchor);
@@ -927,8 +945,68 @@ void OnCheckpoint(datetime barServer, datetime barNy)
   }
 
 //+------------------------------------------------------------------+
+//| MT5 does not reload an EA when its inputs or the chart change:   |
+//| OnDeinit + OnInit run and global variables keep their values.    |
+//| Start every OnInit from a clean state, as after a fresh load.    |
+//+------------------------------------------------------------------+
+void ResetState()
+  {
+   g_dayKey = 0; g_dayReady = false; g_prevClose = 0; g_dayOpen = 0; g_dayLots = 0; g_dayDpp = 0; g_dayBlocked = false;
+   for(int k = 0; k < 78; k++) g_sigma[k] = -1;
+   g_lastBar = 0; g_offsetOk = false; g_lastPrepTry = 0; g_prepTryDay = 0; g_prepFirstTry = 0; g_dayStale = false;
+   g_targetDone = false; g_targetClosing = false;               // restored from the closed balance
+   g_anchorDay = 0; g_anchor = 0; g_guardDay = 0;               // restored from terminal global variables
+   g_closePending = false; g_closeFailAt = 0; g_closeFails = 0; g_waitTick = false; g_inTick = false;
+   g_pendSide = 0; g_pendEndMin = 0; g_pendUntil = 0; g_lastOpenTry = 0;
+   g_noTradeLogDay = 0;
+   g_ready = false; g_readySince = 0; g_login = 0;               // wait for the account again
+   // g_reqDay / g_reqCount are kept: requests already sent today still count
+  }
+
+//+------------------------------------------------------------------+
+//| After a terminal/VPS (re)start MT5 runs OnInit and OnTimer       |
+//| before the account is logged in: login, balance and equity read  |
+//| 0 for a few seconds. Nothing that uses the account runs until    |
+//| connection, login and balance have looked valid for 5 seconds;   |
+//| then the day state saved in global variables is restored.        |
+//+------------------------------------------------------------------+
+bool AccountReady()
+  {
+   long login = AccountInfoInteger(ACCOUNT_LOGIN);
+   if(g_ready)
+     {
+      if(login <= 0 || login == g_login) return true;
+      PrintFormat("[IMOM] account changed %I64d -> %I64d: state reset, waiting for the new account", g_login, login);
+      ResetState();
+     }
+   bool tester = (bool)MQLInfoInteger(MQL_TESTER);
+   bool ok = tester || ((bool)TerminalInfoInteger(TERMINAL_CONNECTED) && login > 0 &&
+                        AccountInfoDouble(ACCOUNT_BALANCE) > 0 && SymbolInfoDouble(_Symbol, SYMBOL_BID) > 0);
+   if(!ok) { g_readySince = 0; return false; }
+   if(!tester)
+     {
+      if(g_readySince == 0) g_readySince = TimeLocal();
+      if(TimeLocal() - g_readySince < 5) return false;
+     }
+   g_ready = true;
+   g_login = login;
+   trade.SetTypeFillingBySymbol(_Symbol);           // symbol settings are surely loaded now
+   if(GlobalVariableCheck(GvName("guardday"))) g_guardDay = (int)GlobalVariableGet(GvName("guardday"));
+   if(InpAutoServerOffset && !tester) DetectOffset();
+   UpdateAnchor();
+   PrintFormat("[IMOM] account %I64d loaded: balance %.2f, equity %.2f, FTMO day start %.2f, server UTC%+d%s, New York now %s, $/pt/lot=%.4f, lots min/step/max=%.2f/%.2f/%.2f",
+               login, AccountInfoDouble(ACCOUNT_BALANCE), AccountInfoDouble(ACCOUNT_EQUITY), g_anchor, g_winterOffset,
+               (g_offsetOk || tester || !InpAutoServerOffset) ? " (winter)" : " (winter, not detected yet)",
+               TimeToString(ServerToNy(TimeTradeServer()), TIME_DATE | TIME_MINUTES), MoneyPerPointPerLot(),
+               SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN), SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP), SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX));
+   if(MoneyPerPointPerLot() <= 0) Print("[IMOM] WARNING: tick value unavailable, cannot size trades");
+   return true;
+  }
+
+//+------------------------------------------------------------------+
 void Heartbeat()
   {
+   if(!AccountReady()) return;                      // terminal still logging in after a (re)start
    if(InpAutoServerOffset && !g_offsetOk && !(bool)MQLInfoInteger(MQL_TESTER)) DetectOffset();
    datetime srv = TimeTradeServer();
    datetime nyNow = ServerToNy(srv);
@@ -1046,24 +1124,6 @@ void Heartbeat()
   }
 
 //+------------------------------------------------------------------+
-//| MT5 does not reload an EA when its inputs or the chart change:   |
-//| OnDeinit + OnInit run and global variables keep their values.    |
-//| Start every OnInit from a clean state, as after a fresh load.    |
-//+------------------------------------------------------------------+
-void ResetState()
-  {
-   g_dayKey = 0; g_dayReady = false; g_prevClose = 0; g_dayOpen = 0; g_dayLots = 0; g_dayDpp = 0; g_dayBlocked = false;
-   for(int k = 0; k < 78; k++) g_sigma[k] = -1;
-   g_lastBar = 0; g_offsetOk = false; g_lastPrepTry = 0; g_prepTryDay = 0; g_prepFirstTry = 0; g_dayStale = false;
-   g_targetDone = false; g_targetClosing = false;               // restored from the closed balance
-   g_anchorDay = 0; g_anchor = 0; g_guardDay = 0;               // restored from terminal global variables
-   g_closePending = false; g_closeFailAt = 0; g_closeFails = 0; g_waitTick = false; g_inTick = false;
-   g_pendSide = 0; g_pendEndMin = 0; g_pendUntil = 0; g_lastOpenTry = 0;
-   g_noTradeLogDay = 0;
-   // g_reqDay / g_reqCount are kept: requests already sent today still count
-  }
-
-//+------------------------------------------------------------------+
 int OnInit()
   {
    if(InpCheckSymbol && StringFind(_Symbol, "US100") < 0)
@@ -1077,7 +1137,6 @@ int OnInit()
    trade.SetDeviationInPoints(50);
    g_winterOffset = InpServerWinterOffset;
    bool tester = (bool)MQLInfoInteger(MQL_TESTER);
-   if(InpAutoServerOffset && !tester) DetectOffset();
    // extra closed days
    string parts[];
    int n = StringSplit(InpExtraClosedDays, ',', parts);
@@ -1086,23 +1145,24 @@ int OnInit()
      {
       string t = parts[i];
       StringTrimLeft(t); StringTrimRight(t);
-      if(StringLen(t) != 8) continue;
+      if(StringLen(t) == 0) continue;
+      int v = (int)StringToInteger(t);
+      if(StringLen(t) != 8 || v < 20000101 || v > 21001231 || DayKey(KeyToTime(v)) != v)
+        {
+         PrintFormat("[IMOM] WARNING: InpExtraClosedDays entry '%s' ignored: use yyyymmdd, e.g. 20250109", t);
+         continue;
+        }
       int k = ArraySize(g_extraDays);
       ArrayResize(g_extraDays, k + 1);
-      g_extraDays[k] = (int)StringToInteger(t);
+      g_extraDays[k] = v;
      }
-   // state that must survive a restart
-   if(GlobalVariableCheck(GvName("guardday"))) g_guardDay = (int)GlobalVariableGet(GvName("guardday"));
-   UpdateAnchor();
+   // day start, guard day and server offset are restored once the account is loaded (AccountReady)
    // warm up the M5 history (MA50 needs ~75 calendar days)
    MqlRates warm[];
    CopyRates(_Symbol, PERIOD_M5, TimeTradeServer() - 120 * 86400, TimeTradeServer(), warm);
 
    datetime ny = ServerToNy(TimeTradeServer());
-   PrintFormat("[IMOM] v2.02 start: symbol=%s server winter offset=UTC%+d%s, New York now=%s, $/pt/lot=%.4f, magic=%I64d",
-               _Symbol, g_winterOffset, (g_offsetOk || tester || !InpAutoServerOffset) ? "" : " (not connected yet, will re-detect)",
-               TimeToString(ny, TIME_DATE | TIME_MINUTES), MoneyPerPointPerLot(), InpMagic);
-   if(MoneyPerPointPerLot() <= 0) Print("[IMOM] WARNING: tick value unavailable, cannot size trades");
+   PrintFormat("[IMOM] v2.03 start: symbol=%s magic=%I64d, waiting for the account to load", _Symbol, InpMagic);
    if(!tester && !TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) Print("[IMOM] WARNING: Algo Trading is OFF in the terminal");
    // next no-trade days, so the calendar can be checked in the log
    string cal = "";
