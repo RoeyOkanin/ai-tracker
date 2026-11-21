@@ -1,23 +1,32 @@
 {
- "date": "2026-11-14",
+ "date": "2026-11-21",
  "items": [
-  {
-   "name": "Cerebras",
-   "ticker": "CBRS",
-   "action": "keep_watching",
-   "layer": "compute",
-   "status": "watch",
-   "verdict": "לא עוברת: פחות מ-200 ימי מסחר",
-   "why": "הנפקה במאי 2026; דוח רבעון 3 שיא והעלאת תחזית"
-  },
   {
    "name": "Comfort Systems",
    "ticker": "FIX",
    "action": "keep_watching",
    "layer": "power_equipment",
    "status": "watch",
-   "verdict": "חסר נתון מאומת על שיעור דאטה-סנטרים מההכנסות",
-   "why": "הכנסות רבעון 3 +54% ל-3.8 מיליארד דולר, backlog של 17.8 מיליארד"
+   "verdict": "עוד לא: חסר נתון מאומת על חלק הדאטה-סנטרים",
+   "why": "backlog שיא ושפת מחסור (6 ב-30 יום), אבל לא אימתתי חשיפה של 25% ומעלה"
+  },
+  {
+   "name": "Cerebras",
+   "ticker": "CBRS",
+   "action": "keep_watching",
+   "layer": "compute",
+   "status": "watch",
+   "verdict": "נכשלת בכלל 200 ימי המסחר",
+   "why": "הונפקה במאי 2026; 22 אזכורים ב-30 יום"
+  },
+  {
+   "name": "TTM Technologies",
+   "ticker": "TTMI",
+   "action": "keep_watching",
+   "layer": "servers",
+   "status": "watch",
+   "verdict": "מועמדת לבדיקה בגלל מחסור ה-PCB",
+   "why": "הזמנות PCB של עד 30 חודשים (TechRadar, 12.11); חשיפה ושווי עוד לא נבדקו"
   }
  ]
 }
