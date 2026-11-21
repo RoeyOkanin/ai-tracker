@@ -2,3 +2,4 @@ logged_utc,signal_date,type,ticker,layer,target_weight,reason,price_at_signal
 2026-11-14T02:38:57+00:00,2026-11-13,initial,PLTR,software,0.075,,167.99
 2026-11-14T02:38:57+00:00,2026-11-13,initial,META,hyperscalers,0.047,,641.69
 2026-11-14T02:38:57+00:00,2026-11-13,initial,MSFT,hyperscalers,0.075,,523.88
+2026-11-21T03:24:24+00:00,2026-11-20,exit,PLTR,software,0.0,below_ma200,143.49
