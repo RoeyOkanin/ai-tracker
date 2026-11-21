@@ -1,0 +1,50 @@
+
+##### noise_vwap  (2016-01-25 .. 2026-11-12, 2718 days)
+APEX 50K EOD eval:
+   {'fixed': 3} {'pass': 23.3, 'fail': 45.5, 'timeout': 31.2, 'avg_days_pass': np.float64(9.8)}
+   {'fixed': 4} {'pass': 30.4, 'timeout': 12.4, 'fail': 57.2, 'avg_days_pass': np.float64(8.7)}
+   {'fixed': 5} {'pass': 32.6, 'timeout': 4.5, 'fail': 62.9, 'avg_days_pass': np.float64(7.7)}
+   {'fixed': 6} {'pass': 33.3, 'timeout': 1.5, 'fail': 65.2, 'avg_days_pass': np.float64(6.5)}
+   {'fixed': 8} {'pass': 30.1, 'timeout': 0.5, 'fail': 69.4, 'avg_days_pass': np.float64(4.9)}
+   {'fixed': 10} {'pass': 29.9, 'timeout': 0.0, 'fail': 70.0, 'avg_days_pass': np.float64(4.1)}
+APEX 50K PA (1y horizon):
+   {'fixed': 3} avg paid $1,574 | median $0 | >=1 payout 32% | breach 77% | all 6 1%
+   {'fixed': 4} avg paid $1,270 | median $0 | >=1 payout 25% | breach 82% | all 6 1%
+   {'fixed': 5} avg paid $1,148 | median $0 | >=1 payout 22% | breach 85% | all 6 1%
+   {'fixed': 6} avg paid $1,113 | median $0 | >=1 payout 20% | breach 86% | all 6 1%
+FTMO 2-Step 100k US100 ($/pt; 20 = 1 NQ):
+   5 {'pass': 47.6, 'fail': 10.5, 'timeout': 41.9, 'avg_days_pass': np.float64(155.2)} | funded 1y: avg paid $12,490, breach 10%
+   8 {'pass': 46.2, 'fail': 35.8, 'timeout': 17.9, 'avg_days_pass': np.float64(133.7)} | funded 1y: avg paid $13,957, breach 58%
+   10 {'pass': 36.8, 'fail': 50.7, 'timeout': 12.5, 'avg_days_pass': np.float64(118.5)} | funded 1y: avg paid $10,038, breach 76%
+   15 {'pass': 36.7, 'timeout': 3.6, 'fail': 59.6, 'avg_days_pass': np.float64(80.2)} | funded 1y: avg paid $8,824, breach 97%
+   20 {'pass': 23.9, 'fail': 76.1, 'avg_days_pass': np.float64(49.6)} | funded 1y: avg paid $7,904, breach 100%
+
+##### noise_vwap_vt  (2016-01-26 .. 2026-11-12, 2717 days)
+APEX 50K EOD eval:
+   {'fixed': 3} {'pass': 28.2, 'fail': 55.2, 'timeout': 16.7, 'avg_days_pass': np.float64(10.2)}
+   {'fixed': 4} {'pass': 32.3, 'fail': 62.6, 'timeout': 5.1, 'avg_days_pass': np.float64(8.5)}
+   {'fixed': 5} {'pass': 32.5, 'timeout': 2.5, 'fail': 64.9, 'avg_days_pass': np.float64(7.0)}
+   {'fixed': 6} {'pass': 32.9, 'timeout': 1.5, 'fail': 65.6, 'avg_days_pass': np.float64(6.1)}
+   {'fixed': 8} {'pass': 30.9, 'timeout': 0.1, 'fail': 69.0, 'avg_days_pass': np.float64(4.8)}
+   {'fixed': 10} {'pass': 28.0, 'timeout': 0.1, 'fail': 71.9, 'avg_days_pass': np.float64(3.7)}
+APEX 50K PA (1y horizon):
+   {'fixed': 3} avg paid $1,421 | median $0 | >=1 payout 25% | breach 81% | all 6 3%
+   {'fixed': 4} avg paid $1,324 | median $0 | >=1 payout 23% | breach 84% | all 6 3%
+   {'fixed': 5} avg paid $1,137 | median $0 | >=1 payout 22% | breach 84% | all 6 1%
+   {'fixed': 6} avg paid $928 | median $0 | >=1 payout 19% | breach 87% | all 6 1%
+FTMO 2-Step 100k US100 ($/pt; 20 = 1 NQ):
+   5 {'pass': 50.8, 'fail': 3.4, 'timeout': 45.8, 'avg_days_pass': np.float64(161.8)} | funded 1y: avg paid $13,163, breach 10%
+   8 {'pass': 66.9, 'timeout': 9.6, 'fail': 23.5, 'avg_days_pass': np.float64(126.8)} | funded 1y: avg paid $17,722, breach 46%
+   10 {'pass': 62.9, 'timeout': 0.6, 'fail': 36.5, 'avg_days_pass': np.float64(105.8)} | funded 1y: avg paid $16,560, breach 71%
+   15 {'pass': 42.3, 'fail': 57.7, 'avg_days_pass': np.float64(64.0)} | funded 1y: avg paid $15,169, breach 94%
+   20 {'pass': 19.4, 'fail': 80.6, 'avg_days_pass': np.float64(31.2)} | funded 1y: avg paid $7,844, breach 100%
+
+##### orb5_EOD_vt  (2016-01-26 .. 2026-11-12, 2717 days)
+APEX 50K EOD eval:
+   {'risk_usd': 200} {'pass': 10.9, 'fail': 12.2, 'timeout': 77.0, 'avg_days_pass': np.float64(12.2)}
+   {'risk_usd': 300} {'pass': 21.7, 'timeout': 29.2, 'fail': 49.1, 'avg_days_pass': np.float64(10.3)}
+   {'risk_usd': 400} {'pass': 27.9, 'timeout': 5.5, 'fail': 66.6, 'avg_days_pass': np.float64(8.3)}
+APEX 50K PA (1y horizon):
+   {'risk_usd': 200} avg paid $729 | median $0 | >=1 payout 41% | breach 77% | all 6 0%
+   {'risk_usd': 300} avg paid $480 | median $0 | >=1 payout 24% | breach 85% | all 6 0%
+   {'risk_usd': 400} avg paid $423 | median $0 | >=1 payout 20% | breach 89% | all 6 0%
