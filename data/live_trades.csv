@@ -3,3 +3,4 @@ date,ticker,layer,action,price,value,reason
 2026-11-16,META,hyperscalers,buy,626.410000,0.046974,rebalance_in
 2026-11-16,MSFT,hyperscalers,buy,516.991300,0.074887,rebalance_in
 2026-11-20,META,hyperscalers,sell,560.840000,-0.042057,below_ma200
+2026-11-23,PLTR,software,sell,159.360000,-0.074407,below_ma200

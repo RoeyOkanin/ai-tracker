@@ -1,20 +1,14 @@
 {
- "signal_date": "2026-11-20",
- "generated_utc": "2026-11-21T03:24:24+00:00",
+ "signal_date": "2026-11-23",
+ "generated_utc": "2026-11-24T06:18:36+00:00",
  "regime": "red",
  "rebalance_band": 0.05,
  "mode": "hold",
  "targets": {
-  "MSFT": 0.071461
+  "MSFT": 0.072018
  },
- "exits": [
-  {
-   "ticker": "PLTR",
-   "reason": "below_ma200"
-  }
- ],
+ "exits": [],
  "layer_of": {
-  "PLTR": "software",
   "MSFT": "hyperscalers"
  }
 }
