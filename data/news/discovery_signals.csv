@@ -147,20 +147,24 @@ date,name,items,tight,ease,friction
 2026-11-21,Sterling Infrastructure,1,0,0,0
 2026-11-22,Argan,1,0,0,0
 2026-11-22,Centrus Energy,1,0,0,0
+2026-11-22,Core Scientific,1,0,0,0
 2026-11-22,Hut 8,1,0,0,0
 2026-11-22,Nokia,1,0,0,0
+2026-11-22,TeraWulf,1,0,0,0
 2026-11-23,Centrus Energy,1,0,0,0
 2026-11-23,Cisco,1,0,0,0
-2026-11-23,Dycom,5,1,0,0
+2026-11-23,Dycom,7,1,0,0
 2026-11-23,Hut 8,3,0,0,0
 2026-11-23,Johnson Controls,1,0,0,0
+2026-11-23,TeraWulf,2,0,0,0
 2026-11-23,Vicor,1,0,0,0
 2026-11-24,Argan,1,0,0,0
+2026-11-24,BWX Technologies,1,0,0,0
 2026-11-24,Caterpillar,1,0,0,1
 2026-11-24,Centrus Energy,1,0,0,0
 2026-11-24,Cisco,3,0,0,0
 2026-11-24,Comfort Systems,2,0,0,0
-2026-11-24,Dycom,11,7,0,0
+2026-11-24,Dycom,12,7,0,0
 2026-11-24,EMCOR,4,0,0,0
 2026-11-24,Hut 8,1,0,0,0
 2026-11-24,Lasertec,1,0,0,0
@@ -170,3 +174,10 @@ date,name,items,tight,ease,friction
 2026-11-24,Sanmina,2,0,0,0
 2026-11-24,TeraWulf,1,0,0,0
 2026-11-24,Vicor,1,0,0,0
+2026-11-25,Argan,1,0,1,0
+2026-11-25,BWX Technologies,1,0,0,0
+2026-11-25,Cisco,1,0,0,0
+2026-11-25,Dycom,6,1,0,0
+2026-11-25,EMCOR,2,0,0,0
+2026-11-25,TeraWulf,1,0,0,0
+2026-11-26,Trane,1,0,0,0

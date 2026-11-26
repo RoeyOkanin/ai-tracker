@@ -1,11 +1,11 @@
 {
- "signal_date": "2026-11-24",
- "generated_utc": "2026-11-25T05:02:07+00:00",
+ "signal_date": "2026-11-25",
+ "generated_utc": "2026-11-26T04:19:35+00:00",
  "regime": "red",
  "rebalance_band": 0.05,
  "mode": "hold",
  "targets": {
-  "MSFT": 0.07251
+  "MSFT": 0.071669
  },
  "exits": [],
  "layer_of": {
