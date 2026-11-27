@@ -1,19 +1,37 @@
 {
- "as_of": "2026-11-26",
+ "as_of": "2026-11-27",
  "layers": [
   {
    "key": "equipment",
    "name": "ציוד וחומרים לייצור שבבים",
-   "items7": 235,
+   "items7": 240,
    "tight7": 5,
    "ease7": 1,
-   "friction7": 0,
+   "friction7": 1,
    "net7": 4,
-   "net_prev7": 5,
-   "trend": -1,
-   "tight30": 22,
-   "ease30": 8,
+   "net_prev7": 7,
+   "trend": -3,
+   "tight30": 20,
+   "ease30": 7,
    "headlines": [
+    {
+     "title": "Why Summit Insights Downgraded Applied Materials (AMAT) After Record Results",
+     "source": "Insider Monkey",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/why-summit-insights-downgraded-applied-034833923.html",
+     "published": "2026-11-27T03:48+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Lam Research Sees Sold-Out Chip Demand, Targets Capacity and AI Service Gains",
+     "source": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPMXQxZDFEczk0U2ZJdFp4RXJ1VnE4MS0zdTRXZDR2V1VmNWRndkpCanlzcnZueTJJSVpPYmRQZnl1bV9aZlVPNlF6M1pLY1FJWmVGQnFFMzk3MXlUWWxvaXRaQ2RPNVdJXy1yc2NRaDNTdjRNRzU3bVd1bG05U0xvYldwNjJ1ZjRhVmVUN0pYU0JpN19VWFA1ajNrUEdZa3hiSUVqYU02RzBnMnQ1VFVOZnRpYjVYYjFnOUNqX1hwR0YzQmZCU3NhbGFNdGl0UDVWeEE?oc=5",
+     "published": "2026-11-26T00:55+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Surging AI demand triggers equipment shortages in the semiconductor and advanced packaging substrate supply chain.",
      "source": "KuCoin",
@@ -49,24 +67,6 @@
      "tight": 0,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "FORM Drops 28% in a Month: Should You Buy the Stock on the Dip?",
-     "source": "Zacks",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/form-drops-28-month-buy-151400757.html",
-     "published": "2026-11-23T15:14+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Electronic Component Sourcing: Why Shortages Persist",
-     "source": "Electropages",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPa2ExR0Q1c0wySlc1aWpna2g0QjlmVTZiUGg3YVNhTHN1dVNUWkRNa1ZxaHJRSzN2eEtuMllyVUtFQ1hFV28yRk1XeGNJNWlwQnVlb0NCazBfZVhMZUtJQlUwR3Q4clhpbDlOOXJWdzFSTU83M1dVMUUwNlJHdU0tcVhoRjdnUnJHZHhrdUw3aDEwdGhLTmZCUw?oc=5",
-     "published": "2026-11-23T09:44+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
@@ -74,15 +74,33 @@
    "key": "design",
    "name": "תכנון שבבים ו-IP",
    "items7": 48,
-   "tight7": 1,
+   "tight7": 3,
    "ease7": 0,
    "friction7": 0,
-   "net7": 1,
+   "net7": 3,
    "net_prev7": 0,
-   "trend": 1,
-   "tight30": 2,
+   "trend": 3,
+   "tight30": 4,
    "ease30": 1,
    "headlines": [
+    {
+     "title": "3 AI Infrastructure Stocks Retail Investors Are Watching As Compute Spending Shifts",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-retail-201110278.html",
+     "published": "2026-11-26T20:11+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Cadence Design Systems (CDNS) Raises Outlook And Buybacks, Is It Still 27% Undervalued?",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/cadence-design-systems-cdns-raises-181659456.html",
+     "published": "2026-11-26T18:16+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Top Research Reports for CrowdStrike, Lockheed Martin & S&P",
      "source": "Zacks",
@@ -118,40 +136,49 @@
      "tight": 0,
      "ease": 0,
      "friction": 1
-    },
-    {
-     "title": "Cadence Design Systems (CDNS) Launches OrCAD Xplore, Is It Trading At A Discount?",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/cadence-design-systems-cdns-launches-031501548.html",
-     "published": "2026-11-12T03:15+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Arm Sinks 10% in a Week on Phone Royalties and SoftBank: “Circular Financing Concerns”",
-     "source": "TIKR",
-     "url": "https://www.tikr.com/blog/arm-sinks-10-in-a-week-on-phone-royalties-and-softbank-circular-financing-concerns?ref=yahoofinance&tlnk=yf-261111-qx5pwq4j",
-     "published": "2026-11-11T02:57+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
     }
    ]
   },
   {
    "key": "foundry",
    "name": "ייצור ואריזה מתקדמת",
-   "items7": 175,
+   "items7": 189,
    "tight7": 5,
-   "ease7": 4,
-   "friction7": 1,
-   "net7": 1,
-   "net_prev7": 9,
-   "trend": -8,
-   "tight30": 30,
-   "ease30": 10,
+   "ease7": 5,
+   "friction7": 0,
+   "net7": 0,
+   "net_prev7": 5,
+   "trend": -5,
+   "tight30": 28,
+   "ease30": 13,
    "headlines": [
+    {
+     "title": "Kaynes Semicon plans fourfold capacity expansion through Vishay joint venture",
+     "source": "The Economic Times",
+     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOUHZIMzNqSlJyRlRiNC04WEpiNkFJUU9LdjVLX0JFS3Q2b0E3eVpOeGtSWXN1WktaT1dWUUVURElSUGFKdWQxbFZVSTNZOFJKMk5hWE95amVwVUlmemdSQmFFeGJqcXk0b3N3UjRsUFZQZm5mNGQ5NjMwMFJadnJKN2VsUWhYcVVCdExVQjdjb09JRXNpdzJ6M29RalczQU11THNPU2F0UVljeXVVWENfaE55bjY1U0xIdnd4SHZ6WTFxVEd0VTlnendRbkNlbkdVS1BZNWllUFHSAd4BQVVfeXFMTkRNZEx3RkluVlpWbklSaUxZVUFHTWRmTllYZTc5dnRLUE1JX3I1cXVnUVhKUnNHS0JLcDJDUTRXUDlXMXhpSmVoajN1UzhPZ0p2OUFhenI0MzIyeU01eFBia3hIbTlvSkVMaEd0c1hfQWdFOFhPRi1CZ00tY0EtdGRNeW9mM1o3bHFNOXF2N25Id3Fpc0FJTTEyQTloY1FRUzNJSGRwYWF4TFUxdWZWRlVsLVdseDZIWWhsbVQzM2h0UkxySnhNWFNmSVhoVlFQLU1wRE5wdXRoa3FBN2x3?oc=5",
+     "published": "2026-11-27T00:30+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "ASX's LEAP Demand Accelerates: Can Revenue Growth Stay Strong?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/asxs-leap-demand-accelerates-revenue-160400372.html",
+     "published": "2026-11-26T16:04+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "GFS' AI Optical Connectivity Business Gains Traction: Can it Sustain?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/gfs-ai-optical-connectivity-business-112500727.html",
+     "published": "2026-11-26T11:25+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
     {
      "title": "AI Materials Scramble Reaches Equipment Side as FC-BGA Tool Lead Times Balloon to 30 Months",
      "source": "BigGo Finance",
@@ -178,99 +205,72 @@
      "tight": 0,
      "ease": 1,
      "friction": 0
-    },
-    {
-     "title": "Surging AI demand triggers equipment shortages in the semiconductor and advanced packaging substrate supply chain.",
-     "source": "KuCoin",
-     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxORmlsbGRwRHJFakpMTnBPVmxtYXZEaC1GeGFQRFBmMWx3cmNzS3Rtb1k4ak1LSE16THYxS200dWQtSnNLcnl1aDZKOU5HdWJHNlZCSkJlMHliaVNFb2VmSUFEM3R3UUdibkNYakNNcndvOVVXZ2lDNV9ORXkyaUZGQUp0cEh1bmpIZ01YREVORk5JZlUtbExwNHJBU3FNcVFqN2V5cXNxZEVBbXFuWTNXeHVqWXpWZm5ZUFlLMjNEWTZXc3gtelFMRGJDTHpuWUtZVUxJTHl3?oc=5",
-     "published": "2026-11-25T11:38+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Global Advanced Semiconductor Packaging Industry: Top 5 Countries Driving Innovation, Capacity Expansion and Next-Generation Chip Manufacturing- Expert View by Spherical Insights",
-     "source": "Spherical Insights",
-     "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPb0NFaTBJUzF4WEdZVDY2M2FYOU1vNEVFbEEwQ0dVVG5vaTNTYWFSZERHaVpDaWt5WTdtOWpWNWdJcVVXV0hTeGNUVlJiaVBXU0xjWVluTTI4azAybTVNcENsaWFpTXdSLU9XRG8zZmd2NDBPZnFlQ2pvNHdaelY2Y29JVDc1bzBvOXlOaGNFUjEyYlBrc1pZRll0enBjeEZjc2JiU3lSci14OXQxdTZuT2RvbHZ1YnpqWUFzbW5LOUpnLVZxaVNHZ1N6end1S0hiakx4ZGtmUUxlZW96dEhVQW9XTDkxLTdjVTBNUnprWHY1N1VaSnVKcXBOSVVNam1rQkZFamNrUVhaTjR1eHc?oc=5",
-     "published": "2026-11-25T06:15+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Sushiro Taiwan hikes prices by an average of 19.7%",
-     "source": "Taipei Times",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9BZmNWRWIwbE9jdkU1Z25nTHcwc0x1b0Jzak1VMjlrTGI3NDhOY1F1bnNCNkd1aVdLRUh3bXh3ZDY4Q2xXQ2JTRG5mLWM3NjdMTml4U1dqeFVxNTRUUmF0R1BQdW44blA5YlFWVmd4SlktNmd5cmc?oc=5",
-     "published": "2026-11-23T16:00+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "memory",
    "name": "זיכרון ואחסון",
-   "items7": 307,
-   "tight7": 43,
-   "ease7": 35,
+   "items7": 290,
+   "tight7": 45,
+   "ease7": 38,
    "friction7": 4,
-   "net7": 8,
-   "net_prev7": 6,
-   "trend": 2,
-   "tight30": 153,
-   "ease30": 75,
+   "net7": 7,
+   "net_prev7": 7,
+   "trend": 0,
+   "tight30": 148,
+   "ease30": 82,
    "headlines": [
     {
-     "title": "Memory Chip Market to Diverge? DRAM Remains in Short Supply, NAND Prices to Drop as Early as Q1 Next Year",
-     "source": "Moomoo",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOMGg5cXdPTmtkZ0pRYjV3bHBnaUpZOXJvd05Gb0NTRVZBRDNQS0tDQy1IMXdGRVN1Yno3dzB6cXlkamRCM0VhQVQ4UmxBZTVsQl8wUUxMRGwySThlNXY3b29fZURrTnFCLS1KUGdqUlA0X21rMGJHdWxNWlNEUTdMMDVVdF90UkFjTzVMeGNzNmtxR2VFX0Vib3BqcV9kSFZKYkltRQ?oc=5",
-     "published": "2026-11-26T03:37+00:00",
+     "title": "DRAM Price Forecast Cut as Demand Softens",
+     "source": "Wisevoter",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPbkxibWtYZlNxTnZzSHUzMXRSUENiLUF3S3FteFhkQlhQSHZ5ZXN1NF81TWsyWWN5aHpKd0pJR2djQWJJSzNueFpwRDVkUWlsdF9hSlFJYVl0RlNSMnhGS3lqRk5ocnJrWThGOE84UmNjZEgwcDJxN3BRMzZMeWQzVDJBTVg3ZGZtLWc?oc=5",
+     "published": "2026-11-26T22:18+00:00",
      "tight": 0,
      "ease": 1,
      "friction": 0
     },
     {
-     "title": "AI Chip Shortage: TSMC 2nm Hits 8% of Revenue in Q3",
-     "source": "shattered.io",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOdVY3VkJrY1d2VFhES2NoWkRSTEFUMTZzYkRMSjF0Ml9Ga2JIaHl6akJrXzZLa3ltUG8zbE1BSmEyazd2UmtQN0IyZlhsOXM5OGxXTUM5c2ExRHYwZjlneVlMdU1GeTdGdWJRM0lTRS16RmhwUHpkdUVRNm1LZmx3XzhMT0w?oc=5",
-     "published": "2026-11-26T02:14+00:00",
+     "title": "RAM price surge may be losing steam as DDR4 prices fall and 2027 outlook improves",
+     "source": "Notebookcheck",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcXhWS2Y1bXlyS2hSMzN2cWhxaWNraGRmd1ZJcUExVFpJYWpid2xMTUpqTk5kWEt0YzVBaHZlRG11TUFhNno0MTg3RG1vdURvOGdxVDN6Nm9LM3I0RUdaZlF5UTBhNWdkTGxlU3ZhV18yRFQxMjN1SWhuM25McTUzazJISGZyQWdkakcxbEJBSUltMm1GX0hFeGs2cldYem9kblJ1RWgyVG80Z3BLQmNuNlN1T2VXa0cxSEZBbVl5S2Q1MlFl?oc=5",
+     "published": "2026-11-26T21:39+00:00",
+     "tight": 1,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "AI Memory Demand Surge Contrasts with NAND Price Decline",
+     "source": "조선일보",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNNFZBYk5WR1VwX0JlOEtHajZFREI0clgxYWZCT2xiSzVpOEwyUmdST2oyZDNyNmRQTU1TVTduLURJRGJCQllvV1hUaU8tV0t6N1AybkVzTDlVbkNaNS1CdDBvci1McXN5UU5RTjgwbXpIN25BQ2tsMHQ2NzVUX2Z2NERkN21uMWo1?oc=5",
+     "published": "2026-11-26T19:16+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "NetApp Stock Ahead of Q2 Earnings: Should You Buy, Hold or Sell?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/netapp-stock-ahead-q2-earnings-140400029.html",
+     "published": "2026-11-26T14:04+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Hewlett Packard Enterprise Warns Memory Shortages May Last Through 2028",
+     "source": "www.tokenpost.com",
+     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5uUWg5WUgxLUhTU3ZTUndfM0NVRTdDSEhmZTc2VWEyUm5uZl92NGV1MFlsNURLWjg2eWdiVGdOYWxBVHVzNlFVYVFtVXhMbmlCMGhEM2VuNGY?oc=5",
+     "published": "2026-11-26T13:31+00:00",
      "tight": 1,
      "ease": 0,
      "friction": 0
     },
     {
-     "title": "Is AI Making iPhones More Expensive? Micron Among Big Winners as Global Memory Shortage Escalates",
-     "source": "TradingKey",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNSFp2TEJ4cGwtLUhPWkFJTGJvTXlrblIxOXpuMDliR20tZ2NhTGVWUW5GeHdSRExqUzI0QV9nR1pKYnpEdFViMHBBaHlJdFluMHdOWXlGN2FRQ3ZYZVItX0FidWVucDh1dHFXQVhveUNKWVc5Y2pLQVl2UU5MdW1WMHVzcmRqNFQ3S3VHZkRnci1PLWtoNjZtTldVZUxpWWhtWWx3NUZjRzNydGVrRzJPU21QYjA1WnQyWDk2bW5qU29sZm5tTExYRw?oc=5",
-     "published": "2026-11-25T21:01+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Micron Stocks Sink 10.47% After BNP Paribas Halves Target on Oversupply Fears",
-     "source": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQa05XTHg2dVBvLUxfR3FuTkkxWUZ1dHdfdkY5QTF3Wm9TNFdPSTZjSVFRdGQ2ZVhTNWM3RXZkQnlPX0ZHTFVSS25JS1JhZ1U5QUU5emt4aHdfblJZak1WOEszaktYdV9ya2dKQnl5Q0Q4RENMa2pZNThjaExTNnYtWmVYclJkT1Y5dFptZ3Jrd0ZQNHU4dE1ablY5czQ1LUd3RGtMbVdfMndXeVdWZkcweDM0NVBYSXdkUV8weFU5clV0SC01VnhTRTNxU2ZmcXE0QlE?oc=5",
-     "published": "2026-11-25T15:48+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Micron stock drops 10% as TrendForce warns of NAND oversupply",
-     "source": "Crypto Briefing",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE52VkxBT3lEd3I0VkYyd2dMVUtJODFRUkVBeGM4akhRQzFZVkRhWlpSZ1VLd3pDSEtIeGhFaFZzV1pvaXBjRmxZTExncFhVY095TXdobXBwZjFHdklUMXZjR2JXZWpBSkllRUJldHdNclU5d0VGdzJXc3l3cnJNUQ?oc=5",
-     "published": "2026-11-25T15:42+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "75% of Micron's 2027 memory supply is already sold out, backed by $32B in upfront customer commitments, says Sanjay Mehrotra",
-     "source": "Dealroom",
-     "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNeEpBTzFOS0dKMzdTQ3J0Y0p3eExWeDNUZmdJRV81dWtlZHIzUW1EQnFOakE2aGhlQldCa1ZUc2NMTFk2RzhCVFVRQ1YtZS1WalYwZlBRXzYxMFdPMVJrR0NPMkFoZ1l0WWs4Z0tvUDNENmdYQnJzR3NsdW85OVY0dUUyRXdOZW41RDJRd21wU1lHWWY4ZlplNi1aRU9QLUI0UUxkeE9YeU9VQkhfdmdVb1Zvd3lJSVBXM0pVZWRBZjZNSGRrREZmOWV2ODFFUnRVYm92Wmh3ZnlZdXFOTHg4WVFQSzZCNUdVSEE?oc=5",
-     "published": "2026-11-25T12:05+00:00",
+     "title": "Global CEOs Flock to Samsung, SK Hynix Amid AI Memory Shortage — Even Musk's 'Conditional Offer' Fell Flat",
+     "source": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1nekJ3ME9hUEhwa1hDNE5oRHVRZklMNmZ2UUs2dkFERWVPeXQ5elpiU0ZPNUZCbUhyenhwWUFkRnowSURFaEYwNGY2d1ZPM0hzYzVmcWo3ZlZCNFpWazhNcDd6b0dLbXpZTnc0bmdEVjBub2padVE?oc=5",
+     "published": "2026-11-26T11:35+00:00",
      "tight": 1,
      "ease": 0,
      "friction": 0
@@ -280,66 +280,66 @@
   {
    "key": "compute",
    "name": "שבבי AI",
-   "items7": 328,
-   "tight7": 32,
-   "ease7": 7,
-   "friction7": 0,
-   "net7": 25,
-   "net_prev7": 29,
-   "trend": -4,
-   "tight30": 102,
-   "ease30": 15,
+   "items7": 322,
+   "tight7": 34,
+   "ease7": 10,
+   "friction7": 1,
+   "net7": 24,
+   "net_prev7": 25,
+   "trend": -1,
+   "tight30": 105,
+   "ease30": 18,
    "headlines": [
     {
-     "title": "Dell's AI server backlog hits $132.3B, driven by Nvidia's latest AI platform demand.",
-     "source": "Pluang",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQaWFGTDRtSFJ3akRKZWhTN0ZwZ0lVZGJuZDk1VXNWdU1mbF9RcUczeFpGdEV0bm5zZjQzSU5YTFpoR1hmeEdqc1B3NXhUQ0tJWk54M0xwdFB4TVNUT19tZG9aLXZXOFA4dnMwaGRnX0JrOHF2eE5pT1pJLUdRM2QyMjdaUXpqZw?oc=5",
-     "published": "2026-11-26T03:06+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "AI Chip Shortage: TSMC 2nm Hits 8% of Revenue in Q3",
-     "source": "shattered.io",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOdVY3VkJrY1d2VFhES2NoWkRSTEFUMTZzYkRMSjF0Ml9Ga2JIaHl6akJrXzZLa3ltUG8zbE1BSmEyazd2UmtQN0IyZlhsOXM5OGxXTUM5c2ExRHYwZjlneVlMdU1GeTdGdWJRM0lTRS16RmhwUHpkdUVRNm1LZmx3XzhMT0w?oc=5",
-     "published": "2026-11-26T02:14+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Chuck Schumer Says Trump, Lutnick ‘Sold Out America’ by Approving Nvidia, AMD AI Chip Sales to China: ‘They Get Rich and America Gets Screwed’",
-     "source": "Yahoo",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOdWcwUFUtanNBbC1sQXBGMW1yQ2t3UDNwWWdBU3pJRGpsR1ZfN0hxUDhSN3JLS2ZaYm9MTWc5UWl0RmNFZEJaUUhWelFiSVRvamZwZ0VabThONmNOX0tUNnlIdWIyOTNwemtQWVJwTm44SThQN3NnNlFCNGJOakpGWUpJLW9XUWdFN2Uzdl9XdUI1UjBIemNZ?oc=5",
-     "published": "2026-11-26T00:30+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "AI token consumption rises, DRAM supply tightness expected until 2028",
-     "source": "KuCoin",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQamw3QUQwMUNHUzFWeEE1dndFMnhrUEdLREFSMVNXT2N0Z0QzUG96Ql9WNHhjYVlzS3MwLVFDVEc3cEdIbDdwZ1FsZ0RzWG5xMmRvZXV1WmpJblExQ2o1SUdBaUFEZlJ4UmpiNUtFX044Nl93UEtrRWV3RDlSZGlDVEZVREhNSUVKSGJ6M0NfX2t3N1ZKWFdCQjdzRk5Vcy1HaENBaw?oc=5",
-     "published": "2026-11-25T14:45+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "AI Chip Glut Fears Grow as Rental Prices Cool",
-     "source": "Value The Markets",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPdm9uSHRxTUVfdmdKQUN5c3MxcWdvOGFQMGh6ODk0TlpjUFJpRzFWTFZwSUtxb0dWRDhkRmVXNk51bVRtMXJzdFpSQnBMSFFfZy1XWng3dkpMYTZPaHBqejF6X05xVGd6NnlldGN0ei1SV3ZwWC1iNlphbmV4SmtmbmZFcGZ5ZW8?oc=5",
-     "published": "2026-11-25T11:49+00:00",
+     "title": "Why Redburn Downgraded Broadcom (AVGO) Despite Surging AI Revenue",
+     "source": "Insider Monkey",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/why-redburn-downgraded-broadcom-avgo-035057918.html",
+     "published": "2026-11-27T03:50+00:00",
      "tight": 0,
-     "ease": 1,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "NVIDIA Gaming GPU Supply Reportedly Cut by Up to 30% as Prices Soar",
+     "source": "Shane the Gamer",
+     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE4wY29JTWpEbWRjWUlqektHbGlXY1NHM01EMTRMQ0lHUFhLdkpOcHVYYmlEMFc5SU1zc1lPUVlOVllhTTQ2LThsS1NtcUR3V3BDd0hoY3hTRG80V2ZhdF8yT2tpVVM3cUF4Z01rQnJ4eVNfa2t6R2NSVEJ2ejlWdw?oc=5",
+     "published": "2026-11-26T22:36+00:00",
+     "tight": 1,
+     "ease": 0,
      "friction": 0
     },
     {
-     "title": "Nvidia GPU Rental Prices Lose Upward Momentum; Neocloud Stocks Plunge on Oversupply Fears",
-     "source": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBzREc3UUZlXzRGQUFtRzR0SC05YWpLQ204N0hwZnJ5Sy15V2dtUzV5TU03NnBLVFJwU3JhTHdqUm5vdElVRmR0N1NSSDFWSVZZRXpqcXpaY3FUU0R4VDJ5dklqYXFkWE9GNE5MNTAtTmJjbnhFamc?oc=5",
-     "published": "2026-11-25T09:55+00:00",
+     "title": "Kazakhstan expands AI cooperation with Russia amid chip supply constraints",
+     "source": "Traders Union",
+     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPWXE2X2JDOTJOTmtNeGJ4RF9hQW9aUTVGU2JGMlZGV2Nwb0liODBuUUdHckM1X0ZOOVlGOENya3V3NWpYTEdUcmduamQtY245SFdxTVBFQkc1cGZuT0FOVHVWNms2Ql90TXJuUTZaeG4xQTZVTEgzX1lFTEdjbmczTVN4LVNCNWJNZV9aM1V0RHRORkxQbHFN?oc=5",
+     "published": "2026-11-26T19:10+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Cerebras Expands AI Inference Reach: Can It Challenge NVDA & AMD?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/cerebras-expands-ai-inference-reach-161400247.html",
+     "published": "2026-11-26T16:14+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "CoreWeave’s Default Odds Hit a Record. Core Scientific Has a Big Problem",
+     "source": "TIKR",
+     "url": "https://www.tikr.com/blog/coreweaves-default-odds-hit-a-record-core-scientific-has-a-big-problem?ref=yahoofinance&tlnk=yf-261126-x54g96m4",
+     "published": "2026-11-26T15:35+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "AMD stock: Anthropic plans 2 GW GPU capacity expansion",
+     "source": "ad-hoc-news.de",
+     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNNHBOOFlORjI3eTFfbzdBYWVvT3JQUmg3aGJyT2c3bjRIdFgwN0dsU1NZUDFwTjA5MW9COTB0SE0xYWZvaDdrNEYzdFF4Y3l6Y1dhNHdVRWQ2WmxhdVR1THliaG83Qlc3N0xLOVZ3R3ZzeDRCN3Bkc1FCR2E0MjdaWW9ZQ1ZpY0NJVDFLaC1Ta0lJNTk1VGhyT0p6dGIybmQxZ2UyekZIa0pmRW0yMUdaTjRQaF9mY2M?oc=5",
+     "published": "2026-11-26T14:45+00:00",
      "tight": 0,
      "ease": 1,
      "friction": 0
@@ -350,20 +350,56 @@
    "key": "networking",
    "name": "רשתות, אופטיקה וקישוריות",
    "items7": 175,
-   "tight7": 7,
-   "ease7": 4,
+   "tight7": 8,
+   "ease7": 5,
    "friction7": 0,
    "net7": 3,
    "net_prev7": 1,
    "trend": 2,
-   "tight30": 22,
-   "ease30": 6,
+   "tight30": 20,
+   "ease30": 8,
    "headlines": [
+    {
+     "title": "Indium Phosphide Shortage Squeezes AI Optical Supply",
+     "source": "Wisevoter",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQWpPZGZOeXdNZGdNY2lsOUFibzJSb2VRa3VROTRiTDl0MzZ4ZlZNRFRjY0VzaUVFd0pvczU1ZmxmbWtvdGoyTjczWWt4dnN1b1I0UmZpZEoxcWZRMXpFMEJzQm5CZWM1LVBqSFNtemhmYWZYV2tXSGNMeHVyN3lhcWt6TGRCTjBST0E?oc=5",
+     "published": "2026-11-26T16:53+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Electronics manufacturers set up memory 'war rooms' to find, lock in DRAM supplies amid worst shortage in history — employees scour eBay, contact hundreds of brokers, and snap up even small batches of just 5 to 12 units",
+     "source": "Tom's Hardware",
+     "url": "https://news.google.com/rss/articles/CBMi9wJBVV95cUxPOUU5cEVYSFE5TGZGZVRKRnJmTWREV0N4WkNwazdMbjhmVVNETlhuNWhKZnAzamhLdTY0enE5ajV3T0hlNDRjaGdPTnk1YUczbDkwQ2x2MmxSblQwb1NnOVhoaHFxbktNTlkxV0hmcVRncGU3THpkVi12ZHFWOGJ0b0I3UktJVmZDVUlCMzRUcWxETWlqaFdRVXNZaTJfcjB0NUdjNndWemtaN05DZWgzY1oyNWlVZXVkblQybEcwTEIzaE5rM0NZSlFwZzViQ0lkZFljaVFRWTZhbDhvV25MSE1wUllUbWZYRUU3SnNsLUt3TTNicGxpRnhvODdZclM1UFpfWXR2eUlkbl9tbkt1SkRYdFpTZ3NsTGlIMnpLazhJZ1pRUmQtT3V2ZlA2MUdhQmgxYmhuRUxpV1J6ZkN6bEpURVFaTjg5bnU2MUVScldCaU50SWk0VUZtUTktME5waW96Rm90c04wb3p0cEp1LUdybTVkZGc?oc=5",
+     "published": "2026-11-26T16:11+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Can Optical Circuit Switching Become Fabrinet's Next Growth Driver?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/articles/optical-circuit-switching-become-fabrinets-121200862.html",
+     "published": "2026-11-26T12:12+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
     {
      "title": "Coherent (COHR) Authorizes A $2.0b Buyback, Is The 47% Undervaluation Case Intact?",
      "source": "Simply Wall St.",
      "url": "https://finance.yahoo.com/markets/stocks/articles/coherent-cohr-authorizes-2-0b-201459636.html",
      "published": "2026-11-25T20:14+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "Chip ETFs fall 7 days straight; China oversupply fears drive selloff",
+     "source": "scanx.trade",
+     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNT1dyYTMwaEpsRzhadHozeENYOUg4X1AwM0UzdW5JN0N1b2lLUEpINFJaX25RbUVIRkh6RUZnUnRRbHdFZnNjYmRORkxIdmJRRkhJS3RsWk5nWjJ1ek9DZTJ6aVdpZVRYWERQV2Y4SW4tOEZtN1U3WXpDbG1BSFFqaHNJNk1ZNy1xMDJIUHN4T19VeEQ3aTFqUGF1ajNjZlowd25CNE4xVldqZFFMRnRFVzZ3elpucDZBeVpV?oc=5",
+     "published": "2026-11-25T19:42+00:00",
      "tight": 0,
      "ease": 1,
      "friction": 0
@@ -376,58 +412,58 @@
      "tight": 0,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Can FN's Data Center Business Sustain its Strong Growth Momentum?",
-     "source": "Zacks",
-     "url": "https://finance.yahoo.com/technology/articles/fns-data-center-business-sustain-114600279.html",
-     "published": "2026-11-25T11:46+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Why Did Cisco Stock Jump?",
-     "source": "Trefis",
-     "url": "https://www.trefis.com/stock/csco/articles/628631/why-did-cisco-stock-jump/2026-11-24",
-     "published": "2026-11-24T17:31+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "POET Technologies' Order Book Stretches Into Mid-2027 as Wafer Shortages Delay 30,000 Modules",
-     "source": "ad-hoc-news.de",
-     "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQT09XZ2Q5XzlYZldlWDlFaTc1TDR3LXNuLV9USW1BWDhFUi0zaVBBQ2NMOG5KNV9QcDRNbGt3N1dlWEZHdE1XZzdMUTNHUHFfc0xjdnJjbDcydDRkWUE4bkx1bHBXUjJ6a291ZEM0QUdqem04dTdZREVQZzlFcHlGV0Nhblk4aUNzOVNtdjdXbVJSa1Bib3ZJUEVlaFRXbFdtbm50WURWQnZWaDBjQkhPOGllc2F5TEFhRUpld081MU1paEM1TDl4S04zXzFqeWJrc1lYRU1OR3NvQ3NJaDdlUDk1cU9oQXVjQXhHaFoxNWxoc0ozZml3?oc=5",
-     "published": "2026-11-24T16:22+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "MaxLinear Stock Drops 24% in a Month: Should You Buy it on the Dip?",
-     "source": "Zacks",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-stock-drops-24-month-121400451.html",
-     "published": "2026-11-24T12:14+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "servers",
    "name": "שרתים ומתלים",
-   "items7": 222,
+   "items7": 299,
    "tight7": 9,
-   "ease7": 2,
-   "friction7": 2,
-   "net7": 7,
-   "net_prev7": 2,
-   "trend": 5,
-   "tight30": 16,
-   "ease30": 4,
+   "ease7": 3,
+   "friction7": 3,
+   "net7": 6,
+   "net_prev7": 3,
+   "trend": 3,
+   "tight30": 18,
+   "ease30": 6,
    "headlines": [
+    {
+     "title": "ASE reports no order cancellations despite Nvidia shipment halt, lifts LEAP target past $4B",
+     "source": "Crypto Briefing",
+     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9oOGptYzN1c0w0VEdOSHhVTjhXNlM3ZEdYTWFhSVB2MG1mQTlIZlB1NTZyTzBpOENhUTJKYmhlSUtCdnV0eWhvSVEzNlJxbU1xc0JOVzVHblNLWE5IQjItSVFFaHdxb3EyVHBqZFBsNHFOUUZoa2tZZjktOXktdw?oc=5",
+     "published": "2026-11-26T23:19+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "NetApp Stock Ahead of Q2 Earnings: Should You Buy, Hold or Sell?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/netapp-stock-ahead-q2-earnings-140400029.html",
+     "published": "2026-11-26T14:04+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Is Micron Stock a Buy After HPE Said Memory Will Stay Scarce Into 2028?",
+     "source": "Motley Fool",
+     "url": "https://www.fool.com/investing/2026/11/26/is-micron-stock-a-buy-after-hpe-said-memory-will-stay-scarce-into-2028/",
+     "published": "2026-11-26T13:37+00:00",
+     "tight": 1,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "No Permit, No Chips: U.S. Trade Rule Puts Malaysia’s Data Centres On Ice",
+     "source": "TRP | The Rakyat Post",
+     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQX0ZaRTVreE1hVFMzT0ZEMmtmVnltT2dLQWo5R3d1TEFuMm1wS1RKaTVtTi1pdnNwSWhpcC0wUnBUU3FMLTZaVW9xRDcyUmljMkNEVVM4SVpJOHhOSDNxdlo0NXZRangwaWR2dWVub1JLbEV5azFIUkRENFFiMWVwZ1ZIM0Q3TGdPUVJhbC1selR1MkVnajZLd0pSY25FQ3FTdk44RU1kU3I1endRd0xhQVJvdnRVRm9BbXRLWlNBWGFxQQ?oc=5",
+     "published": "2026-11-26T09:33+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
     {
      "title": "Can FN's Data Center Business Sustain its Strong Growth Momentum?",
      "source": "Zacks",
@@ -445,58 +481,58 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Dell AI Backlog Hits $132.3B, ‘Vast Majority’ Of Sales, Profits Now Come From Infrastructure Solutions Group",
-     "source": "CRN",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNU21UbXQzYVNVM003Mk1DZHExZzNCdWZMRTYzVDhQdlR2SUVGMkZvNmhNU1lQMmxLTV9OdHY0ZjNuZmJ6QkNidWFfWGFFMlBLVm5xcERBbWhrcTRiaGhLUGJ4ejAyX0Y0LUVnTldlTlQzT1o4MWtocDF6T29abldPNHhZcnBxWE1VNzlHdmtHbWg3bVMxU0ZxSVd0QjZiZkZvZUdWSEVZNFY3czhXMHBwUkcwenVsVy0tNUh2bHF4cFhQNWo5TUoybUFqSUViSmpVdUE?oc=5",
-     "published": "2026-11-25T01:10+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "AI DRAM Shortage: Apple and Samsung Cut 2027 Phone Shipments",
-     "source": "explainx.ai",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOa0hMdFdJRnlYcDZDMWJGZ2Exd2ZJNHVJdnU5d0ZLb0phTUppcGdoa29yeEdHc1A4aFd1eWx4T3hSc01xbVE4WUFDVjE5SmtZclRNWjhrRnBEVjhaTURyRGc2bHhsNEZlcWV5MWtrTmNsRl8ya3ZqeGN5Sk9SNGdnU25DdG9HcUJiM0NHN25kd3ZhWF8zdHJMcm53?oc=5",
-     "published": "2026-11-25T00:00+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Dell's AI backlog hits $132.3B, but its forecast implies AI sales grow 6% next quarter",
-     "source": "Techi",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQM2l0R1RoLTV1NmlCWEdZdE94Y2FicmVveHlwMXBMRVJJUUliVThJUnBmNElFS2Y1Y2xnQ3VxbEN0dXJZYlBvSnAxUDBMY1dTOUQwYUctMlU0QTdHMkhpMjZDMFc3bUcyRk1yMFlHWVgtdlRwU054ZFk5MlZBeW9EaEh3aFkxTjhTZHFDNUtJYjJ3T1R5VWFj?oc=5",
-     "published": "2026-11-24T22:07+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Dell's AI server sales hit $22.0 billion and its backlog reaches a record $132.3 billion",
-     "source": "Quantisnow",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNLVlOcndzS2pBVi1GcTJTU1A5LWw1Z2ZLRHdFdFluLVl5OHVlWkhhbDRuMURrazlzeVdRZy1LUnQzNUVVM1hDOTJYY3pxUGJNOVJZSWJyZnl4M3dHRGkxZWUxc0FXUGFVeVdLR2F2MVduQkpSZGhtUFNsekNGOS1FTjNOX21UNUJDOVptWU9XT2V3SF94b0huRXk2VFdZZ0U?oc=5",
-     "published": "2026-11-24T22:07+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "power_equipment",
    "name": "ציוד חשמל וקירור",
-   "items7": 307,
-   "tight7": 21,
-   "ease7": 1,
-   "friction7": 6,
-   "net7": 20,
-   "net_prev7": 20,
-   "trend": 0,
-   "tight30": 74,
-   "ease30": 6,
+   "items7": 313,
+   "tight7": 17,
+   "ease7": 2,
+   "friction7": 5,
+   "net7": 15,
+   "net_prev7": 23,
+   "trend": -8,
+   "tight30": 76,
+   "ease30": 7,
    "headlines": [
+    {
+     "title": "GE Vernova (GEV) Faces a Delivery Test as Its Backlog Reaches $197 Billion",
+     "source": "Insider Monkey",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/ge-vernova-gev-faces-delivery-034550395.html",
+     "published": "2026-11-27T03:45+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Caterpillar's $78 Billion Backlog, Explained",
+     "source": "The Motley Fool",
+     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNU1dDTEVlSndnRXNMTkI2SDhRNC1yT1NhblVLRzZMSFZ1cUFtVl9aeW8tMkVBX2ZTb1BnRzJjNi1JNDhmYXp3TmJoRXFYTmVzYU9ZZU84RDVsQmg1U21GclRWSjRvcjFuQ0dCdFBXMFppWVpkSFJfbGpTQ1VGN19WaDVWM3ZlR25CVkNNQ2JWMC0yUQ?oc=5",
+     "published": "2026-11-26T18:37+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Can Capacity Expansion help Vicor Meet Rising AI Power Demand?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/capacity-expansion-help-vicor-meet-121300058.html",
+     "published": "2026-11-26T12:13+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "Siemens Energy India FY26 Results and Record Backlog",
+     "source": "Kalkine India",
+     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNWDNRdTM4LUZjaVg5N3dySGcxUHQtR2xqYVBBSHFtUWYzcUM3TnFiaFhHY0JURmJELXFCNGx1VXUyek9ObkFyNHBFY3o0bjl0RGpmUnAwWlBxaFdjNkFEdkVjX3J2Vi1MbENrclhNcnhyMXAwNnprYXJ4QzhCLWlnSzRLVmJCQ0thQjRnTi1VR0JSUWpRcTlXYzBiS2tfYm5VSmNQMzd4T2N0TjIwNXkxbXduX2g?oc=5",
+     "published": "2026-11-26T07:25+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Why Do Analysts Keep Chopping GE Vernova Stock?",
      "source": "Investor's Business Daily",
@@ -514,58 +550,31 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Can Argan's $440M Net Liquidity Fund Its Next Growth Phase?",
-     "source": "Zacks",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/argans-440m-net-liquidity-fund-165400837.html",
-     "published": "2026-11-25T16:54+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Should Raised 2026 Outlook Require Action From Quanta Services (PWR) Investors?",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/raised-2026-outlook-require-action-121410422.html",
-     "published": "2026-11-25T12:14+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Vertiv CEO Says the Buildout Is “Accelerating.” Voters Just Knocked the Stock Down 25%",
-     "source": "TIKR",
-     "url": "https://www.tikr.com/blog/vertiv-ceo-says-the-buildout-is-accelerating-voters-just-knocked-the-stock-down-25?ref=yahoofinance&tlnk=yf-261125-m99mcvhj",
-     "published": "2026-11-25T08:46+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Shortage of Critical Equipment Hits Madhya Pradesh Power Transmission Expansion",
-     "source": "Construction World",
-     "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOMFR5UVU4Y0Zrelhla3otY2FHNVRYaUZycDBQY2IzVnV4RGhfZXN2dS1SaVd5WkhOS2V1TVlJMmFYR2xBLTJtRlB5OWFHdEZXTmFBNnI0T045Uk1vTHVqcTV0NzZsZEVfSlNtb2YyUGJvaFQtbU5hTnY0ZEw2MHlibzYzNVFuUzRONnpDc0RhODVDMUVlTlRtWkxNcjhlZWdTTDFueUVOeFRjM0VNYk5ldUczX1FFd3FaSzJYaTBmeGFWVV9Ud1hFN2lhRkNETkJzQ3oydEo2b2k4T1RPYkJIYWdQeDlaLVRhSXNwelpOTTk5NDJYTXZQZXZ3clY?oc=5",
-     "published": "2026-11-25T07:20+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "power_generation",
    "name": "ייצור חשמל",
-   "items7": 234,
-   "tight7": 3,
-   "ease7": 1,
-   "friction7": 5,
+   "items7": 229,
+   "tight7": 2,
+   "ease7": 0,
+   "friction7": 3,
    "net7": 2,
-   "net_prev7": 10,
-   "trend": -8,
+   "net_prev7": 9,
+   "trend": -7,
    "tight30": 21,
    "ease30": 3,
    "headlines": [
+    {
+     "title": "Energy Fuels vs. Centrus Energy: Which Uranium Stock Has The Edge Now?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/energy/articles/energy-fuels-vs-centrus-energy-131600993.html",
+     "published": "2026-11-26T13:16+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "U.S. data centers build gas power plants amid electricity shortages",
      "source": "디지털투데이",
@@ -610,81 +619,72 @@
      "tight": 0,
      "ease": 0,
      "friction": 1
-    },
-    {
-     "title": "US data centers face power demand surge, Texas moratorium considered",
-     "source": "Crypto Briefing",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQaDhuakYwWjNKRjVUV0JMcmF1ajktUWdkdG5ld1pHQ2p1RWh4MkRhb2VKbi14Tzd0dWY5a1RtSkFFNjh5bTlQcUttVVBtbmVlZ2RRY1hFMnFacWQ3VGhaTlhPeE10WTdiWFBBZk9YYnd2bXBGQWJLRHVWWlBEaDBXOGFISzVQWEZMdWZwVjVJaFd6aFBGeTY2aGU3MA?oc=5",
-     "published": "2026-11-22T17:21+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
     }
    ]
   },
   {
    "key": "datacenter_reits",
    "name": "נדל\"ן ופיתוח דאטה-סנטרים",
-   "items7": 304,
+   "items7": 292,
    "tight7": 1,
-   "ease7": 0,
-   "friction7": 118,
-   "net7": 1,
+   "ease7": 1,
+   "friction7": 104,
+   "net7": 0,
    "net_prev7": 1,
-   "trend": 0,
-   "tight30": 3,
-   "ease30": 2,
+   "trend": -1,
+   "tight30": 4,
+   "ease30": 3,
    "headlines": [
+    {
+     "title": "How Investors May Respond To Equinix (EQIX) Raised Guidance",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-equinix-eqix-141802415.html",
+     "published": "2026-11-26T14:18+00:00",
+     "tight": 1,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "Texas resumes data centre permitting before Democrats take over",
+     "source": "Financial Times",
+     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdlBpU1NUV3ZYZHhCZUQwX2xQRHRGSGtPamoweGNmbTd1cVVxR2FTZlk3dHhrMVhoMXY4VWRRTF85ZjBmMWNjdWJoRGd0UjlHZzJrOXFTWVVrOGFxeUQ3dkhiVldONndjd05EdmlKSXN5cVZXcHV4eWtENFFsQnFzZmQxSzA?oc=5",
+     "published": "2026-11-26T12:00+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Prediction Market Prices Louisiana Data Center Moratorium",
+     "source": "Wisevoter",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOMmx6ZGl0dkZCUW9WSGdjY1l2UjhCZzYwVFQtOGlVSzRMMWJtWEphQ2hySkt1ZF9TUFFaNGt0bVBadHJXREtGYUpTYUVrTV9WVVVyNXJMcHpycThZTHVNTlZwNFVDRUlkLXJGN3RLT19WUG5FS0I2REgzX2RxMVFYaDRvVTRCQ1NyVUE?oc=5",
+     "published": "2026-11-26T05:27+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Goldman Sachs: US Data Center Power Capacity to Add Another 52 GW by 2028 as Backlash Fails to Halt AI Expansion",
+     "source": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9SejJ4RUJNN2xIcUN0LUxSazgzZGplUmZKbVZTQk51VjhwWngxZG5DTGx6UjRIQ2FQV2NRMWk1b0FYUnd2M0tGMVRmTTZFNHE4Y05kQnE2U3BGd2czLWhnZmlGaEVseHc1OFNQZ0JFNGRtbThzaWc?oc=5",
+     "published": "2026-11-26T04:35+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Louisiana Data-Center Moratorium Odds Remain Low Through 2026",
+     "source": "www.tokenpost.com",
+     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE55WnBNb0xPbzZ2WkVOTnpZM2U5bVVIanlwaW1GenVOTWFvWGxibHJYT2dJSl9Rd19BSnhaME1oTmVTdE5pNG9pRldWbkZ4OUN4ZEJTWmM2WThGY28?oc=5",
+     "published": "2026-11-26T04:29+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
     {
      "title": "Town of Cicero leaders vote down a data center moratorium; councilors say the law is too vague",
      "source": "WSYR",
      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQbnNQUEpydjNLMW1JeUVuYWdVTUNLOTI4c040UXl0V1o5YkM3RVowUDY4T3BrM3EtWkZKUjhTU2JTbTA0dFhYaGxvWTJtVXAtV2E5eWEtV0hUdjBvUkJrelloUWNmLUljWUpJZFlRRlI3NUx5OExiSHBWU1JBdlBsM3NqZFVoTzlmSkliTzNIcy1RaE5jRUlud0tqTnZNWThuT19BcnNZcjN4TUJSVHhjSW5xYUcxb3F0QmxJTTNSNWk0SXpuSFRHRnJaZjZxd3p60gHWAUFVX3lxTE5NYW4xSVZkNEh1TUhPRDlsVWJCQlEzU0ZoeGJhMFZzT245dlZtQTVISGxZemZ1UDd2X1F0cG42OXFOSW14MzNFTTZkTkRudENQMVM3RUFjMGlhdnV4Y2xfeWwxYlN0cXJ6YjNwWlp2SDVzWC1iV0dVX1ZKWGRsY1FpUXBVb3JocElPNmZBU1hMd3JEV2dtVTZ4cHZlc0ZUVVNEVjd6Y0VydTBNaGJJWGg3TktBb0tfTzh1MGt5TE9FZkRVaU01NTllQ0w4ckE4VUVOZmUyZGc?oc=5",
      "published": "2026-11-25T23:50+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Community opposition delays decision on Johnson Creek data center proposal",
-     "source": "WPR",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNTklpcTZaQ2JxSGg1ZEs0RTZiZDN0UG1POVRfbGkzYno2bjJlSFp2amkwelBPOU4yNnpadVR5dmNDT0JPdS04OFlXRkFGdHJfVFd5WFFicmJYNzZXcEkwak9LcHFqcExVcTJ6bUJ0UjIxMTlfSFc5UmRNeDdmcUMyb0RUOTZzZTdEdWs4TnJqOWliMWhwSDBFTk5BVDRocGhw?oc=5",
-     "published": "2026-11-25T23:16+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Council passes second reading of data center zoning ordinance, votes down proposed amendment",
-     "source": "Times Republican",
-     "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQM3dIcG9mUk80b2NjeW8wM2RaMEMxZ3lwTlVsTzlHS3JPLWZ1X3AwbHNqd3I0WklRdzhKRUlZdXR4OEs5Njc3RFNfNWxvSHhSNk9rS3AwWXBWZ1ZqVkxiNUJGSnR1UnRkREtFSGZiN0Q2cEZHNFpMWjA3eFhCeko3SmpLcF9EY1RpY0RMM2gtTEtmMVhjNGRvREUzZmZMV0VQX2hWYjUwbVlhbk5pX3haYlRfMW44SU00VEs1QkF1SEJudjdtbTBab3QtQzV4WDRHTm9mZmw1MXA3WGlKN0NwM1YwWQ?oc=5",
-     "published": "2026-11-25T21:32+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Butte's data center moratorium votes 'a while' away",
-     "source": "The Independent Record",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQWUNjaHNLNFNJbGxiUkViQTNVUDlyVnRiSHdYeGZjRlJXZmVEMkt5R1gwQi00MHhsNExIVUUxUXk3dHdSbExGTktacW5Cdnd6eWF3TWN3WXdTVkR5WHhwR3lqSTB3RkhfQWJXZmZhckZ5OUxpTzNIMzUtenAtX2dTNFBFbU9VNGJfYmhoZllwYmI0Y3kw?oc=5",
-     "published": "2026-11-25T21:09+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "Nashville Data Center Moratorium Expiring as Fight Over Zoo Project Reignites",
-     "source": "Nashville Banner",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQbE1xLU9Rb0I5eXEycXZfeGdtTjJsaGRMV3hYM2Q1QlZfMnEzMWV2RGs0cEs1TGlZY2d5T19GWWI3MjdWYnJzT1VVUXpWUkJGX3B5clZVRlYyTUQ5cFd1SUc0ZFpUbWNZVklEYXRDczFoc2RGa0dHQmhSdDF2Ui11Z2FBQnotdk1pUDl0cnlCVER3WV9QekNCYzVn?oc=5",
-     "published": "2026-11-25T20:46+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 1
-    },
-    {
-     "title": "DeWitt seeks change to data center moratorium",
-     "source": "Eagle News Online",
-     "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQeWtkTTBxYnY2SUNiMlRycnJSRE1fZXNkNVd1ZjAxQzhuN1FUMmZwUVo3NTU0YWlwS2U4OUc1YTQ1a3RFNG1VSUZLRUxHTzAxTFJ5NmFLbFFLellzLUZNRDR4STk3bzFiMThWZXlTYUh3Tld5QmVOdFdiTzFVakJWRzZfaFh4WG5XQ3hoWkpkOFVtay1qUHhPSlNxYVhtblpqMUhxNEpSemhXaUxxWjNYWm14R3pRUUI4U2dONU51Yk9OckNKMldiajl6LU5uNWplMWJWTnJsczdhUTB3S1MzX3BHWW9kQQ?oc=5",
-     "published": "2026-11-25T20:43+00:00",
      "tight": 0,
      "ease": 0,
      "friction": 1
@@ -694,16 +694,43 @@
   {
    "key": "hyperscalers",
    "name": "ענקיות הענן",
-   "items7": 226,
+   "items7": 236,
    "tight7": 0,
-   "ease7": 1,
-   "friction7": 0,
-   "net7": -1,
-   "net_prev7": 11,
-   "trend": -12,
+   "ease7": 0,
+   "friction7": 1,
+   "net7": 0,
+   "net_prev7": 7,
+   "trend": -7,
    "tight30": 17,
    "ease30": 4,
    "headlines": [
+    {
+     "title": "Meta Faces India Lawsuit Over 5.4 Million Content Restrictions",
+     "source": "GuruFocus.com",
+     "url": "https://finance.yahoo.com/technology/articles/meta-faces-india-lawsuit-over-180217910.html",
+     "published": "2026-11-26T18:02+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 1
+    },
+    {
+     "title": "Cerebras Expands AI Inference Reach: Can It Challenge NVDA & AMD?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/cerebras-expands-ai-inference-reach-161400247.html",
+     "published": "2026-11-26T16:14+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Vicor: Great Business, But I Would Sell",
+     "source": "Seeking Alpha",
+     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOY0NjQkpKRXFRdHJucmNjYkJ5UUl1aFRyczBQUU5Ma1FnV0tiX1RfUTI1YUdwVGpqUkl1emtHQ3BYcHNLS0JZeXNsWmJGMGFYR2NUS3F1VGtyM0pyMXlMQV9HS1BiZmNUZmkyVDc5a1JYSkRDLU5reUtscWZWUy1jQk82MWU?oc=5",
+     "published": "2026-11-26T06:28+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "EMCOR and D.R. Horton have been highlighted as Zacks Bull and Bear of the Day",
      "source": "TradingView",
@@ -730,109 +757,82 @@
      "tight": 0,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Generac (GNRC) Stock May Be 23% Undervalued Despite AI Backlog Growth",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/generac-gnrc-stock-may-23-220807655.html",
-     "published": "2026-11-20T22:08+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Jevons paradox and AI: Data shows usage soars as prices plunge",
-     "source": "Yahoo Finance Video",
-     "url": "https://finance.yahoo.com/video/jevons-paradox-and-ai-data-shows-usage-soars-as-prices-plunge-220139526.html",
-     "published": "2026-11-20T22:01+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Cerebras Stock Looks Like a Buy as Customer Base Expands",
-     "source": "Motley Fool",
-     "url": "https://www.fool.com/investing/2026/11/20/cerebras-stock-looks-like-a-buy-as-customer-base-expands/",
-     "published": "2026-11-20T19:50+00:00",
-     "tight": 0,
-     "ease": 0,
-     "friction": 0
     }
    ]
   },
   {
    "key": "neoclouds",
    "name": "ענן AI עצמאי",
-   "items7": 276,
-   "tight7": 10,
-   "ease7": 4,
-   "friction7": 5,
-   "net7": 6,
-   "net_prev7": 6,
-   "trend": 0,
-   "tight30": 27,
-   "ease30": 7,
+   "items7": 304,
+   "tight7": 8,
+   "ease7": 10,
+   "friction7": 3,
+   "net7": -2,
+   "net_prev7": 9,
+   "trend": -11,
+   "tight30": 28,
+   "ease30": 13,
    "headlines": [
     {
-     "title": "Nvidia B300 rental prices fall as Asian data centres seek alternatives to China",
-     "source": "Business Upturn",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxON1M2US01VllQSU1aYnRXV1llZzhlamhxemJiRndPSTlwUm50V1Rfek90Z0V3UUFIa2pUa19HdFhlaXJUZ2RtSEs5dEdIYnRLcDdlblJ3ckFfNHkxdEtZTmhNRHpOTGI2azlMbzBwWjdGX3lROFNvcGxzNVpoSkRwXzNEOW53ejRiU2IwV19FemxVc3g4VVFJSGZxbFhmS0NjZ2Z1TnN1Yno4eERkWXU4YVhWcWhTQXg3bmIyVw?oc=5",
-     "published": "2026-11-25T18:10+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Silicon Data contradicts GPU rental price drop claims, reports recent hikes",
-     "source": "Crypto Briefing",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOOGF3d0s3S1VTdm9QdzJaREE3aURuYkszZjM5cVIzU0VYVTVOZmFhSmRWVkFMdVZxaWRPQ3JEMlVOU3IxY0IzZU1VT3pQZTZSbHpRYS11S3NlSmJBempKTWJoV2hNZmxxQk5YT0l0d285N2tlY29vemlEdldzOWw5RndDVWNnOHdSN2xGM284QWN0MVAxbkExT3B6bE5pZkU3M0JKcA?oc=5",
-     "published": "2026-11-25T16:27+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "AI Chip Glut Fears Grow as Rental Prices Cool",
-     "source": "Value The Markets",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPdm9uSHRxTUVfdmdKQUN5c3MxcWdvOGFQMGh6ODk0TlpjUFJpRzFWTFZwSUtxb0dWRDhkRmVXNk51bVRtMXJzdFpSQnBMSFFfZy1XWng3dkpMYTZPaHBqejF6X05xVGd6NnlldGN0ei1SV3ZwWC1iNlphbmV4SmtmbmZFcGZ5ZW8?oc=5",
-     "published": "2026-11-25T11:49+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Nvidia GPU Rental Prices Lose Upward Momentum; Neocloud Stocks Plunge on Oversupply Fears",
-     "source": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBzREc3UUZlXzRGQUFtRzR0SC05YWpLQ204N0hwZnJ5Sy15V2dtUzV5TU03NnBLVFJwU3JhTHdqUm5vdElVRmR0N1NSSDFWSVZZRXpqcXpaY3FUU0R4VDJ5dklqYXFkWE9GNE5MNTAtTmJjbnhFamc?oc=5",
-     "published": "2026-11-25T09:55+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
-    },
-    {
-     "title": "Nvidia B300 Lead Times Stretch to 40 Weeks as Consumer GPU Capacity Crunch Deepens",
-     "source": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1oMmR4d1IxQ3ZUSDVBTVJKeEY2WEtkYnZPaXMxMjhrRThTdnV5M3lBWHh3d2lSQ2Z3TXhEWVhmQ1JGMWF6bGwxbS1HOERFOFFsT2RSU2lnWDhfRzV3cnM2QkF3TVlkeVl5ODVOckt0Qm9ER1lOQmc?oc=5",
-     "published": "2026-11-25T02:25+00:00",
+     "title": "3 AI Infrastructure Stocks Retail Investors Are Watching As Compute Spending Shifts",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-retail-201110278.html",
+     "published": "2026-11-26T20:11+00:00",
      "tight": 1,
      "ease": 0,
      "friction": 0
     },
     {
-     "title": "IREN Fell 42% This Month Even After The Market Jump on NVIDIA News: This Wall Street Pro Maintains That 440% Returns Are Coming After Q3 Earnings Downgrades",
-     "source": "24/7 Wall St.",
-     "url": "https://news.google.com/rss/articles/CBMiowJBVV95cUxNZ25JdnZGRmJPVUs0YWRyOEptUzVqajRRWk1xUk53VVZ5bWdiQnhIcjFkeFh5MWsteU80VFVhNm1jS1JqajlCMm5KM1Z5S0NZR1E0QnNFTU81ZlF3QlZ4RTBTdlRIU3pnZmZnbnVUZ1Zad1FCSnhydUs4bXBmRkdMVU9IM3lfcUJ6UlA2UnVqbV9PUVlERGpEb1JYd0poVjlhM2ktN01LWTRKc1R6ZUlkUTFnRlFVenhIeWhGOUpyUkJybTNVUXlWbGtwQmgzR21JQUNBZFRUVmxoU2lCb2w5NXhLaUhKV3dhSGxPWmhHc2Z2VTBYY3N5bjRjdS13dVgzdzZYc3hvQTUxaE42UmNneTJsUWlMUEkwbWdKcFNUOEtJaXc?oc=5",
-     "published": "2026-11-24T13:45+00:00",
+     "title": "SpaceX (NASDAQ:SPCX) Reportedly Slashes Nvidia AI Chip Rental Prices by Up to 35% as Oversupply Fears Grow",
+     "source": "Stocks Down Under",
+     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE13MUY4UFRHZnlrVjQwNl9Xb0ZUZDhaR0Y3bzhSTHJoa0g0SGx2aTFZM1I2WTNjbDZkSVpvVHhMRXVaQUJicUpSSnhYN0tlZHloZW41NTVqSkF3eVhDUzBWS2ZHOVVzVThNWUxJMElDalUwUjlaXzFlQy12b2xfQQ?oc=5",
+     "published": "2026-11-26T16:02+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "CoreWeave’s Default Odds Hit a Record. Core Scientific Has a Big Problem",
+     "source": "TIKR",
+     "url": "https://www.tikr.com/blog/coreweaves-default-odds-hit-a-record-core-scientific-has-a-big-problem?ref=yahoofinance&tlnk=yf-261126-x54g96m4",
+     "published": "2026-11-26T15:35+00:00",
      "tight": 0,
      "ease": 0,
-     "friction": 1
+     "friction": 0
+    },
+    {
+     "title": "CoreWeave’s Swaps Price a 68% Default Chance. That’s Bad News for Galaxy Digital",
+     "source": "TIKR",
+     "url": "https://www.tikr.com/blog/coreweaves-swaps-price-a-68-default-chance-thats-bad-news-for-galaxy-digital?ref=yahoofinance&tlnk=yf-261126-pvg7vpfj",
+     "published": "2026-11-26T15:21+00:00",
+     "tight": 0,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "JPMorgan: AI Model Usage Surges 79% in November, but Prices Drop Sharply",
+     "source": "KuCoin",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOVm4zSXlFTlgyemlqRzZ0ZklzTEpXaXJoVDFQSmdFRmVPSGMxN0RZZTBaWFFETW5lUW9uaDVCUkp0U1YzcGhEOUMxYkRoVUVFcVZyd2poLVZsRFdhWUpGbHJSYk10d0Q0S050eHBlYlBDSVdtc1djSHJ3ZjRDa0wtY3JsZ1NQT21hSWNzeFRycHpLVHZYRzVLRWZqejVxeExxZXdGYWxR?oc=5",
+     "published": "2026-11-26T07:47+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "SpaceX Reportedly Slashes Some Nvidia Chip Rents — AI Researcher Sees Musk’s Edge In A GPU Glut",
+     "source": "Stocktwits",
+     "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQQjJpSDBrV1R0Z19fMFg4NUZpbFhOZlJhdVE4WUF2eHdjNFpQRmdrV2RVU2NJM1dURzRuMG8ySHcxYmNYNTlFZGZFdGVGQnlpWEEzQzd4YVZacTVYaE15b211a3V0OFRFanY4X1lwMjJWMGhpc0RncXYtbmZTWU1MRk85WDRZQW9tQWNVZFVueXVvNGxpZFNaMXFDQVg5TnptR193TFpWUHh5S1ViXzVqd0NJRjBSSFJEV1FVWHlmdlpzUWU5djI0N25EdlNIQ3k0NTVMLTg4bw?oc=5",
+     "published": "2026-11-26T05:32+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
     }
    ]
   },
   {
    "key": "software",
    "name": "תוכנה ופלטפורמות AI",
-   "items7": 64,
+   "items7": 60,
    "tight7": 0,
    "ease7": 1,
    "friction7": 0,
@@ -865,16 +865,52 @@
   {
    "key": "analog_power",
    "name": "שבבים אנלוגיים וחשמל (מעקב)",
-   "items7": 167,
+   "items7": 159,
    "tight7": 15,
-   "ease7": 2,
-   "friction7": 2,
-   "net7": 13,
-   "net_prev7": 14,
-   "trend": -1,
-   "tight30": 37,
-   "ease30": 3,
+   "ease7": 3,
+   "friction7": 1,
+   "net7": 12,
+   "net_prev7": 11,
+   "trend": 1,
+   "tight30": 40,
+   "ease30": 4,
    "headlines": [
+    {
+     "title": "6000MT/s Black Friday CORSAIR Vengeance DDR5 RAM deal drops price to its lowest in months as global shortages continue",
+     "source": "PC Guide",
+     "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPQWRfSnFEMnZiWDZTUTREZUpzQWV0MU1JdW5GR2NaTGstUEJVVW1hTlhxdmRPYTBNQ29yWjczMEc3ZGlEbjk5ZmJJMmlCUHdETmRrMklzT3B3Nkt3MzBkWlBKX1lFcEtfTmRkN2dRZGpQZEpDeFRkSmVuUmNFMTVFajhxZU11YXpDTUwtdFB4Wlg4YnJyanpsYl9ONlE3MklwakNNMmVJVTd6Y3NRZWlpZEdaY2NHVXlqVXBnbW9vRnA1NjFHZWNvRGhUWGlqNXRlc1pScXctWTY0cVYwNnhVN2ZLaw?oc=5",
+     "published": "2026-11-27T03:11+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Can Capacity Expansion help Vicor Meet Rising AI Power Demand?",
+     "source": "Zacks",
+     "url": "https://finance.yahoo.com/technology/ai/articles/capacity-expansion-help-vicor-meet-121300058.html",
+     "published": "2026-11-26T12:13+00:00",
+     "tight": 0,
+     "ease": 1,
+     "friction": 0
+    },
+    {
+     "title": "Samsung and DB HiTek seek 8-inch foundry price rises as AI power chips fill lines",
+     "source": "MLQ.ai",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPbnpsUkZ2NVBOb1Z5MDhaWmtnVVpUNEc1cVRXemZkXy1oSmQ3UlJsX2JkYmpXMGs0WE8wQk1vQV9QaU5HM3Rab1NqX0Z3c01VUGZGLUxRTEFWei1IOHlmWHZ4VlpLNng0X3N6aWhBUTU3MzNoTjNKM0xwV25OSU5FdkpvM0llQTk1UXNMS1VuMzItczJSYnIwYy1CaWRKNDdQa05UTw?oc=5",
+     "published": "2026-11-26T10:44+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
+    {
+     "title": "Chip Lead Times Stretch to 26 Weeks Amid Demand Surge",
+     "source": "Wisevoter",
+     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQU3JQNVdFUW43dDg5MllEZ3JTZG5heGtvNE9nQmdBNmJYcHVTeXRtdFFhZ3YyYV80NmxQUXliRGJzdTBGUzlWX0R6SEExcS0yRkpCMEJETGRRekNjM0JPMl9McWRiNG9OQWREUlhnVFVuTm0tdFIxSEx3WmlCSmw4eHg5YVNaWDhfTFpCYl8wR3UtQQ?oc=5",
+     "published": "2026-11-26T07:13+00:00",
+     "tight": 1,
+     "ease": 0,
+     "friction": 0
+    },
     {
      "title": "Why Is Ambarella (AMBA) Stock Down 20%? Memory Shortage Hits AI Chip Demand",
      "source": "MEXC",
@@ -892,55 +928,19 @@
      "tight": 1,
      "ease": 0,
      "friction": 0
-    },
-    {
-     "title": "Ambarella Q3 FY 2027: Memory Shortage Shifts Orders Toward Premium Chips",
-     "source": "The Futurum Group",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPYzZteTRqMWZxdkRETzN3b2sxUXdJcFZVdGJjT1Y0bUFmbUR0UjYzTW4wd040OTN2MlJaWkw4MW51TUw2di1DWFBSWmplZF93M2ZGaG9WZFFRZnV1ajVuTFhIbDlFU2pyTE0yZ3VjOWtFdTZBVU9XQUdyVkMwWk13TTBRWlJhWlJDN1d0YU1qSFRBNHA0TUk4NjNXemJfZm5FTy1pQThDc3RYdw?oc=5",
-     "published": "2026-11-25T20:50+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Ambarella sinks as memory shortages hit chip orders",
-     "source": "Proactive financial news",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNeno2aU8xbTE5VDlMbGg2MGZfOTFSZkc4bWh5SUNKdzgwcDhOM1JZcVJBbFZzdXJXOXo4STJ3X3hBMVBvVGt6M2paaS1QOWVnejBoYmVQTUF1cmoyNldPQXNDXzM3YldWbXRvZG4tUnZlV2JLczYwN1JndTluWG9sSXdlRlIzQUJ2V1pwWXMzLUh6NERNdWJWRFFMcjVENlpLTTYxdHQ0ZTN1MzN4OUxlVVY1STNlcmI2NXcwZnhHWQ?oc=5",
-     "published": "2026-11-25T17:03+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "ADI Q4 Earnings Call Points Capacity Push and Supply Bottlenecks",
-     "source": "Zacks",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/adi-q4-earnings-call-points-140000273.html",
-     "published": "2026-11-25T14:00+00:00",
-     "tight": 1,
-     "ease": 0,
-     "friction": 0
-    },
-    {
-     "title": "Texas Instruments (TXN) Remains A Preferred Pick Despite Chip Oversupply Risk",
-     "source": "Yahoo Finance",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQZTFmVnpxWkkxQXE0WUlNUWhWdGFEX2NsVWowc0xKdUN1SGd5Vm1HaHFiYkxRcnRQVVdRSmdTUXNrUXpjTng0WXFSZ2ktUEp5TzBMcGlXLVRyREVVQVVOYk93ckU1djBtUzcwQVVRd0xsR09RX1hwdVMxa1VJRzdQc2l5X245akZkazdYcUdVWWFGdl9LUnlPb191R3JKM0ZCV1NKS2UzRQ?oc=5",
-     "published": "2026-11-24T22:23+00:00",
-     "tight": 0,
-     "ease": 1,
-     "friction": 0
     }
    ]
   },
   {
    "key": "edge_devices",
    "name": "מעבדים ומכשירי קצה (מעקב)",
-   "items7": 80,
+   "items7": 78,
    "tight7": 1,
    "ease7": 1,
    "friction7": 0,
    "net7": 0,
-   "net_prev7": 5,
-   "trend": -5,
+   "net_prev7": 3,
+   "trend": -3,
    "tight30": 9,
    "ease30": 5,
    "headlines": [
@@ -1024,7 +1024,7 @@
    2,
    0,
    7,
-   3
+   4
   ],
   "design": [
    0,
@@ -1036,7 +1036,7 @@
    1,
    -1,
    0,
-   1
+   3
   ],
   "foundry": [
    0,
@@ -1048,7 +1048,7 @@
    3,
    4,
    4,
-   3
+   0
   ],
   "memory": [
    0,
@@ -1060,7 +1060,7 @@
    13,
    26,
    9,
-   -2
+   0
   ],
   "compute": [
    0,
@@ -1072,7 +1072,7 @@
    10,
    26,
    29,
-   13
+   16
   ],
   "networking": [
    0,
@@ -1108,7 +1108,7 @@
    8,
    22,
    25,
-   9
+   11
   ],
   "power_generation": [
    0,
@@ -1156,7 +1156,7 @@
    0,
    8,
    10,
-   1
+   -4
   ],
   "software": [
    0,
@@ -1180,7 +1180,7 @@
    3,
    11,
    10,
-   9
+   11
   ],
   "edge_devices": [
    0,
@@ -1243,9 +1243,9 @@
     239
    ],
    [
-    4,
+    5,
     1,
-    185
+    220
    ]
   ],
   "design": [
@@ -1295,9 +1295,9 @@
     68
    ],
    [
-    1,
+    3,
     0,
-    35
+    46
    ]
   ],
   "foundry": [
@@ -1348,8 +1348,8 @@
    ],
    [
     5,
-    2,
-    136
+    5,
+    179
    ]
   ],
   "memory": [
@@ -1399,9 +1399,9 @@
     356
    ],
    [
-    26,
-    28,
-    193
+    36,
+    36,
+    247
    ]
   ],
   "compute": [
@@ -1451,9 +1451,9 @@
     439
    ],
    [
-    20,
-    7,
-    215
+    26,
+    10,
+    274
    ]
   ],
   "networking": [
@@ -1503,9 +1503,9 @@
     205
    ],
    [
-    5,
-    2,
-    128
+    7,
+    4,
+    158
    ]
   ],
   "servers": [
@@ -1555,9 +1555,9 @@
     203
    ],
    [
-    7,
-    1,
-    179
+    9,
+    3,
+    282
    ]
   ],
   "power_equipment": [
@@ -1607,9 +1607,9 @@
     413
    ],
    [
-    10,
-    1,
-    213
+    13,
+    2,
+    286
    ]
   ],
   "power_generation": [
@@ -1661,7 +1661,7 @@
    [
     2,
     0,
-    150
+    190
    ]
   ],
   "datacenter_reits": [
@@ -1711,9 +1711,9 @@
     420
    ],
    [
-    0,
-    0,
-    208
+    1,
+    1,
+    254
    ]
   ],
   "hyperscalers": [
@@ -1765,7 +1765,7 @@
    [
     0,
     0,
-    152
+    209
    ]
   ],
   "neoclouds": [
@@ -1815,9 +1815,9 @@
     334
    ],
    [
-    5,
-    4,
-    191
+    6,
+    10,
+    271
    ]
   ],
   "software": [
@@ -1869,7 +1869,7 @@
    [
     0,
     1,
-    49
+    56
    ]
   ],
   "analog_power": [
@@ -1919,9 +1919,9 @@
     129
    ],
    [
-    11,
-    2,
-    130
+    14,
+    3,
+    148
    ]
   ],
   "edge_devices": [
@@ -1973,31 +1973,31 @@
    [
     1,
     0,
-    66
+    73
    ]
   ]
  },
  "stocks": {
   "000660.KS": {
    "items": 12,
-   "tight": 1,
-   "ease": 2,
+   "tight": 3,
+   "ease": 1,
    "friction": 0
   },
   "005930.KS": {
-   "items": 8,
+   "items": 7,
    "tight": 5,
    "ease": 0,
    "friction": 0
   },
   "4062.T": {
-   "items": 1,
+   "items": 3,
    "tight": 1,
    "ease": 0,
    "friction": 0
   },
   "AAOI": {
-   "items": 13,
+   "items": 16,
    "tight": 0,
    "ease": 1,
    "friction": 0
@@ -2009,19 +2009,19 @@
    "friction": 0
   },
   "ALAB": {
-   "items": 18,
+   "items": 25,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "AMAT": {
-   "items": 34,
+   "items": 37,
    "tight": 0,
    "ease": 0,
-   "friction": 0
+   "friction": 1
   },
   "AMD": {
-   "items": 45,
+   "items": 41,
    "tight": 2,
    "ease": 0,
    "friction": 0
@@ -2045,46 +2045,46 @@
    "friction": 0
   },
   "APH": {
-   "items": 22,
+   "items": 19,
    "tight": 1,
    "ease": 0,
    "friction": 0
   },
   "APLD": {
    "items": 30,
-   "tight": 1,
-   "ease": 0,
-   "friction": 0
-  },
-  "ARM": {
-   "items": 28,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
+  "ARM": {
+   "items": 30,
+   "tight": 1,
+   "ease": 0,
+   "friction": 0
+  },
   "ASML": {
-   "items": 37,
+   "items": 32,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "ASX": {
-   "items": 14,
+   "items": 15,
    "tight": 0,
-   "ease": 1,
+   "ease": 2,
    "friction": 0
   },
   "AVGO": {
-   "items": 42,
-   "tight": 0,
-   "ease": 0,
-   "friction": 0
-  },
-  "BE": {
    "items": 40,
    "tight": 0,
    "ease": 0,
    "friction": 1
+  },
+  "BE": {
+   "items": 34,
+   "tight": 0,
+   "ease": 0,
+   "friction": 2
   },
   "CAMT": {
    "items": 2,
@@ -2093,56 +2093,56 @@
    "friction": 0
   },
   "CCJ": {
-   "items": 8,
+   "items": 6,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "CDNS": {
-   "items": 10,
-   "tight": 1,
+   "items": 11,
+   "tight": 2,
    "ease": 0,
    "friction": 0
   },
   "CEG": {
-   "items": 22,
+   "items": 24,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "CIEN": {
-   "items": 13,
+   "items": 11,
    "tight": 0,
-   "ease": 0,
+   "ease": 1,
    "friction": 0
   },
   "CLS": {
-   "items": 15,
+   "items": 17,
    "tight": 0,
-   "ease": 1,
+   "ease": 0,
    "friction": 1
   },
   "COHR": {
-   "items": 24,
+   "items": 26,
    "tight": 2,
-   "ease": 1,
+   "ease": 3,
    "friction": 0
   },
   "CRDO": {
-   "items": 27,
+   "items": 28,
    "tight": 1,
    "ease": 0,
    "friction": 0
   },
   "CRWV": {
-   "items": 47,
-   "tight": 0,
+   "items": 43,
+   "tight": 1,
    "ease": 0,
    "friction": 0
   },
   "DELL": {
-   "items": 44,
-   "tight": 3,
+   "items": 46,
+   "tight": 1,
    "ease": 0,
    "friction": 0
   },
@@ -2153,43 +2153,43 @@
    "friction": 0
   },
   "ENR.DE": {
-   "items": 5,
-   "tight": 0,
+   "items": 10,
+   "tight": 1,
    "ease": 0,
    "friction": 0
   },
   "ENTG": {
-   "items": 7,
+   "items": 8,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "EQIX": {
-   "items": 16,
-   "tight": 0,
-   "ease": 0,
+   "items": 21,
+   "tight": 1,
+   "ease": 1,
    "friction": 0
   },
   "ETN": {
-   "items": 24,
+   "items": 21,
    "tight": 0,
    "ease": 0,
-   "friction": 3
+   "friction": 2
   },
   "FN": {
-   "items": 13,
+   "items": 14,
    "tight": 0,
    "ease": 2,
    "friction": 0
   },
   "GEV": {
-   "items": 34,
+   "items": 31,
    "tight": 1,
    "ease": 0,
-   "friction": 2
+   "friction": 1
   },
   "GLW": {
-   "items": 27,
+   "items": 26,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2197,30 +2197,30 @@
   "GOOGL": {
    "items": 45,
    "tight": 0,
-   "ease": 1,
-   "friction": 0
-  },
-  "HPE": {
-   "items": 42,
-   "tight": 0,
    "ease": 0,
    "friction": 0
   },
+  "HPE": {
+   "items": 39,
+   "tight": 1,
+   "ease": 1,
+   "friction": 0
+  },
   "HUBB": {
-   "items": 2,
+   "items": 4,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "INTC": {
-   "items": 41,
+   "items": 42,
    "tight": 0,
    "ease": 1,
    "friction": 0
   },
   "IREN": {
-   "items": 42,
-   "tight": 1,
+   "items": 33,
+   "tight": 0,
    "ease": 0,
    "friction": 1
   },
@@ -2231,7 +2231,7 @@
    "friction": 0
   },
   "JBL": {
-   "items": 16,
+   "items": 18,
    "tight": 0,
    "ease": 1,
    "friction": 0
@@ -2243,14 +2243,14 @@
    "friction": 0
   },
   "LITE": {
-   "items": 38,
-   "tight": 1,
+   "items": 32,
+   "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "LRCX": {
-   "items": 37,
-   "tight": 0,
+   "items": 41,
+   "tight": 1,
    "ease": 0,
    "friction": 0
   },
@@ -2261,10 +2261,10 @@
    "friction": 0
   },
   "META": {
-   "items": 41,
+   "items": 43,
    "tight": 0,
    "ease": 0,
-   "friction": 0
+   "friction": 1
   },
   "MOD": {
    "items": 5,
@@ -2273,55 +2273,55 @@
    "friction": 0
   },
   "MPWR": {
-   "items": 10,
-   "tight": 0,
-   "ease": 0,
-   "friction": 0
-  },
-  "MRVL": {
-   "items": 43,
-   "tight": 1,
-   "ease": 0,
-   "friction": 0
-  },
-  "MSFT": {
-   "items": 46,
-   "tight": 0,
-   "ease": 0,
-   "friction": 0
-  },
-  "MU": {
-   "items": 56,
-   "tight": 10,
-   "ease": 6,
-   "friction": 1
-  },
-  "NBIS": {
-   "items": 41,
-   "tight": 0,
-   "ease": 0,
-   "friction": 0
-  },
-  "NOW": {
-   "items": 30,
-   "tight": 0,
-   "ease": 1,
-   "friction": 0
-  },
-  "NRG": {
    "items": 12,
    "tight": 0,
    "ease": 1,
    "friction": 0
   },
+  "MRVL": {
+   "items": 41,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "MSFT": {
+   "items": 42,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "MU": {
+   "items": 57,
+   "tight": 10,
+   "ease": 7,
+   "friction": 1
+  },
+  "NBIS": {
+   "items": 34,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
+  "NOW": {
+   "items": 24,
+   "tight": 0,
+   "ease": 1,
+   "friction": 0
+  },
+  "NRG": {
+   "items": 11,
+   "tight": 0,
+   "ease": 0,
+   "friction": 0
+  },
   "NVDA": {
-   "items": 69,
-   "tight": 8,
-   "ease": 2,
+   "items": 68,
+   "tight": 7,
+   "ease": 3,
    "friction": 0
   },
   "NVMI": {
-   "items": 1,
+   "items": 2,
    "tight": 0,
    "ease": 0,
    "friction": 0
@@ -2342,58 +2342,58 @@
    "items": 20,
    "tight": 0,
    "ease": 0,
-   "friction": 1
+   "friction": 0
   },
   "OLED": {
-   "items": 1,
+   "items": 2,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "ON": {
-   "items": 10,
+   "items": 9,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "ONTO": {
-   "items": 3,
+   "items": 4,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "ORCL": {
-   "items": 41,
+   "items": 40,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "PLTR": {
-   "items": 36,
+   "items": 38,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "POWL": {
-   "items": 17,
-   "tight": 1,
+   "items": 15,
+   "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "PWR": {
-   "items": 25,
-   "tight": 3,
+   "items": 20,
+   "tight": 2,
    "ease": 1,
    "friction": 0
   },
   "QCOM": {
-   "items": 38,
+   "items": 32,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "SMCI": {
-   "items": 38,
+   "items": 40,
    "tight": 1,
    "ease": 0,
    "friction": 0
@@ -2405,33 +2405,27 @@
    "friction": 0
   },
   "SNDK": {
-   "items": 43,
+   "items": 44,
    "tight": 0,
    "ease": 4,
    "friction": 2
   },
   "SNPS": {
-   "items": 11,
+   "items": 8,
    "tight": 0,
    "ease": 0,
    "friction": 0
   },
   "STM": {
-   "items": 12,
+   "items": 6,
    "tight": 1,
-   "ease": 1,
-   "friction": 1
-  },
-  "STX": {
-   "items": 36,
-   "tight": 0,
    "ease": 1,
    "friction": 0
   },
-  "SU.PA": {
-   "items": 1,
-   "tight": 1,
-   "ease": 0,
+  "STX": {
+   "items": 37,
+   "tight": 0,
+   "ease": 1,
    "friction": 0
   },
   "SWKS": {
@@ -2441,8 +2435,8 @@
    "friction": 0
   },
   "TER": {
-   "items": 23,
-   "tight": 1,
+   "items": 26,
+   "tight": 0,
    "ease": 1,
    "friction": 0
   },
@@ -2453,26 +2447,26 @@
    "friction": 0
   },
   "TSEM": {
-   "items": 1,
+   "items": 2,
    "tight": 0,
-   "ease": 0,
+   "ease": 1,
    "friction": 0
   },
   "TSM": {
-   "items": 43,
+   "items": 41,
    "tight": 2,
    "ease": 0,
-   "friction": 1
+   "friction": 0
   },
   "TXN": {
-   "items": 31,
+   "items": 30,
    "tight": 0,
-   "ease": 1,
+   "ease": 2,
    "friction": 1
   },
   "VRT": {
-   "items": 39,
-   "tight": 1,
+   "items": 33,
+   "tight": 0,
    "ease": 0,
    "friction": 2
   },
@@ -2483,7 +2477,7 @@
    "friction": 0
   },
   "WDC": {
-   "items": 38,
+   "items": 34,
    "tight": 0,
    "ease": 1,
    "friction": 0
@@ -2506,6 +2500,21 @@
    }
   },
   {
+   "name": "Cerebras",
+   "ticker": null,
+   "layer": "compute",
+   "mentions30": 24,
+   "tight30": 3,
+   "ease30": 0,
+   "mentions7": 2,
+   "headline": {
+    "title": "Cerebras Expands AI Inference Reach: Can It Challenge NVDA & AMD?",
+    "url": "https://finance.yahoo.com/technology/ai/articles/cerebras-expands-ai-inference-reach-161400247.html",
+    "source": "Zacks",
+    "published": "2026-11-26T16:14+00:00"
+   }
+  },
+  {
    "name": "Cisco",
    "ticker": "CSCO",
    "layer": "networking",
@@ -2521,33 +2530,33 @@
    }
   },
   {
-   "name": "Cerebras",
-   "ticker": null,
-   "layer": "compute",
-   "mentions30": 22,
-   "tight30": 3,
-   "ease30": 0,
-   "mentions7": 1,
-   "headline": {
-    "title": "Cerebras Stock Looks Like a Buy as Customer Base Expands",
-    "url": "https://www.fool.com/investing/2026/11/20/cerebras-stock-looks-like-a-buy-as-customer-base-expands/",
-    "source": "Motley Fool",
-    "published": "2026-11-20T19:50+00:00"
-   }
-  },
-  {
    "name": "Hut 8",
    "ticker": "HUT",
    "layer": "neoclouds",
    "mentions30": 18,
    "tight30": 0,
    "ease30": 0,
-   "mentions7": 9,
+   "mentions7": 8,
    "headline": {
     "title": "Morgan Stanley says new chip export rule favors US data center developers TeraWulf, Hut 8, Cipher",
     "url": "https://blockspace.media/insight/chip-export-rule-data-centers/",
     "source": "Blockspace",
     "published": "2026-11-24T15:45+00:00"
+   }
+  },
+  {
+   "name": "Argan",
+   "ticker": "AGX",
+   "layer": "power_generation",
+   "mentions30": 16,
+   "tight30": 0,
+   "ease30": 2,
+   "mentions7": 6,
+   "headline": {
+    "title": "Argan upgraded at Piper Sandler on share price decline",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOZGE5V0FMek4tZHBzZERzUXg0NWt3bUtfcDcxaG9DeGtwN1ZTQ3hJeEhWUlpGeXBrSVlZcnZRaTBwUzBwRnV6WnNIRTdSZXE2M25WVEJUUzgtbHhXd0lCaTJIVlY1Tl8yUkN0OW9zMVd2MFNIUzI0NmtJa01SNWNyVndZUWxpZDFGRGpMbHpWSQ?oc=5",
+    "source": "Seeking Alpha",
+    "published": "2026-11-25T19:10+00:00"
    }
   },
   {
@@ -2559,40 +2568,25 @@
    "ease30": 0,
    "mentions7": 3,
    "headline": {
-    "title": "Comfort Systems vs. Vertiv: Which AI Cooling Stock Is a Better Buy?",
-    "url": "https://finance.yahoo.com/technology/ai/articles/comfort-systems-vs-vertiv-ai-163100993.html",
-    "source": "Zacks",
-    "published": "2026-11-24T16:31+00:00"
-   }
-  },
-  {
-   "name": "Argan",
-   "ticker": "AGX",
-   "layer": "power_generation",
-   "mentions30": 14,
-   "tight30": 0,
-   "ease30": 1,
-   "mentions7": 5,
-   "headline": {
-    "title": "Can Argan's $440M Net Liquidity Fund Its Next Growth Phase?",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/argans-440m-net-liquidity-fund-165400837.html",
-    "source": "Zacks",
-    "published": "2026-11-25T16:54+00:00"
+    "title": "Can Comfort Systems' Tech Exposure Become a Risk Worth Watching?",
+    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOQ1NCQUxtZEl1TGxYcGtKVms2akZacDdFRU96TzNST2VaVUtkMGEydC1XaWpRV21qbFg5RFJhTVRfaTRHTXRFSlBybC12WXhfN1VrREVteWljOEptWDlndVRFWjZJcmY5U2ZmbFhaQktsUkV0UFRUaEthTXdHR0NmeUJ2cWxfbGtreHhMUkhPZHNjaFNhNUFmb0dMT2Q4S2xVanVJbG0zZmg0Z09Da1VUWXZaalg2YTBxN0E?oc=5",
+    "source": "TradingView",
+    "published": "2026-11-26T13:36+00:00"
    }
   },
   {
    "name": "Caterpillar",
    "ticker": "CAT",
    "layer": "power_equipment",
-   "mentions30": 13,
+   "mentions30": 14,
    "tight30": 3,
    "ease30": 0,
-   "mentions7": 3,
+   "mentions7": 2,
    "headline": {
-    "title": "Midterms Drive Data Center Permitting Changes Benefiting Bloom Energy and Caterpillar",
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOS282Mm9xSDdjdm1WQkZMN3hmYVBDeExQWk9WaFpGV0hSSGQzUU1FQUdRVVhLdktsbi1OUzd1TzJpRmZDTDV0QXM2bFJfcXR2elhPYXE3M3dwSHllaS1BNUZfUzFEZjZ3S1ZUalkxOFlVZEJEc3J0Rk9pVThoVVhJY3p1V0UwRmtCRWxpbjAxcFhNWkZhdGJZc1UzcDZGODRGZ1c5bU9LMUpyZnNybzBjaDFGMEh6aHdvQW5J?oc=5",
-    "source": "Intellectia AI",
-    "published": "2026-11-24T01:08+00:00"
+    "title": "Caterpillar's $78 Billion Backlog, Explained",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNU1dDTEVlSndnRXNMTkI2SDhRNC1yT1NhblVLRzZMSFZ1cUFtVl9aeW8tMkVBX2ZTb1BnRzJjNi1JNDhmYXp3TmJoRXFYTmVzYU9ZZU84RDVsQmg1U21GclRWSjRvcjFuQ0dCdFBXMFppWVpkSFJfbGpTQ1VGN19WaDVWM3ZlR25CVkNNQ2JWMC0yUQ?oc=5",
+    "source": "The Motley Fool",
+    "published": "2026-11-26T18:37+00:00"
    }
   },
   {
@@ -2602,7 +2596,7 @@
    "mentions30": 13,
    "tight30": 0,
    "ease30": 0,
-   "mentions7": 6,
+   "mentions7": 5,
    "headline": {
     "title": "Bernstein favors Riot and TeraWulf after AI sell-off, keeps CoreWeave at Underperform",
     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSjlLeWpnZmY1V2NfXzl6UnVXMExoZWFsSG4xZy0xaUdaeXZUTWpWQXc2R3JRbV9xZnlxZ3llTHdPRHVqZVdwN3Q5SXRTV19kMHg3dkdxRDAwR1J1Z2NqOTdTZExIbU1GeHpPLU8ybUpTNkhJS3VqQVVQRU9sU19wUw?oc=5",
@@ -2626,6 +2620,36 @@
    }
   },
   {
+   "name": "Trane",
+   "ticker": "TT",
+   "layer": "power_equipment",
+   "mentions30": 9,
+   "tight30": 3,
+   "ease30": 0,
+   "mentions7": 3,
+   "headline": {
+    "title": "Trane: 3 Key Takeaways for Long-Term Investors",
+    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQc2pZMlBpMVE3Z0ZNQ2hIWnh4VTROeVR6TklkSG5sYkkzVVB3UTJyVHhZdlFEZlJNS2ZVMFlZanVwaHh2SVFTSTlvRWJZZzZGXzFkUWxHRXJtT0tleDNHT01aMThYX0dNdXgzOGhUamVtZ1JUNzRBRjRhUGdZdmstMjkxZ3ZDQi1XVElsRUtjZzhPZHpid0J1Q3J2dERaRll2NG5OX1hoZjROMTQ3NkE2eXdQc0lrdHNIOVFzbjR3eF81VFI2VThN?oc=5",
+    "source": "The Globe and Mail",
+    "published": "2026-11-26T06:27+00:00"
+   }
+  },
+  {
+   "name": "Centrus Energy",
+   "ticker": "LEU",
+   "layer": "power_generation",
+   "mentions30": 8,
+   "tight30": 2,
+   "ease30": 1,
+   "mentions7": 4,
+   "headline": {
+    "title": "Energy Fuels vs. Centrus Energy: Which Uranium Stock Has The Edge Now?",
+    "url": "https://finance.yahoo.com/energy/articles/energy-fuels-vs-centrus-energy-131600993.html",
+    "source": "Zacks",
+    "published": "2026-11-26T13:16+00:00"
+   }
+  },
+  {
    "name": "Sterling Infrastructure",
    "ticker": "STRL",
    "layer": "power_equipment",
@@ -2641,48 +2665,33 @@
    }
   },
   {
-   "name": "Trane",
-   "ticker": "TT",
-   "layer": "power_equipment",
-   "mentions30": 7,
-   "tight30": 3,
-   "ease30": 0,
-   "mentions7": 1,
-   "headline": {
-    "title": "Trane raises 2026 revenue growth forecast to 11% on strong HVAC demand and $12.5B equipment backlog",
-    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPNEp6YXpMNUJZa2lUdDhJTkp5RVpseVhvd1BMY01CQWZ5OXFwU05VWHA5aG1IcVppS1NLNG9aSFRmMm5yNzBEdkpFdGEwUDlodjA1eXhwVFZUWnMtVE4xcWN5Y1NEN0pia2EzLU9adG1PUTVnNzNzb0dpTkI2TlBFeW1fdHZ3VElKSnBXY3NYeUdXZzVVVzZZUGZjZ3FXREZINXZSN2taSTlfaDg?oc=5",
-    "source": "Pluang",
-    "published": "2026-11-26T03:14+00:00"
-   }
-  },
-  {
-   "name": "Centrus Energy",
-   "ticker": "LEU",
-   "layer": "power_generation",
-   "mentions30": 7,
-   "tight30": 2,
-   "ease30": 1,
-   "mentions7": 3,
-   "headline": {
-    "title": "Centrus Energy Stock Gets Oklo HALEU Supply Deal Backed By Meta",
-    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPdlRQc3hmN0U2UDRySDlIN3UxeDJwOUc2c1hCSW8wbXAtX0ZnQngwTEZCcTVWa0VSOGxlVURGRUdZMWlzZXlnSDdOdlVZZ3o2eGF0b3pHQkgzRmYyTzYxVnNvZmF4bkV3c3VKM3VmanppN1BLWEszRmk5Yzl0Z19wZ2V1a3hweDVRaHJnWlg4TGgyamE0SHYzT09TOXdrVEN4bVlfZl9vXzZZbHIxRjZ1UTg0OEN2ZHJmNkJBZTMwbU5tVHYtTFlUb2dUbErSAcwBQVVfeXFMT3ZUUHN4ZjdFNlA0ckg5SDd1MXgycDlHNnNYQklvMG1wLV9GZ0J4MExGQnE1VmtFUjhsZVVERkVHWTFpc2V5Z0g3TnZVWWd6NnhhdG96R0JIM0ZmMk82MVZzb2ZheG5Fd3N1SjN1Zmp6aTdQS1hLM0ZpOWM5dGdfcGdldWt4cHg1UWhyZ1pYOExoMmphNEh2M09PUzl3a1RDeG1ZX2Zfb182WWxyMUY2dVE4NDhDdmRyZjZCQWUzMG1ObVR2LUxZVG9nVGxK?oc=5",
-    "source": "Simply Wall St",
-    "published": "2026-11-24T11:13+00:00"
-   }
-  },
-  {
    "name": "NetApp",
    "ticker": "NTAP",
    "layer": "memory",
-   "mentions30": 6,
+   "mentions30": 7,
    "tight30": 2,
    "ease30": 0,
-   "mentions7": 1,
+   "mentions7": 2,
    "headline": {
-    "title": "NetApp's Q2 Revenue Outlook Signals 23% Growth: Can It Deliver?",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/netapps-q2-revenue-outlook-signals-122000542.html",
+    "title": "NetApp Stock Ahead of Q2 Earnings: Should You Buy, Hold or Sell?",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/netapp-stock-ahead-q2-earnings-140400029.html",
     "source": "Zacks",
-    "published": "2026-11-24T12:20+00:00"
+    "published": "2026-11-26T14:04+00:00"
+   }
+  },
+  {
+   "name": "Generac",
+   "ticker": "GNRC",
+   "layer": "power_equipment",
+   "mentions30": 6,
+   "tight30": 0,
+   "ease30": 0,
+   "mentions7": 3,
+   "headline": {
+    "title": "What Generac Holders Bought Into",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQTVFzd0FYOWNsbElWQUtDV3A1UXZwLVFIM1R6V1VDSS1uN1dPRGVZVS1SenB2cmNwOVdrSWlrelZ0TVlSVzh2c09sbHFQRHN1U3lLZWRINGZJMlBXcmxJaXpMSFVjSVZOZ1U5a1Z1SU1sZnJ1TVVGRkI2a2RnZDdObE8xVDZxTnNPZy1pR2xudVV0OC1MSGRUNm0wUGxUMWtBZlFTdU90NlpRelVmSWYw0gG0AUFVX3lxTFBpSDhXUEhfUGNVUWRvSXVCWU9UZjZ4QkFLRjUyMVY3U1NhWXFvNU1taW1qSDRlMkpMVFdFbXRHZXQxYXctU0lWcDlSSGMwVHR3ZGZkLUNJdGdwSmREckpLa0RzUUxweHVIcnhuVEduRHlvSDc1UWM2UUFaNVo5OXB0T0RNU3p5bXRHdFVMaG9uQ19sQVNCbzMxOGJwY2UzcjVEaFBOTmw1RFFDRUtFcTdyVnlRZw?oc=5",
+    "source": "Simply Wall St",
+    "published": "2026-11-26T22:09+00:00"
    }
   },
   {
@@ -2692,31 +2701,16 @@
    "mentions30": 6,
    "tight30": 0,
    "ease30": 0,
-   "mentions7": 4,
+   "mentions7": 1,
    "headline": {
     "title": "Claros Deal Could Reshape Navitas Semiconductor Stock Story",
     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOVWhOT2oySGhrVWtjQXZjcmx5aFd3RHZsMnZvYjZqWVhkSVBfRWhVcFIzeVJ6anYwRUFkcXRxbmFtQldNSUFmY3M3aEhuMDFCblNtOGF2Um0zelZUa0d6X0JKdmVkVVkxZU9aWEFHbm9DUDFpQnRFZ0FpVnpySFRZOGNoOU1faFZrT3F3ajBwbndiRG45dmZyOGRqenRoRzVadmlhUTJJaW0wOHZZZmRUTFVvVWNYeGJGaHBjZVk5S3JnejJ3enRLQWZZdTFRVmZZNDMtdUEzVGdUNmF6TlHSAeMBQVVfeXFMTjYzaG1HTVBhRFlBYmdsVXJEdVk1b2hURjF3ZnIwWlhtU2N0cEVZVDJOb3hXTmsxUm9MNEkzUWdEeHBGQjlZRk04VFp3SWdpLWlaXzV3M3FZam5KVkRFcGF3aXNzT2p0d0Rma1FZdWRlV05SU0hzOW0wZmozNVJ5SmE5d3RiNi13MmdXdE4xaGQ0bFl1M1ZnZ1M5bTI1MURqcDhRLU02VnBZdV9HRE03V3JyZ0Y0RnBsaWtaTW5HbncxQk9Lc3RlbkR4elk2Z01aYklPazVKR2toNVdfQ0k3SV84RGM?oc=5",
     "source": "Simply Wall St",
     "published": "2026-11-24T15:09+00:00"
    }
-  },
-  {
-   "name": "Johnson Controls",
-   "ticker": "JCI",
-   "layer": "power_equipment",
-   "mentions30": 6,
-   "tight30": 2,
-   "ease30": 0,
-   "mentions7": 1,
-   "headline": {
-    "title": "Johnson Controls Plans $179 Million HVAC Plant in Schertz, Texas",
-    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPRjFCNTZVOU9WUDhUeWtLNlhWV0I4MDA4d3VfclhfLTNSRHRzUnRWT3l6TUd6OFVEYlVycFV6ek00R29lM01XNG1XMml1QndxNTBVd21UZzVGRVhoVTFvb1d2dHVQTDZNcDVNM0hUQ3VUUXhPLVFocDJabWV0elhURHVEODZYdVVpYjVlWHF2UElFRU4xakxn?oc=5",
-    "source": "Refindustry",
-    "published": "2026-11-23T12:10+00:00"
-   }
   }
  ],
- "generated_utc": "2026-11-26T04:16:08+00:00",
+ "generated_utc": "2026-11-27T04:24:33+00:00",
  "sources_ok": {
   "google": 165,
   "yahoo": 80
